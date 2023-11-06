@@ -1,0 +1,1028 @@
+{
+	"textures": [
+		{
+			"image": "brain_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 315,
+				"h": 64
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "brain_die-14.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 32,
+						"h": 32
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 32,
+						"h": 32
+					}
+				},
+				{
+					"filename": "brain_die-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 32,
+						"h": 31
+					},
+					"frame": {
+						"x": 35,
+						"y": 1,
+						"w": 32,
+						"h": 31
+					}
+				},
+				{
+					"filename": "brain_die-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 31,
+						"h": 32
+					},
+					"frame": {
+						"x": 69,
+						"y": 1,
+						"w": 31,
+						"h": 32
+					}
+				},
+				{
+					"filename": "brain_die-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 3,
+						"w": 29,
+						"h": 29
+					},
+					"frame": {
+						"x": 35,
+						"y": 34,
+						"w": 29,
+						"h": 29
+					}
+				},
+				{
+					"filename": "brain_die-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 8,
+						"w": 27,
+						"h": 24
+					},
+					"frame": {
+						"x": 1,
+						"y": 35,
+						"w": 27,
+						"h": 24
+					}
+				},
+				{
+					"filename": "brain_attack-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 24,
+						"h": 17
+					},
+					"frame": {
+						"x": 102,
+						"y": 1,
+						"w": 24,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 24,
+						"h": 17
+					},
+					"frame": {
+						"x": 128,
+						"y": 1,
+						"w": 24,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 24,
+						"h": 17
+					},
+					"frame": {
+						"x": 154,
+						"y": 1,
+						"w": 24,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 8,
+						"w": 24,
+						"h": 17
+					},
+					"frame": {
+						"x": 180,
+						"y": 1,
+						"w": 24,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 10,
+						"w": 22,
+						"h": 22
+					},
+					"frame": {
+						"x": 206,
+						"y": 1,
+						"w": 22,
+						"h": 22
+					}
+				},
+				{
+					"filename": "brain_attack-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 8,
+						"w": 21,
+						"h": 16
+					},
+					"frame": {
+						"x": 230,
+						"y": 1,
+						"w": 21,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 8,
+						"w": 20,
+						"h": 17
+					},
+					"frame": {
+						"x": 253,
+						"y": 1,
+						"w": 20,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 13,
+						"w": 19,
+						"h": 17
+					},
+					"frame": {
+						"x": 230,
+						"y": 19,
+						"w": 19,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 8,
+						"w": 20,
+						"h": 16
+					},
+					"frame": {
+						"x": 251,
+						"y": 20,
+						"w": 20,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 8,
+						"w": 19,
+						"h": 16
+					},
+					"frame": {
+						"x": 273,
+						"y": 20,
+						"w": 19,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 18,
+						"h": 16
+					},
+					"frame": {
+						"x": 275,
+						"y": 1,
+						"w": 18,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 294,
+						"y": 19,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 294,
+						"y": 19,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 294,
+						"y": 19,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 11,
+						"w": 18,
+						"h": 16
+					},
+					"frame": {
+						"x": 295,
+						"y": 1,
+						"w": 18,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_die-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 13,
+						"w": 18,
+						"h": 15
+					},
+					"frame": {
+						"x": 102,
+						"y": 20,
+						"w": 18,
+						"h": 15
+					}
+				},
+				{
+					"filename": "brain_attack-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 66,
+						"y": 35,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 66,
+						"y": 35,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 85,
+						"y": 35,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 122,
+						"y": 20,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_attack-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 122,
+						"y": 20,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_die-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 102,
+						"y": 37,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 9,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 141,
+						"y": 20,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_die-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 10,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 141,
+						"y": 20,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_die-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 11,
+						"w": 17,
+						"h": 16
+					},
+					"frame": {
+						"x": 160,
+						"y": 20,
+						"w": 17,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 179,
+						"y": 20,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 179,
+						"y": 20,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 10,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 196,
+						"y": 25,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 10,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 213,
+						"y": 25,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_attack-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 119,
+						"y": 38,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_die-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 137,
+						"y": 38,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 155,
+						"y": 38,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 172,
+						"y": 39,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_die-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 8,
+						"w": 16,
+						"h": 16
+					},
+					"frame": {
+						"x": 230,
+						"y": 38,
+						"w": 16,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 11,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 189,
+						"y": 44,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 10,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 189,
+						"y": 44,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 10,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 189,
+						"y": 44,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 189,
+						"y": 44,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 17
+					},
+					"frame": {
+						"x": 206,
+						"y": 44,
+						"w": 15,
+						"h": 17
+					}
+				},
+				{
+					"filename": "brain_idle-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 248,
+						"y": 38,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 265,
+						"y": 38,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 282,
+						"y": 38,
+						"w": 15,
+						"h": 16
+					}
+				},
+				{
+					"filename": "brain_idle-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 9,
+						"w": 15,
+						"h": 16
+					},
+					"frame": {
+						"x": 299,
+						"y": 38,
+						"w": 15,
+						"h": 16
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:34cce0142da289623a9841d98cb92175:f7844d678f18bd4501456e7d18905ae3:f200e20859d0e73d60b0e636edc00c06$"
+	}
+}

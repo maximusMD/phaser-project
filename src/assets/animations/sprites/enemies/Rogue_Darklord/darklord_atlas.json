@@ -1,0 +1,1364 @@
+{
+	"textures": [
+		{
+			"image": "darklord_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 253,
+				"h": 573
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "darklord_walk-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 54,
+						"h": 64
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 54,
+						"h": 64
+					}
+				},
+				{
+					"filename": "darklord_walk-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 53,
+						"h": 63
+					},
+					"frame": {
+						"x": 57,
+						"y": 1,
+						"w": 53,
+						"h": 63
+					}
+				},
+				{
+					"filename": "darklord_attack-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 52,
+						"h": 26
+					},
+					"frame": {
+						"x": 112,
+						"y": 1,
+						"w": 52,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_attack-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 52,
+						"h": 26
+					},
+					"frame": {
+						"x": 166,
+						"y": 1,
+						"w": 52,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_walk-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 20,
+						"w": 32,
+						"h": 44
+					},
+					"frame": {
+						"x": 220,
+						"y": 1,
+						"w": 32,
+						"h": 44
+					}
+				},
+				{
+					"filename": "darklord_attack-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 52,
+						"h": 26
+					},
+					"frame": {
+						"x": 112,
+						"y": 29,
+						"w": 52,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_attack-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 52,
+						"h": 26
+					},
+					"frame": {
+						"x": 166,
+						"y": 29,
+						"w": 52,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_walk-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 23,
+						"w": 32,
+						"h": 41
+					},
+					"frame": {
+						"x": 220,
+						"y": 47,
+						"w": 32,
+						"h": 41
+					}
+				},
+				{
+					"filename": "darklord_attack-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 52,
+						"h": 26
+					},
+					"frame": {
+						"x": 112,
+						"y": 57,
+						"w": 52,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_walk-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 2,
+						"w": 51,
+						"h": 62
+					},
+					"frame": {
+						"x": 166,
+						"y": 57,
+						"w": 51,
+						"h": 62
+					}
+				},
+				{
+					"filename": "darklord_attack-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 14,
+						"w": 33,
+						"h": 46
+					},
+					"frame": {
+						"x": 219,
+						"y": 90,
+						"w": 33,
+						"h": 46
+					}
+				},
+				{
+					"filename": "darklord_attack-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 51,
+						"h": 26
+					},
+					"frame": {
+						"x": 57,
+						"y": 66,
+						"w": 51,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_attack-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 37,
+						"w": 50,
+						"h": 27
+					},
+					"frame": {
+						"x": 110,
+						"y": 85,
+						"w": 50,
+						"h": 27
+					}
+				},
+				{
+					"filename": "darklord_attack-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 37,
+						"w": 50,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 67,
+						"w": 50,
+						"h": 27
+					}
+				},
+				{
+					"filename": "darklord_die-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 16,
+						"w": 48,
+						"h": 48
+					},
+					"frame": {
+						"x": 53,
+						"y": 94,
+						"w": 48,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_die-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 17,
+						"w": 48,
+						"h": 47
+					},
+					"frame": {
+						"x": 1,
+						"y": 96,
+						"w": 48,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_die-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 17,
+						"w": 48,
+						"h": 47
+					},
+					"frame": {
+						"x": 103,
+						"y": 114,
+						"w": 48,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_die-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 19,
+						"w": 48,
+						"h": 45
+					},
+					"frame": {
+						"x": 51,
+						"y": 144,
+						"w": 48,
+						"h": 45
+					}
+				},
+				{
+					"filename": "darklord_die-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 23,
+						"w": 48,
+						"h": 41
+					},
+					"frame": {
+						"x": 1,
+						"y": 145,
+						"w": 48,
+						"h": 41
+					}
+				},
+				{
+					"filename": "darklord_attack-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 38,
+						"w": 48,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 188,
+						"w": 48,
+						"h": 26
+					}
+				},
+				{
+					"filename": "darklord_walk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 4,
+						"w": 47,
+						"h": 60
+					},
+					"frame": {
+						"x": 153,
+						"y": 121,
+						"w": 47,
+						"h": 60
+					}
+				},
+				{
+					"filename": "darklord_idle-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 9,
+						"w": 46,
+						"h": 55
+					},
+					"frame": {
+						"x": 101,
+						"y": 163,
+						"w": 46,
+						"h": 55
+					}
+				},
+				{
+					"filename": "darklord_idle-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 10,
+						"w": 46,
+						"h": 54
+					},
+					"frame": {
+						"x": 51,
+						"y": 191,
+						"w": 46,
+						"h": 54
+					}
+				},
+				{
+					"filename": "darklord_idle-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 46,
+						"h": 53
+					},
+					"frame": {
+						"x": 1,
+						"y": 216,
+						"w": 46,
+						"h": 53
+					}
+				},
+				{
+					"filename": "darklord_idle-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 46,
+						"h": 53
+					},
+					"frame": {
+						"x": 202,
+						"y": 138,
+						"w": 46,
+						"h": 53
+					}
+				},
+				{
+					"filename": "darklord_idle-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 46,
+						"h": 51
+					},
+					"frame": {
+						"x": 149,
+						"y": 183,
+						"w": 46,
+						"h": 51
+					}
+				},
+				{
+					"filename": "darklord_idle-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 46,
+						"h": 49
+					},
+					"frame": {
+						"x": 99,
+						"y": 220,
+						"w": 46,
+						"h": 49
+					}
+				},
+				{
+					"filename": "darklord_idle-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 46,
+						"h": 49
+					},
+					"frame": {
+						"x": 49,
+						"y": 247,
+						"w": 46,
+						"h": 49
+					}
+				},
+				{
+					"filename": "darklord_attack-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 46,
+						"h": 48
+					},
+					"frame": {
+						"x": 1,
+						"y": 271,
+						"w": 46,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_die-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 46,
+						"h": 48
+					},
+					"frame": {
+						"x": 1,
+						"y": 271,
+						"w": 46,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 46,
+						"h": 48
+					},
+					"frame": {
+						"x": 1,
+						"y": 271,
+						"w": 46,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 46,
+						"h": 47
+					},
+					"frame": {
+						"x": 197,
+						"y": 193,
+						"w": 46,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_idle-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 46,
+						"h": 47
+					},
+					"frame": {
+						"x": 147,
+						"y": 236,
+						"w": 46,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_attack-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 46,
+						"h": 46
+					},
+					"frame": {
+						"x": 97,
+						"y": 271,
+						"w": 46,
+						"h": 46
+					}
+				},
+				{
+					"filename": "darklord_attack-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 3,
+						"w": 45,
+						"h": 59
+					},
+					"frame": {
+						"x": 49,
+						"y": 298,
+						"w": 45,
+						"h": 59
+					}
+				},
+				{
+					"filename": "darklord_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 9,
+						"w": 45,
+						"h": 55
+					},
+					"frame": {
+						"x": 1,
+						"y": 321,
+						"w": 45,
+						"h": 55
+					}
+				},
+				{
+					"filename": "darklord_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 45,
+						"h": 53
+					},
+					"frame": {
+						"x": 195,
+						"y": 242,
+						"w": 45,
+						"h": 53
+					}
+				},
+				{
+					"filename": "darklord_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 45,
+						"h": 53
+					},
+					"frame": {
+						"x": 145,
+						"y": 285,
+						"w": 45,
+						"h": 53
+					}
+				},
+				{
+					"filename": "darklord_die-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 13,
+						"w": 45,
+						"h": 51
+					},
+					"frame": {
+						"x": 96,
+						"y": 319,
+						"w": 45,
+						"h": 51
+					}
+				},
+				{
+					"filename": "darklord_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 13,
+						"w": 45,
+						"h": 51
+					},
+					"frame": {
+						"x": 48,
+						"y": 359,
+						"w": 45,
+						"h": 51
+					}
+				},
+				{
+					"filename": "darklord_die-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 14,
+						"w": 45,
+						"h": 50
+					},
+					"frame": {
+						"x": 1,
+						"y": 378,
+						"w": 45,
+						"h": 50
+					}
+				},
+				{
+					"filename": "darklord_die-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 14,
+						"w": 45,
+						"h": 50
+					},
+					"frame": {
+						"x": 192,
+						"y": 297,
+						"w": 45,
+						"h": 50
+					}
+				},
+				{
+					"filename": "darklord_die-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 15,
+						"w": 45,
+						"h": 49
+					},
+					"frame": {
+						"x": 143,
+						"y": 340,
+						"w": 45,
+						"h": 49
+					}
+				},
+				{
+					"filename": "darklord_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 45,
+						"h": 49
+					},
+					"frame": {
+						"x": 95,
+						"y": 372,
+						"w": 45,
+						"h": 49
+					}
+				},
+				{
+					"filename": "darklord_die-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 16,
+						"w": 45,
+						"h": 48
+					},
+					"frame": {
+						"x": 48,
+						"y": 412,
+						"w": 45,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_die-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 18,
+						"w": 45,
+						"h": 46
+					},
+					"frame": {
+						"x": 1,
+						"y": 430,
+						"w": 45,
+						"h": 46
+					}
+				},
+				{
+					"filename": "darklord_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 45,
+						"h": 45
+					},
+					"frame": {
+						"x": 190,
+						"y": 349,
+						"w": 45,
+						"h": 45
+					}
+				},
+				{
+					"filename": "darklord_die-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 20,
+						"w": 45,
+						"h": 44
+					},
+					"frame": {
+						"x": 142,
+						"y": 391,
+						"w": 45,
+						"h": 44
+					}
+				},
+				{
+					"filename": "darklord_die-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 22,
+						"w": 45,
+						"h": 42
+					},
+					"frame": {
+						"x": 95,
+						"y": 423,
+						"w": 45,
+						"h": 42
+					}
+				},
+				{
+					"filename": "darklord_walk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 44,
+						"h": 56
+					},
+					"frame": {
+						"x": 48,
+						"y": 462,
+						"w": 44,
+						"h": 56
+					}
+				},
+				{
+					"filename": "darklord_walk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 13,
+						"w": 39,
+						"h": 51
+					},
+					"frame": {
+						"x": 1,
+						"y": 520,
+						"w": 39,
+						"h": 51
+					}
+				},
+				{
+					"filename": "darklord_walk-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 27,
+						"w": 40,
+						"h": 37
+					},
+					"frame": {
+						"x": 1,
+						"y": 478,
+						"w": 40,
+						"h": 37
+					}
+				},
+				{
+					"filename": "darklord_walk-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 14,
+						"w": 35,
+						"h": 50
+					},
+					"frame": {
+						"x": 42,
+						"y": 520,
+						"w": 35,
+						"h": 50
+					}
+				},
+				{
+					"filename": "darklord_die-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 15,
+						"w": 29,
+						"h": 49
+					},
+					"frame": {
+						"x": 79,
+						"y": 520,
+						"w": 29,
+						"h": 49
+					}
+				},
+				{
+					"filename": "darklord_die-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 16,
+						"w": 42,
+						"h": 48
+					},
+					"frame": {
+						"x": 94,
+						"y": 467,
+						"w": 42,
+						"h": 48
+					}
+				},
+				{
+					"filename": "darklord_attack-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 7,
+						"w": 29,
+						"h": 54
+					},
+					"frame": {
+						"x": 110,
+						"y": 517,
+						"w": 29,
+						"h": 54
+					}
+				},
+				{
+					"filename": "darklord_walk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 13,
+						"y": 17,
+						"w": 38,
+						"h": 47
+					},
+					"frame": {
+						"x": 138,
+						"y": 467,
+						"w": 38,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_walk-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 17,
+						"w": 36,
+						"h": 47
+					},
+					"frame": {
+						"x": 141,
+						"y": 516,
+						"w": 36,
+						"h": 47
+					}
+				},
+				{
+					"filename": "darklord_walk-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 0,
+						"w": 31,
+						"h": 64
+					},
+					"frame": {
+						"x": 178,
+						"y": 437,
+						"w": 31,
+						"h": 64
+					}
+				},
+				{
+					"filename": "darklord_walk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 27,
+						"w": 37,
+						"h": 37
+					},
+					"frame": {
+						"x": 189,
+						"y": 396,
+						"w": 37,
+						"h": 37
+					}
+				},
+				{
+					"filename": "darklord_walk-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 5,
+						"w": 39,
+						"h": 59
+					},
+					"frame": {
+						"x": 211,
+						"y": 435,
+						"w": 39,
+						"h": 59
+					}
+				},
+				{
+					"filename": "darklord_walk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 22,
+						"w": 35,
+						"h": 42
+					},
+					"frame": {
+						"x": 211,
+						"y": 496,
+						"w": 35,
+						"h": 42
+					}
+				},
+				{
+					"filename": "darklord_attack-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 32,
+						"w": 42,
+						"h": 32
+					},
+					"frame": {
+						"x": 179,
+						"y": 540,
+						"w": 42,
+						"h": 32
+					}
+				},
+				{
+					"filename": "darklord_attack-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 32,
+						"w": 42,
+						"h": 32
+					},
+					"frame": {
+						"x": 179,
+						"y": 540,
+						"w": 42,
+						"h": 32
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:63ccf1664f08fb02a457c1c2b9027285:422c219601ad8ecde8582b9a9900756c:d4a94abc599aadd1ffe1704da7d0c2e5$"
+	}
+}

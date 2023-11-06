@@ -1,0 +1,524 @@
+{
+	"textures": [
+		{
+			"image": "sneaker_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 253,
+				"h": 32
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "sneaker_die-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 3,
+						"w": 27,
+						"h": 29
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 27,
+						"h": 29
+					}
+				},
+				{
+					"filename": "sneaker_die-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 5,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 30,
+						"y": 1,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "sneaker_die-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 7,
+						"w": 23,
+						"h": 25
+					},
+					"frame": {
+						"x": 58,
+						"y": 1,
+						"w": 23,
+						"h": 25
+					}
+				},
+				{
+					"filename": "sneaker_die-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 19,
+						"h": 18
+					},
+					"frame": {
+						"x": 83,
+						"y": 1,
+						"w": 19,
+						"h": 18
+					}
+				},
+				{
+					"filename": "sneaker_attack-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 22,
+						"w": 20,
+						"h": 10
+					},
+					"frame": {
+						"x": 83,
+						"y": 21,
+						"w": 20,
+						"h": 10
+					}
+				},
+				{
+					"filename": "sneaker_attack-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 17,
+						"w": 26,
+						"h": 13
+					},
+					"frame": {
+						"x": 104,
+						"y": 1,
+						"w": 26,
+						"h": 13
+					}
+				},
+				{
+					"filename": "sneaker_attack-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 16,
+						"w": 18,
+						"h": 15
+					},
+					"frame": {
+						"x": 105,
+						"y": 16,
+						"w": 18,
+						"h": 15
+					}
+				},
+				{
+					"filename": "sneaker_attack-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 22,
+						"h": 12
+					},
+					"frame": {
+						"x": 125,
+						"y": 16,
+						"w": 22,
+						"h": 12
+					}
+				},
+				{
+					"filename": "sneaker_attack-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 20,
+						"h": 12
+					},
+					"frame": {
+						"x": 132,
+						"y": 1,
+						"w": 20,
+						"h": 12
+					}
+				},
+				{
+					"filename": "sneaker_attack-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 18,
+						"w": 18,
+						"h": 14
+					},
+					"frame": {
+						"x": 149,
+						"y": 15,
+						"w": 18,
+						"h": 14
+					}
+				},
+				{
+					"filename": "sneaker_die-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 20,
+						"w": 20,
+						"h": 12
+					},
+					"frame": {
+						"x": 154,
+						"y": 1,
+						"w": 20,
+						"h": 12
+					}
+				},
+				{
+					"filename": "sneaker_die-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 18,
+						"w": 18,
+						"h": 14
+					},
+					"frame": {
+						"x": 169,
+						"y": 15,
+						"w": 18,
+						"h": 14
+					}
+				},
+				{
+					"filename": "sneaker_die-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 22,
+						"w": 20,
+						"h": 10
+					},
+					"frame": {
+						"x": 176,
+						"y": 1,
+						"w": 20,
+						"h": 10
+					}
+				},
+				{
+					"filename": "sneaker_attack-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 24,
+						"w": 21,
+						"h": 8
+					},
+					"frame": {
+						"x": 189,
+						"y": 13,
+						"w": 21,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_die-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 24,
+						"w": 21,
+						"h": 8
+					},
+					"frame": {
+						"x": 189,
+						"y": 13,
+						"w": 21,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 24,
+						"w": 21,
+						"h": 8
+					},
+					"frame": {
+						"x": 189,
+						"y": 13,
+						"w": 21,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 24,
+						"w": 21,
+						"h": 8
+					},
+					"frame": {
+						"x": 189,
+						"y": 13,
+						"w": 21,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 24,
+						"w": 20,
+						"h": 8
+					},
+					"frame": {
+						"x": 189,
+						"y": 23,
+						"w": 20,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 24,
+						"w": 20,
+						"h": 8
+					},
+					"frame": {
+						"x": 211,
+						"y": 23,
+						"w": 20,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 24,
+						"w": 19,
+						"h": 8
+					},
+					"frame": {
+						"x": 233,
+						"y": 1,
+						"w": 19,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_attack-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 25,
+						"w": 21,
+						"h": 7
+					},
+					"frame": {
+						"x": 198,
+						"y": 1,
+						"w": 21,
+						"h": 7
+					}
+				},
+				{
+					"filename": "sneaker_walk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 24,
+						"w": 18,
+						"h": 8
+					},
+					"frame": {
+						"x": 212,
+						"y": 10,
+						"w": 18,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 24,
+						"w": 17,
+						"h": 8
+					},
+					"frame": {
+						"x": 232,
+						"y": 11,
+						"w": 17,
+						"h": 8
+					}
+				},
+				{
+					"filename": "sneaker_walk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 24,
+						"w": 15,
+						"h": 8
+					},
+					"frame": {
+						"x": 233,
+						"y": 21,
+						"w": 15,
+						"h": 8
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:a384135b15521551d9b8560dc814a75e:94ea1ab970d8283afc369ad46dadf6f8:e097472bb07c58d6145f37803337b886$"
+	}
+}

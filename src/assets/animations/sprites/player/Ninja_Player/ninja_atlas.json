@@ -1,0 +1,188 @@
+{
+	"textures": [
+		{
+			"image": "ninja_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 119,
+				"h": 24
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "ninja_run0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 15,
+						"h": 22
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 15,
+						"h": 22
+					}
+				},
+				{
+					"filename": "ninja_run1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 15,
+						"h": 22
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 15,
+						"h": 22
+					}
+				},
+				{
+					"filename": "ninja_idle0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 15,
+						"h": 21
+					},
+					"frame": {
+						"x": 35,
+						"y": 1,
+						"w": 15,
+						"h": 21
+					}
+				},
+				{
+					"filename": "ninja_run2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 3,
+						"w": 15,
+						"h": 21
+					},
+					"frame": {
+						"x": 52,
+						"y": 1,
+						"w": 15,
+						"h": 21
+					}
+				},
+				{
+					"filename": "ninja_idle1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 15,
+						"h": 20
+					},
+					"frame": {
+						"x": 69,
+						"y": 1,
+						"w": 15,
+						"h": 20
+					}
+				},
+				{
+					"filename": "ninja_idle3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 15,
+						"h": 20
+					},
+					"frame": {
+						"x": 69,
+						"y": 1,
+						"w": 15,
+						"h": 20
+					}
+				},
+				{
+					"filename": "ninja_run3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 4,
+						"w": 15,
+						"h": 20
+					},
+					"frame": {
+						"x": 86,
+						"y": 1,
+						"w": 15,
+						"h": 20
+					}
+				},
+				{
+					"filename": "ninja_idle2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 16,
+						"h": 24
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 5,
+						"w": 15,
+						"h": 19
+					},
+					"frame": {
+						"x": 103,
+						"y": 1,
+						"w": 15,
+						"h": 19
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:8fe2a449e3ecc552f996cb9fa8edbc2d:c3e3354d7ab3af29cd18bc2c0bfb76d0:35c4cc6cf212997422ed76e690270ae4$"
+	}
+}
