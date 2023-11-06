@@ -34,6 +34,9 @@
     "webpack-merge": "^5.10.0"
   },
   "dependencies": {
-    "phaser": "^3.60.0"
+    "phaser": "^3.60.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "mongodb": "^6.2.0"
   }
 }
