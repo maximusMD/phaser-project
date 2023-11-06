@@ -1,0 +1,1364 @@
+{
+	"textures": [
+		{
+			"image": "rogue_player_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 64,
+				"h": 399
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "rogue_player_jump-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 9,
+						"w": 15,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 15,
+						"h": 23
+					}
+				},
+				{
+					"filename": "rogue_player_jump-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 8,
+						"w": 14,
+						"h": 24
+					},
+					"frame": {
+						"x": 18,
+						"y": 1,
+						"w": 14,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_player_dash-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 34,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 34,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 52,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 15,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 26,
+						"w": 15,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 18,
+						"y": 27,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 18,
+						"y": 27,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 32,
+						"y": 28,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 32,
+						"y": 28,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 52,
+						"y": 28,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 53,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_jump-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 13,
+						"h": 25
+					},
+					"frame": {
+						"x": 15,
+						"y": 54,
+						"w": 13,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 20,
+						"h": 25
+					},
+					"frame": {
+						"x": 30,
+						"y": 55,
+						"w": 20,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 20,
+						"h": 25
+					},
+					"frame": {
+						"x": 30,
+						"y": 55,
+						"w": 20,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 55,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 55,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 55,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 55,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_jump-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 80,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_dash-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 7,
+						"w": 22,
+						"h": 25
+					},
+					"frame": {
+						"x": 15,
+						"y": 82,
+						"w": 22,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 39,
+						"y": 82,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 83,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 11,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 107,
+						"w": 11,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 22,
+						"h": 25
+					},
+					"frame": {
+						"x": 14,
+						"y": 109,
+						"w": 22,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_player_interact-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 12,
+						"h": 26
+					},
+					"frame": {
+						"x": 38,
+						"y": 110,
+						"w": 12,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 10,
+						"h": 26
+					},
+					"frame": {
+						"x": 52,
+						"y": 111,
+						"w": 10,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 13,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 136,
+						"w": 13,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 15,
+						"h": 26
+					},
+					"frame": {
+						"x": 16,
+						"y": 136,
+						"w": 15,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_interact-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 12,
+						"h": 26
+					},
+					"frame": {
+						"x": 33,
+						"y": 138,
+						"w": 12,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 16,
+						"h": 26
+					},
+					"frame": {
+						"x": 47,
+						"y": 139,
+						"w": 16,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 164,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 22,
+						"y": 166,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 43,
+						"y": 167,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 192,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 6,
+						"w": 17,
+						"h": 26
+					},
+					"frame": {
+						"x": 22,
+						"y": 194,
+						"w": 17,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 6,
+						"w": 20,
+						"h": 26
+					},
+					"frame": {
+						"x": 41,
+						"y": 195,
+						"w": 20,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 12,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 220,
+						"w": 12,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_melee-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 6,
+						"w": 20,
+						"h": 26
+					},
+					"frame": {
+						"x": 15,
+						"y": 222,
+						"w": 20,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 6,
+						"w": 22,
+						"h": 26
+					},
+					"frame": {
+						"x": 37,
+						"y": 223,
+						"w": 22,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 12,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 248,
+						"w": 12,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_run-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 15,
+						"y": 250,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 6,
+						"w": 12,
+						"h": 26
+					},
+					"frame": {
+						"x": 36,
+						"y": 251,
+						"w": 12,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_jump-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 5,
+						"w": 12,
+						"h": 27
+					},
+					"frame": {
+						"x": 50,
+						"y": 251,
+						"w": 12,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 5,
+						"w": 11,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 276,
+						"w": 11,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 5,
+						"w": 11,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 276,
+						"w": 11,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 16,
+						"h": 26
+					},
+					"frame": {
+						"x": 14,
+						"y": 278,
+						"w": 16,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 15,
+						"h": 26
+					},
+					"frame": {
+						"x": 32,
+						"y": 279,
+						"w": 15,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_jump-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 5,
+						"w": 12,
+						"h": 27
+					},
+					"frame": {
+						"x": 49,
+						"y": 280,
+						"w": 12,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 6,
+						"w": 19,
+						"h": 26
+					},
+					"frame": {
+						"x": 1,
+						"y": 306,
+						"w": 19,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 6,
+						"w": 16,
+						"h": 26
+					},
+					"frame": {
+						"x": 22,
+						"y": 307,
+						"w": 16,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_shoot-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 6,
+						"w": 15,
+						"h": 26
+					},
+					"frame": {
+						"x": 40,
+						"y": 309,
+						"w": 15,
+						"h": 26
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 3,
+						"w": 14,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 334,
+						"w": 14,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 3,
+						"w": 14,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 334,
+						"w": 14,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 3,
+						"w": 14,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 334,
+						"w": 14,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 3,
+						"w": 14,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 334,
+						"w": 14,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_run-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 5,
+						"w": 13,
+						"h": 27
+					},
+					"frame": {
+						"x": 17,
+						"y": 335,
+						"w": 13,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_run-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 5,
+						"w": 12,
+						"h": 27
+					},
+					"frame": {
+						"x": 32,
+						"y": 337,
+						"w": 12,
+						"h": 27
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 14,
+						"h": 28
+					},
+					"frame": {
+						"x": 46,
+						"y": 337,
+						"w": 14,
+						"h": 28
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 14,
+						"h": 28
+					},
+					"frame": {
+						"x": 46,
+						"y": 337,
+						"w": 14,
+						"h": 28
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 14,
+						"h": 28
+					},
+					"frame": {
+						"x": 46,
+						"y": 337,
+						"w": 14,
+						"h": 28
+					}
+				},
+				{
+					"filename": "rogue_player_jump_midair-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 2,
+						"w": 14,
+						"h": 28
+					},
+					"frame": {
+						"x": 46,
+						"y": 337,
+						"w": 14,
+						"h": 28
+					}
+				},
+				{
+					"filename": "rogue_player_melee-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 3,
+						"w": 25,
+						"h": 29
+					},
+					"frame": {
+						"x": 1,
+						"y": 364,
+						"w": 25,
+						"h": 29
+					}
+				},
+				{
+					"filename": "rogue_player_melee-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 22,
+						"h": 31
+					},
+					"frame": {
+						"x": 28,
+						"y": 367,
+						"w": 22,
+						"h": 31
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:4be0d2bdd7a863175331541feeb26aa6:ecd9c6909b362c2e7baace9bec121cc6:92009820a49868889f080d76c3df8202$"
+	}
+}

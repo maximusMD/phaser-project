@@ -1,0 +1,266 @@
+Starting left top to bottom right
+0-9-A-F
+|XXXXXX
+9XXXXXX
+|XXXXXX
+AXXXXXX
+|XXXXXX
+FXXXXXX
+
+00 - cherry
+01 - tomato
+02 - banana
+03 - orange
+04 - eggplant
+05 - carrot
+06 - potato
+07 - spinach
+08 - ginger
+09 - meat
+0A - beans
+0B - turnib
+0C - strawberry
+0D - pumpkin
+0E - cucumber
+0F - bowl of rice
+10 - weapon: claw
+11 - weapon: wood sword
+12 - weapon: frost-sword
+13 - weapon: axe
+14 - weapon: sais
+15 - weapon: morning star
+16 - weapon: Hunters bow
+17 - weapon: iron mallet
+18 - fire arrow
+19 - weapon: magic want - ice
+1A - weapon: trident
+1B - weapon: speer
+1C - weapon: fire trident
+1D - weapon: MG
+1E - weapon: pistol
+1F - weapon: shotgun
+20 - green orb
+21 - red orb
+22 - yellow orb
+23 - blue orb
+24 - candy
+25 - blue ruby
+26 - button
+27 - official letter
+28 - coin A
+29 - skull
+2A - UI: check
+2B - UI: cancel
+2C - armor: wood
+2D - armor: iron
+2E - armor: gold
+2F - armor: diamond
+30 - corn
+31 - broccoli
+32 - cookie
+33 - radishes
+34 - weapon: magic mallet frost
+35 - campfire
+36 - weapon: automatic shotgun
+37 - weapon: automatic pistol
+38 - armor: body protector
+39 - armor: wizard hat
+3A - armor: iron helmet
+3B - armor: viking helmet
+3C - armor: leather boots
+3D - armor: iron boots
+3E - armor: gold boots
+3F - armor: diamond boots
+40 - UI: heart
+41 - green slime
+42 - coin B
+43 - iron sword
+44 - iron dagger
+45 - leather vest
+46 - dynamite
+47 - health kit
+48 - pilots googles
+49 - demon king hat
+4A - bomb
+4B - watering can
+4C - demons mask
+4D - elven mask
+4E - speech bubble A
+4F - speech bubble B
+50 - UI: half heart
+51 - UI: heart empty
+52 - UI: heart frozen
+53 - butterfly
+54 - torch
+55 - stone piece
+56 - playing card
+57 - dize
+58 - armor: high knight hat with decoration
+59 - armor: high knight hat
+5A - UI: arrow
+5B - golden ring
+5C - demons ring
+5D - frost ring
+5E - nature ring
+5F - little pouch
+60 - silver coin
+61 - health potion
+62 - magic potion
+63 - Diamond ring
+64 - emerald ring
+65 - building block / materials: wood STACK
+66 - building block / materials: stone STACK
+67 - building block / materials: sand STACK
+68 - building block / materials: biologic STACK
+69 - building block / materials: lava STACK
+6A - building block / materials: iron STACK
+6B - building block / materials: ice STACK
+6C - building block / materials: dark STACK
+6D - building block / materials: gold STACK
+6E - armor: knights shield
+6F - large pouch
+70 - golden coin
+71 - empty health potion
+72 - empty magic potion
+73 - wings
+74 - bone
+75 - building block / materials: wood SINGLE
+76 - building block / materials: stone SINGLE
+77 - building block / materials: sand SINGLE
+78 - building block / materials: biologic SINGLE
+79 - building block / materials: lava SINGLE
+7A - building block / materials: iron SINGLE
+7B - building block / materials: ice SINGLE
+7C - building block / materials: dark SINGLE
+7D - building block / materials: gold SINGLE
+7E - armor: mirror shield
+7F - armor: normal shield
+80 - dandelion
+81 - red tulip
+82 - grass
+83 - blue tulip
+84 - weapon: magic fire wand
+85 - weapon: frost speer
+86 - weapon: machete
+87 - log
+88 - mine
+89 - weapon: reinforced large morning star
+8A - weapon: double sided axe
+8B - small stone
+8C - weapon: silver sword
+8D - weapon: silver greatsword
+8E - weapon: diamond sword
+8F - crown
+90 - gold
+91 - Diamond
+92 - Ruby
+93 - Emerald
+94 - weapon: double sided great golden axe
+95 - poison mushroom
+96 - rope
+97 - log with leaf
+98 - empty speed potion
+99 - speed potion
+9A - emerald crystal
+9B - seamonsters hat
+9C - weapon: silver dagger
+9D - weapon: rare silver dagger
+9E - weapon: Diamond dagger
+9F - kings crown
+A0 - apple
+A1 - small leaf
+A2 - acorn leaf
+A3 - large leaf
+A4 - long leaf
+A5 - mushroom
+A6 - wood
+A7 - UI: Star
+A8 - bird
+A9 - green ball
+AA - iron key
+AB - gold key
+AC - gold worm key
+AD - frost amulet
+AE - fire amulet
+AF - forest amulet
+B0 - worm
+B1 - small leaf eaten
+B2 - acorn leaf eaten
+B3 - large leaf eaten
+B4 - long leaf eaten
+B5 - small flower
+B6 - medium flower
+B7 - large flower
+B8 - small iron totem
+B9 - eyeball
+BA - fish
+BB - burger
+BC - UI: sun
+BD - note
+BE - water
+BF - ladle
+C0 - avocado
+C1 - white potion
+C2 - yellow potion
+C3 - green potion
+C4 - red potion
+C5 - candy cane
+C6 - fried egg
+C7 - weapon: iron sickle
+C8 - climbing hook
+C9 - cheese A
+CA - cheese B
+CC - UI: select
+CD - UI: setting select
+CE - spell: fire
+CF - spell: fire missile
+D0 - medical kit
+D1 - deaths ring
+D2 - blueberries
+D3 - nice pink flower
+D4 - 
+D5 - computer
+D6 - headphones
+D7 - stone tablet empty
+D8 - stone tablet written half
+D9 - stone tablet written full
+DA - red demon (pupet)
+DB - weapon: burning speer
+DC - UI: Cursor
+DD - spell: mana
+DE - spell: mana rain
+DF - spell: mana missile
+E0 - large book
+E1 - cabbage
+E2 - container
+E3 - rose
+E4 - UI: spacer A
+E5 - UI: spacer B
+E6 - glass
+E7 - UI: decrease
+E8 - UI: increase
+E9 - eagle
+EA - green demon (pupet)
+EB - blue demon (pupet)
+EC - corpse
+ED - UI: current
+EE - spell: emerald splash
+EF - spell: emerald thunder
+F0 - UI: clock
+F1 - UI: attention
+F2 - battery cell
+F3 - UI: Questionmark
+F4 - UI: disabled A
+F5 - UI: disabled B
+F6 - weapon: bow
+F7 - start marker
+F8 - small start marker
+F9 - Flag A
+FA - Flag B
+FB - Flag C
+FC - Flag D
+FD - UI: error
+FE - spell: explosion
+FF - spell: explosive missile
+
+
