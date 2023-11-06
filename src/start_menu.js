@@ -29,20 +29,37 @@ export class MenuScene extends Phaser.Scene {
         const background = this.add.image(0, 0, 'background');
         background.displayWidth = gameWidth;
         background.displayHeight = gameHeight;
-        background.setPosition(gameWidth / 2, gameHeight / 2)
+        background.setPosition(gameWidth / 2, gameHeight / 2);
 
-        const title = this.add.image(420, 175, 'title')
-        title.setScale(1.8)
+        const title = this.add.image(420, 175, 'title');
+        title.setScale(1.8);
 
-        this.add.image(420, 310, 'sign-in')
-        const guestButton = this.add.image(420, 380, 'guest')
-        const lb = this.add.image(416, 520, 'leaderboard')
-        lb.setScale(0.75)
-        const credits = this.add.image(70, 590, 'credits')
-        credits.setScale(0.6)
-        const share = this.add.image(750, 590, 'share')
-        share.setScale(0.6)
-        const options = this.add.image(735, 20, 'options')
+        const signIn = this.addButton(420, 310, 'sign-in', () => {
+            console.log('Sign-in');
+        });
+
+        const guest = this.addButton(420, 380, 'guest', () => {
+            console.log('Guest');
+        });
+
+        const lb = this.addButton(416, 520, 'leaderboard', () => {
+            console.log('Leaderboard');
+        });
+        lb.setScale(0.75);
+
+        const credits = this.addButton(70, 590, 'credits', () => {
+            this.openCred()
+        });
+        credits.setScale(0.6);
+
+        const share = this.addButton(750, 590, 'share', () => {
+            console.log('Share');
+        });
+        share.setScale(0.6);
+
+        const options = this.addButton(735, 20, 'options', () => {
+            console.log('Options');
+        });
         options.setScale(0.6)
 
         const createButton = this.add.image(150, 50, 'createButton').setScale(2.5)
@@ -67,4 +84,16 @@ export class MenuScene extends Phaser.Scene {
             this.scene.start('RyanLevel')
         })
     }
+    addButton(x, y, key, onClick) {
+        const button = this.add.image(x, y, key);
+        button.setInteractive();
+        button.on('pointerdown', onClick);
+        return button;
+    }
+
+    openCred() {
+        const credLink = 'https://www.youtube.com/watch?v=YXIHXQjbtl8'
+        window.open(credLink, '_blank')
+    }
+
 }
