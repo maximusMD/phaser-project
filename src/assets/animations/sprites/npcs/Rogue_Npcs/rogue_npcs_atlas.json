@@ -1,0 +1,1364 @@
+{
+	"textures": [
+		{
+			"image": "rogue_npcs_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 569,
+				"h": 27
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "rogue_npc2_talk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 20,
+						"h": 25
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 20,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 20,
+						"h": 25
+					},
+					"frame": {
+						"x": 23,
+						"y": 1,
+						"w": 20,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 7,
+						"w": 19,
+						"h": 25
+					},
+					"frame": {
+						"x": 45,
+						"y": 1,
+						"w": 19,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 7,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 66,
+						"y": 1,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 7,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 86,
+						"y": 1,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 7,
+						"w": 18,
+						"h": 25
+					},
+					"frame": {
+						"x": 106,
+						"y": 1,
+						"w": 18,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 7,
+						"w": 17,
+						"h": 25
+					},
+					"frame": {
+						"x": 126,
+						"y": 1,
+						"w": 17,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 17,
+						"h": 25
+					},
+					"frame": {
+						"x": 145,
+						"y": 1,
+						"w": 17,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 17,
+						"h": 25
+					},
+					"frame": {
+						"x": 164,
+						"y": 1,
+						"w": 17,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 183,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 201,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 201,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 201,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 219,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 16,
+						"h": 25
+					},
+					"frame": {
+						"x": 237,
+						"y": 1,
+						"w": 16,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 15,
+						"h": 25
+					},
+					"frame": {
+						"x": 255,
+						"y": 1,
+						"w": 15,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 15,
+						"h": 25
+					},
+					"frame": {
+						"x": 255,
+						"y": 1,
+						"w": 15,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 15,
+						"h": 25
+					},
+					"frame": {
+						"x": 272,
+						"y": 1,
+						"w": 15,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 14,
+						"h": 25
+					},
+					"frame": {
+						"x": 289,
+						"y": 1,
+						"w": 14,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 14,
+						"h": 25
+					},
+					"frame": {
+						"x": 289,
+						"y": 1,
+						"w": 14,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 13,
+						"h": 25
+					},
+					"frame": {
+						"x": 305,
+						"y": 1,
+						"w": 13,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 320,
+						"y": 1,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 320,
+						"y": 1,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 12,
+						"h": 25
+					},
+					"frame": {
+						"x": 334,
+						"y": 1,
+						"w": 12,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_talk-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 348,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 361,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 374,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 387,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 387,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 400,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 400,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 413,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 413,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 426,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 7,
+						"w": 11,
+						"h": 25
+					},
+					"frame": {
+						"x": 426,
+						"y": 1,
+						"w": 11,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_point_stay-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc_talk-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 7,
+						"w": 10,
+						"h": 25
+					},
+					"frame": {
+						"x": 439,
+						"y": 1,
+						"w": 10,
+						"h": 25
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 14,
+						"h": 24
+					},
+					"frame": {
+						"x": 451,
+						"y": 1,
+						"w": 14,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 14,
+						"h": 24
+					},
+					"frame": {
+						"x": 451,
+						"y": 1,
+						"w": 14,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 14,
+						"h": 24
+					},
+					"frame": {
+						"x": 451,
+						"y": 1,
+						"w": 14,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 12,
+						"h": 24
+					},
+					"frame": {
+						"x": 467,
+						"y": 1,
+						"w": 12,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 12,
+						"h": 24
+					},
+					"frame": {
+						"x": 467,
+						"y": 1,
+						"w": 12,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 481,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 494,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 507,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 520,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 520,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 533,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 533,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc2_point_stay-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 8,
+						"w": 11,
+						"h": 24
+					},
+					"frame": {
+						"x": 533,
+						"y": 1,
+						"w": 11,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 8,
+						"w": 10,
+						"h": 24
+					},
+					"frame": {
+						"x": 546,
+						"y": 1,
+						"w": 10,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 8,
+						"w": 10,
+						"h": 24
+					},
+					"frame": {
+						"x": 546,
+						"y": 1,
+						"w": 10,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 8,
+						"w": 10,
+						"h": 24
+					},
+					"frame": {
+						"x": 558,
+						"y": 1,
+						"w": 10,
+						"h": 24
+					}
+				},
+				{
+					"filename": "rogue_npc_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 32,
+						"h": 32
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 8,
+						"w": 10,
+						"h": 24
+					},
+					"frame": {
+						"x": 558,
+						"y": 1,
+						"w": 10,
+						"h": 24
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:2d392157c39b85a952f4d4c2022ea301:bdbd620538f42b61ba9cea344e8b7206:e8cc97bbf4595182f519a4588ea8a114$"
+	}
+}

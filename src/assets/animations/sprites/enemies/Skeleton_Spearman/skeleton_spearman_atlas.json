@@ -1,0 +1,1049 @@
+{
+	"textures": [
+		{
+			"image": "skeleton_spearman_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 240,
+				"h": 895
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "skeleton_soearman_runattack-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 77,
+						"w": 102,
+						"h": 51
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 102,
+						"h": 51
+					}
+				},
+				{
+					"filename": "skeleton_soearman_runattack-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 71,
+						"w": 101,
+						"h": 57
+					},
+					"frame": {
+						"x": 105,
+						"y": 1,
+						"w": 101,
+						"h": 57
+					}
+				},
+				{
+					"filename": "skeleton_spearman_protect-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 59,
+						"w": 31,
+						"h": 69
+					},
+					"frame": {
+						"x": 208,
+						"y": 1,
+						"w": 31,
+						"h": 69
+					}
+				},
+				{
+					"filename": "skeleton_soearman_runattack-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 77,
+						"w": 100,
+						"h": 51
+					},
+					"frame": {
+						"x": 1,
+						"y": 54,
+						"w": 100,
+						"h": 51
+					}
+				},
+				{
+					"filename": "skeleton_soearman_runattack-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 77,
+						"w": 100,
+						"h": 51
+					},
+					"frame": {
+						"x": 103,
+						"y": 60,
+						"w": 100,
+						"h": 51
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 72,
+						"w": 99,
+						"h": 56
+					},
+					"frame": {
+						"x": 1,
+						"y": 107,
+						"w": 99,
+						"h": 56
+					}
+				},
+				{
+					"filename": "skeleton_spearman_hurt-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 59,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 205,
+						"y": 72,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack2-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 73,
+						"w": 98,
+						"h": 55
+					},
+					"frame": {
+						"x": 102,
+						"y": 113,
+						"w": 98,
+						"h": 55
+					}
+				},
+				{
+					"filename": "skeleton_spearman_hurt-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 45,
+						"w": 37,
+						"h": 83
+					},
+					"frame": {
+						"x": 202,
+						"y": 157,
+						"w": 37,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack2-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 73,
+						"w": 98,
+						"h": 55
+					},
+					"frame": {
+						"x": 1,
+						"y": 165,
+						"w": 98,
+						"h": 55
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack1-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 75,
+						"w": 98,
+						"h": 53
+					},
+					"frame": {
+						"x": 101,
+						"y": 170,
+						"w": 98,
+						"h": 53
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack1-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 75,
+						"w": 97,
+						"h": 53
+					},
+					"frame": {
+						"x": 1,
+						"y": 222,
+						"w": 97,
+						"h": 53
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 72,
+						"w": 92,
+						"h": 56
+					},
+					"frame": {
+						"x": 100,
+						"y": 225,
+						"w": 92,
+						"h": 56
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 39,
+						"w": 45,
+						"h": 89
+					},
+					"frame": {
+						"x": 194,
+						"y": 242,
+						"w": 45,
+						"h": 89
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 72,
+						"w": 85,
+						"h": 56
+					},
+					"frame": {
+						"x": 1,
+						"y": 277,
+						"w": 85,
+						"h": 56
+					}
+				},
+				{
+					"filename": "skeleton_soearman_runattack-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 74,
+						"w": 85,
+						"h": 54
+					},
+					"frame": {
+						"x": 88,
+						"y": 283,
+						"w": 85,
+						"h": 54
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack1-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 74,
+						"w": 85,
+						"h": 54
+					},
+					"frame": {
+						"x": 1,
+						"y": 335,
+						"w": 85,
+						"h": 54
+					}
+				},
+				{
+					"filename": "skeleton_spearman_dead-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 90,
+						"w": 64,
+						"h": 38
+					},
+					"frame": {
+						"x": 175,
+						"y": 333,
+						"w": 64,
+						"h": 38
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack1-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 74,
+						"w": 85,
+						"h": 54
+					},
+					"frame": {
+						"x": 88,
+						"y": 339,
+						"w": 85,
+						"h": 54
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack2-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 74,
+						"w": 85,
+						"h": 54
+					},
+					"frame": {
+						"x": 1,
+						"y": 391,
+						"w": 85,
+						"h": 54
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 34,
+						"w": 56,
+						"h": 94
+					},
+					"frame": {
+						"x": 175,
+						"y": 373,
+						"w": 56,
+						"h": 94
+					}
+				},
+				{
+					"filename": "skeleton_spearman_attack2-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 74,
+						"w": 85,
+						"h": 54
+					},
+					"frame": {
+						"x": 88,
+						"y": 395,
+						"w": 85,
+						"h": 54
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 72,
+						"w": 83,
+						"h": 56
+					},
+					"frame": {
+						"x": 1,
+						"y": 447,
+						"w": 83,
+						"h": 56
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 67,
+						"w": 82,
+						"h": 61
+					},
+					"frame": {
+						"x": 86,
+						"y": 451,
+						"w": 82,
+						"h": 61
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 67,
+						"w": 82,
+						"h": 61
+					},
+					"frame": {
+						"x": 1,
+						"y": 505,
+						"w": 82,
+						"h": 61
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 72,
+						"w": 68,
+						"h": 56
+					},
+					"frame": {
+						"x": 170,
+						"y": 469,
+						"w": 68,
+						"h": 56
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 67,
+						"w": 82,
+						"h": 61
+					},
+					"frame": {
+						"x": 85,
+						"y": 514,
+						"w": 82,
+						"h": 61
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 68,
+						"w": 82,
+						"h": 60
+					},
+					"frame": {
+						"x": 1,
+						"y": 568,
+						"w": 82,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_spearman_dead-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 113,
+						"w": 66,
+						"h": 15
+					},
+					"frame": {
+						"x": 169,
+						"y": 527,
+						"w": 66,
+						"h": 15
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 39,
+						"w": 52,
+						"h": 89
+					},
+					"frame": {
+						"x": 169,
+						"y": 544,
+						"w": 52,
+						"h": 89
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 69,
+						"w": 82,
+						"h": 59
+					},
+					"frame": {
+						"x": 85,
+						"y": 577,
+						"w": 82,
+						"h": 59
+					}
+				},
+				{
+					"filename": "skeleton_spearman_run-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 71,
+						"w": 82,
+						"h": 57
+					},
+					"frame": {
+						"x": 1,
+						"y": 630,
+						"w": 82,
+						"h": 57
+					}
+				},
+				{
+					"filename": "skeleton_spearman_dead-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 54,
+						"w": 51,
+						"h": 74
+					},
+					"frame": {
+						"x": 169,
+						"y": 635,
+						"w": 51,
+						"h": 74
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 37,
+						"w": 50,
+						"h": 91
+					},
+					"frame": {
+						"x": 85,
+						"y": 638,
+						"w": 50,
+						"h": 91
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 39,
+						"w": 44,
+						"h": 89
+					},
+					"frame": {
+						"x": 1,
+						"y": 689,
+						"w": 44,
+						"h": 89
+					}
+				},
+				{
+					"filename": "skeleton_spearman_protect-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 58,
+						"w": 35,
+						"h": 70
+					},
+					"frame": {
+						"x": 47,
+						"y": 689,
+						"w": 35,
+						"h": 70
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 40,
+						"w": 44,
+						"h": 88
+					},
+					"frame": {
+						"x": 1,
+						"y": 780,
+						"w": 44,
+						"h": 88
+					}
+				},
+				{
+					"filename": "skeleton_spearman_walk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 41,
+						"w": 44,
+						"h": 87
+					},
+					"frame": {
+						"x": 47,
+						"y": 761,
+						"w": 44,
+						"h": 87
+					}
+				},
+				{
+					"filename": "skeleton_spearman_dead-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 45,
+						"w": 44,
+						"h": 83
+					},
+					"frame": {
+						"x": 137,
+						"y": 711,
+						"w": 44,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_hurt-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 44,
+						"h": 83
+					},
+					"frame": {
+						"x": 137,
+						"y": 711,
+						"w": 44,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_dead-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 45,
+						"w": 38,
+						"h": 83
+					},
+					"frame": {
+						"x": 93,
+						"y": 731,
+						"w": 38,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_fall-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 50,
+						"w": 43,
+						"h": 78
+					},
+					"frame": {
+						"x": 93,
+						"y": 816,
+						"w": 43,
+						"h": 78
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 138,
+						"y": 796,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 138,
+						"y": 796,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 172,
+						"y": 796,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 172,
+						"y": 796,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 183,
+						"y": 711,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 183,
+						"y": 711,
+						"w": 32,
+						"h": 83
+					}
+				},
+				{
+					"filename": "skeleton_spearman_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 45,
+						"w": 32,
+						"h": 83
+					},
+					"frame": {
+						"x": 206,
+						"y": 796,
+						"w": 32,
+						"h": 83
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:5fed1bdef123263b3615e44254c49310:618d0394845b9f9575e1b7d19b562d73:e70beffaa142af05faf0a03d5c866367$"
+	}
+}
