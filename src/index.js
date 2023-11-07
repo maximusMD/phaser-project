@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
+import { Preloader } from './Preloader';
 import { MenuScene } from './start_menu';
+import { UserForm } from './UserForm';
 import { RyanLevel } from './Ryan_test_level';
 
 window.sizeChanged = () => {
@@ -18,10 +20,13 @@ window.onresize = () => window.sizeChanged();
 
 const config = {
     type: Phaser.AUTO,
+    parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: MenuScene
+    scene: [Preloader, MenuScene, UserForm],
+    render: { pixelArt: true},
+    dom: { createContainer: true}
 }
 
-const game = new Phaser.Game (config)
+const game = new Phaser.Game(config)
 
