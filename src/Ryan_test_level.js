@@ -11,7 +11,10 @@ import skeleton_archer_atlas from "./assets/animations/sprites/enemies/Skeleton_
 
 
 import { RoguePlayer } from './RoguePlayer.js';
+import laser_img from "./assets/animations/objects/laser_blue.png"
+
 import { SkeletonArcher } from './SkeletonArcher.js';
+
 
 export class RyanLevel extends Phaser.Scene {
     constructor() {
@@ -57,14 +60,18 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
+
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
+
     }
 
     create() {
+
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
 

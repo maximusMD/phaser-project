@@ -1,7 +1,14 @@
 import { Actor } from './Actor.js';
+import { LaserGroup, Laser } from './ProjectileGroup.js';
+
 export class RoguePlayer extends Actor {
 
     #dashTimeOut = false;
+    #maxAmmo = 15;
+    #shootingSpeed = 1;
+    #reloadTime = 1.5;
+    #shootCooldown = false;
+
 
     constructor(scene, x, y, playerModel) {
         super(scene, x, y, playerModel);
@@ -10,9 +17,45 @@ export class RoguePlayer extends Actor {
             'left': Phaser.Input.Keyboard.KeyCodes.A, 'right': Phaser.Input.Keyboard.KeyCodes.D, 'space': Phaser.Input.Keyboard.KeyCodes.SPACE,
             'melee': Phaser.Input.Keyboard.KeyCodes.M, 'shoot': Phaser.Input.Keyboard.KeyCodes.K, 'dash': Phaser.Input.Keyboard.KeyCodes.SHIFT
         });
+        this.scene = scene;
         this.getBody().setSize(20, 25)
         this.getBody().setOffset(5, 10);
         this.createAnimations();
+        this.laserGroup = new LaserGroup(scene);
+    }
+    getShootCoolDown() {
+        return this.#shootCooldown;
+    }
+    getShootingSpeed() {
+        return this.#shootingSpeed;
+    }
+    getReloadTime() {
+        return this.#reloadTime;
+    }
+    getMaxAmmo() {
+        return this.#maxAmmo;
+    }
+    getDashTimeOut() {
+        return this.#dashTimeOut;
+    }
+    setRelodTime(newTime) {
+        this.#reloadTime = newTime;
+    }
+    setMaxAmmo(ammo) {
+        this.#maxAmmo = ammo;
+    }
+    setDashTimeOut() {
+        this.#dashTimeOut = !this.#dashTimeOut;
+    }
+    setShootCoolDown(bool) {
+        this.#shootCooldown = bool;
+    }
+    setShootCoolDown(speed) {
+        this.#shootingSpeed = speed;
+    }
+
+    shootLaser() {
+        this.laserGroup.fireLaser(this.body.x, this.body.y, this.scaleX)
     }
 
     createAnimations() {
@@ -93,6 +136,7 @@ export class RoguePlayer extends Actor {
             frameRate: 15,
             repeat: 0,
         });
+
     }
 
     damageToEnemy(enemy, damage) {
@@ -104,6 +148,19 @@ export class RoguePlayer extends Actor {
     }
 
     update() {
+        this.setShootCoolDown(true);
+        console.log(this.getShootCoolDown()); 
+        // this.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
+        if (this.anims?.currentAnim?.key === "rogue_shoot") {
+            if (this.anims.currentFrame.index === 6) {
+                if (!this.getShootCoolDown()) {
+                    this.shootLaser();
+                    this.setShootCoolDown(true);
+                    this.scene.time.delayedCall(this.getShootingSpeed * 2000, this.setShootCoolDown(false), [], this)
+                }
+            }
+        }
+
         if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
             this.setVelocityX(0);
         }
