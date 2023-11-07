@@ -95,6 +95,14 @@ export class RoguePlayer extends Actor {
         });
     }
 
+    damageToEnemy(enemy, damage) {
+        enemy.updateHP(damage)
+    }
+
+    updateHP(damage) {
+        this.setHP(damage)
+    }
+
     update() {
         if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
             this.setVelocityX(0);

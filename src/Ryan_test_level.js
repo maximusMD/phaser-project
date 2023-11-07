@@ -6,7 +6,12 @@ import tilemap from "./assets/tilemaps/ryan_test.json"
 import rogue_image from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png"
 import rogue_atlas from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json"
 
+import skeleton_archer_image from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png"
+import skeleton_archer_atlas from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json"
+
+
 import { RoguePlayer } from './RoguePlayer.js';
+import { SkeletonArcher } from './SkeletonArcher.js';
 
 export class RyanLevel extends Phaser.Scene {
     constructor() {
@@ -56,6 +61,7 @@ export class RyanLevel extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
+        this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
     }
 
     create() {
@@ -68,9 +74,24 @@ export class RyanLevel extends Phaser.Scene {
         this.player = new RoguePlayer(this, 10, 10, "rogue_player", "");
         this.physics.add.collider(this.player, ground);
         this.cameras.main.startFollow(this.player);
-    }
 
+        this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer", "");
+        this.physics.add.collider(this.enemy, ground);
+
+        this.graphics = this.add.graphics();
+
+        this.line = new Phaser.Geom.Line(
+            this.enemy.getBody().x, 
+            this.enemy.getBody().y, 
+            this.player.getBody().x, 
+            this.player.getBody().y
+        )
+
+    }
+    
     update() {
         this.player.update();
+        this.enemy.update(this.player, this.graphics, this.line);
+
     }
 }
