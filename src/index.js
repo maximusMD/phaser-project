@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { Preloader } from './Preloader';
 import { MenuScene } from './start_menu';
+import { OptionsScene } from './options_menu';
 import { UserForm } from './UserForm';
 import { RyanLevel } from './Ryan_test_level';
 
@@ -23,9 +24,9 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, UserForm, RyanLevel],
+    scene: [Preloader, MenuScene, OptionsScene, UserForm, RyanLevel],
     render: { pixelArt: true},
-    dom: { createContainer: true}
+    dom: { createContainer: true}, 
 }
 
 const game = new Phaser.Game(config)
