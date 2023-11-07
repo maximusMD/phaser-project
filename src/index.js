@@ -18,7 +18,6 @@ window.sizeChanged = () => {
 };
 window.onresize = () => window.sizeChanged();
 
-
 const config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
