@@ -35,7 +35,7 @@ export class MenuScene extends Phaser.Scene {
         title.setScale(1.8)
 
         this.add.image(420, 310, 'sign-in')
-        this.add.image(420, 380, 'guest')
+        const guestButton = this.add.image(420, 380, 'guest')
         const lb = this.add.image(416, 520, 'leaderboard')
         lb.setScale(0.75)
         const credits = this.add.image(70, 590, 'credits')
@@ -51,6 +51,8 @@ export class MenuScene extends Phaser.Scene {
             fill: "white"
         })
         createButton.setInteractive();
+        guestButton.setInteractive();
+
         createButton.on('pointerover', () => {
             createButton.setTint(0xcccccc);
         });
@@ -61,5 +63,8 @@ export class MenuScene extends Phaser.Scene {
             console.log('Create User button clicked');
             this.scene.start('UserForm');
         });
+        guestButton.on('pointerdown', () => {
+            this.scene.start('RyanLevel')
+        })
     }
 }
