@@ -78,7 +78,7 @@ export class MenuScene extends Phaser.Scene {
             fill: "white"
         })
         createButton.setInteractive();
-        guestButton.setInteractive();
+        guest.setInteractive();
 
         createButton.on('pointerover', () => {
             createButton.setTint(0xcccccc);
@@ -90,7 +90,7 @@ export class MenuScene extends Phaser.Scene {
             console.log('Create User button clicked');
             this.scene.start('UserForm');
         });
-        guestButton.on('pointerdown', () => {
+        guest.on('pointerdown', () => {
             this.scene.start('RyanLevel')
         })
     }
