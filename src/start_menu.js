@@ -5,6 +5,7 @@ import signInImg from './assets/sign-in.png'
 import shareImg from './assets/share.png'
 import credImg from './assets/credits.png'
 import optImg from './assets/options.png'
+// import menuMusic from './assets/menuMusic.wav'
 
 export class MenuScene extends Phaser.Scene {
     constructor() {
@@ -20,6 +21,8 @@ export class MenuScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('share', shareImg)
         this.load.image('options', optImg)
+
+        // this.load.audio('menuMusic', menuMusic)
     }
 
     create() {
@@ -58,7 +61,7 @@ export class MenuScene extends Phaser.Scene {
         share.setScale(0.6);
 
         const options = this.addButton(735, 20, 'options', () => {
-            console.log('Options');
+            this.handleOptions()
         });
         options.setScale(0.6)
 
@@ -96,4 +99,7 @@ export class MenuScene extends Phaser.Scene {
         window.open(credLink, '_blank')
     }
 
+    handleOptions() {
+        this.scene.start('OptionsScene')
+    }
 }
