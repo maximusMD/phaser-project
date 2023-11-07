@@ -53,7 +53,7 @@ export class MenuScene extends Phaser.Scene {
         });
 
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
-            this.openExternalLink('https://www.youtube.com/watch?v=YXIHXQjbtl8');
+            this.stopMenuMusicAndStartScene('CreditsScene');
         });
 
         const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
@@ -105,7 +105,7 @@ export class MenuScene extends Phaser.Scene {
         this.scene.start(sceneKey);
     }
 
-    openExternalLink(url) {
-        window.open(url, '_blank');
-    }
+    // openExternalLink(url) {
+    //     window.open(url, '_blank');
+    // }
 }
