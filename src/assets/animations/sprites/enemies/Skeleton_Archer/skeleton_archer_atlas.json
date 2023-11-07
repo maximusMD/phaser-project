@@ -556,7 +556,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-1.png",
+					"filename": "skeleton_archer_walk-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -577,7 +577,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-2.png",
+					"filename": "skeleton_archer_walk-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -619,7 +619,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-3.png",
+					"filename": "skeleton_archer_walk-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -640,7 +640,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-4.png",
+					"filename": "skeleton_archer_walk-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -661,7 +661,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-5.png",
+					"filename": "skeleton_archer_walk-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -682,7 +682,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-6.png",
+					"filename": "skeleton_archer_walk-6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -703,7 +703,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-7.png",
+					"filename": "skeleton_archer_walk-7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -724,7 +724,7 @@
 					}
 				},
 				{
-					"filename": "sekelton_archer_walk-8.png",
+					"filename": "skeleton_archer_walk-8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
