@@ -139,6 +139,14 @@ export class RoguePlayer extends Actor {
 
     }
 
+    damageToEnemy(enemy, damage) {
+        enemy.updateHP(damage)
+    }
+
+    updateHP(damage) {
+        this.setHP(damage)
+    }
+
     update() {
         this.setShootCoolDown(true);
         console.log(this.getShootCoolDown()); 
