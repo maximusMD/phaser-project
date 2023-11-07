@@ -24,7 +24,8 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, UserForm, RyanLevel],
+    // scene: [Preloader, MenuScene, OptionsScene, UserForm, RyanLevel],
+    scene: RyanLevel,
     render: { pixelArt: true},
     dom: { createContainer: true}, 
 }

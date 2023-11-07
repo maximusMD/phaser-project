@@ -7,9 +7,7 @@ import rogue_image from "./assets/animations/sprites/player/Rogue_Player/rogue_p
 import rogue_atlas from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json"
 
 import { RoguePlayer } from './RoguePlayer.js';
-
-import { Laser } from './ProjectileGroup.js';
-
+import laser_img from "./assets/animations/objects/laser_blue.png"
 
 export class RyanLevel extends Phaser.Scene {
     constructor() {
@@ -55,18 +53,17 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-        this.laser_test = new Laser(this, 10, 10)
+        // this.laser_test = new Laser(this, 10, 10)
         // this.laser = new Phaser.GameObjects.Rectangle(this, 10,10, 0xff0000)
     }
 
     create() {
-        const graphics = this.add.graphics();
 
-        
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
 
