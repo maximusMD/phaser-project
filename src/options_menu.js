@@ -6,6 +6,9 @@ import musicImg from './assets/music.png'
 import weatherImg from './assets/weather.png'
 import zoomImg from './assets/zoom.png'
 import controlsImg from './assets/controls.png'
+import mainMenuImg from './assets/main-menu.png'
+import shareImg from './assets/share.png'
+import credImg from './assets/credits.png'
 
 export class OptionsScene extends Phaser.Scene {
     constructor () {
@@ -21,6 +24,9 @@ export class OptionsScene extends Phaser.Scene {
         this.load.image('zoom', zoomImg)
         this.load.image('controls', controlsImg)
         this.load.image('logout', logoutImg)
+        this.load.image('credits', credImg)
+        this.load.image('share', shareImg)
+        this.load.image('main-menu', mainMenuImg)
     }
 
     create() {
@@ -32,25 +38,55 @@ export class OptionsScene extends Phaser.Scene {
         background.displayHeight = gameHeight;
         background.setPosition(gameWidth / 2, gameHeight / 2);
 
-        const header = this.add.image(420, 175, 'header');
-        header.setScale(1.8);
+        const header = this.add.image(gameWidth * 0.52, gameHeight * 0.25, 'header');
+        const headerScaleFactor = gameWidth / header.width
+        header.setScale(headerScaleFactor * 0.55);
 
-        const weather = this.add.image(270, 260, 'weather')
-        weather.setScale(0.6)
-        const music = this.add.image(270, 300, 'music')
-        music.setScale(0.6)
-        const sfx = this.add.image(270, 340, 'sfx')
-        sfx.setScale(0.6)
-        const zoom = this.add.image(270, 380, 'zoom')
-        zoom.setScale(0.6)
-        const controls = this.addButton(415, 460, 'controls', () => {
+        const weather = this.add.image(gameWidth * 0.325, gameHeight * 0.4, 'weather')
+        const weatherScaleFactor = gameWidth / weather.width; 
+        weather.setScale(weatherScaleFactor * 0.1635)
+
+        const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music')
+        const musicScaleFactor = gameWidth / music.width; 
+        music.setScale(musicScaleFactor * 0.12)
+
+        const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx')
+        const sfxScaleFactor = gameWidth / sfx.width; 
+        sfx.setScale(sfxScaleFactor * 0.08)
+
+        const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom')
+        const zoomScaleFactor = gameWidth / zoom.width; 
+        zoom.setScale(zoomScaleFactor * 0.11)
+
+        const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
             console.log('Controls')
         })
-        controls.setScale(0.6)
-        const logout = this.addButton(415, 520, 'logout', () => {
+        const controlsScaleFactor = gameWidth / controls.width; 
+        controls.setScale(controlsScaleFactor * 0.21)
+
+        const logout = this.addButton(gameWidth * 0.517, gameHeight * 0.865, 'logout', () => {
             console.log('Logout')
         })
-        logout.setScale(0.75)
+        const logoutScaleFactor = gameWidth / logout.width; 
+        logout.setScale(logoutScaleFactor * 0.19)
+
+        const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
+            this.openCred()
+        });
+        const creditsScaleFactor = gameWidth / credits.width; 
+        credits.setScale(creditsScaleFactor * 0.1835)
+    
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+            console.log('Share');
+        });
+        const shareScaleFactor = gameWidth / share.width; 
+        share.setScale(shareScaleFactor * 0.16)
+    
+        const mainMenu = this.addButton(gameWidth * 0.9, gameHeight * 0.1, 'main-menu', () => {
+            this.handleMain()
+        });
+        const mainMenuScaleFactor = gameWidth / mainMenu.width; 
+        mainMenu.setScale(mainMenuScaleFactor * 0.1835)
     }
 
     addButton(x, y, key, onClick) {
@@ -58,6 +94,15 @@ export class OptionsScene extends Phaser.Scene {
         button.setInteractive();
         button.on('pointerdown', onClick);
         return button;
+    }
+
+    openCred() {
+        const credLink = 'https://www.youtube.com/watch?v=YXIHXQjbtl8'
+        window.open(credLink, '_blank')
+    }
+
+    handleMain() {
+        this.scene.start('MenuScene')
     }
 
     // handleControls() {

@@ -9,7 +9,9 @@ import optImg from './assets/options.png'
 
 export class MenuScene extends Phaser.Scene {
     constructor() {
-        super({ key: 'MenuScene' })
+        super({ 
+            key: 'MenuScene'
+        })
     }
 
     preload() {
@@ -34,36 +36,41 @@ export class MenuScene extends Phaser.Scene {
         background.displayHeight = gameHeight;
         background.setPosition(gameWidth / 2, gameHeight / 2);
 
-        const title = this.add.image(420, 175, 'title');
-        title.setScale(1.8);
-
-        const signIn = this.addButton(420, 310, 'sign-in', () => {
+        const title = this.add.image(gameWidth * 0.52, gameHeight * 0.29, 'title');
+        const titleScaleFactor = gameWidth / title.width
+        title.setScale(titleScaleFactor * 0.55);
+    
+        const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
             console.log('Sign-in');
         });
-
-        const guest = this.addButton(420, 380, 'guest', () => {
+    
+        const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
             console.log('Guest');
         });
-
-        const lb = this.addButton(416, 520, 'leaderboard', () => {
+    
+        const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
             console.log('Leaderboard');
         });
-        lb.setScale(0.75);
-
-        const credits = this.addButton(70, 590, 'credits', () => {
+        const lbScaleFactor = gameWidth / lb.width; 
+        lb.setScale(lbScaleFactor * 0.229)
+    
+        const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
             this.openCred()
         });
-        credits.setScale(0.6);
-
-        const share = this.addButton(750, 590, 'share', () => {
+        const creditsScaleFactor = gameWidth / credits.width; 
+        credits.setScale(creditsScaleFactor * 0.1835)
+    
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
             console.log('Share');
         });
-        share.setScale(0.6);
-
-        const options = this.addButton(735, 20, 'options', () => {
+        const shareScaleFactor = gameWidth / share.width; 
+        share.setScale(shareScaleFactor * 0.16)
+    
+        const options = this.addButton(gameWidth * 0.9, gameHeight * 0.1, 'options', () => {
             this.handleOptions()
         });
-        options.setScale(0.6)
+        const optionsScaleFactor = gameWidth / options.width; 
+        options.setScale(optionsScaleFactor * 0.1835)
 
         const createButton = this.add.image(150, 50, 'createButton').setScale(2.5)
         const buttonText = this.add.text(100, 32, "Sign up", {
