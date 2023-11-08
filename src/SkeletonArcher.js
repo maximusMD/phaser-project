@@ -1,6 +1,6 @@
-import { Actor } from "./Actor";
+import { Enemy } from "./Enemy";
 
-export class SkeletonArcher extends Actor {
+export class SkeletonArcher extends Enemy {
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
