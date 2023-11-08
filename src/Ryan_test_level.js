@@ -10,6 +10,9 @@ import rogue_atlas from "./assets/animations/sprites/player/Rogue_Player/rogue_p
 import skeleton_archer_image from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png"
 import skeleton_archer_atlas from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json"
 
+import sneaker_atlas from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.json"
+import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.png"
+
 
 import { RoguePlayer } from './RoguePlayer.js';
 import laser_img from "./assets/animations/objects/laser_blue.png"
