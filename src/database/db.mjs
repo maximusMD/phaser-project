@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-const uri = `mongodb+srv://<Username>:<PW>@atlascluster.d0u463g.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://<USERNAME>:<PW>@atlascluster.d0u463g.mongodb.net/?retryWrites=true&w=majority`;
 // My collection names, update as needed
 const dbName = 'NinjaGame'
 const userCollection = 'UserData';
