@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
-import { Actor } from './Actor';
+import { Enemy } from './Enemy';
+import { createAnimations } from './CreateAnimations.js';
 
 import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
 import tilemap from "./assets/tilemaps/ryan_test.json"
@@ -63,9 +64,9 @@ export class RyanLevel extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-
+        
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
-
+        
     }
 
     // LASER HANDLER ON SPRITES
@@ -82,6 +83,8 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
+        
+        createAnimations(this);
 
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
@@ -114,7 +117,7 @@ export class RyanLevel extends Phaser.Scene {
 
         // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
         // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
-        const allEnemies = this.children.list.filter(x => x instanceof Actor);
+        const allEnemies = this.children.list.filter(x => x instanceof Enemy);
         this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap)
     }
 
