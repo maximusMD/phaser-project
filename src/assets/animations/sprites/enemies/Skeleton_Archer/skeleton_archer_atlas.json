@@ -4,13 +4,13 @@
 			"image": "skeleton_archer_atlas.png",
 			"format": "RGBA8888",
 			"size": {
-				"w": 250,
-				"h": 970
+				"w": 970,
+				"h": 256
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "skeleton_archer_shoot2-0.png",
+					"filename": "skeleton_archer_melee3-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -19,1170 +19,15 @@
 					},
 					"spriteSourceSize": {
 						"x": 39,
-						"y": 76,
-						"w": 42,
-						"h": 52
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 42,
-						"h": 52
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 40,
-						"y": 75,
-						"w": 47,
-						"h": 53
-					},
-					"frame": {
-						"x": 45,
-						"y": 1,
-						"w": 47,
-						"h": 53
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 43,
-						"y": 70,
-						"w": 41,
-						"h": 58
-					},
-					"frame": {
-						"x": 94,
-						"y": 1,
-						"w": 41,
-						"h": 58
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-11.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 36,
-						"y": 70,
-						"w": 56,
-						"h": 58
-					},
-					"frame": {
-						"x": 137,
-						"y": 1,
-						"w": 56,
-						"h": 58
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 43,
-						"y": 69,
-						"w": 41,
-						"h": 59
-					},
-					"frame": {
-						"x": 195,
-						"y": 1,
-						"w": 41,
-						"h": 59
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 41,
-						"y": 68,
-						"w": 42,
-						"h": 60
-					},
-					"frame": {
-						"x": 1,
-						"y": 55,
-						"w": 42,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_hurt-0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 42,
-						"h": 60
-					},
-					"frame": {
-						"x": 45,
-						"y": 56,
-						"w": 42,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_hurt-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 41,
-						"h": 60
-					},
-					"frame": {
-						"x": 89,
-						"y": 61,
-						"w": 41,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 40,
-						"y": 68,
-						"w": 49,
-						"h": 60
-					},
-					"frame": {
-						"x": 132,
-						"y": 61,
-						"w": 49,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 37,
-						"y": 68,
+						"y": 41,
 						"w": 52,
-						"h": 60
+						"h": 87
 					},
 					"frame": {
-						"x": 183,
-						"y": 62,
+						"x": 1,
+						"y": 1,
 						"w": 52,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 32,
-						"y": 68,
-						"w": 57,
-						"h": 60
-					},
-					"frame": {
-						"x": 1,
-						"y": 118,
-						"w": 57,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 68,
-						"w": 63,
-						"h": 60
-					},
-					"frame": {
-						"x": 60,
-						"y": 123,
-						"w": 63,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 36,
-						"y": 68,
-						"w": 53,
-						"h": 60
-					},
-					"frame": {
-						"x": 125,
-						"y": 123,
-						"w": 53,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 51,
-						"h": 60
-					},
-					"frame": {
-						"x": 180,
-						"y": 124,
-						"w": 51,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-10.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 53,
-						"h": 60
-					},
-					"frame": {
-						"x": 1,
-						"y": 180,
-						"w": 53,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 62,
-						"h": 60
-					},
-					"frame": {
-						"x": 56,
-						"y": 185,
-						"w": 62,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-12.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 36,
-						"y": 68,
-						"w": 53,
-						"h": 60
-					},
-					"frame": {
-						"x": 120,
-						"y": 185,
-						"w": 53,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-9.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 68,
-						"w": 62,
-						"h": 60
-					},
-					"frame": {
-						"x": 175,
-						"y": 186,
-						"w": 62,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-13.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 35,
-						"y": 68,
-						"w": 53,
-						"h": 60
-					},
-					"frame": {
-						"x": 1,
-						"y": 242,
-						"w": 53,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot2-14.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 35,
-						"y": 68,
-						"w": 53,
-						"h": 60
-					},
-					"frame": {
-						"x": 56,
-						"y": 247,
-						"w": 53,
-						"h": 60
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 33,
-						"y": 64,
-						"w": 44,
-						"h": 62
-					},
-					"frame": {
-						"x": 111,
-						"y": 247,
-						"w": 44,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 42,
-						"y": 66,
-						"w": 45,
-						"h": 62
-					},
-					"frame": {
-						"x": 157,
-						"y": 248,
-						"w": 45,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_evasion-5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 43,
-						"y": 66,
-						"w": 45,
-						"h": 62
-					},
-					"frame": {
-						"x": 204,
-						"y": 248,
-						"w": 45,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee1-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 30,
-						"y": 66,
-						"w": 49,
-						"h": 62
-					},
-					"frame": {
-						"x": 1,
-						"y": 304,
-						"w": 49,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee2-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 24,
-						"y": 66,
-						"w": 74,
-						"h": 62
-					},
-					"frame": {
-						"x": 52,
-						"y": 311,
-						"w": 74,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee2-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 25,
-						"y": 66,
-						"w": 74,
-						"h": 62
-					},
-					"frame": {
-						"x": 128,
-						"y": 312,
-						"w": 74,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 45,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 204,
-						"y": 312,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 47,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 1,
-						"y": 368,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee3-0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 37,
-						"y": 66,
-						"w": 74,
-						"h": 62
-					},
-					"frame": {
-						"x": 40,
-						"y": 375,
-						"w": 74,
-						"h": 62
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 116,
-						"y": 376,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 155,
-						"y": 376,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 47,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 194,
-						"y": 379,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 46,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 1,
-						"y": 435,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 45,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 40,
-						"y": 439,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_walk-8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 46,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 79,
-						"y": 443,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 118,
-						"y": 443,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 118,
-						"y": 443,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 159,
-						"y": 446,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 200,
-						"y": 446,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee1-0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 39,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 1,
-						"y": 502,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee1-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 39,
-						"y": 63,
-						"w": 37,
-						"h": 65
-					},
-					"frame": {
-						"x": 40,
-						"y": 506,
-						"w": 37,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 79,
-						"y": 510,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-6.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 120,
-						"y": 513,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_idle-7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 63,
-						"w": 39,
-						"h": 65
-					},
-					"frame": {
-						"x": 161,
-						"y": 513,
-						"w": 39,
-						"h": 65
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 39,
-						"y": 61,
-						"w": 41,
-						"h": 67
-					},
-					"frame": {
-						"x": 202,
-						"y": 513,
-						"w": 41,
-						"h": 67
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee1-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 61,
-						"w": 72,
-						"h": 67
-					},
-					"frame": {
-						"x": 1,
-						"y": 573,
-						"w": 72,
-						"h": 67
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee1-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 26,
-						"y": 61,
-						"w": 60,
-						"h": 67
-					},
-					"frame": {
-						"x": 75,
-						"y": 580,
-						"w": 60,
-						"h": 67
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee2-0.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 30,
-						"y": 61,
-						"w": 50,
-						"h": 67
-					},
-					"frame": {
-						"x": 137,
-						"y": 580,
-						"w": 50,
-						"h": 67
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee2-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 32,
-						"y": 61,
-						"w": 49,
-						"h": 67
-					},
-					"frame": {
-						"x": 189,
-						"y": 582,
-						"w": 49,
-						"h": 67
-					}
-				},
-				{
-					"filename": "skeleton_archer_melee3-1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 40,
-						"y": 60,
-						"w": 67,
-						"h": 68
-					},
-					"frame": {
-						"x": 1,
-						"y": 642,
-						"w": 67,
-						"h": 68
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 40,
-						"y": 60,
-						"w": 47,
-						"h": 68
-					},
-					"frame": {
-						"x": 70,
-						"y": 649,
-						"w": 47,
-						"h": 68
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-12.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 36,
-						"y": 55,
-						"w": 56,
-						"h": 73
-					},
-					"frame": {
-						"x": 119,
-						"y": 649,
-						"w": 56,
-						"h": 73
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 40,
-						"y": 53,
-						"w": 49,
-						"h": 75
-					},
-					"frame": {
-						"x": 177,
-						"y": 651,
-						"w": 49,
-						"h": 75
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 37,
-						"y": 53,
-						"w": 52,
-						"h": 75
-					},
-					"frame": {
-						"x": 1,
-						"y": 712,
-						"w": 52,
-						"h": 75
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 32,
-						"y": 53,
-						"w": 57,
-						"h": 75
-					},
-					"frame": {
-						"x": 55,
-						"y": 719,
-						"w": 57,
-						"h": 75
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-7.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 36,
-						"y": 53,
-						"w": 53,
-						"h": 75
-					},
-					"frame": {
-						"x": 114,
-						"y": 724,
-						"w": 53,
-						"h": 75
+						"h": 87
 					}
 				},
 				{
@@ -1200,51 +45,9 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 169,
-						"y": 728,
-						"w": 63,
-						"h": 75
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-8.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 45,
-						"y": 53,
-						"w": 50,
-						"h": 75
-					},
-					"frame": {
 						"x": 1,
-						"y": 789,
-						"w": 50,
-						"h": 75
-					}
-				},
-				{
-					"filename": "skeleton_archer_shoot1-11.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 128,
-						"h": 128
-					},
-					"spriteSourceSize": {
-						"x": 46,
-						"y": 53,
-						"w": 51,
-						"h": 75
-					},
-					"frame": {
-						"x": 53,
-						"y": 796,
-						"w": 51,
+						"y": 90,
+						"w": 63,
 						"h": 75
 					}
 				},
@@ -1263,8 +66,8 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 106,
-						"y": 801,
+						"x": 55,
+						"y": 1,
 						"w": 60,
 						"h": 75
 					}
@@ -1284,9 +87,72 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 168,
-						"y": 805,
+						"x": 1,
+						"y": 167,
 						"w": 60,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_dead-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 117,
+						"w": 70,
+						"h": 11
+					},
+					"frame": {
+						"x": 1,
+						"y": 244,
+						"w": 70,
+						"h": 11
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 53,
+						"w": 57,
+						"h": 75
+					},
+					"frame": {
+						"x": 63,
+						"y": 167,
+						"w": 57,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 53,
+						"w": 53,
+						"h": 75
+					},
+					"frame": {
+						"x": 66,
+						"y": 78,
+						"w": 53,
 						"h": 75
 					}
 				},
@@ -1305,8 +171,8 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 1,
-						"y": 873,
+						"x": 117,
+						"y": 1,
 						"w": 53,
 						"h": 75
 					}
@@ -1326,8 +192,8 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 56,
-						"y": 878,
+						"x": 121,
+						"y": 78,
 						"w": 53,
 						"h": 75
 					}
@@ -1347,14 +213,245 @@
 						"h": 75
 					},
 					"frame": {
-						"x": 111,
-						"y": 878,
+						"x": 172,
+						"y": 1,
 						"w": 53,
 						"h": 75
 					}
 				},
 				{
-					"filename": "skeleton_archer_melee3-2.png",
+					"filename": "skeleton_archer_shoot1-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 53,
+						"w": 52,
+						"h": 75
+					},
+					"frame": {
+						"x": 122,
+						"y": 155,
+						"w": 52,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 53,
+						"w": 51,
+						"h": 75
+					},
+					"frame": {
+						"x": 176,
+						"y": 78,
+						"w": 51,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 53,
+						"w": 50,
+						"h": 75
+					},
+					"frame": {
+						"x": 227,
+						"y": 1,
+						"w": 50,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 53,
+						"w": 49,
+						"h": 75
+					},
+					"frame": {
+						"x": 176,
+						"y": 155,
+						"w": 49,
+						"h": 75
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 55,
+						"w": 56,
+						"h": 73
+					},
+					"frame": {
+						"x": 227,
+						"y": 155,
+						"w": 56,
+						"h": 73
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee3-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 60,
+						"w": 67,
+						"h": 68
+					},
+					"frame": {
+						"x": 229,
+						"y": 78,
+						"w": 67,
+						"h": 68
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 60,
+						"w": 47,
+						"h": 68
+					},
+					"frame": {
+						"x": 279,
+						"y": 1,
+						"w": 47,
+						"h": 68
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee1-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 61,
+						"w": 72,
+						"h": 67
+					},
+					"frame": {
+						"x": 285,
+						"y": 148,
+						"w": 72,
+						"h": 67
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee1-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 61,
+						"w": 60,
+						"h": 67
+					},
+					"frame": {
+						"x": 298,
+						"y": 71,
+						"w": 60,
+						"h": 67
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee2-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 61,
+						"w": 50,
+						"h": 67
+					},
+					"frame": {
+						"x": 328,
+						"y": 1,
+						"w": 50,
+						"h": 67
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee2-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 61,
+						"w": 49,
+						"h": 67
+					},
+					"frame": {
+						"x": 359,
+						"y": 140,
+						"w": 49,
+						"h": 67
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot1-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1363,15 +460,1023 @@
 					},
 					"spriteSourceSize": {
 						"x": 39,
-						"y": 41,
-						"w": 52,
-						"h": 87
+						"y": 61,
+						"w": 41,
+						"h": 67
 					},
 					"frame": {
-						"x": 166,
-						"y": 882,
+						"x": 360,
+						"y": 70,
+						"w": 41,
+						"h": 67
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 380,
+						"y": 1,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 380,
+						"y": 1,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_dead-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 86,
 						"w": 52,
-						"h": 87
+						"h": 42
+					},
+					"frame": {
+						"x": 359,
+						"y": 209,
+						"w": 52,
+						"h": 42
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 403,
+						"y": 68,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 421,
+						"y": 1,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 410,
+						"y": 135,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 444,
+						"y": 68,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 63,
+						"w": 39,
+						"h": 65
+					},
+					"frame": {
+						"x": 462,
+						"y": 1,
+						"w": 39,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 75,
+						"w": 47,
+						"h": 53
+					},
+					"frame": {
+						"x": 413,
+						"y": 202,
+						"w": 47,
+						"h": 53
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee1-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 39,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 451,
+						"y": 135,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee1-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 39,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 485,
+						"y": 68,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 503,
+						"y": 1,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 39,
+						"y": 76,
+						"w": 42,
+						"h": 52
+					},
+					"frame": {
+						"x": 462,
+						"y": 202,
+						"w": 42,
+						"h": 52
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 47,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 490,
+						"y": 135,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 524,
+						"y": 68,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 48,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 542,
+						"y": 1,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_dead-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 78,
+						"w": 48,
+						"h": 50
+					},
+					"frame": {
+						"x": 506,
+						"y": 202,
+						"w": 48,
+						"h": 50
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 47,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 529,
+						"y": 135,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 563,
+						"y": 68,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 45,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 581,
+						"y": 1,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_walk-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 63,
+						"w": 37,
+						"h": 65
+					},
+					"frame": {
+						"x": 568,
+						"y": 135,
+						"w": 37,
+						"h": 65
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee2-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 66,
+						"w": 74,
+						"h": 62
+					},
+					"frame": {
+						"x": 602,
+						"y": 68,
+						"w": 74,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee2-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 66,
+						"w": 74,
+						"h": 62
+					},
+					"frame": {
+						"x": 620,
+						"y": 1,
+						"w": 74,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee3-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 66,
+						"w": 74,
+						"h": 62
+					},
+					"frame": {
+						"x": 607,
+						"y": 132,
+						"w": 74,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 69,
+						"w": 41,
+						"h": 59
+					},
+					"frame": {
+						"x": 607,
+						"y": 196,
+						"w": 41,
+						"h": 59
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 70,
+						"w": 56,
+						"h": 58
+					},
+					"frame": {
+						"x": 650,
+						"y": 196,
+						"w": 56,
+						"h": 58
+					}
+				},
+				{
+					"filename": "skeleton_archer_melee1-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 66,
+						"w": 49,
+						"h": 62
+					},
+					"frame": {
+						"x": 678,
+						"y": 65,
+						"w": 49,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 42,
+						"y": 66,
+						"w": 45,
+						"h": 62
+					},
+					"frame": {
+						"x": 696,
+						"y": 1,
+						"w": 45,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 66,
+						"w": 45,
+						"h": 62
+					},
+					"frame": {
+						"x": 683,
+						"y": 129,
+						"w": 45,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 33,
+						"y": 64,
+						"w": 44,
+						"h": 62
+					},
+					"frame": {
+						"x": 729,
+						"y": 65,
+						"w": 44,
+						"h": 62
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 68,
+						"w": 63,
+						"h": 60
+					},
+					"frame": {
+						"x": 743,
+						"y": 1,
+						"w": 63,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 62,
+						"h": 60
+					},
+					"frame": {
+						"x": 708,
+						"y": 193,
+						"w": 62,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 62,
+						"h": 60
+					},
+					"frame": {
+						"x": 730,
+						"y": 129,
+						"w": 62,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 68,
+						"w": 57,
+						"h": 60
+					},
+					"frame": {
+						"x": 775,
+						"y": 63,
+						"w": 57,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 68,
+						"w": 53,
+						"h": 60
+					},
+					"frame": {
+						"x": 808,
+						"y": 1,
+						"w": 53,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 53,
+						"h": 60
+					},
+					"frame": {
+						"x": 772,
+						"y": 191,
+						"w": 53,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 68,
+						"w": 53,
+						"h": 60
+					},
+					"frame": {
+						"x": 794,
+						"y": 125,
+						"w": 53,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 68,
+						"w": 53,
+						"h": 60
+					},
+					"frame": {
+						"x": 834,
+						"y": 63,
+						"w": 53,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 68,
+						"w": 53,
+						"h": 60
+					},
+					"frame": {
+						"x": 863,
+						"y": 1,
+						"w": 53,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 51,
+						"h": 60
+					},
+					"frame": {
+						"x": 918,
+						"y": 1,
+						"w": 51,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 68,
+						"w": 52,
+						"h": 60
+					},
+					"frame": {
+						"x": 827,
+						"y": 187,
+						"w": 52,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_shoot2-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 40,
+						"y": 68,
+						"w": 49,
+						"h": 60
+					},
+					"frame": {
+						"x": 849,
+						"y": 125,
+						"w": 49,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 41,
+						"y": 68,
+						"w": 42,
+						"h": 60
+					},
+					"frame": {
+						"x": 889,
+						"y": 63,
+						"w": 42,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_dead-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 71,
+						"w": 36,
+						"h": 57
+					},
+					"frame": {
+						"x": 933,
+						"y": 63,
+						"w": 36,
+						"h": 57
+					}
+				},
+				{
+					"filename": "skeleton_archer_hurt-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 42,
+						"h": 60
+					},
+					"frame": {
+						"x": 881,
+						"y": 187,
+						"w": 42,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_dead-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 68,
+						"w": 41,
+						"h": 60
+					},
+					"frame": {
+						"x": 900,
+						"y": 125,
+						"w": 41,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_hurt-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 68,
+						"w": 41,
+						"h": 60
+					},
+					"frame": {
+						"x": 900,
+						"y": 125,
+						"w": 41,
+						"h": 60
+					}
+				},
+				{
+					"filename": "skeleton_archer_evasion-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 128,
+						"h": 128
+					},
+					"spriteSourceSize": {
+						"x": 43,
+						"y": 70,
+						"w": 41,
+						"h": 58
+					},
+					"frame": {
+						"x": 925,
+						"y": 187,
+						"w": 41,
+						"h": 58
 					}
 				}
 			]
@@ -1380,6 +1485,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:19555e037d59821c426463b95340b565:8609975ff22a6e1726abeb1804690c4b:238147ebe1214dac28ecb31ae665dd7c$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f420c392662b438ceb29c6a45590dc8b:8c890b5c6f8e132818bca32980865e66:238147ebe1214dac28ecb31ae665dd7c$"
 	}
 }
