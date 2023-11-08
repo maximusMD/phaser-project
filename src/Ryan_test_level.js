@@ -1,5 +1,5 @@
 import Phaser from 'phaser';
-import { Enemy } from './Enemy';
+import { Enemy } from './classes/Enemy.js';
 import { createAnimations } from './CreateAnimations.js';
 
 import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
@@ -15,10 +15,10 @@ import sneaker_atlas from "./assets/animations/sprites/enemies/Rogue_Sneaker/sne
 import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.png"
 
 
-import { RoguePlayer } from './RoguePlayer.js';
+import { RoguePlayer } from './classes/RoguePlayer.js';
 import laser_img from "./assets/animations/objects/laser_blue.png"
 
-import { SkeletonArcher } from './SkeletonArcher.js';
+import { SkeletonArcher } from './classes/SkeletonArcher.js';
 
 
 export class RyanLevel extends Phaser.Scene {

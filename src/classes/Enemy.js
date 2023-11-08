@@ -45,7 +45,7 @@ export class Enemy extends Actor {
   
   // functions
   facePlayer(player, enemy) {
-    console.log(player)
+    // console.log(player)
     if (player.getBody().x < enemy.x) {
       enemy.setFlipX(true);
     } else {

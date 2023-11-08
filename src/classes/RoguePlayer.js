@@ -1,5 +1,5 @@
 import { Actor } from './Actor.js';
-import { LaserGroup, Laser } from './ProjectileGroup.js';
+import { LaserGroup } from './ProjectileGroup.js';
 
 export class RoguePlayer extends Actor {
 
