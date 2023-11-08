@@ -59,15 +59,14 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
-        createAnimations(this);
         this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-
+        
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
-
+        
     }
 
     // LASER HANDLER ON SPRITES
@@ -84,6 +83,8 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
+        
+        createAnimations(this);
 
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')

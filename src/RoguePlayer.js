@@ -26,7 +26,6 @@ export class RoguePlayer extends Actor {
         this.setScale(1.2)
         this.getBody().setSize(20, 27)
         this.getBody().setOffset(5, 7);
-        this.createAnimations();
         this.laserGroup = new LaserGroup(scene, this.getShootDmg());
     }
     getShootDmg() {
@@ -84,87 +83,6 @@ export class RoguePlayer extends Actor {
             x += 27;
         }
         this.laserGroup.fireLaser(x, this.body.y + 10, this.scaleX, this.getShootDmg())
-    }
-
-    createAnimations() {
-        this.scene.anims.create({
-            key: 'rogue_run',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_run-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 10,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_idle',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_idle-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 10,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_jump',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_jump-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 10,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_midair',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_jump_midair-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 10,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_shoot',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_shoot-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 15,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_melee',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_melee-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 15,
-            repeat: 0,
-        });
-        this.scene.anims.create({
-            key: 'rogue_dash',
-            frames: this.scene.anims.generateFrameNames('rogue_player', {
-                prefix: 'rogue_player_dash-',
-                suffix: '.png',
-                start: 0,
-                end: 7,
-            }),
-            frameRate: 15,
-            repeat: 0,
-        });
-
     }
 
     damageToEnemy(enemy, damage) {
