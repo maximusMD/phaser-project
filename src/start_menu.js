@@ -1,10 +1,10 @@
 import Phaser from 'phaser';
-import guestImg from './assets/guest.png';
-import lbImg from './assets/leaderboard.png';
-import signInImg from './assets/sign-in.png';
-import shareImg from './assets/share.png';
-import credImg from './assets/credits.png';
-import optImg from './assets/options.png';
+import guestImg from './assets/menu_buttons/guest.png';
+import lbImg from './assets/menu_buttons/leaderboard.png';
+import signInImg from './assets/menu_buttons/sign-in-up.png';
+import shareImg from './assets/menu_buttons/share.png';
+import credImg from './assets/menu_buttons/credits.png';
+import optImg from './assets/menu_buttons/options.png';
 import menuMusic from './assets/menuMusic.wav';
 
 export class MenuScene extends Phaser.Scene {

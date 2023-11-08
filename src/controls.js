@@ -1,8 +1,8 @@
 import Phaser from 'phaser'
 
-import controlsImg from './assets/controls.png'
-import mainMenuImg from './assets/main-menu.png'
-import optImg from './assets/options.png';
+import controlsImg from './assets/menu_buttons/controls.png'
+import mainMenuImg from './assets/menu_buttons/main-menu.png'
+import optImg from './assets/menu_buttons/options.png';
 
 import aKey from './assets/controls/a.png'
 import dKey from './assets/controls/d.png'

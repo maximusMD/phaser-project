@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import backToMain from '../src/assets/main-menu.png';
+import backToMain from '../src/assets/menu_buttons/main-menu.png';
 
 export class UserForm extends Phaser.Scene {
   constructor() {
