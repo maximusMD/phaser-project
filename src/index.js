@@ -6,6 +6,7 @@ import { UserForm } from './UserForm';
 import { RyanLevel } from './Ryan_test_level';
 import { CreditsScene } from './credits';
 import { ControlsScene } from './controls';
+import { AboutScene } from './about';
 
 window.sizeChanged = () => {
     if (game.isBooted) {
@@ -25,7 +26,7 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene],
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene],
     render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
