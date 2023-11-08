@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
-import { Actor } from './Actor';
+import { Enemy } from './Enemy';
+import { createAnimations } from './CreateAnimations.js';
 
 import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
 import tilemap from "./assets/tilemaps/ryan_test.json"
@@ -58,6 +59,7 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        createAnimations(this);
         this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
@@ -114,7 +116,7 @@ export class RyanLevel extends Phaser.Scene {
 
         // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
         // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
-        const allEnemies = this.children.list.filter(x => x instanceof Actor);
+        const allEnemies = this.children.list.filter(x => x instanceof Enemy);
         this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap)
     }
 
