@@ -1,9 +1,9 @@
 import Phaser from "phaser";
 
-
 export class LaserGroup extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
+        this.scene = scene;
         
         // ---- 
         // Maybe change this to ammo size of player instance
@@ -15,27 +15,42 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
             active: false,
             visible: false,
             key: "laser",
-
         })
+    
     }
-    fireLaser(x, y, direction) {
-        // Get the first available sprite in the group
+
+    fireLaser(x, y, direction, laserDamage) {
+        console.log(laserDamage)
         const laser = this.getFirstDead(false);
         if (laser) {
-            laser.fire(x, y, direction);
+            laser.fire(x, y, direction, laserDamage);
         }
-    }
+    }   
 
 }
 
 export class Laser extends Phaser.Physics.Arcade.Sprite {
+    #laserDamage = 10;
+    #hasHit = false;
 
     constructor(scene, x, y) {
         super(scene, x, y, 'laser');
-        this.scene = scene;
     }
-    
-    fire(x, y, direction) {
+    getHasHit() {
+        return this.#hasHit;
+    }
+    setHasHit(bool) {
+        this.#hasHit = bool;
+    }
+    getLaserDamage() {
+        return this.#laserDamage;
+    }
+    setLaserDamage(damage) {
+        this.#laserDamage = damage;
+    }
+
+    fire(x, y, direction, laserDamage) {
+        if (laserDamage) this.setLaserDamage(laserDamage);
         this.body.reset(x, y);
 
         this.setScale(0.2);
@@ -44,13 +59,14 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
 
         this.setActive(true);
         this.setVisible(true);
-        this.setVelocityX(900 * direction);
+        this.setVelocityX(600 * direction);
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
         if (!this.scene.cameras.main.worldView.contains(this.body.x,this.body.y)) {
             this.setActive(false);
             this.setVisible(false);
+            this.setHasHit(false);
         }
     }
 }

@@ -27,4 +27,5 @@ export class Actor extends Physics.Arcade.Sprite {
     setHP(damage) {
         this.#hp -= damage;
     }
+
 }       

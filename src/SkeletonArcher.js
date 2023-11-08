@@ -142,9 +142,6 @@ export class SkeletonArcher extends Actor {
     }
   }
 
-  updateHP(damage) {
-    this.setHP(damage)
-  }
 
   update(player, graphics, line) {
     const distance = this.checkDistance(player, graphics, line)

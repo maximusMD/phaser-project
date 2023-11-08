@@ -3,9 +3,14 @@ import { LaserGroup, Laser } from './ProjectileGroup.js';
 
 export class RoguePlayer extends Actor {
 
-    #dashTimeOut = false;
+    // TODOs: add dash distance fall off and timeout
+
+    #dashCooldown = false;
+    #dashCooldownSpeed = 1;
     #maxAmmo = 15;
-    #shootingSpeed = 1;
+    #meleeDmg = 10;
+    #shootDmg = 20;
+    #shootingSpeed = 0.8;
     #reloadTime = 1.5;
     #shootCooldown = false;
 
@@ -14,14 +19,21 @@ export class RoguePlayer extends Actor {
         super(scene, x, y, playerModel);
         this.cursors = scene.input.keyboard.addKeys({
             'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S,
-            'left': Phaser.Input.Keyboard.KeyCodes.A, 'right': Phaser.Input.Keyboard.KeyCodes.D, 'space': Phaser.Input.Keyboard.KeyCodes.SPACE,
+            'left': Phaser.Input.Keyboard.KeyCodes.A, 'right': Phaser.Input.Keyboard.KeyCodes.D, 'jump': Phaser.Input.Keyboard.KeyCodes.SPACE,
             'melee': Phaser.Input.Keyboard.KeyCodes.M, 'shoot': Phaser.Input.Keyboard.KeyCodes.K, 'dash': Phaser.Input.Keyboard.KeyCodes.SHIFT
         });
         this.scene = scene;
-        this.getBody().setSize(20, 25)
-        this.getBody().setOffset(5, 10);
+        this.setScale(1.2)
+        this.getBody().setSize(20, 27)
+        this.getBody().setOffset(5, 7);
         this.createAnimations();
-        this.laserGroup = new LaserGroup(scene);
+        this.laserGroup = new LaserGroup(scene, this.getShootDmg());
+    }
+    getShootDmg() {
+        return this.#shootDmg;
+    }
+    getMeleeDmg() {
+        return this.#meleeDmg;
     }
     getShootCoolDown() {
         return this.#shootCooldown;
@@ -35,8 +47,11 @@ export class RoguePlayer extends Actor {
     getMaxAmmo() {
         return this.#maxAmmo;
     }
-    getDashTimeOut() {
-        return this.#dashTimeOut;
+    getDashCooldown() {
+        return this.#dashCooldown;
+    }
+    getDashCooldownSpeed() {
+        return this.#dashCooldownSpeed;
     }
     setRelodTime(newTime) {
         this.#reloadTime = newTime;
@@ -44,18 +59,31 @@ export class RoguePlayer extends Actor {
     setMaxAmmo(ammo) {
         this.#maxAmmo = ammo;
     }
-    setDashTimeOut() {
-        this.#dashTimeOut = !this.#dashTimeOut;
+    setDashCooldown() {
+        this.#dashCooldown = !this.#dashCooldown;
+    }
+    setDashCooldownSpeed(speed) {
+        this.#dashCooldownSpeed = speed;
     }
     setShootCoolDown(bool) {
         this.#shootCooldown = bool;
     }
-    setShootCoolDown(speed) {
+    setShootingSpeed(speed) {
         this.#shootingSpeed = speed;
+    }
+    setMeleeDmg(dmg) {
+        this.#meleeDmg = dmg;
+    }
+    setShootDmg(dmg) {
+        this.#shootDmg = dmg;
     }
 
     shootLaser() {
-        this.laserGroup.fireLaser(this.body.x, this.body.y, this.scaleX)
+        let x = this.body.x
+        if (this.scaleX === 1) {
+            x += 27;
+        }
+        this.laserGroup.fireLaser(x, this.body.y + 10, this.scaleX, this.getShootDmg())
     }
 
     createAnimations() {
@@ -148,19 +176,15 @@ export class RoguePlayer extends Actor {
     }
 
     update() {
-        this.setShootCoolDown(true);
-        console.log(this.getShootCoolDown()); 
-        // this.on(Phaser.Animations.Events.ANIMATION_COMPLETE, () => {
         if (this.anims?.currentAnim?.key === "rogue_shoot") {
             if (this.anims.currentFrame.index === 6) {
                 if (!this.getShootCoolDown()) {
                     this.shootLaser();
-                    this.setShootCoolDown(true);
-                    this.scene.time.delayedCall(this.getShootingSpeed * 2000, this.setShootCoolDown(false), [], this)
                 }
+                this.setShootCoolDown(true);
+                this.scene.time.delayedCall(100 * this.getShootingSpeed(), () => { this.setShootCoolDown(false) })
             }
         }
-
         if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
             this.setVelocityX(0);
         }
@@ -175,7 +199,9 @@ export class RoguePlayer extends Actor {
         }
 
         if (this.cursors.shoot.isDown) {
-            this.anims.play("rogue_shoot", true)
+            if (this.anims.currentAnim?.key !== 'rogue_shoot' && !this.getShootCoolDown()) {
+                this.anims.play("rogue_shoot", true)
+            }
         } else if (this.cursors.melee.isDown) {
             this.anims.play("rogue_melee", true)
         }
@@ -183,7 +209,7 @@ export class RoguePlayer extends Actor {
         if (this.cursors.left.isDown) {
             this.setVelocityX(-110);
             this.checkFlip();
-            this.getBody().setOffset(30, 10);
+            this.getBody().setOffset(25, 7);
             if (this.body.onFloor()) {
                 this.anims.play('rogue_run', true);
             }
@@ -191,13 +217,13 @@ export class RoguePlayer extends Actor {
         else if (this.cursors.right.isDown) {
             this.setVelocityX(110);
             this.checkFlip();
-            this.getBody().setOffset(5, 10);
+            this.getBody().setOffset(5, 7);
             if (this.body.onFloor()) {
                 this.anims.play('rogue_run', true);
             }
         }
 
-        if ((this.cursors.space.isDown || this.cursors.up.isDown) && this.body.onFloor()) {
+        if ((this.cursors.jump.isDown || this.cursors.up.isDown) && this.body.onFloor()) {
             this.setVelocityY(-200);
             this.anims.play('rogue_jump', true)
         }
@@ -210,9 +236,10 @@ export class RoguePlayer extends Actor {
             }
         } else {
             if (this.body.velocity.x === 0 && this.body.velocity.y === 0) {
-                !this.anims.isPlaying && this.anims.play('rogue_idle', true)
+                if (!this.anims.isPlaying || this.anims.currentAnim.key !== 'rogue_shoot' && this.anims.currentAnim.key !== 'rogue_melee') {
+                    this.anims.play('rogue_idle', true)
+                }
             }
         }
-
     }
 }
