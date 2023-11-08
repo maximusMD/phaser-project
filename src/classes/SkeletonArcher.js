@@ -9,6 +9,7 @@ export class SkeletonArcher extends Enemy {
     this.setScale(0.6)
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
+    this.setVision(100);
 
   }
 
@@ -24,15 +25,13 @@ export class SkeletonArcher extends Enemy {
     const chanceToHit = Math.random()
     if (chanceToHit < chance / 100) {
       player.updateHP(0)
-      console.log("not taken damage: ", player.getHP())
+      // console.log("not taken damage: ", player.getHP())
     } else {
       player.updateHP(damage);
-      console.log("taken damage: ", player.getHP())
+      // console.log("taken damage: ", player.getHP())
     }
   }
-    this.setVision(100);
 
-    
   update(player, graphics, line) {
 
     const distance = this.checkDistance(player, graphics, line)
