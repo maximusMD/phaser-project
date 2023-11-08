@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { Actor } from './Actor';
 
 import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
 import tilemap from "./assets/tilemaps/ryan_test.json"
@@ -28,12 +29,6 @@ export class RyanLevel extends Phaser.Scene {
                 mode: Phaser.Scale.ScaleModes.NONE,
                 width: window.innerWidth,
                 height: window.innerHeight,
-            },
-            physics: {
-                default: 'arcade',
-                arcade: {
-                    debug: false,
-                },
             },
             render: {
                 antialiasGL: false,
@@ -70,6 +65,19 @@ export class RyanLevel extends Phaser.Scene {
 
     }
 
+    // LASER HANDLER ON SPRITES
+    handleOverlap(sprite, overlapSprite) {
+        if (!overlapSprite.getHasHit()) {
+            sprite.setHP(overlapSprite.getLaserDamage());
+        }
+        overlapSprite.setHasHit(true);
+        overlapSprite.setVisible(false);
+
+        // Reset needs a better more perm solution later
+        overlapSprite.body.reset(-400,-400);
+
+    }
+
     create() {
 
         const map = this.make.tilemap({ key: 'tilemap' })
@@ -78,27 +86,39 @@ export class RyanLevel extends Phaser.Scene {
         const ground = map.createLayer('ground', tileset)
         ground.setCollisionByExclusion(-1, true)
 
-        this.player = new RoguePlayer(this, 10, 10, "rogue_player", "");
+        this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, ground);
         this.cameras.main.startFollow(this.player);
 
-        this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer", "");
+        this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, ground);
+        this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
+        this.physics.add.collider(this.enemy2, ground);
 
         this.graphics = this.add.graphics();
-
         this.line = new Phaser.Geom.Line(
-            this.enemy.getBody().x, 
-            this.enemy.getBody().y, 
-            this.player.getBody().x, 
+            this.enemy.getBody().x,
+            this.enemy.getBody().y,
+            this.player.getBody().x,
+            this.player.getBody().y
+        )
+        this.line2 = new Phaser.Geom.Line(
+            this.enemy2.getBody().x,
+            this.enemy2.getBody().y,
+            this.player.getBody().x,
             this.player.getBody().y
         )
 
+        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
+        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
+        const allEnemies = this.children.list.filter(x => x instanceof Actor);
+        this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap)
     }
-    
+
     update() {
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
-
+        this.enemy2.update(this.player, this.graphics, this.line2);
     }
+
 }
