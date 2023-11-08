@@ -6,10 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.post('/submit', async (req, res) => {
+app.post('/signup', async (req, res) => {
+
   try {
     const { client, user, db } = await connectToDatabase();
     const { username, pw } = req.body;
+    console.log(username);
 
     const userData = {
       username: username,
@@ -24,6 +26,28 @@ app.post('/submit', async (req, res) => {
     }
   } catch (err) {
     console.log(err);
+  }
+})
+
+app.post('/signin', async (req, res) => {
+  try {
+    const { client, user, db} = await connectToDatabase();
+    const { username, pw} = req.body;
+
+    const userData = {
+      username: username,
+      pw: pw
+    }
+
+    const existingUser = await user.findOne({ username: userData.username, pw: userData.pw});
+
+    if (existingUser) {
+      res.status(200).send({message: 'Logged in'});
+    } else {
+      res.status(404).send({message: 'User not found'});
+    }
+  } catch (err) {
+    console.log(err)
   }
 })
 
