@@ -59,7 +59,7 @@ export class OptionsScene extends Phaser.Scene {
         zoom.setScale(zoomScaleFactor * 0.11)
 
         const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
-            console.log('Controls')
+            this.handleControls()
         })
         const controlsScaleFactor = gameWidth / controls.width; 
         controls.setScale(controlsScaleFactor * 0.21)
@@ -99,6 +99,10 @@ export class OptionsScene extends Phaser.Scene {
     openCred() {
         const credLink = 'https://www.youtube.com/watch?v=YXIHXQjbtl8'
         window.open(credLink, '_blank')
+    }
+
+    handleControls() {
+        this.scene.start('ControlsScene')
     }
 
     handleMain() {
