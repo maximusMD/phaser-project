@@ -1,3 +1,4 @@
+import { Actor } from "./Actor";
 import { Enemy } from "./Enemy";
 
 export class SkeletonArcher extends Enemy {
@@ -8,6 +9,7 @@ export class SkeletonArcher extends Enemy {
     this.setScale(0.6)
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
+
   }
 
   checkDistance(player, graphics, line) {
@@ -28,12 +30,14 @@ export class SkeletonArcher extends Enemy {
       console.log("taken damage: ", player.getHP())
     }
   }
+    this.setVision(100);
 
-
+    
   update(player, graphics, line) {
+
     const distance = this.checkDistance(player, graphics, line)
 
-    if (distance <= 150) {
+    if (distance <= this.getVision()) {
       this.shoot = true;
 
       line.setTo(
@@ -48,14 +52,9 @@ export class SkeletonArcher extends Enemy {
     }
 
     if (this.shoot) {
-      if (player.getBody().x < this.getBody().x) {
-        this.setFlipX(true);
-      } else {
-        this.setFlipX(false)
-      }
+      this.facePlayer(player, this)
       if (distance < 50) {
         this.anims.play('skeleton_archer_melee_2', true)
-        console.log(this.anims.currentFrame.index)
         if (this.anims.currentFrame.index === 4) {
           this.damageToPlayer(player, 1, 20);
         }
