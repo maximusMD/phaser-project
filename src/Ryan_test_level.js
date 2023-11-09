@@ -17,6 +17,9 @@ import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sne
 import darklord_atlas from './assets/animations/sprites/enemies/Rogue_Darklord/darklord_atlas.json'
 import darklord_image from './assets/animations/sprites/enemies/Rogue_Darklord/darklord_atlas.png'
 
+import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.json'
+import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
+
 
 import { RoguePlayer } from './classes/RoguePlayer.js';
 import laser_img from "./assets/animations/objects/laser_blue.png"
@@ -24,6 +27,7 @@ import laser_img from "./assets/animations/objects/laser_blue.png"
 import { SkeletonArcher } from './classes/SkeletonArcher.js';
 
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
+import { RogueBrain } from './classes/RogueBrain.js';
 
 
 export class RyanLevel extends Phaser.Scene {
@@ -73,6 +77,7 @@ export class RyanLevel extends Phaser.Scene {
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
+        this.load.atlas('brain', brain_image, brain_atlas)
         
     }
 
@@ -110,9 +115,13 @@ export class RyanLevel extends Phaser.Scene {
 
         this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
         this.physics.add.collider(this.enemy3, ground);
-
         this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
         this.physics.add.collider(this.enemy4, ground);
+
+        this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy5, ground);
+        this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy6, ground);
 
         this.graphics = this.add.graphics();
         this.line = new Phaser.Geom.Line(
@@ -142,6 +151,20 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().y
         )
 
+        this.line5 = new Phaser.Geom.Line(
+            this.enemy5.getBody().x,
+            this.enemy5.getBody().y,
+            this.player.getBody().x,
+            this.player.getBody().y
+        )
+
+        this.line6 = new Phaser.Geom.Line(
+            this.enemy6.getBody().x,
+            this.enemy6.getBody().y,
+            this.player.getBody().x,
+            this.player.getBody().y
+        )
+
         // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
         // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
         const allEnemies = this.children.list.filter(x => x instanceof Enemy);
@@ -154,6 +177,8 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy2.update(this.player, this.graphics, this.line2);
         this.enemy3.update(this.player, this.graphics, this.line3)
         this.enemy4.update(this.player, this.graphics, this.line4)
+        this.enemy5.update(this.player, this.graphics, this.line5)
+        this.enemy6.update(this.player, this.graphics, this.line6)
     }
 
 }
