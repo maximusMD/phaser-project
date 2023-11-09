@@ -53,12 +53,22 @@ export class Weather {
             maxVelocityX: this.getRainSpeed(),
             maxVelocityY: this.getRainSpeed(),
         })
-        this.scene.rain_zone = new Phaser.Geom.Rectangle(0,0,this.scene.scale.width,10)
-        this.scene.rain_zone.centerX = this.scene.player.getBody().x;
-        this.scene.rain_emitter.addEmitZone({type: 'random', source: this.scene.rain_zone})
+        if (!this.scene.rain_zone) {
+            this.scene.rain_zone = new Phaser.Geom.Rectangle(0, 0, this.scene.scale.width, 10)
+            this.scene.rain_zone.centerX = this.scene.player.getBody().x;
+        }
+
+        this.scene.rain_emitter.addEmitZone({ type: 'random', source: this.scene.rain_zone })
+
+    }
+
+    removeRain() {
+        this.scene.rain_emitter.destroy();
     }
 
     update() {
-        this.scene.rain_zone.centerX = this.scene.player.getBody().x;
+        if (this.scene.rain_zone) {
+            this.scene.rain_zone.centerX = this.scene.player.getBody().x;
+        }
     }
 }
