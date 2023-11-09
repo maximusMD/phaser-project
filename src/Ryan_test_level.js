@@ -29,6 +29,8 @@ import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_a
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
 import laser_img from "./assets/animations/objects/laser_blue.png"
+// import rain from "./assets/animations/sprites/rain.png"
+import { Weather } from './classes/Weather.js';
 
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
@@ -74,6 +76,8 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.canvas = this.sys.game.canvas;
+        this.weather = new Weather(this);
         this.load.image('dungeon_middle', dungeon_middle)
         this.load.image('dungeon_back', dungeon_back)
         this.load.image('sky', dungeon_sky)
@@ -88,6 +92,8 @@ export class RyanLevel extends Phaser.Scene {
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
+
+        // this.load.image('rain', rain)
 
     }
 
@@ -105,11 +111,10 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
-
         const { width, height } = this.scale;
         this.add.image(0, 0, 'sky')
             .setScrollFactor(0);
-        
+
         this.#backGrounds.push({
             ratioX: 0.1,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
@@ -118,7 +123,7 @@ export class RyanLevel extends Phaser.Scene {
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
         });
-        
+
         this.#backGrounds.push({
             ratioX: 0.4,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
@@ -138,6 +143,7 @@ export class RyanLevel extends Phaser.Scene {
 
         const ground = map.createLayer('ground', tileset)
         ground.setCollisionByExclusion(-1, true)
+        this.weather = new Weather(this);
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, ground);
@@ -205,14 +211,16 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().x,
             this.player.getBody().y
         )
-      
-      this.allSprites = this.children.list.filter(x => x instanceof Actor)
-      this.pauseHandler = handlePause(this, this.allSprites);
+
+        this.allSprites = this.children.list.filter(x => x instanceof Actor)
+        this.pauseHandler = handlePause(this, this.allSprites);
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
 
     }
 
     update() {
-
+        this.weather.update();
         for (const bg of this.#backGrounds) {
             bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
         }
