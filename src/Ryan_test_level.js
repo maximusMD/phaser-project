@@ -28,6 +28,7 @@ import { SkeletonArcher } from './classes/SkeletonArcher.js';
 
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
+import { HUDScene } from './hud.js';
 
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
@@ -105,14 +106,10 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
-        console.log(this.#backGrounds)
-        const { width, height } = this.scale;
-        console.log(width, height)
 
+        const { width, height } = this.scale;
         this.add.image(0, 0, 'sky')
             .setScrollFactor(0);
-
-
         // this.add.image(0, 0, 'dungeon_back').setOrigin(0,0)
         this.#backGrounds.push({
             ratioX: 0.1,
@@ -122,7 +119,6 @@ export class RyanLevel extends Phaser.Scene {
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
         });
-
         // this.add.image(0, 0, 'dungeon_middle').setOrigin(0,0)
         this.#backGrounds.push({
             ratioX: 0.4,
@@ -133,6 +129,8 @@ export class RyanLevel extends Phaser.Scene {
                 .setScale(1)
         });
 
+        this.scene.run('HUDScene')
+
 
         createAnimations(this);
 
@@ -141,10 +139,6 @@ export class RyanLevel extends Phaser.Scene {
 
         const ground = map.createLayer('ground', tileset)
         ground.setCollisionByExclusion(-1, true)
-
-        this.player = new RoguePlayer(this, 10, 10, "rogue_player");
-        this.physics.add.collider(this.player, ground);
-        this.cameras.main.startFollow(this.player);
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, ground);
@@ -160,6 +154,16 @@ export class RyanLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy5, ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, ground);
+
+        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
+        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
+        this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
+
+        this.player = new RoguePlayer(this, 10, 10, "rogue_player");
+        this.physics.add.collider(this.player, ground);
+        this.cameras.main.startFollow(this.player);
+
+        this.physics.add.overlap(this.player.laserGroup, this.allEnemies, this.handleOverlap)
 
         this.graphics = this.add.graphics();
         this.line = new Phaser.Geom.Line(
@@ -203,10 +207,6 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().y
         )
 
-        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
-        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
-        const allEnemies = this.children.list.filter(x => x instanceof Enemy);
-        this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap)
     }
 
     update() {
