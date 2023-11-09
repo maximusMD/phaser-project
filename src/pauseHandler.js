@@ -33,7 +33,7 @@ export function handlePause(scene, characters) {
 		}
 	}
 
-	scene.input.keyboard.on('keydown-ESC', () => {
+	scene.input.keyboard.on('keydown-P', () => {
 		togglePause();
 	});
 
