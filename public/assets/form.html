@@ -1,49 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <style>
-    div > div {
-      background-color: wheat;
-      padding: 10px 20px 10px;
-      border: solid 3px white;
-      border-radius: 5px;
+    div>div {
+      background-color: rgb(42, 42, 42);
+      border-radius: 2px;
+      border: solid white 10px;
+      box-sizing: border-box;
       text-align: center;
       font-family: Arial, Helvetica, sans-serif;
-
-    }
-    .title {
-      font-size: 1.5em;
-    }
-    .form{
-
+      width: 60vw;
+      height: 40vh;
+      max-height: calc(90px * 5);
+      max-width: calc(120px * 5);
+      display: grid;
     }
 
-    .label{
+    #form-title {
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      border-bottom: 2px dotted white;
+    }
 
+    .form {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-content: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .label {
     }
 
     .input {
-
     }
 
     .button {
-
+      background: none;
+      border: none;
+      padding-top: 40px;
     }
 
+    .button:hover img {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+
+    #user-label {
+      grid-area: userlabel;
+    }
+
+    #user-input {
+      grid-area: userinput;
+    }
+
+    #pass-label {
+      grid-area: passlabel;
+    }
+
+    #pass-input {
+      grid-area: passinput;
+    }
+
+    #signup-button {
+      grid-area: signup;
+    }
+
+    #signin-button {
+      grid-area: signin;
+    }
   </style>
   <title>Form</title>
 </head>
-<body>
-  <h2 class="title">Login / Signup</h2>
-  <form class="form">
-    <label class="label user-label" for="username">Username:</label>
-    <input class="input user-input" type="text" name="username" id="username" required><br><br>
-    
-    <label class="label pass-label" for="password">Password:</label>
-    <input class="input pass-input" type="password" name="password" id="password" required><br><br>
 
-    <input class="button signup-button" type="submit" name="action" value="Sign Up">
-    <input class="button signin-button" type="submit" name="action" value="Sign In">
+<body>
+  <h2 id="form-title" class="title">Login / Signup</h2>
+  <form class="form">
+    <label id="user-label" class="label" for="username">Username: </label>
+    <input id="user-input" class="input" type="text" name="username" id="username" required><br><br>
+
+    <label id="pass-label" class="label" for="password">Password: </label>
+    <input id="pass-input" class="input" type="password" name="password" id="password" required><br><br>
+
+    <button id="signup-button" class="button" type="submit" name="action" value="Sign Up">Sign Up</button>
+    <button id="signin-button" class="button" type="submit" name="action" value="Sign In">Sign In</button>
   </form>
 </body>
+
 </html>

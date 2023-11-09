@@ -5,6 +5,7 @@ import signInImg from './assets/menu_buttons/sign-in-up.png';
 import shareImg from './assets/menu_buttons/share.png';
 import credImg from './assets/menu_buttons/credits.png';
 import optImg from './assets/menu_buttons/options.png';
+import aboutImg from './assets/menu_buttons/about.png';
 import menuMusic from './assets/menuMusic.wav';
 
 export class MenuScene extends Phaser.Scene {
@@ -23,6 +24,7 @@ export class MenuScene extends Phaser.Scene {
         this.load.image('credits', credImg);
         this.load.image('share', shareImg);
         this.load.image('options', optImg);
+        this.load.image('about', aboutImg);
 
         this.load.audio('menuMusic', menuMusic);
     }
@@ -41,7 +43,7 @@ export class MenuScene extends Phaser.Scene {
         title.setScale(titleScaleFactor * 0.55);
 
         const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
-            console.log('Sign-in');
+            this.stopMenuMusicAndStartScene('UserForm');
         });
 
         const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
@@ -50,6 +52,10 @@ export class MenuScene extends Phaser.Scene {
 
         const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
             console.log('Leaderboard');
+        });
+
+        const about = this.addButton(gameWidth * 0.1, gameHeight * 0.1, 'about', () => {
+            this.stopMenuMusicAndStartScene('AboutScene');
         });
 
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
@@ -68,26 +74,6 @@ export class MenuScene extends Phaser.Scene {
         if (!menuMusic.isPlaying) {
             menuMusic.play();
         }
-
-        const createButton = this.add.image(150, 50, 'createButton').setScale(2.5);
-        const buttonText = this.add.text(100, 32, 'Sign up', {
-            font: '24px Arial',
-            fill: 'white',
-        });
-        createButton.setInteractive();
-
-        createButton.on('pointerover', () => {
-            createButton.setTint(0xcccccc);
-        });
-
-        createButton.on('pointerout', () => {
-            createButton.clearTint();
-        });
-
-        createButton.on('pointerdown', () => {
-            console.log('Create User button clicked');
-            this.scene.start('UserForm');
-        });
     }
 
     addButton(x, y, key, onClick) {

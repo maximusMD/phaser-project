@@ -5,8 +5,9 @@ import { OptionsScene } from './options_menu';
 import { UserForm } from './UserForm';
 import { RyanLevel } from './Ryan_test_level';
 import { CreditsScene } from './credits';
-import { ControlsScene } from './controls';
 import { PauseMenuScene } from './pause_menu';
+import { AboutScene } from './about';
+import { HUDScene } from './hud';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {
@@ -22,22 +23,13 @@ window.sizeChanged = () => {
 window.onresize = () => window.sizeChanged();
 
 const config = {
-	type: Phaser.AUTO,
-	parent: 'phaser-example',
-	width: window.innerWidth,
-	height: window.innerHeight,
-	scene: [
-		Preloader,
-		MenuScene,
-		OptionsScene,
-		ControlsScene,
-		UserForm,
-		RyanLevel,
-		CreditsScene,
-		PauseMenuScene,
-	],
-	render: { pixelArt: true },
-	dom: { createContainer: true },
-};
+    type: Phaser.AUTO,
+    parent: 'phaser-example',
+    width: window.innerWidth,
+    height: window.innerHeight,
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene],
+    render: { pixelArt: true},
+    dom: { createContainer: true}, 
+}
 
-const game = new Phaser.Game(config);
+const game = new Phaser.Game(config)
