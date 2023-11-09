@@ -1,4 +1,4 @@
-import rain from "../assets/animations/sprites/rain.png"
+import rain from "../assets/particles/rain.png"
 
 export class Weather {
     #enabled = true;
@@ -63,6 +63,7 @@ export class Weather {
                 frequency: this.getRainFrequency(),
                 maxVelocityX: this.getRainSpeed(),
                 maxVelocityY: this.getRainSpeed(),
+                blendMode: 'ADD'
             })
             if (!this.scene.rain_zone) {
                 this.scene.rain_zone = new Phaser.Geom.Rectangle(0, 0, this.scene.scale.width, 10)
