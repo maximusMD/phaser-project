@@ -28,6 +28,7 @@ import { SkeletonArcher } from './classes/SkeletonArcher.js';
 
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
+import { HUDScene } from './hud.js';
 
 
 export class RyanLevel extends Phaser.Scene {
@@ -95,6 +96,8 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
+
+        this.scene.run('HUDScene')
 
         createAnimations(this);
 
