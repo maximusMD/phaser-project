@@ -236,4 +236,41 @@ export function createAnimations(scene) {
       frameRate: 6,
       repeat: 0
     })
+
+    scene.anims.create({
+      key: 'brain_idle',
+      frames: scene.anims.generateFrameNames('brain', {
+        prefix: 'brain_idle-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 10,
+      repeat: -1
+    })
+
+    scene.anims.create({
+      key: 'brain_attack',
+      frames: scene.anims.generateFrameNames('brain', {
+        prefix: 'brain_attack-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 6,
+      repeat: -1
+    })
+
+    scene.anims.create({
+      key: 'brain_die',
+      frames: scene.anims.generateFrameNames('brain', {
+        prefix: 'brain_die-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 6,
+      repeat: 0
+    })
+
   }
