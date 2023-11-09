@@ -13,8 +13,7 @@ import skeleton_archer_atlas from './assets/animations/sprites/enemies/Skeleton_
 import { RoguePlayer } from './RoguePlayer.js';
 import laser_img from './assets/animations/objects/laser_blue.png';
 
-import play_image from './assets/controls/play_image.png';
-import pause_image from './assets/controls/pause_image.png';
+import { handlePause } from './pauseHandler.js';
 
 import { SkeletonArcher } from './SkeletonArcher.js';
 
@@ -53,12 +52,6 @@ export class RyanLevel extends Phaser.Scene {
 				},
 			},
 		});
-
-		//pause functionality
-		this.isPaused = false;
-		this.playImage = null;
-		this.pauseImage = null;
-		this.characters = [];
 	}
 
 	preload() {
@@ -69,10 +62,6 @@ export class RyanLevel extends Phaser.Scene {
 		this.load.atlas('rogue_player', rogue_image, rogue_atlas);
 
 		this.load.atlas('skeleton_archer', skeleton_archer_image, skeleton_archer_atlas);
-
-		//pause functionlity
-		this.load.image('play', play_image);
-		this.load.image('pause', pause_image);
 	}
 
 	// LASER HANDLER ON SPRITES
@@ -122,58 +111,13 @@ export class RyanLevel extends Phaser.Scene {
 		const allEnemies = this.children.list.filter((x) => x instanceof Actor);
 		this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap);
 
-		// pause functionality
-		this.characters.push(this.player, this.enemy, this.enemy2);
-
-		this.playImage = this.add.image(400, 200, 'play');
-		this.playImage.setScrollFactor(0);
-		this.playImage.setScale(0.025);
-
-		this.pauseImage = this.add.image(400, 200, 'pause');
-		this.pauseImage.setScrollFactor(0);
-		this.pauseImage.setScale(0.015);
-		this.pauseImage.setVisible(false);
-
-		this.input.keyboard.on('keydown-ESC', () => {
-			this.togglePause();
-		});
+		//pause functionality
+		this.pauseHandler = handlePause(this, allEnemies);
 	}
 
 	update() {
-		//pause functionality
-		if (this.isPaused) {
-			return;
-		}
-
 		this.player.update();
 		this.enemy.update(this.player, this.graphics, this.line);
 		this.enemy2.update(this.player, this.graphics, this.line2);
-
-		//pause functionality
-		this.playImage.setVisible(!this.isPaused);
-		this.pauseImage.setVisible(this.isPaused);
-	}
-
-	//pause functionality
-	togglePause() {
-		this.isPaused = !this.isPaused;
-
-		if (this.isPaused) {
-			this.physics.pause();
-
-			// Stop updating characters
-			this.characters.forEach((character) => {
-				character.setActive(false);
-			});
-
-			this.playImage.setVisible(false);
-			this.pauseImage.setVisible(true);
-		} else {
-			this.physics.resume();
-
-			this.characters.forEach((character) => {
-				character.setActive(true);
-			});
-		}
 	}
 }
