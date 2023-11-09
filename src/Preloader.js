@@ -7,7 +7,6 @@ export class Preloader extends Phaser.Scene {
 
   preload() {
     // Load all assets needed for game in this preload
-    this.load.image('createButton', 'assets/create_user_button.png');
     this.load.html('userform', './assets/form.html')
 
     this.load.image('background', 'assets/bg.png')
