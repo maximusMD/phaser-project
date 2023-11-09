@@ -62,6 +62,8 @@ export class RyanLevel extends Phaser.Scene {
 		this.load.atlas('rogue_player', rogue_image, rogue_atlas);
 
 		this.load.atlas('skeleton_archer', skeleton_archer_image, skeleton_archer_atlas);
+
+    
 	}
 
 	// LASER HANDLER ON SPRITES
