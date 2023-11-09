@@ -1,15 +1,23 @@
 import Phaser from 'phaser';
 import { Enemy } from './classes/Enemy.js';
 import { createAnimations } from './CreateAnimations.js';
+import { handlePause } from './pauseHandler.js';
+import { RoguePlayer } from './classes/RoguePlayer.js';
+import { Actor } from './classes/Actor.js';
+import { SkeletonArcher } from './classes/SkeletonArcher.js';
+import { RogueDarkLord } from './classes/RogueDarkLord.js';
+import { RogueBrain } from './classes/RogueBrain.js';
+import { HUDScene } from './hud.js';
 
-import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
-import tilemap from "./assets/tilemaps/ryan_test.json"
+import tileset_img from './assets/tilesets/s4m_ur4i_rogue-noir.png';
+import tilemap from './assets/tilemaps/ryan_test.json';
 
-import rogue_image from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png"
-import rogue_atlas from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json"
+import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
+import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
 
-import skeleton_archer_image from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png"
-import skeleton_archer_atlas from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json"
+import skeleton_archer_image from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png';
+import skeleton_archer_atlas from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json';
+
 
 import sneaker_atlas from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.json"
 import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.png"
@@ -20,17 +28,15 @@ import darklord_image from './assets/animations/sprites/enemies/Rogue_Darklord/d
 import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.json'
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
-
-import { RoguePlayer } from './classes/RoguePlayer.js';
 import laser_img from "./assets/animations/objects/laser_blue.png"
 
-import { SkeletonArcher } from './classes/SkeletonArcher.js';
-
-import { RogueDarkLord } from './classes/RogueDarkLord.js';
-import { RogueBrain } from './classes/RogueBrain.js';
-
+//backgrounds
+import dungeon_middle from "./assets/backgrounds/middle_layer.png"
+import dungeon_back from "./assets/backgrounds/back_layer.png"
+import dungeon_sky from "./assets/backgrounds/sky_layer.png"
 
 export class RyanLevel extends Phaser.Scene {
+    #backGrounds = [];
     constructor() {
         super({
             key: 'RyanLevel',
@@ -44,7 +50,7 @@ export class RyanLevel extends Phaser.Scene {
                 height: window.innerHeight,
             },
             render: {
-                antialiasGL: false,
+                // antialiasGL: false,
                 pixelArt: true,
             },
             callbacks: {
@@ -68,6 +74,10 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('dungeon_middle', dungeon_middle)
+        this.load.image('dungeon_back', dungeon_back)
+        this.load.image('sky', dungeon_sky)
+
         this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
@@ -95,6 +105,31 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
+
+        const { width, height } = this.scale;
+        this.add.image(0, 0, 'sky')
+            .setScrollFactor(0);
+        
+        this.#backGrounds.push({
+            ratioX: 0.1,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x001a33, 0x000d1a, 0x001a33)
+                .setScale(1)
+        });
+        
+        this.#backGrounds.push({
+            ratioX: 0.4,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+        });
+
+        this.scene.run('HUDScene')
+
 
         createAnimations(this);
 
@@ -170,10 +205,18 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().x,
             this.player.getBody().y
         )
+      
+      this.allSprites = this.children.list.filter(x => x instanceof Actor)
+      this.pauseHandler = handlePause(this, this.allSprites);
 
     }
 
     update() {
+
+        for (const bg of this.#backGrounds) {
+            bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
+        }
+
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
         this.enemy2.update(this.player, this.graphics, this.line2);
