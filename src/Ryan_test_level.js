@@ -29,8 +29,14 @@ import { SkeletonArcher } from './classes/SkeletonArcher.js';
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
 
+//backgrounds
+import dungeon_middle from "./assets/backgrounds/middle_layer.png"
+import dungeon_back from "./assets/backgrounds/back_layer.png"
+import dungeon_sky from "./assets/backgrounds/sky_layer.png"
+
 
 export class RyanLevel extends Phaser.Scene {
+    #backGrounds = [];
     constructor() {
         super({
             key: 'RyanLevel',
@@ -44,7 +50,7 @@ export class RyanLevel extends Phaser.Scene {
                 height: window.innerHeight,
             },
             render: {
-                antialiasGL: false,
+                // antialiasGL: false,
                 pixelArt: true,
             },
             callbacks: {
@@ -68,17 +74,21 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('dungeon_middle', dungeon_middle)
+        this.load.image('dungeon_back', dungeon_back)
+        this.load.image('sky', dungeon_sky)
+
         this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-        
+
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
-        
+
     }
 
     // LASER HANDLER ON SPRITES
@@ -90,12 +100,40 @@ export class RyanLevel extends Phaser.Scene {
         overlapSprite.setVisible(false);
 
         // Reset needs a better more perm solution later
-        overlapSprite.body.reset(-400,-400);
+        overlapSprite.body.reset(-400, -400);
 
     }
 
     create() {
-        
+        console.log(this.#backGrounds)
+        const { width, height } = this.scale;
+        console.log(width, height)
+
+        this.add.image(0, 0, 'sky')
+            .setScrollFactor(0);
+
+
+        // this.add.image(0, 0, 'dungeon_back').setOrigin(0,0)
+        this.#backGrounds.push({
+            ratioX: 0.1,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x001a33, 0x000d1a, 0x001a33)
+                .setScale(1)
+        });
+
+        // this.add.image(0, 0, 'dungeon_middle').setOrigin(0,0)
+        this.#backGrounds.push({
+            ratioX: 0.4,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+        });
+
+
         createAnimations(this);
 
         const map = this.make.tilemap({ key: 'tilemap' })
@@ -172,6 +210,11 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     update() {
+
+        for (const bg of this.#backGrounds) {
+            bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
+        }
+
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
         this.enemy2.update(this.player, this.graphics, this.line2);
