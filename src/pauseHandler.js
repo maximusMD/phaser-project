@@ -1,6 +1,5 @@
 export function handlePause(scene, characters) {
 	let isPaused = false;
-    
 
 	function pause() {
 		scene.physics.pause();
@@ -9,6 +8,7 @@ export function handlePause(scene, characters) {
 		});
 
 		isPaused = true;
+		showPauseMenu();
 	}
 
 	function resume() {
@@ -18,6 +18,19 @@ export function handlePause(scene, characters) {
 		});
 
 		isPaused = false;
+		hidePauseMenu();
+	}
+
+	function showPauseMenu() {
+		if (!scene.scene.isActive('PauseMenuScene')) {
+			scene.scene.run('PauseMenuScene');
+		}
+	}
+
+	function hidePauseMenu() {
+		if (scene.scene.isActive('PauseMenuScene')) {
+			scene.scene.stop('PauseMenuScene');
+		}
 	}
 
 	scene.input.keyboard.on('keydown-ESC', () => {
