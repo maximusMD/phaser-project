@@ -159,7 +159,8 @@ export function createAnimations(scene) {
       }),
       frameRate: 6,
       repeat: -1,
-      delay: 500
+      delay: 500,
+      repeatDelay: 200
     })
 
     scene.anims.create({

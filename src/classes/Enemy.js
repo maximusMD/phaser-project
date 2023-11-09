@@ -2,9 +2,11 @@ import { Actor } from "./Actor";
 
 export class Enemy extends Actor {
 
-  #walkSpeed = 10
+  #walkSpeed = 15;
   #isDead = false;
   #vision = 100;
+  #meleeDamage = 10;
+  #rangeDamage = 20;
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
@@ -23,11 +25,19 @@ export class Enemy extends Actor {
   getVision() {
     return this.#vision;
   }
+  
+  getMeleeDamage() {
+    return this.#meleeDamage;
+  }
+
+  getRangeDamage() {
+    return this.#rangeDamage;
+  }
 
   // setters
   updateHP(damage) {
     this.setHP(damage);
-    if(this.getHP() <= 0) {
+    if (this.getHP() <= 0) {
       this.setIsDead();
     }
   }
@@ -42,7 +52,15 @@ export class Enemy extends Actor {
   setVision(visionRange) {
     this.#vision = visionRange;
   }
-  
+
+  setMeleeDamage(melee) {
+    this.#meleeDamage = melee;
+  }
+
+  setRangeDamage(range) {
+    this.#meleeDamage = range;
+  }
+
   // functions
   facePlayer(player, enemy) {
     // console.log(player)
@@ -51,6 +69,30 @@ export class Enemy extends Actor {
     } else {
       enemy.setFlipX(false);
     }
+  }
+
+  wander() {
+    // const direction = Phaser.Math.Between(0, 1);
+
+    let direction = 1;
+    if (direction === 0) {
+      this.setVelocityX(-this.getWalkSpeed());
+      this.setFlipX(true);
+      this.anims.play('skeleton_archer_walk', true)
+      this.anims.chain(['skeleton_archer_idle'])
+      direction = 1;
+    } else {
+      this.setVelocityX(this.getWalkSpeed())
+      this.setFlipX(false);
+      this.anims.play('skeleton_archer_walk', true)
+      this.anims.chain(['skeleton_archer_idle'])
+      direction = 0;
+    }
+
+  }
+
+  stopWandering() {
+    this.setVelocityX(0);
   }
 
   checkDistance(player, graphics, line) {
@@ -63,12 +105,27 @@ export class Enemy extends Actor {
 
   damageToPlayer(player, damage, chance = 0) {
     const chanceToHit = Math.random();
-    if (chanceToHit < chance/100) {
+    if (chanceToHit < chance / 100) {
       player.setHP(0)
-      console.log("not taken damage: ", player.getHP())
+      console.log("no damage taken: ", player.getHP())
     } else {
       player.setHP(damage);
-      console.log("taken damage: ", player.getHP())
+      console.log("taken damage: ",player.getHP())
+    }
+  }
+
+  // takes in the animation
+  // takes in percantage chance for attack to land
+  handleMelee(chance) {
+    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      this.damageToPlayer(this.scene.player, this.getMeleeDamage(), chance);
+    }
+
+  }
+
+  handleRanged(chance) {
+    if(this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      this.damageToPlayer(this.scene.player, this.getRangeDamage(), chance);
     }
   }
 }
