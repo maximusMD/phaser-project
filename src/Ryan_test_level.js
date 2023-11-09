@@ -73,12 +73,12 @@ export class RyanLevel extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-        
+
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
-        
+
     }
 
     // LASER HANDLER ON SPRITES
@@ -90,12 +90,12 @@ export class RyanLevel extends Phaser.Scene {
         overlapSprite.setVisible(false);
 
         // Reset needs a better more perm solution later
-        overlapSprite.body.reset(-400,-400);
+        overlapSprite.body.reset(-400, -400);
 
     }
 
     create() {
-        
+
         createAnimations(this);
 
         const map = this.make.tilemap({ key: 'tilemap' })
@@ -103,10 +103,6 @@ export class RyanLevel extends Phaser.Scene {
 
         const ground = map.createLayer('ground', tileset)
         ground.setCollisionByExclusion(-1, true)
-
-        this.player = new RoguePlayer(this, 10, 10, "rogue_player");
-        this.physics.add.collider(this.player, ground);
-        this.cameras.main.startFollow(this.player);
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, ground);
@@ -122,6 +118,16 @@ export class RyanLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy5, ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, ground);
+
+        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
+        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
+        this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
+
+        this.player = new RoguePlayer(this, 10, 10, "rogue_player");
+        this.physics.add.collider(this.player, ground);
+        this.cameras.main.startFollow(this.player);
+
+        this.physics.add.overlap(this.player.laserGroup, this.allEnemies, this.handleOverlap)
 
         this.graphics = this.add.graphics();
         this.line = new Phaser.Geom.Line(
@@ -165,10 +171,6 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().y
         )
 
-        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
-        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
-        const allEnemies = this.children.list.filter(x => x instanceof Enemy);
-        this.physics.add.overlap(this.player.laserGroup, allEnemies, this.handleOverlap)
     }
 
     update() {

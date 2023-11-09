@@ -24,10 +24,10 @@ export class SkeletonArcher extends Enemy {
   damageToPlayer(player, damage, chance = 0) {
     const chanceToHit = Math.random()
     if (chanceToHit < chance / 100) {
-      player.updateHP(0)
+      player.setHP(0)
       // console.log("not taken damage: ", player.getHP())
     } else {
-      player.updateHP(damage);
+      player.setHP(damage);
       // console.log("taken damage: ", player.getHP())
     }
   }

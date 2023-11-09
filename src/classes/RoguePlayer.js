@@ -1,4 +1,5 @@
 import { Actor } from './Actor.js';
+import { Enemy } from './Enemy.js';
 import { LaserGroup } from './ProjectileGroup.js';
 
 export class RoguePlayer extends Actor {
@@ -7,6 +8,7 @@ export class RoguePlayer extends Actor {
 
     #dashCooldown = false;
     #dashCooldownSpeed = 1;
+    #meleeCooldown = false;
     #maxAmmo = 15;
     #meleeDmg = 10;
     #shootDmg = 20;
@@ -27,6 +29,13 @@ export class RoguePlayer extends Actor {
         this.getBody().setSize(20, 27)
         this.getBody().setOffset(5, 7);
         this.laserGroup = new LaserGroup(scene, this.getShootDmg());
+        console.log("player scene:" + scene.allEnemies);
+        scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
+            this.handleMelee(_, enemy)
+        })
+    }
+    getMeleeCooldown() {
+        return this.#meleeCooldown;
     }
     getShootDmg() {
         return this.#shootDmg;
@@ -76,6 +85,21 @@ export class RoguePlayer extends Actor {
     setShootDmg(dmg) {
         this.#shootDmg = dmg;
     }
+    setMeleeCooldown(bool) {
+        this.#meleeCooldown = bool;
+    }
+
+    handleMelee(_, enemy) {
+        if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
+            if (this?.anims?.currentFrame.index === 5) {
+                if (!this.getMeleeCooldown()) {
+                    enemy.setHP(this.getMeleeDmg())
+                    console.log(enemy.getHP())
+                    this.setMeleeCooldown(true);
+                }
+            }
+        }
+    }
 
     shootLaser() {
         let x = this.body.x
@@ -89,11 +113,22 @@ export class RoguePlayer extends Actor {
         enemy.updateHP(damage)
     }
 
-    updateHP(damage) {
-        this.setHP(damage)
+    // Put any actions need for a complete anims in here
+    handleCompleteAnims(e) {
+        if (e.key === "rogue_melee") {
+            this.setMeleeCooldown(false);
+        }
+    }
+    handleStoppedAnims(e) {
+        if (e.key === "rogue_melee") {
+            this.setMeleeCooldown(false);
+        }
     }
 
     update() {
+        this.on('animationcomplete', this.handleCompleteAnims);
+        this.on('animationstop', this.handleStoppedAnims);
+        
         if (this.anims?.currentAnim?.key === "rogue_shoot") {
             if (this.anims.currentFrame.index === 6) {
                 if (!this.getShootCoolDown()) {
@@ -103,6 +138,7 @@ export class RoguePlayer extends Actor {
                 this.scene.time.delayedCall(100 * this.getShootingSpeed(), () => { this.setShootCoolDown(false) })
             }
         }
+        
         if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
             this.setVelocityX(0);
         }
