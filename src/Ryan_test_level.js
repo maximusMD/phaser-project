@@ -108,7 +108,11 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy2, ground);
 
-        this.enemy3 = new RogueDarkLord(this, 250, 10, 'darklord')
+        this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
+        this.physics.add.collider(this.enemy3, ground);
+
+        this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
+        this.physics.add.collider(this.enemy4, ground);
 
         this.graphics = this.add.graphics();
         this.line = new Phaser.Geom.Line(
@@ -131,6 +135,13 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().y
         )
 
+        this.line4 = new Phaser.Geom.Line(
+            this.enemy4.getBody().x,
+            this.enemy4.getBody().y,
+            this.player.getBody().x,
+            this.player.getBody().y
+        )
+
         // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
         // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
         const allEnemies = this.children.list.filter(x => x instanceof Enemy);
@@ -142,6 +153,7 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy.update(this.player, this.graphics, this.line);
         this.enemy2.update(this.player, this.graphics, this.line2);
         this.enemy3.update(this.player, this.graphics, this.line3)
+        this.enemy4.update(this.player, this.graphics, this.line4)
     }
 
 }
