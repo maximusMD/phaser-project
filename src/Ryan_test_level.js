@@ -29,7 +29,6 @@ import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_a
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
 import laser_img from "./assets/animations/objects/laser_blue.png"
-// import rain from "./assets/animations/sprites/rain.png"
 import { Weather } from './classes/Weather.js';
 
 //backgrounds
@@ -92,8 +91,6 @@ export class RyanLevel extends Phaser.Scene {
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
-
-        // this.load.image('rain', rain)
 
     }
 
@@ -160,10 +157,9 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, ground);
 
-        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
-        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
+        // Keep this below all enemy creation
         this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
-
+        // Player needs to come after enemies as needs list of sprites currently for lasers
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, ground);
         this.cameras.main.startFollow(this.player);
@@ -221,6 +217,7 @@ export class RyanLevel extends Phaser.Scene {
 
     update() {
         this.weather.update();
+        
         for (const bg of this.#backGrounds) {
             bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
         }
