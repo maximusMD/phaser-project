@@ -8,6 +8,7 @@ import { CreditsScene } from './credits';
 import { PauseMenuScene } from './pause_menu';
 import { AboutScene } from './about';
 import { HUDScene } from './hud';
+import { ControlsScene } from './controls';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {

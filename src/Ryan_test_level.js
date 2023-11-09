@@ -3,6 +3,7 @@ import { Enemy } from './classes/Enemy.js';
 import { createAnimations } from './CreateAnimations.js';
 import { handlePause } from './pauseHandler.js';
 import { RoguePlayer } from './classes/RoguePlayer.js';
+import { Actor } from './classes/Actor.js';
 import { SkeletonArcher } from './classes/SkeletonArcher.js';
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
@@ -206,7 +207,7 @@ export class RyanLevel extends Phaser.Scene {
         )
       
       this.allSprites = this.children.list.filter(x => x instanceof Actor)
-      this.pauseHandler = handlePause(this, allSprites);
+      this.pauseHandler = handlePause(this, this.allSprites);
 
     }
 
