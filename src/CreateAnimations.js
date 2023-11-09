@@ -186,4 +186,54 @@ export function createAnimations(scene) {
       repeat: -1
     })
 
+
+
+
+    scene.anims.create({
+      key: 'darklord_walk',
+      frames: scene.anims.generateFrameNames('darklord', {
+        prefix: 'darklord_walk-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 10,
+      repeat: -1
+    })
+
+    scene.anims.create({
+      key: 'darklord_idle',
+      frames: scene.anims.generateFrameNames('darklord', {
+        prefix: 'darklord_idle-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 10,
+      repeat: -1
+    })
+
+    scene.anims.create({
+      key: 'darklord_attack',
+      frames: scene.anims.generateFrameNames('darklord', {
+        prefix: 'darklord_attack-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 6,
+      repeat: -1
+    })
+
+    scene.anims.create({
+      key: 'darklord_die',
+      frames: scene.anims.generateFrameNames('darklord', {
+        prefix: 'darklord_die-',
+        suffix: '.png',
+        start: 0,
+        end: 15
+      }),
+      frameRate: 6,
+      repeat: 0
+    })
   }
