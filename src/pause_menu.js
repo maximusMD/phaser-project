@@ -119,13 +119,17 @@ export class PauseMenuScene extends Phaser.Scene {
 		pImg.setScale(2.5);
 
 		// main menu image
-		const mainMenuImg1 = this.add.image(centerX + 35, centerY + 230, 'mainMenuImg').setInteractive();
+		const mainMenuImg1 = this.add
+			.image(centerX + 35, centerY + 230, 'mainMenuImg')
+			.setInteractive();
 		mainMenuImg1.setOrigin(0.5, 0.5);
 		mainMenuImg1.setScale(1.5);
 
 		mainMenuImg1.on('pointerdown', () => {
-			this.music.setMute(true);
-			this.isMusicPlaying = true;
+			this.music.stop();
+			this.scene.stop('RyanLevel');
+			this.scene.stop('PauseMenuScene');
+			this.scene.start('MenuScene');
 		});
 	}
 }
