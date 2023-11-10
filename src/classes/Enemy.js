@@ -79,14 +79,7 @@ export class Enemy extends Actor {
     }
   }
 
-  handleCompleteAnims(e) {
-    // console.log('completed', e)
 
-  }
-
-  handleStoppedAnims(e) {
-    // console.log('stopped: ', e)
-  }
 
   // moveAndIdle(direction, numTiles, walkKey, idleKey) {
   //   this.play(walkKey, true);
@@ -107,20 +100,18 @@ export class Enemy extends Actor {
   //   this.scene.tweens.add(tweenConfig)
   // }
 
-  // wander() {
-  //   this.setVelocityX(this.getWalkSpeed())
-  //   this.anims.play('skeleton_archer_walk', true)
-  //   if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-  //     console.log(this.anims)
-  //     this.setVelocityX(0);
-  //     this.anims.play('skeleton_archer_idle', true)
-  //     // if (this.anims.currentFrame.index === this.anims.currentAnims.frames.length) {
-  //     //   this.setFlipX(false)
-  //     //   this.setVelocityX(-this.getWalkSpeed())
-  //     //   this.anims.chain('skeleton_archer_walk')
-  //     // }
-  //   }
-  // }
+  wander(numTiles, walkKey, idleKey) {
+    const distance = 2 * numTiles;
+
+    this.anims.play(walkKey, true)
+    this.setVelocityX(this.getWalkSpeed());
+    
+    if(this.body.x === 320) {
+      // console.log(this.body.x);
+      this.setVelocityX(0);
+      this.setIsWandering(false);
+    }
+  }
 
   // stopWandering() {
   //   this.setIsWandering(false);
