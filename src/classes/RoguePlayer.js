@@ -29,7 +29,6 @@ export class RoguePlayer extends Actor {
         this.getBody().setSize(20, 27)
         this.getBody().setOffset(5, 7);
         this.laserGroup = new LaserGroup(scene, this.getShootDmg());
-        console.log("player scene:" + scene.allEnemies);
         scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
             this.handleMelee(_, enemy)
         })
