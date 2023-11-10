@@ -12,11 +12,14 @@ export class SkeletonArcher extends Enemy {
     this.setVision(100);
     this.setMeleeDamage(1);
     this.setRangeDamage(5);
+
+    this.on('animationcomplete', this.handleCompleteAnims, this);
+    this.on('animationstop', this.handleStoppedAnims, this);
+    
   }
 
   update(player, graphics, line) {
-    // this.on('animationcomplete', this.handleCompleteAnims);
-    // this.on('animationstop', this.handleStoppedAnims);
+
 
     const distance = this.checkDistance(player, graphics, line)
 

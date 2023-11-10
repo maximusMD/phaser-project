@@ -79,6 +79,15 @@ export class Enemy extends Actor {
     }
   }
 
+  handleCompleteAnims(e) {
+    // console.log('completed', e)
+
+  }
+
+  handleStoppedAnims(e) {
+    // console.log('stopped: ', e)
+  }
+
   // moveAndIdle(direction, numTiles, walkKey, idleKey) {
   //   this.play(walkKey, true);
 
