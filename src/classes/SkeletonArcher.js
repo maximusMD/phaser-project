@@ -2,7 +2,6 @@ import { Actor } from "./Actor";
 import { Enemy } from "./Enemy";
 
 export class SkeletonArcher extends Enemy {
-
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
     this.shoot = false;
@@ -35,7 +34,15 @@ export class SkeletonArcher extends Enemy {
     // console.log(e.key)
   }
 
+  getArrows() {
+    console.log("Need arrows")
+    this.arrows = true;
+  }
+  
   update(player, graphics, line) {
+    if (!this.arrows) {
+      this.getArrows();
+    }
 
     this.on('animationcomplete', this.handleCompleteAnims);
     this.on('animationstop', this.handleStoppedAnims);

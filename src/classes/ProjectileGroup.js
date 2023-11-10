@@ -88,5 +88,18 @@ export class ArrowGroup extends Phaser.Physics.Arcade.Group {
         })
 
     }
-
+    fireArrow(x, y, direction, arrowDamage) {
+        const arrow = this.getFirstDead(false);
+        if (arrow) {
+            arrow.fire(x, y, direction, arrowDamage);
+        }
+    }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
+            this.setActive(false);
+            this.setVisible(false);
+            this.setHasHit(false);
+        }
+    }
 }
