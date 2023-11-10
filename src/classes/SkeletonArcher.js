@@ -27,7 +27,7 @@ export class SkeletonArcher extends Enemy {
     }
 
     if (this.shoot) {
-      this.stopWandering();
+      // this.stopWandering();
       this.facePlayer(player, this)
       if (this.checkOverlap(player)) {
         this.handleMelee('skeleton_archer_melee_2',20);
@@ -36,8 +36,9 @@ export class SkeletonArcher extends Enemy {
 
       }
     } else {
-      // this.anims.play('skeleton_archer_idle', true)
-      this.wander();
+      this.anims.play('skeleton_archer_idle', true)
+      // this.moveAndIdle('left', 2, 'skeleton_archer_walk', 'skeleton_archer_idle');
+      // this.wander();
       // this.anims.play('skeleton_archer_idle', true);
       // if(this.body.onFloor()) {
       //   // check x position and plus and minus to get wander effect

@@ -79,38 +79,51 @@ export class Enemy extends Actor {
     }
   }
 
-  wander() {
-    this.setVelocityX(this.getWalkSpeed())
-    this.anims.play('skeleton_archer_walk', true)
-    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-      console.log(this.anims)
-      this.setVelocityX(0);
-      this.anims.play('skeleton_archer_idle', true)
-      // if (this.anims.currentFrame.index === this.anims.currentAnims.frames.length) {
-      //   this.setFlipX(false)
-      //   this.setVelocityX(-this.getWalkSpeed())
-      //   this.anims.chain('skeleton_archer_walk')
-      // }
-    }
-    
-  }
+  // moveAndIdle(direction, numTiles, walkKey, idleKey) {
+  //   this.play(walkKey, true);
 
-  stopWandering() {
-    this.setIsWandering(false);
-    this.setVelocityX(0);
-  }
+  //   const tileSize = 16;
+  //   const distance = tileSize * numTiles;
+  //   const tweenConfig = {
+  //     targets: this,
+  //     x: this.x + (direction === 'left' ? -distance : distance),
+  //     ease: 'Linear',
+  //     duration: 1000,
+      
+  //     onComplete: () => {
+  //       this.play(idleKey, true);
+  //     },
+      
+  //   }
+  //   this.scene.tweens.add(tweenConfig)
+  // }
+
+  // wander() {
+  //   this.setVelocityX(this.getWalkSpeed())
+  //   this.anims.play('skeleton_archer_walk', true)
+  //   if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+  //     console.log(this.anims)
+  //     this.setVelocityX(0);
+  //     this.anims.play('skeleton_archer_idle', true)
+  //     // if (this.anims.currentFrame.index === this.anims.currentAnims.frames.length) {
+  //     //   this.setFlipX(false)
+  //     //   this.setVelocityX(-this.getWalkSpeed())
+  //     //   this.anims.chain('skeleton_archer_walk')
+  //     // }
+  //   }
+  // }
+
+  // stopWandering() {
+  //   this.setIsWandering(false);
+  //   this.setVelocityX(0);
+  // }
 
   checkDistance(player, graphics, line) {
-    // graphics.clear();
 
-    // graphics.lineStyle(2, 0xff0000);
-    // graphics.strokeLineShape(line);
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 
   damageToPlayer(player, damage, chance = 0) {
-    console.log(player)
-    console.log(this);
     const chanceToHit = Math.random(0, 1);
     if (chanceToHit < chance / 100) {
       player.setHP(0)
