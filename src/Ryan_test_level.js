@@ -36,6 +36,8 @@ import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
 import dungeon_sky from "./assets/backgrounds/sky_layer.png"
 
+import sceneMusic from './assets/menuMusic.wav';
+
 export class RyanLevel extends Phaser.Scene {
     #backGrounds = [];
     constructor() {
@@ -91,6 +93,8 @@ export class RyanLevel extends Phaser.Scene {
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
+
+        this.load.audio('sceneMusic', sceneMusic);
 
     }
 
@@ -206,12 +210,18 @@ export class RyanLevel extends Phaser.Scene {
             this.enemy6.getBody().y,
             this.player.getBody().x,
             this.player.getBody().y
-        )
+        )7
+      
+        const sceneMusic = this.sound.add('sceneMusic');
+        if (!sceneMusic.isPlaying) {
+            sceneMusic.play();
+        }
 
-        this.allSprites = this.children.list.filter(x => x instanceof Actor)
-        this.pauseHandler = handlePause(this, this.allSprites);
-        this.weather.setWindSpeed(-100);
-        this.weather.addRain();
+      this.allSprites = this.children.list.filter(x => x instanceof Actor)
+      this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+      this.weather.setWindSpeed(-100);
+       this.weather.addRain();
+
 
     }
 
