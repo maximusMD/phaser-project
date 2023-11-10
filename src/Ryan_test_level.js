@@ -221,10 +221,7 @@ export class RyanLevel extends Phaser.Scene {
       this.weather.setWindSpeed(-100);
        this.weather.addRain();
 
-      const hudScene = new HUDScene();
-      this.pauseHandler = handlePause(this, sceneMusic, hudScene);
-
-
+      this.pauseHandler = handlePause(this, sceneMusic);
     }
 
     update() {

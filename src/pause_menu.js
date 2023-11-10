@@ -134,8 +134,10 @@ export class PauseMenuScene extends Phaser.Scene {
 
 	handleMainMenu() {
 		this.music.stop();
-		this.scene.stop('RyanLevel');
-		this.scene.stop('PauseMenuScene');
+		const scenesToStop = ['RyanLevel', 'HUDScene', 'PauseMenuScene'];
+		scenesToStop.forEach((sceneKey) => {
+			this.scene.stop(sceneKey);
+		});
 		this.scene.start('MenuScene');
 	}
 }

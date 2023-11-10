@@ -1,4 +1,4 @@
-export function handlePause(scene, music, hud) {
+export function handlePause(scene, music) {
 	let isPaused = false;
 	const characters = scene.allSprites;
 	const weather = scene.weather;
