@@ -52,6 +52,7 @@ export class Enemy extends Actor {
 
   setIsDead() {
     this.#isDead = !this.#isDead;
+    // update playerscore upon death
   }
 
   setVision(visionRange) {
@@ -79,56 +80,41 @@ export class Enemy extends Actor {
     }
   }
 
-  handleCompleteAnims(e) {
-    // console.log('completed', e)
+  wander(numTiles, walkKey, idleKey) {
+    const distance = 16 * numTiles;
 
+    
+    if(!this.startPos) {
+      this.startPos = this.getBody().x;
+
+      this.anims.play(walkKey, true)
+      this.setVelocityX(this.getWalkSpeed());
+
+      if (this.getBody().velocity.x < 0) {
+        this.setFlipX(true);
+      } else if (this.getBody().velocity.x > 0) {
+        this.setFlipX(false)
+      }
+
+      this.setIsWandering(false);  
+    }
+
+    const distanceTravelled = Math.abs(this.getBody().x - this.startPos);
+
+    if (distanceTravelled >= distance) {
+      this.setVelocityX(0);
+      this.setIsWandering(false);
+    }
+
+    this.startPos = undefined;
   }
 
-  handleStoppedAnims(e) {
-    // console.log('stopped: ', e)
+  stopWandering() {
+    this.setIsWandering(false);
+    this.setVelocityX(0);
   }
-
-  // moveAndIdle(direction, numTiles, walkKey, idleKey) {
-  //   this.play(walkKey, true);
-
-  //   const tileSize = 16;
-  //   const distance = tileSize * numTiles;
-  //   const tweenConfig = {
-  //     targets: this,
-  //     x: this.x + (direction === 'left' ? -distance : distance),
-  //     ease: 'Linear',
-  //     duration: 1000,
-      
-  //     onComplete: () => {
-  //       this.play(idleKey, true);
-  //     },
-      
-  //   }
-  //   this.scene.tweens.add(tweenConfig)
-  // }
-
-  // wander() {
-  //   this.setVelocityX(this.getWalkSpeed())
-  //   this.anims.play('skeleton_archer_walk', true)
-  //   if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-  //     console.log(this.anims)
-  //     this.setVelocityX(0);
-  //     this.anims.play('skeleton_archer_idle', true)
-  //     // if (this.anims.currentFrame.index === this.anims.currentAnims.frames.length) {
-  //     //   this.setFlipX(false)
-  //     //   this.setVelocityX(-this.getWalkSpeed())
-  //     //   this.anims.chain('skeleton_archer_walk')
-  //     // }
-  //   }
-  // }
-
-  // stopWandering() {
-  //   this.setIsWandering(false);
-  //   this.setVelocityX(0);
-  // }
 
   checkDistance(player, graphics, line) {
-
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 
