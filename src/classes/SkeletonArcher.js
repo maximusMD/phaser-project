@@ -15,8 +15,8 @@ export class SkeletonArcher extends Enemy {
   }
 
   update(player, graphics, line) {
-
-
+    // this.on('animationcomplete', this.handleCompleteAnims);
+    // this.on('animationstop', this.handleStoppedAnims);
 
     const distance = this.checkDistance(player, graphics, line)
 
@@ -29,22 +29,22 @@ export class SkeletonArcher extends Enemy {
     if (this.shoot) {
       this.stopWandering();
       this.facePlayer(player, this)
-      if (distance < 50) {
-        this.anims.play('skeleton_archer_melee_2', true)
-        this.handleMelee(20);
+      if (this.checkOverlap(player)) {
+        this.handleMelee('skeleton_archer_melee_2',20);
       } else {
-        this.anims.play('skeleton_archer_attack_1', true)
-        this.handleRanged(15)
-        console.log()
+        this.handleRanged('skeleton_archer_attack_1',15)
+
       }
     } else {
+      // this.anims.play('skeleton_archer_idle', true)
+      this.wander();
       // this.anims.play('skeleton_archer_idle', true);
-      if(this.body.onFloor()) {
-        // check x position and plus and minus to get wander effect
-        this.wander();
-      } else {
-        this.stopWandering();
-      }
+      // if(this.body.onFloor()) {
+      //   // check x position and plus and minus to get wander effect
+      //   this.wander();
+      // } else {
+      //   this.stopWandering();
+      // }
     }
 
   }
