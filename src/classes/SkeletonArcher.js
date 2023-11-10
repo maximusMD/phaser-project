@@ -10,58 +10,45 @@ export class SkeletonArcher extends Enemy {
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
     this.setVision(100);
+    this.setMeleeDamage(1);
+    this.setRangeDamage(5);
 
-  }
-
-  checkDistance(player, graphics, line) {
-    graphics.clear();
-
-    graphics.lineStyle(2, 0xff0000);
-    graphics.strokeLineShape(line);
-    return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
-  }
-
-  damageToPlayer(player, damage, chance = 0) {
-    const chanceToHit = Math.random()
-    if (chanceToHit < chance / 100) {
-      player.setHP(0)
-      // console.log("not taken damage: ", player.getHP())
-    } else {
-      player.setHP(damage);
-      // console.log("taken damage: ", player.getHP())
-    }
+    this.on('animationcomplete', this.handleCompleteAnims, this);
+    this.on('animationstop', this.handleStoppedAnims, this);
+    
   }
 
   update(player, graphics, line) {
+
 
     const distance = this.checkDistance(player, graphics, line)
 
     if (distance <= this.getVision()) {
       this.shoot = true;
-
-      line.setTo(
-        this.getBody().x,
-        this.getBody().y,
-        player.getBody().x,
-        player.getBody().y
-      );
     } else {
-      graphics.clear();
       this.shoot = false;
     }
 
     if (this.shoot) {
+      // this.stopWandering();
       this.facePlayer(player, this)
-      if (distance < 50) {
-        this.anims.play('skeleton_archer_melee_2', true)
-        if (this.anims.currentFrame.index === 4) {
-          this.damageToPlayer(player, 1, 20);
-        }
+      if (this.checkOverlap(player)) {
+        this.handleMelee('skeleton_archer_melee_2',20);
       } else {
-        this.anims.play('skeleton_archer_attack_1', true)
+        this.handleRanged('skeleton_archer_attack_1',15)
+
       }
     } else {
-      this.anims.play('skeleton_archer_idle', true);
+      this.anims.play('skeleton_archer_idle', true)
+      // this.moveAndIdle('left', 2, 'skeleton_archer_walk', 'skeleton_archer_idle');
+      // this.wander();
+      // this.anims.play('skeleton_archer_idle', true);
+      // if(this.body.onFloor()) {
+      //   // check x position and plus and minus to get wander effect
+      //   this.wander();
+      // } else {
+      //   this.stopWandering();
+      // }
     }
 
   }
