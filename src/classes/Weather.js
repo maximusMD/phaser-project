@@ -25,6 +25,7 @@ export class Weather {
             this.#rainSpeed = speed;
         }
     }
+    // Pause test
 
     getRainSpeed() {
         return this.#rainSpeed;
@@ -77,7 +78,7 @@ export class Weather {
                 scale: { min: 0.5, max: 1.5 },
                 angle: { min: 0, max: 360, random: true },
                 gravityY: 0,
-                alpha: {start: 0.05, end: 0, ease: "ease-in"},
+                alpha: { start: 0.05, end: 0, ease: "ease-in" },
                 maxAliveParticles: this.getFogDensity(),
                 lifespan: { min: 1000, max: 10000 },
                 frequency: 30,
@@ -92,7 +93,7 @@ export class Weather {
                 scale: { min: 0.5, max: 1.5 },
                 angle: { min: 0, max: 360 },
                 gravityY: 0,
-                alpha: {min: 0.05, max: 0.5},
+                alpha: { min: 0.05, max: 0.5 },
                 maxAliveParticles: this.getFogDensity(),
                 lifespan: { min: 5000, max: 10000 },
                 frequency: 10,
@@ -146,6 +147,18 @@ export class Weather {
         if (this.scene.rain_emitter) {
             this.scene.rain_emitter?.destroy();
         }
+    }
+
+    pause() {
+        this.scene.rain_emitter?.pause()
+        this.scene.fog_background?.pause()
+        this.scene.fog_foreground?.pause()
+    }
+
+    resume() {
+        this.scene.rain_emitter?.resume()
+        this.scene.fog_background?.resume()
+        this.scene.fog_foreground?.resume()
     }
 
     update() {
