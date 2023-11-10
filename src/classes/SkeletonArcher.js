@@ -13,43 +13,54 @@ export class SkeletonArcher extends Enemy {
     this.setMeleeDamage(1);
     this.setRangeDamage(5);
 
-    this.on('animationcomplete', this.handleCompleteAnims, this);
-    this.on('animationstop', this.handleStoppedAnims, this);
-    
+    this.scene = scene;
+  }
+
+
+  handleCompleteAnims(e) {
+    if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false) {
+      this.anims.play('skeleton_archer_idle', true);
+      this.setFlipX(!this.flipX)
+      this.setWalkSpeed(-1*this.getWalkSpeed());
+      
+      this.scene.time.delayedCall(2000, () => {
+        this.startPos = undefined;
+        this.setIsWandering(true);
+        this.shoot = false;
+      });
+    }
+  }
+
+  handleStoppedAnims(e) {
+    // console.log(e.key)
   }
 
   update(player, graphics, line) {
 
+    this.on('animationcomplete', this.handleCompleteAnims);
+    this.on('animationstop', this.handleStoppedAnims);
 
     const distance = this.checkDistance(player, graphics, line)
 
     if (distance <= this.getVision()) {
       this.shoot = true;
+      this.stopWandering();
     } else {
       this.shoot = false;
+      this.setIsWandering(true);
     }
-
+    
     if (this.shoot) {
-      // this.stopWandering();
       this.facePlayer(player, this)
       if (this.checkOverlap(player)) {
-        this.handleMelee('skeleton_archer_melee_2',20);
+        this.handleMelee('skeleton_archer_melee_2', 20);
       } else {
-        this.handleRanged('skeleton_archer_attack_1',15)
-
+        this.handleRanged('skeleton_archer_attack_1', 15)
       }
     } else {
-      this.anims.play('skeleton_archer_idle', true)
-      // this.moveAndIdle('left', 2, 'skeleton_archer_walk', 'skeleton_archer_idle');
-      // this.wander();
-      // this.anims.play('skeleton_archer_idle', true);
-      // if(this.body.onFloor()) {
-      //   // check x position and plus and minus to get wander effect
-      //   this.wander();
-      // } else {
-      //   this.stopWandering();
-      // }
+      if (this.getIsWandering()) {
+        this.wander(3, 'skeleton_archer_walk', 'skeleton_archer_idle');
+      }
     }
-
   }
 }

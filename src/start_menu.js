@@ -51,7 +51,7 @@ export class MenuScene extends Phaser.Scene {
         });
 
         const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
-            console.log('Leaderboard');
+            this.stopMenuMusicAndStartScene('LeaderboardScene');
         });
         const lbScaleFactor = gameWidth / lb.width; 
         lb.setScale(lbScaleFactor * 0.229)
