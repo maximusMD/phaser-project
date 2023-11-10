@@ -210,7 +210,7 @@ export class RyanLevel extends Phaser.Scene {
             this.enemy6.getBody().y,
             this.player.getBody().x,
             this.player.getBody().y
-        )7
+        )
       
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
