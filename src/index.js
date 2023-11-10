@@ -9,6 +9,7 @@ import { PauseMenuScene } from './pause_menu';
 import { AboutScene } from './about';
 import { HUDScene } from './hud';
 import { ControlsScene } from './controls';
+import { LeaderboardScene } from './leaderboard';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {
@@ -28,7 +29,7 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene],
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene],
     render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
