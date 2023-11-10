@@ -71,7 +71,7 @@ export class OptionsScene extends Phaser.Scene {
         logout.setScale(logoutScaleFactor * 0.19)
 
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
-            this.openCred()
+            this.handleCredits()
         });
         const creditsScaleFactor = gameWidth / credits.width; 
         credits.setScale(creditsScaleFactor * 0.1835)
@@ -103,6 +103,10 @@ export class OptionsScene extends Phaser.Scene {
 
     handleControls() {
         this.scene.start('ControlsScene')
+    }
+
+    handleCredits() {
+        this.scene.start('CreditsScene')
     }
 
     handleMain() {
