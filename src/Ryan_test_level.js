@@ -217,10 +217,10 @@ export class RyanLevel extends Phaser.Scene {
             sceneMusic.play();
         }
 
-      this.allSprites = this.children.list.filter(x => x instanceof Actor)
-      this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
-      this.weather.setWindSpeed(-100);
-       this.weather.addRain();
+        this.allSprites = this.children.list.filter(x => x instanceof Actor)
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
+        this.pauseHandler = handlePause(this, sceneMusic);
 
 
     }

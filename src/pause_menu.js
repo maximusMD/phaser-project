@@ -1,3 +1,5 @@
+// pauseMenuScene.js
+
 import pauseMenuImg from './assets/menu_buttons/pause-menu.png';
 import musicImg from './assets/menu_buttons/music.png';
 import sfxImg from './assets/menu_buttons/sfx.png';
@@ -62,13 +64,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgMusic.setScale(1.5);
 
 		onImgMusic.on('pointerdown', () => {
-			this.music.setMute(false);
-			this.isMusicPlaying = true;
+			this.toggleMusic(false);
 		});
 
 		offImgMusic.on('pointerdown', () => {
-			this.music.setMute(true);
-			this.isMusicPlaying = false;
+			this.toggleMusic(true);
 		});
 
 		// sfx music
@@ -76,11 +76,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
 
-		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg');
+		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg').setInteractive();
 		onImgSfx.setOrigin(0.5, 0.5);
 		onImgSfx.setScale(1.5);
 
-		const offImgSfx = this.add.image(centerX + 300, centerY - 30, 'offImg');
+		const offImgSfx = this.add.image(centerX + 300, centerY - 30, 'offImg').setInteractive();
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
@@ -100,13 +100,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setScale(1.5);
 
 		onWeatherImg.on('pointerdown', () => {
-			this.music.setMute(false);
-			this.isMusicPlaying = true;
+			this.toggleMusic(false);
 		});
 
 		offWeatherImg.on('pointerdown', () => {
-			this.music.setMute(true);
-			this.isMusicPlaying = false;
+			this.toggleMusic(true);
 		});
 
 		// resume image
@@ -126,10 +124,20 @@ export class PauseMenuScene extends Phaser.Scene {
 		mainMenuImg1.setScale(1.5);
 
 		mainMenuImg1.on('pointerdown', () => {
-			this.music.stop();
-			this.scene.stop('RyanLevel');
-			this.scene.stop('PauseMenuScene');
-			this.scene.start('MenuScene');
+			console.log(this.scene);
+			this.handleMainMenu();
 		});
+	}
+
+	toggleMusic(mute) {
+		this.music.setMute(mute);
+		this.isMusicPlaying = !mute;
+	}
+
+	handleMainMenu() {
+		this.music.stop();
+		this.scene.stop('RyanLevel');
+		this.scene.stop('PauseMenuScene');
+		this.scene.start('MenuScene');
 	}
 }

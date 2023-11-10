@@ -1,51 +1,59 @@
-export function handlePause(scene, characters, music) {
+export function handlePause(scene, music) {
 	let isPaused = false;
-
+	const characters = scene.allSprites;
+	const weather = scene.weather;
+  
 	function pause() {
+	  if (!isPaused) {
 		scene.physics.pause();
-		characters.forEach((actor) => {
-			actor.setActive(false);
+		characters.forEach((character) => {
+		  character.setActive(false);
 		});
+		// weather.pause();
 
 		isPaused = true;
 		showPauseMenu();
+	  }
 	}
-
+  
 	function resume() {
+	  if (isPaused) {
 		scene.physics.resume();
-		characters.forEach((actor) => {
-			actor.setActive(true);
+		characters.forEach((character) => {
+		  character.setActive(true);
 		});
-
+		// weather.resume();
 		isPaused = false;
 		hidePauseMenu();
+	  }
 	}
-
+  
 	function showPauseMenu() {
-		if (!scene.scene.isActive('PauseMenuScene')) {
-			scene.scene.run('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
-		}
+	  if (!scene.scene.isActive('PauseMenuScene')) {
+		scene.scene.launch('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
+	  }
 	}
-
+  
 	function hidePauseMenu() {
-		if (scene.scene.isActive('PauseMenuScene')) {
-			scene.scene.stop('PauseMenuScene');
-		}
+	  if (scene.scene.isActive('PauseMenuScene')) {
+		scene.scene.stop('PauseMenuScene');
+	  }
 	}
-
+  
 	scene.input.keyboard.on('keydown-P', () => {
-		togglePause();
+	  togglePause();
 	});
-
+  
 	function togglePause() {
-		if (isPaused) {
-			resume();
-		} else {
-			pause();
-		}
+	  if (isPaused) {
+		resume();
+	  } else {
+		pause();
+	  }
 	}
-
+  
 	return {
-		togglePause,
+	  togglePause,
 	};
-}
+  }
+  
