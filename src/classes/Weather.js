@@ -75,10 +75,10 @@ export class Weather {
     addFog() {
         if (this.#enabled) {
             this.scene.fog_foreground = this.scene.add.particles(-10, 150, 'fog', {
-                scale: { min: 0.5, max: 1.5 },
+                scale: { min: 0.5, max: 1. },
                 angle: { min: 0, max: 360, random: true },
                 gravityY: 0,
-                alpha: { start: 0.05, end: 0, ease: "ease-in" },
+                alpha: { start: 0, end: 1, steps: 5, yoyo: true},
                 maxAliveParticles: this.getFogDensity(),
                 lifespan: { min: 1000, max: 10000 },
                 frequency: 30,
@@ -93,7 +93,7 @@ export class Weather {
                 scale: { min: 0.5, max: 1.5 },
                 angle: { min: 0, max: 360 },
                 gravityY: 0,
-                alpha: { min: 0.05, max: 0.5 },
+                alpha: { min: 0.05, max: 0.3 },
                 maxAliveParticles: this.getFogDensity(),
                 lifespan: { min: 5000, max: 10000 },
                 frequency: 10,
@@ -167,5 +167,11 @@ export class Weather {
                 this.scene.rain_zone.centerX = this.scene.player.getBody().x;
             }
         }
+        this.scene.fog_foreground.forEachAlive((particle) => {
+            console.log(particle.life)
+            console.log(particle.lifeCurrent)
+            const particleAlphaValue = Math.abs(Math.sin(particle.lifeCurrent / particle.life));
+            particle.setAlpha(particleAlphaValue);
+        });
     }
 }
