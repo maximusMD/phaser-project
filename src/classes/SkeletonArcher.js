@@ -20,10 +20,13 @@ export class SkeletonArcher extends Enemy {
   handleCompleteAnims(e) {
     if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false) {
       this.anims.play('skeleton_archer_idle', true);
-
+      this.setFlipX(!this.flipX)
+      this.setWalkSpeed(-1*this.getWalkSpeed());
+      
       this.scene.time.delayedCall(2000, () => {
-        this.postx = undefined;
+        this.startPos = undefined;
         this.setIsWandering(true);
+        this.shoot = false;
       });
     }
   }
@@ -41,10 +44,12 @@ export class SkeletonArcher extends Enemy {
 
     if (distance <= this.getVision()) {
       this.shoot = true;
+      this.stopWandering();
     } else {
       this.shoot = false;
+      this.setIsWandering(true);
     }
-
+    
     if (this.shoot) {
       this.facePlayer(player, this)
       if (this.checkOverlap(player)) {
@@ -54,7 +59,7 @@ export class SkeletonArcher extends Enemy {
       }
     } else {
       if (this.getIsWandering()) {
-        this.wander(2, 'skeleton_archer_walk', 'skeleton_archer_idle');
+        this.wander(3, 'skeleton_archer_walk', 'skeleton_archer_idle');
       }
     }
   }

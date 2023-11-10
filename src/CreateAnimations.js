@@ -184,7 +184,7 @@ export function createAnimations(scene) {
       end: 8
     }),
     frameRate: 10,
-    repeat: 5
+    repeat: 0
   })
 
 

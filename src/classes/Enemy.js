@@ -52,6 +52,7 @@ export class Enemy extends Actor {
 
   setIsDead() {
     this.#isDead = !this.#isDead;
+    // update playerscore upon death
   }
 
   setVision(visionRange) {
@@ -79,47 +80,41 @@ export class Enemy extends Actor {
     }
   }
 
-
-
-  // moveAndIdle(direction, numTiles, walkKey, idleKey) {
-  //   this.play(walkKey, true);
-
-  //   const tileSize = 16;
-  //   const distance = tileSize * numTiles;
-  //   const tweenConfig = {
-  //     targets: this,
-  //     x: this.x + (direction === 'left' ? -distance : distance),
-  //     ease: 'Linear',
-  //     duration: 1000,
-      
-  //     onComplete: () => {
-  //       this.play(idleKey, true);
-  //     },
-      
-  //   }
-  //   this.scene.tweens.add(tweenConfig)
-  // }
-
   wander(numTiles, walkKey, idleKey) {
-    const distance = 2 * numTiles;
+    const distance = 16 * numTiles;
 
-    this.anims.play(walkKey, true)
-    this.setVelocityX(this.getWalkSpeed());
     
-    if(this.body.x === 320) {
-      // console.log(this.body.x);
+    if(!this.startPos) {
+      this.startPos = this.getBody().x;
+
+      this.anims.play(walkKey, true)
+      this.setVelocityX(this.getWalkSpeed());
+
+      if (this.getBody().velocity.x < 0) {
+        this.setFlipX(true);
+      } else if (this.getBody().velocity.x > 0) {
+        this.setFlipX(false)
+      }
+
+      this.setIsWandering(false);  
+    }
+
+    const distanceTravelled = Math.abs(this.getBody().x - this.startPos);
+
+    if (distanceTravelled >= distance) {
       this.setVelocityX(0);
       this.setIsWandering(false);
     }
+
+    this.startPos = undefined;
   }
 
-  // stopWandering() {
-  //   this.setIsWandering(false);
-  //   this.setVelocityX(0);
-  // }
+  stopWandering() {
+    this.setIsWandering(false);
+    this.setVelocityX(0);
+  }
 
   checkDistance(player, graphics, line) {
-
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 
