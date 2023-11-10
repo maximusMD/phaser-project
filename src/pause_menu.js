@@ -13,6 +13,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		});
 	}
 
+	init(data) {
+		this.music = data.music;
+		this.isMusicPlaying = data.isMusicPlaying;
+	}
+
 	preload() {
 		this.load.image('pauseMenuBg', 'assets/bg.png');
 		this.load.image('pauseMenuImg', pauseMenuImg);
@@ -21,7 +26,7 @@ export class PauseMenuScene extends Phaser.Scene {
 		this.load.image('onImg', onImg);
 		this.load.image('offImg', offImg);
 		this.load.image('resumeMenuImg', resumeMenuImg);
-        this.load.image('pImg', pImg);
+		this.load.image('pImg', pImg);
 	}
 
 	create() {
@@ -37,7 +42,7 @@ export class PauseMenuScene extends Phaser.Scene {
 		pauseMenuImg.setOrigin(0.5, 0.5);
 		pauseMenuImg.setScale(2.0);
 
-		const musicImg = this.add.image(centerX - 250, centerY -120, 'musicImg');
+		const musicImg = this.add.image(centerX - 250, centerY - 120, 'musicImg');
 		musicImg.setOrigin(0.5, 0.5);
 		musicImg.setScale(1.5);
 
@@ -45,13 +50,25 @@ export class PauseMenuScene extends Phaser.Scene {
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
 
-		const onImgMusic = this.add.image(centerX + 150, centerY -120, 'onImg');
+		const onImgMusic = this.add.image(centerX + 150, centerY - 120, 'onImg').setInteractive();
 		onImgMusic.setOrigin(0.5, 0.5);
 		onImgMusic.setScale(1.5);
+		onImgMusic.setInteractive();
 
-		const offImgMusic = this.add.image(centerX + 300, centerY -120, 'offImg');
+		const offImgMusic = this.add.image(centerX + 300, centerY - 120, 'offImg').setInteractive();
 		offImgMusic.setOrigin(0.5, 0.5);
 		offImgMusic.setScale(1.5);
+		offImgMusic.setInteractive();
+
+		onImgMusic.on('pointerdown', () => {
+			this.music.setMute(false);
+			this.isMusicPlaying = true;
+		});
+
+		offImgMusic.on('pointerdown', () => {
+			this.music.setMute(true);
+			this.isMusicPlaying = false;
+		});
 
 		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg');
 		onImgSfx.setOrigin(0.5, 0.5);
@@ -65,7 +82,7 @@ export class PauseMenuScene extends Phaser.Scene {
 		resumeMenuImg.setOrigin(0.5, 0.5);
 		resumeMenuImg.setScale(1.5);
 
-        const pImg = this.add.image(centerX + 180, centerY + 100, 'pImg');
+		const pImg = this.add.image(centerX + 180, centerY + 100, 'pImg');
 		pImg.setOrigin(0.5, 0.5);
 		pImg.setScale(2.5);
 	}

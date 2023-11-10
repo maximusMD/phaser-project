@@ -1,4 +1,4 @@
-export function handlePause(scene, characters) {
+export function handlePause(scene, characters, music) {
 	let isPaused = false;
 
 	function pause() {
@@ -23,7 +23,7 @@ export function handlePause(scene, characters) {
 
 	function showPauseMenu() {
 		if (!scene.scene.isActive('PauseMenuScene')) {
-			scene.scene.run('PauseMenuScene');
+			scene.scene.run('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
 		}
 	}
 
