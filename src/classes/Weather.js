@@ -78,7 +78,11 @@ export class Weather {
                 scale: { min: 0.5, max: 1. },
                 angle: { min: 0, max: 360, random: true },
                 gravityY: 0,
-                alpha: { start: 0, end: 1, steps: 5, yoyo: true},
+                alpha: {
+                    start: 0,
+                    end: 0.7,
+                    ease: (t) => 0.5 * Phaser.Math.Easing.Cubic.InOut(t > 0.5 ? 2 - 2 * t : 2 * t)
+                },
                 maxAliveParticles: this.getFogDensity(),
                 lifespan: { min: 1000, max: 10000 },
                 frequency: 30,
@@ -87,24 +91,27 @@ export class Weather {
                 speedX: { min: this.getWindSpeed() - 10, max: this.getWindSpeed() },
                 speeX: { min: -1, max: 5 },
                 follow: this.scene.player,
-                blendMode: 'ADD',
+                blendMode: 'LUMINOSITY',
             })
             this.scene.fog_background = this.scene.add.particles(-10, 150, 'fog', {
-                scale: { min: 0.5, max: 1.5 },
+                scale: { min: 0.3, max: 1.5 },
                 angle: { min: 0, max: 360 },
                 gravityY: 0,
-                alpha: { min: 0.05, max: 0.3 },
-                maxAliveParticles: this.getFogDensity(),
+                alpha: {
+                    start: 0.1,
+                    end: 0.5,
+                    ease: (t) => 0.5 * Phaser.Math.Easing.Cubic.InOut(t > 0.5 ? 2 - 2 * t : 2 * t)
+                },
+                maxAliveParticles: this.getFogDensity() * 3,
                 lifespan: { min: 5000, max: 10000 },
                 frequency: 10,
                 bounce: 0.05,
                 tint: 0x30373e,
-                speedX: { min: 0.2, max: this.getWindSpeed() / 10 },
-                speeX: { min: -1, max: 5 },
+                speedX: { min: -10, max: this.getWindSpeed() / 10 },
                 follow: this.scene.player,
-                blendMode: 'ADD',
+                blendMode: 'DARKEN',
             })
-            this.scene.fog_background.setDepth(-1)
+            this.scene.fog_background.setDepth(-2)
 
         }
         if (!this.scene.fog_zone) {
@@ -112,8 +119,8 @@ export class Weather {
             this.scene.fog_zone.centerX = this.scene.player.getBody().x;
             this.scene.fog_zone.centerY = this.scene.player.getBody().y;
         }
-        this.scene.fog_foreground.addEmitZone({ type: 'random', source: this.scene.fog_zone, seamless: true })
-        this.scene.fog_background.addEmitZone({ type: 'random', source: this.scene.fog_zone, seamless: true })
+        this.scene.fog_foreground?.addEmitZone({ type: 'random', source: this.scene.fog_zone, seamless: true })
+        this.scene.fog_background?.addEmitZone({ type: 'random', source: this.scene.fog_zone, seamless: true })
     }
 
     removeFog() {
@@ -123,7 +130,7 @@ export class Weather {
 
     addRain() {
         if (this.#enabled) {
-            this.scene.rain_emitter = this.scene.add.particles(-10, -150, 'rain', {
+            this.scene.rain_foreground = this.scene.add.particles(-10, -150, 'rain', {
                 scale: 0.1,
                 gravityY: 300,
                 gravityX: this.getWindSpeed(),
@@ -131,32 +138,43 @@ export class Weather {
                 frequency: this.getRainFrequency(),
                 maxVelocityX: this.getRainSpeed(),
                 maxVelocityY: this.getRainSpeed(),
-                blendMode: 'ADD'
+                blendMode: 'LIGHTEN'
             })
+            this.scene.rain_background = this.scene.add.particles(-10, -150, 'rain', {
+                scale: 0.1,
+                gravityY: 200,
+                gravityX: this.getWindSpeed(),
+                lifespan: 5000,
+                frequency: this.getRainFrequency(),
+                maxVelocityX: this.getRainSpeed(),
+                maxVelocityY: this.getRainSpeed(),
+                alpha: 0.8,
+            })
+            this.scene.rain_background.setDepth(-2)
             if (!this.scene.rain_zone) {
                 this.scene.rain_zone = new Phaser.Geom.Rectangle(0, 0, this.scene.scale.width, 10)
                 this.scene.rain_zone.centerX = this.scene.player.getBody().x;
             }
 
-            this.scene.rain_emitter.addEmitZone({ type: 'random', source: this.scene.rain_zone })
+            this.scene.rain_foreground?.addEmitZone({ type: 'random', source: this.scene.rain_zone })
+            this.scene.rain_background?.addEmitZone({ type: 'random', source: this.scene.rain_zone, seamless: true})
 
         }
     }
 
     removeRain() {
-        if (this.scene.rain_emitter) {
-            this.scene.rain_emitter?.destroy();
-        }
+            this.scene.rain_foreground?.destroy();
+            this.scene.rain_background?.destroy();
     }
 
     pause() {
-        this.scene.rain_emitter?.pause()
+        this.scene.rain_foreground?.pause()
         this.scene.fog_background?.pause()
         this.scene.fog_foreground?.pause()
     }
 
     resume() {
-        this.scene.rain_emitter?.resume()
+        this.scene.rain_foreground?.resume()
         this.scene.fog_background?.resume()
         this.scene.fog_foreground?.resume()
     }
@@ -167,11 +185,5 @@ export class Weather {
                 this.scene.rain_zone.centerX = this.scene.player.getBody().x;
             }
         }
-        this.scene.fog_foreground.forEachAlive((particle) => {
-            console.log(particle.life)
-            console.log(particle.lifeCurrent)
-            const particleAlphaValue = Math.abs(Math.sin(particle.lifeCurrent / particle.life));
-            particle.setAlpha(particleAlphaValue);
-        });
     }
 }
