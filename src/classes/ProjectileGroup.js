@@ -4,19 +4,19 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
         this.scene = scene;
-        
+
         // ---- 
         // Maybe change this to ammo size of player instance
         // or deal with ammo and reload seperate. TBD
 
         this.createMultiple({
             classType: Laser,
-            frameQuantity: 30, 
+            frameQuantity: 30,
             active: false,
             visible: false,
             key: "laser",
         })
-    
+
     }
 
     fireLaser(x, y, direction, laserDamage) {
@@ -25,8 +25,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
         if (laser) {
             laser.fire(x, y, direction, laserDamage);
         }
-    }   
-
+    }
 }
 
 export class Laser extends Phaser.Physics.Arcade.Sprite {
@@ -54,7 +53,7 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
         this.body.reset(x, y);
 
         this.setScale(0.2);
-        this.body.setAllowGravity(false);   
+        this.body.setAllowGravity(false);
         this.angle = 90;
 
         this.setActive(true);
@@ -63,10 +62,31 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
-        if (!this.scene.cameras.main.worldView.contains(this.body.x,this.body.y)) {
+        if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
             this.setActive(false);
             this.setVisible(false);
             this.setHasHit(false);
         }
     }
+}
+
+export class ArrowGroup extends Phaser.Physics.Arcade.Group {
+    constructor(scene) {
+        super(scene.physics.world, scene);
+        this.scene = scene;
+
+        // ---- 
+        // Maybe change this to ammo size of player instance
+        // or deal with ammo and reload seperate. TBD
+
+        this.createMultiple({
+            classType: Arrow,
+            frameQuantity: 3,
+            active: false,
+            visible: false,
+            key: "arrow",
+        })
+
+    }
+
 }
