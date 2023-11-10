@@ -1,0 +1,2204 @@
+{
+	"textures": [
+		{
+			"image": "waifu_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1104,
+				"h": 510
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "waifu_idle-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 18,
+						"w": 57,
+						"h": 97
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 57,
+						"h": 97
+					}
+				},
+				{
+					"filename": "waifu_idle-30.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 27,
+						"w": 55,
+						"h": 97
+					},
+					"frame": {
+						"x": 60,
+						"y": 1,
+						"w": 55,
+						"h": 97
+					}
+				},
+				{
+					"filename": "waifu_idle-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 17,
+						"w": 59,
+						"h": 98
+					},
+					"frame": {
+						"x": 117,
+						"y": 1,
+						"w": 59,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 17,
+						"w": 55,
+						"h": 98
+					},
+					"frame": {
+						"x": 178,
+						"y": 1,
+						"w": 55,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 20,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 235,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-22.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 285,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-29.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 26,
+						"w": 57,
+						"h": 98
+					},
+					"frame": {
+						"x": 335,
+						"y": 1,
+						"w": 57,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-31.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 26,
+						"w": 55,
+						"h": 98
+					},
+					"frame": {
+						"x": 394,
+						"y": 1,
+						"w": 55,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_running-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 451,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_running-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 501,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_running-27.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 26,
+						"w": 49,
+						"h": 98
+					},
+					"frame": {
+						"x": 551,
+						"y": 1,
+						"w": 49,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_running-31.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 26,
+						"w": 49,
+						"h": 98
+					},
+					"frame": {
+						"x": 602,
+						"y": 1,
+						"w": 49,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 653,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 703,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 753,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 803,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-33.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 26,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 853,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-34.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 26,
+						"w": 49,
+						"h": 98
+					},
+					"frame": {
+						"x": 903,
+						"y": 1,
+						"w": 49,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-38.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 26,
+						"w": 48,
+						"h": 98
+					},
+					"frame": {
+						"x": 954,
+						"y": 1,
+						"w": 48,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_walking-39.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 26,
+						"w": 49,
+						"h": 98
+					},
+					"frame": {
+						"x": 1004,
+						"y": 1,
+						"w": 49,
+						"h": 98
+					}
+				},
+				{
+					"filename": "waifu_idle-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 1055,
+						"y": 1,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 53,
+						"h": 99
+					},
+					"frame": {
+						"x": 1,
+						"y": 100,
+						"w": 53,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 16,
+						"w": 57,
+						"h": 99
+					},
+					"frame": {
+						"x": 56,
+						"y": 100,
+						"w": 57,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 115,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-21.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 165,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-23.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 215,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-24.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 25,
+						"w": 57,
+						"h": 99
+					},
+					"frame": {
+						"x": 265,
+						"y": 101,
+						"w": 57,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-28.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 25,
+						"w": 59,
+						"h": 99
+					},
+					"frame": {
+						"x": 324,
+						"y": 101,
+						"w": 59,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 16,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 385,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 16,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 435,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 19,
+						"w": 49,
+						"h": 99
+					},
+					"frame": {
+						"x": 485,
+						"y": 101,
+						"w": 49,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 536,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-19.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 22,
+						"w": 49,
+						"h": 99
+					},
+					"frame": {
+						"x": 586,
+						"y": 101,
+						"w": 49,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-23.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 637,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-24.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 687,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_running-28.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 737,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 16,
+						"w": 56,
+						"h": 99
+					},
+					"frame": {
+						"x": 787,
+						"y": 101,
+						"w": 56,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 16,
+						"w": 49,
+						"h": 99
+					},
+					"frame": {
+						"x": 845,
+						"y": 101,
+						"w": 49,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 16,
+						"w": 56,
+						"h": 99
+					},
+					"frame": {
+						"x": 896,
+						"y": 101,
+						"w": 56,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 16,
+						"w": 49,
+						"h": 99
+					},
+					"frame": {
+						"x": 954,
+						"y": 101,
+						"w": 49,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 1005,
+						"y": 101,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 1055,
+						"y": 102,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-18.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 1,
+						"y": 201,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-19.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 19,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 51,
+						"y": 201,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-23.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 101,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-24.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 151,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-28.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 201,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-29.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 22,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 251,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-30.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 25,
+						"w": 58,
+						"h": 99
+					},
+					"frame": {
+						"x": 301,
+						"y": 202,
+						"w": 58,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-32.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 361,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-35.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 25,
+						"w": 58,
+						"h": 99
+					},
+					"frame": {
+						"x": 411,
+						"y": 202,
+						"w": 58,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_walking-37.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 25,
+						"w": 48,
+						"h": 99
+					},
+					"frame": {
+						"x": 471,
+						"y": 202,
+						"w": 48,
+						"h": 99
+					}
+				},
+				{
+					"filename": "waifu_idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 15,
+						"w": 53,
+						"h": 100
+					},
+					"frame": {
+						"x": 521,
+						"y": 202,
+						"w": 53,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 15,
+						"w": 55,
+						"h": 100
+					},
+					"frame": {
+						"x": 576,
+						"y": 202,
+						"w": 55,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 633,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 683,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 733,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-20.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 783,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-25.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 24,
+						"w": 57,
+						"h": 100
+					},
+					"frame": {
+						"x": 833,
+						"y": 202,
+						"w": 57,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-27.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 24,
+						"w": 59,
+						"h": 100
+					},
+					"frame": {
+						"x": 892,
+						"y": 202,
+						"w": 59,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 15,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 953,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 15,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 1003,
+						"y": 202,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 1053,
+						"y": 203,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 1,
+						"y": 302,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 51,
+						"y": 302,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-20.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 101,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-26.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 24,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 151,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_running-30.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 24,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 201,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 15,
+						"w": 55,
+						"h": 100
+					},
+					"frame": {
+						"x": 251,
+						"y": 303,
+						"w": 55,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 15,
+						"w": 55,
+						"h": 100
+					},
+					"frame": {
+						"x": 308,
+						"y": 303,
+						"w": 55,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 365,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-12.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 415,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-15.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 465,
+						"y": 303,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-17.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 18,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 515,
+						"y": 304,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-20.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 565,
+						"y": 304,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-22.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 615,
+						"y": 304,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-25.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 665,
+						"y": 304,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-27.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 21,
+						"w": 48,
+						"h": 100
+					},
+					"frame": {
+						"x": 715,
+						"y": 304,
+						"w": 48,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-31.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 24,
+						"w": 53,
+						"h": 100
+					},
+					"frame": {
+						"x": 765,
+						"y": 304,
+						"w": 53,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_walking-36.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 24,
+						"w": 53,
+						"h": 100
+					},
+					"frame": {
+						"x": 820,
+						"y": 304,
+						"w": 53,
+						"h": 100
+					}
+				},
+				{
+					"filename": "waifu_idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 14,
+						"w": 53,
+						"h": 101
+					},
+					"frame": {
+						"x": 875,
+						"y": 304,
+						"w": 53,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 930,
+						"y": 304,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 980,
+						"y": 304,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-17.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 20,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 1030,
+						"y": 305,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-19.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 20,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 1,
+						"y": 404,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_walking-11.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 51,
+						"y": 404,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-26.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 23,
+						"w": 57,
+						"h": 101
+					},
+					"frame": {
+						"x": 101,
+						"y": 405,
+						"w": 57,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 14,
+						"w": 51,
+						"h": 101
+					},
+					"frame": {
+						"x": 160,
+						"y": 405,
+						"w": 51,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 14,
+						"w": 51,
+						"h": 101
+					},
+					"frame": {
+						"x": 213,
+						"y": 405,
+						"w": 51,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 5,
+						"y": 17,
+						"w": 52,
+						"h": 101
+					},
+					"frame": {
+						"x": 266,
+						"y": 405,
+						"w": 52,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-14.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 17,
+						"w": 49,
+						"h": 101
+					},
+					"frame": {
+						"x": 320,
+						"y": 405,
+						"w": 49,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-18.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 20,
+						"w": 52,
+						"h": 101
+					},
+					"frame": {
+						"x": 371,
+						"y": 405,
+						"w": 52,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-22.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 20,
+						"w": 49,
+						"h": 101
+					},
+					"frame": {
+						"x": 425,
+						"y": 405,
+						"w": 49,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-25.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 23,
+						"w": 49,
+						"h": 101
+					},
+					"frame": {
+						"x": 476,
+						"y": 406,
+						"w": 49,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_running-29.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 23,
+						"w": 49,
+						"h": 101
+					},
+					"frame": {
+						"x": 527,
+						"y": 406,
+						"w": 49,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_walking-16.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 17,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 578,
+						"y": 406,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_walking-21.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 20,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 628,
+						"y": 406,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_walking-26.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 20,
+						"w": 48,
+						"h": 101
+					},
+					"frame": {
+						"x": 678,
+						"y": 406,
+						"w": 48,
+						"h": 101
+					}
+				},
+				{
+					"filename": "waifu_idle-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 16,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 728,
+						"y": 406,
+						"w": 48,
+						"h": 102
+					}
+				},
+				{
+					"filename": "waifu_idle-18.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 19,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 778,
+						"y": 406,
+						"w": 48,
+						"h": 102
+					}
+				},
+				{
+					"filename": "waifu_running-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 16,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 828,
+						"y": 407,
+						"w": 48,
+						"h": 102
+					}
+				},
+				{
+					"filename": "waifu_running-13.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 16,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 878,
+						"y": 407,
+						"w": 48,
+						"h": 102
+					}
+				},
+				{
+					"filename": "waifu_running-17.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 19,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 928,
+						"y": 407,
+						"w": 48,
+						"h": 102
+					}
+				},
+				{
+					"filename": "waifu_running-21.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 19,
+						"w": 48,
+						"h": 102
+					},
+					"frame": {
+						"x": 978,
+						"y": 407,
+						"w": 48,
+						"h": 102
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:aeda2664390be25059c69494f16cf178:1e412cbe666d4aa2e1729c80ab012f09:a1752987dbad5116d423935e9a2dd53c$"
+	}
+}

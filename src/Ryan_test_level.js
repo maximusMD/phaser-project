@@ -1,15 +1,23 @@
 import Phaser from 'phaser';
 import { Enemy } from './classes/Enemy.js';
 import { createAnimations } from './CreateAnimations.js';
+import { handlePause } from './pauseHandler.js';
+import { RoguePlayer } from './classes/RoguePlayer.js';
+import { Actor } from './classes/Actor.js';
+import { SkeletonArcher } from './classes/SkeletonArcher.js';
+import { RogueDarkLord } from './classes/RogueDarkLord.js';
+import { RogueBrain } from './classes/RogueBrain.js';
+import { HUDScene } from './hud.js';
 
-import tileset_img from "./assets/tilesets/s4m_ur4i_rogue-noir.png"
-import tilemap from "./assets/tilemaps/ryan_test.json"
+import tileset_img from './assets/tilesets/s4m_ur4i_rogue-noir.png';
+import tilemap from './assets/tilemaps/ryan_test.json';
 
-import rogue_image from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png"
-import rogue_atlas from "./assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json"
+import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
+import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
 
-import skeleton_archer_image from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png"
-import skeleton_archer_atlas from "./assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json"
+import skeleton_archer_image from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png';
+import skeleton_archer_atlas from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json';
+
 
 import sneaker_atlas from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.json"
 import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.png"
@@ -20,21 +28,15 @@ import darklord_image from './assets/animations/sprites/enemies/Rogue_Darklord/d
 import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.json'
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
-
-import { RoguePlayer } from './classes/RoguePlayer.js';
 import laser_img from "./assets/animations/objects/laser_blue.png"
-
-import { SkeletonArcher } from './classes/SkeletonArcher.js';
-
-import { RogueDarkLord } from './classes/RogueDarkLord.js';
-import { RogueBrain } from './classes/RogueBrain.js';
-import { HUDScene } from './hud.js';
+import { Weather } from './classes/Weather.js';
 
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
 import dungeon_sky from "./assets/backgrounds/sky_layer.png"
 
+import sceneMusic from './assets/menuMusic.wav';
 
 export class RyanLevel extends Phaser.Scene {
     #backGrounds = [];
@@ -75,6 +77,8 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     preload() {
+        this.canvas = this.sys.game.canvas;
+        this.weather = new Weather(this);
         this.load.image('dungeon_middle', dungeon_middle)
         this.load.image('dungeon_back', dungeon_back)
         this.load.image('sky', dungeon_sky)
@@ -89,6 +93,8 @@ export class RyanLevel extends Phaser.Scene {
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
+
+        this.load.audio('sceneMusic', sceneMusic);
 
     }
 
@@ -106,11 +112,10 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     create() {
-
         const { width, height } = this.scale;
         this.add.image(0, 0, 'sky')
             .setScrollFactor(0);
-        // this.add.image(0, 0, 'dungeon_back').setOrigin(0,0)
+
         this.#backGrounds.push({
             ratioX: 0.1,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
@@ -119,7 +124,7 @@ export class RyanLevel extends Phaser.Scene {
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
         });
-        // this.add.image(0, 0, 'dungeon_middle').setOrigin(0,0)
+
         this.#backGrounds.push({
             ratioX: 0.4,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
@@ -139,6 +144,7 @@ export class RyanLevel extends Phaser.Scene {
 
         const ground = map.createLayer('ground', tileset)
         ground.setCollisionByExclusion(-1, true)
+        this.weather = new Weather(this);
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, ground);
@@ -155,10 +161,9 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, ground);
 
-        // CHANGE THIS TO ENEMIES WHEN DONE NOT ACTORS
-        // MAYBE MOVE TO PLAYER CLASS? this.scene.children etc
+        // Keep this below all enemy creation
         this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
-
+        // Player needs to come after enemies as needs list of sprites currently for lasers
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, ground);
         this.cameras.main.startFollow(this.player);
@@ -206,11 +211,23 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().x,
             this.player.getBody().y
         )
+      
+        const sceneMusic = this.sound.add('sceneMusic');
+        if (!sceneMusic.isPlaying) {
+            sceneMusic.play();
+        }
+
+      this.allSprites = this.children.list.filter(x => x instanceof Actor)
+      this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+      this.weather.setWindSpeed(-100);
+       this.weather.addRain();
+
 
     }
 
     update() {
-
+        this.weather.update();
+        
         for (const bg of this.#backGrounds) {
             bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
         }
