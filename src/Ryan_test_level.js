@@ -88,6 +88,7 @@ export class RyanLevel extends Phaser.Scene {
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
+        this.load.image('arrow', arrow_img)
 
         this.backgrounds = new ParaBackgrounds(this,[
             {key: 'dungeon_middle', image: dungeon_middle},
