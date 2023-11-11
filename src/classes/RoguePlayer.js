@@ -11,6 +11,7 @@ export class RoguePlayer extends Actor {
     #isDashing = false;
     #airDashCount = 0;
     #airDashLimit = 2;
+    #dashDistanceMultiplier = 1.5;
     #landed = false;
     #meleeCooldown = false;
     #maxAmmo = 15;
@@ -37,6 +38,9 @@ export class RoguePlayer extends Actor {
         scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
             this.handleMelee(_, enemy)
         })
+    }
+    getDashDistanceMultiplier() {
+        return this.#dashDistanceMultiplier;
     }
     getAirDashLimit() {
         return this.#airDashLimit;
@@ -125,6 +129,9 @@ export class RoguePlayer extends Actor {
     setAirDashLimit(limit) {
         this.#airDashLimit = limit;
     }
+    setDashDistanceMultiplier(multiplier) {
+        this.#dashDistanceMultiplier = multiplier;
+    }
 
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
@@ -160,16 +167,17 @@ export class RoguePlayer extends Actor {
                 return;
             }
         }
+        const dashMultiplier = 200 + this.getDashDistanceMultiplier();
         this.anims.play("rogue_dash", true);
         this.setVelocityX(500 * this.scaleX);
         this.setDashCooldown(true);
         this.setIsDashing(true);
-        this.scene.time.delayedCall(200, () => {
+        this.scene.time.delayedCall(dashMultiplier, () => {
             this.setVelocityX(0)
             this.anims?.stop('rogue_dash');
             this.setIsDashing(false);
         })
-        this.scene.time.delayedCall(200 + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) } );
+        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) } );
     }
 
     // Put any actions need for a complete anims in here
