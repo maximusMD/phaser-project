@@ -28,7 +28,8 @@ import darklord_image from './assets/animations/sprites/enemies/Rogue_Darklord/d
 import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.json'
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
-import laser_img from "./assets/animations/objects/laser_blue.png"
+import laser_img from "./assets/particles/laser_2.png";
+
 import { Weather } from './classes/Weather.js';
 
 //backgrounds
@@ -37,6 +38,10 @@ import dungeon_back from "./assets/backgrounds/back_layer.png"
 import dungeon_sky from "./assets/backgrounds/sky_layer.png"
 
 import sceneMusic from './assets/menuMusic.wav';
+
+// potential particle effects
+import flare from "./assets/particles/flare_1.png"
+import dust from "./assets/particles/dust.png"
 
 export class RyanLevel extends Phaser.Scene {
     #backGrounds = [];
@@ -79,11 +84,15 @@ export class RyanLevel extends Phaser.Scene {
     preload() {
         this.canvas = this.sys.game.canvas;
         this.weather = new Weather(this);
+
+        this.load.image('flare', flare)
+        this.load.image('laser', laser_img)
+        this.load.image('dust', dust)
+
         this.load.image('dungeon_middle', dungeon_middle)
         this.load.image('dungeon_back', dungeon_back)
         this.load.image('sky', dungeon_sky)
 
-        this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
@@ -99,9 +108,21 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     // LASER HANDLER ON SPRITES
-    handleOverlap(sprite, overlapSprite) {
+    emitLaserHit(sprite) {
+        this.laser_hit_emitter.setPosition(sprite.getBody().x + (sprite.getBody().width / 2), sprite.getBody().y + (sprite.getBody().height / 2))
+        this.laser_hit_emitter.explode(10)
+    }
+    emitGroundHit(ground) {
+        // pixelX, pixelY
+        this.ground_hit_emitter.setPosition(ground.pixelX, this.player.getBody().y + ((this.player.getBody().height / 2) - 10))
+        this.ground_hit_emitter.explode(10)
+    }
+
+    handleOverlap(scene, sprite, overlapSprite) {
         if (!overlapSprite.getHasHit()) {
             sprite.setHP(overlapSprite.getLaserDamage());
+            scene.emitLaserHit(sprite);
+            
         }
         overlapSprite.setHasHit(true);
         overlapSprite.setVisible(false);
@@ -111,7 +132,31 @@ export class RyanLevel extends Phaser.Scene {
 
     }
 
+    handleGroundHit(scene, projectile, ground) {
+        projectile.setVisible(false);
+        projectile.body.reset(-400, -400);
+        scene.emitGroundHit(ground);
+    }
+
     create() {
+        this.laser_hit_emitter = this.add.particles(400, 250, 'flare', {
+            lifespan: 200,
+            speed: { min: 150, max: 250 },
+            scale: { start: 0.05, end: 0 },
+            blendMode: 'LUMINOSITY',
+            tint: 0xbabaf8,
+            emitting: false
+        });
+        this.laser_hit_emitter.setDepth(1);
+        this.ground_hit_emitter = this.add.particles(400, 250, 'dust', {
+            lifespan: 200,
+            speed: { min: 10, max: 20 },
+            scale: { start: 0.02, end: 0 },
+            blendMode: 'DARKEN',
+            emitting: false
+        });
+        this.ground_hit_emitter.setDepth(1);
+
         const { width, height } = this.scale;
         this.add.image(0, 0, 'sky')
             .setScrollFactor(0);
@@ -142,34 +187,34 @@ export class RyanLevel extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('standard_tiles', 'base_tiles')
 
-        const ground = map.createLayer('ground', tileset)
-        ground.setCollisionByExclusion(-1, true)
+        this.ground = map.createLayer('ground', tileset)
+        this.ground.setCollisionByExclusion(-1, true)
         this.weather = new Weather(this);
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
-        this.physics.add.collider(this.enemy, ground);
+        this.physics.add.collider(this.enemy, this.ground);
         this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
-        this.physics.add.collider(this.enemy2, ground);
+        this.physics.add.collider(this.enemy2, this.ground);
 
         this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
-        this.physics.add.collider(this.enemy3, ground);
+        this.physics.add.collider(this.enemy3, this.ground);
         this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
-        this.physics.add.collider(this.enemy4, ground);
+        this.physics.add.collider(this.enemy4, this.ground);
 
         this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
-        this.physics.add.collider(this.enemy5, ground);
+        this.physics.add.collider(this.enemy5, this.ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
-        this.physics.add.collider(this.enemy6, ground);
+        this.physics.add.collider(this.enemy6, this.ground);
 
         // Keep this below all enemy creation
         this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
         // Player needs to come after enemies as needs list of sprites currently for lasers
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
-        this.physics.add.collider(this.player, ground);
+        this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
 
-        this.physics.add.overlap(this.player.laserGroup, this.allEnemies, this.handleOverlap)
-
+        this.physics.add.overlap(this.player.laserGroup, this.allEnemies, (...args) => { this.handleOverlap(this, ...args) })
+        
         this.graphics = this.add.graphics();
         this.line = new Phaser.Geom.Line(
             this.enemy.getBody().x,
@@ -218,8 +263,8 @@ export class RyanLevel extends Phaser.Scene {
         }
 
       this.allSprites = this.children.list.filter(x => x instanceof Actor)
-      this.weather.setWindSpeed(-100);
-       this.weather.addRain();
+    //   this.weather.setWindSpeed(-100);
+    //    this.weather.addRain();
 
       const hudScene = new HUDScene();
       this.pauseHandler = handlePause(this, sceneMusic, hudScene);
@@ -228,7 +273,7 @@ export class RyanLevel extends Phaser.Scene {
     }
 
     update() {
-        this.weather.update();
+        // this.weather.update();
         
         for (const bg of this.#backGrounds) {
             bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;

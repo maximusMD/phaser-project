@@ -11,7 +11,8 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
 
         this.createMultiple({
             classType: Laser,
-            frameQuantity: 30, 
+            setScale: { x: 0.05, y: 0.05},
+            frameQuantity: 5,
             active: false,
             visible: false,
             key: "laser",
@@ -31,10 +32,11 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
 
 export class Laser extends Phaser.Physics.Arcade.Sprite {
     #laserDamage = 10;
-    #hasHit = false;
+    #hasHit = true;
 
     constructor(scene, x, y) {
         super(scene, x, y, 'laser');
+        this.scene = scene;
     }
     getHasHit() {
         return this.#hasHit;
@@ -50,10 +52,13 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
     }
 
     fire(x, y, direction, laserDamage) {
+        this.setHasHit(false);
+        this.scene.physics.add.collider(this, this.scene.ground,
+            (...args) => { this.scene.handleGroundHit(this.scene, ...args) })
         if (laserDamage) this.setLaserDamage(laserDamage);
         this.body.reset(x, y);
-
-        this.setScale(0.2);
+        this.setScale(0.05);
+        this.setTint(0xbabaf8);
         this.body.setAllowGravity(false);   
         this.angle = 90;
 
