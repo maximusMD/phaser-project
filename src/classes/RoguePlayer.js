@@ -21,7 +21,6 @@ export class RoguePlayer extends Actor {
     #shootingSpeed = 0.8;
     #reloadTime = 1.5;
     #shootCooldown = false;
-    #multipleJumps = true;
     #jumpCount = 0;
     #maxJumps = 2;
     #isJumping = true;
@@ -51,9 +50,6 @@ export class RoguePlayer extends Actor {
     }
     getJumpCount() {
         return this.#jumpCount;
-    }
-    getMultipleJumps() {
-        return this.#multipleJumps;
     }
     getMaxJumps() {
         return this.#maxJumps;
@@ -156,9 +152,6 @@ export class RoguePlayer extends Actor {
     }
     setDashDistanceMultiplier(multiplier) {
         this.#dashDistanceMultiplier = multiplier;
-    }
-    setMultipleJumps(bool) {
-        this.#multipleJumps = bool;
     }
 
 
