@@ -34,12 +34,11 @@ import { Weather } from './classes/Weather.js';
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
-import dungeon_sky from "./assets/backgrounds/sky_layer.png"
+import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import sceneMusic from './assets/menuMusic.wav';
 
 export class RyanLevel extends Phaser.Scene {
-    #backGrounds = [];
     constructor() {
         super({
             key: 'RyanLevel',
@@ -79,9 +78,10 @@ export class RyanLevel extends Phaser.Scene {
     preload() {
         this.canvas = this.sys.game.canvas;
         this.weather = new Weather(this);
-        this.load.image('dungeon_middle', dungeon_middle)
-        this.load.image('dungeon_back', dungeon_back)
-        this.load.image('sky', dungeon_sky)
+        this.backgrounds = new ParaBackgrounds(this,[
+            {key: 'dungeon_middle', image: dungeon_middle},
+            {key: 'dungeon_back', image: dungeon_back},
+        ])
 
         this.load.image('laser', laser_img)
         this.load.image('base_tiles', tileset_img);
@@ -113,10 +113,7 @@ export class RyanLevel extends Phaser.Scene {
 
     create() {
         const { width, height } = this.scale;
-        this.add.image(0, 0, 'sky')
-            .setScrollFactor(0);
-
-        this.#backGrounds.push({
+        this.backgrounds.addBackground({
             ratioX: 0.1,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
                 .setOrigin(0, 0)
@@ -125,7 +122,7 @@ export class RyanLevel extends Phaser.Scene {
                 .setScale(1)
         });
 
-        this.#backGrounds.push({
+        this.backgrounds.addBackground({
             ratioX: 0.4,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
                 .setOrigin(0, 0)
@@ -229,10 +226,7 @@ export class RyanLevel extends Phaser.Scene {
 
     update() {
         this.weather.update();
-        
-        for (const bg of this.#backGrounds) {
-            bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
-        }
+        this.backgrounds.update();
 
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
