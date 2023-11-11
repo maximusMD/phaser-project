@@ -180,9 +180,6 @@ export class RyanLevel extends Phaser.Scene {
                 .setDepth(-1)
         });
 
-        this.scene.run('HUDScene')
-
-
         createAnimations(this);
 
         const map = this.make.tilemap({ key: 'tilemap' })
@@ -236,6 +233,7 @@ export class RyanLevel extends Phaser.Scene {
         this.graphics = this.add.graphics();
       
       const hudScene = new HUDScene();
+      this.scene.run('HUDScene')    
     }
 
     update() {
