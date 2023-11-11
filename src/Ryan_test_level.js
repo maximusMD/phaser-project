@@ -29,6 +29,7 @@ import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_a
 import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
 
 import laser_img from "./assets/animations/objects/laser_blue.png"
+import arrow_img from "./assets/animations/objects/arrow.png"
 import { Weather } from './classes/Weather.js';
 
 //backgrounds
@@ -84,6 +85,7 @@ export class RyanLevel extends Phaser.Scene {
         ])
 
         this.load.image('laser', laser_img)
+        this.load.image('arrow', arrow_img)
         this.load.image('base_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
@@ -169,48 +171,6 @@ export class RyanLevel extends Phaser.Scene {
 
         this.physics.add.overlap(this.player.laserGroup, this.allEnemies, this.handleOverlap)
 
-        this.graphics = this.add.graphics();
-        this.line = new Phaser.Geom.Line(
-            this.enemy.getBody().x,
-            this.enemy.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-        this.line2 = new Phaser.Geom.Line(
-            this.enemy2.getBody().x,
-            this.enemy2.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-
-        this.line3 = new Phaser.Geom.Line(
-            this.enemy3.getBody().x,
-            this.enemy3.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-
-        this.line4 = new Phaser.Geom.Line(
-            this.enemy4.getBody().x,
-            this.enemy4.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-
-        this.line5 = new Phaser.Geom.Line(
-            this.enemy5.getBody().x,
-            this.enemy5.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-
-        this.line6 = new Phaser.Geom.Line(
-            this.enemy6.getBody().x,
-            this.enemy6.getBody().y,
-            this.player.getBody().x,
-            this.player.getBody().y
-        )
-
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
             sceneMusic.play();
@@ -218,27 +178,25 @@ export class RyanLevel extends Phaser.Scene {
 
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
-        
-        this.weather.setWindSpeed(-5);
-        this.weather.addFog();
+        this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
 
-      this.allSprites = this.children.list.filter(x => x instanceof Actor)
-      this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+        // create arrow colliders now player is made
+        this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
+        this.archers.forEach(archer => {
+            this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
+                archer.arrowHit(arrow, player)
+              })
+        })
+        this.graphics = this.add.graphics();
       
-      this.weather.setWindSpeed(-100);
-      this.weather.addRain();
-
-
       const hudScene = new HUDScene();
-      this.pauseHandler = handlePause(this, sceneMusic, hudScene);
-
-
     }
 
     update() {
         this.weather.update();
         this.backgrounds.update();
-
 
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);

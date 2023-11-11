@@ -8,6 +8,7 @@ export class Enemy extends Actor {
   #meleeDamage = 10;
   #rangeDamage = 20;
   #isWandering = true;
+  #shootCoolDown = false;
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
@@ -15,6 +16,10 @@ export class Enemy extends Actor {
   }
 
   // getters
+  getShootCoolDown() {
+    return this.#shootCoolDown;
+  }
+
   getWalkSpeed() {
     return this.#walkSpeed;
   }
@@ -40,6 +45,10 @@ export class Enemy extends Actor {
   }
 
   // setters
+  setShootCoolDown() {
+    this.#shootCoolDown = !this.getShootCoolDown();
+  }
+
   updateHP(damage) {
     this.setHP(damage);
     if (this.getHP() <= 0) {
@@ -144,7 +153,7 @@ export class Enemy extends Actor {
     this.anims.play(attack, true)
 
     if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-      this.damageToPlayer(this.scene.player, this.getRangeDamage(), chance);
+      this.shootArrow();
       this.anims.stop();
     }
   }
