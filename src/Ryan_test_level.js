@@ -120,6 +120,7 @@ export class RyanLevel extends Phaser.Scene {
                 .setScrollFactor(0, 0)
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
+                .setDepth(-3)
         });
 
         this.backgrounds.addBackground({
@@ -129,6 +130,7 @@ export class RyanLevel extends Phaser.Scene {
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
                 .setScale(1)
+                .setDepth(-1)
         });
 
         this.scene.run('HUDScene')
@@ -208,15 +210,24 @@ export class RyanLevel extends Phaser.Scene {
             this.player.getBody().x,
             this.player.getBody().y
         )
-      
+
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
             sceneMusic.play();
         }
 
+
+        this.allSprites = this.children.list.filter(x => x instanceof Actor)
+        
+        this.weather.setWindSpeed(-5);
+        this.weather.addFog();
+
       this.allSprites = this.children.list.filter(x => x instanceof Actor)
+      this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+      
       this.weather.setWindSpeed(-100);
-       this.weather.addRain();
+      this.weather.addRain();
+
 
       const hudScene = new HUDScene();
       this.pauseHandler = handlePause(this, sceneMusic, hudScene);
@@ -227,6 +238,7 @@ export class RyanLevel extends Phaser.Scene {
     update() {
         this.weather.update();
         this.backgrounds.update();
+
 
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
