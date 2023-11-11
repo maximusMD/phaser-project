@@ -35,12 +35,11 @@ import { Weather } from './classes/Weather.js';
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
-import dungeon_sky from "./assets/backgrounds/sky_layer.png"
+import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import sceneMusic from './assets/menuMusic.wav';
 
 export class RyanLevel extends Phaser.Scene {
-    #backGrounds = [];
     constructor() {
         super({
             key: 'RyanLevel',
@@ -80,9 +79,10 @@ export class RyanLevel extends Phaser.Scene {
     preload() {
         this.canvas = this.sys.game.canvas;
         this.weather = new Weather(this);
-        this.load.image('dungeon_middle', dungeon_middle)
-        this.load.image('dungeon_back', dungeon_back)
-        this.load.image('sky', dungeon_sky)
+        this.backgrounds = new ParaBackgrounds(this,[
+            {key: 'dungeon_middle', image: dungeon_middle},
+            {key: 'dungeon_back', image: dungeon_back},
+        ])
 
         this.load.image('laser', laser_img)
         this.load.image('arrow', arrow_img)
@@ -115,25 +115,24 @@ export class RyanLevel extends Phaser.Scene {
 
     create() {
         const { width, height } = this.scale;
-        this.add.image(0, 0, 'sky')
-            .setScrollFactor(0);
-
-        this.#backGrounds.push({
+        this.backgrounds.addBackground({
             ratioX: 0.1,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
+                .setDepth(-3)
         });
 
-        this.#backGrounds.push({
+        this.backgrounds.addBackground({
             ratioX: 0.4,
             sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
                 .setScale(1)
+                .setDepth(-1)
         });
 
         this.scene.run('HUDScene')
@@ -172,11 +171,11 @@ export class RyanLevel extends Phaser.Scene {
 
         this.physics.add.overlap(this.player.laserGroup, this.allEnemies, this.handleOverlap)
 
-
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
             sceneMusic.play();
         }
+
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
         this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
@@ -191,14 +190,13 @@ export class RyanLevel extends Phaser.Scene {
               })
         })
         this.graphics = this.add.graphics();
+      
+      const hudScene = new HUDScene();
     }
 
     update() {
         this.weather.update();
-
-        for (const bg of this.#backGrounds) {
-            bg.sprite.tilePositionX = this.cameras.main.scrollX * bg.ratioX;
-        }
+        this.backgrounds.update();
 
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);

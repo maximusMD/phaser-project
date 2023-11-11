@@ -1,29 +1,35 @@
-export function handlePause(scene, characters, music) {
+export function handlePause(scene, music, hud) {
 	let isPaused = false;
+	const characters = scene.allSprites;
+	const weather = scene.weather;
 
 	function pause() {
-		scene.physics.pause();
-		characters.forEach((actor) => {
-			actor.setActive(false);
-		});
-
-		isPaused = true;
-		showPauseMenu();
+		if (!isPaused) {
+			scene.physics.pause();
+			characters.forEach((character) => {
+				character.setActive(false);
+			});
+			weather.pause();
+			isPaused = true;
+			showPauseMenu();
+		}
 	}
 
 	function resume() {
-		scene.physics.resume();
-		characters.forEach((actor) => {
-			actor.setActive(true);
-		});
-
-		isPaused = false;
-		hidePauseMenu();
+		if (isPaused) {
+			scene.physics.resume();
+			characters.forEach((character) => {
+				character.setActive(true);
+			});
+			weather.resume();
+			isPaused = false;
+			hidePauseMenu();
+		}
 	}
 
 	function showPauseMenu() {
 		if (!scene.scene.isActive('PauseMenuScene')) {
-			scene.scene.run('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
+			scene.scene.launch('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
 		}
 	}
 
