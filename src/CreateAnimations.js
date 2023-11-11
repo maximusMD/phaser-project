@@ -95,7 +95,9 @@ export function createAnimations(scene) {
       prefix: 'skeleton_archer_shoot1-',
       suffix: '.png',
       start: 1,
-      end: 15
+      end: 15,
+      delay: 1800,
+      showBeforeDelay: true
     }),
     frameRate: 10,
     repeat: -1

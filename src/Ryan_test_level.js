@@ -153,15 +153,15 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy2, ground);
 
-        // this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
-        // this.physics.add.collider(this.enemy3, ground);
-        // this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
-        // this.physics.add.collider(this.enemy4, ground);
+        this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
+        this.physics.add.collider(this.enemy3, ground);
+        this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
+        this.physics.add.collider(this.enemy4, ground);
 
-        // this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
-        // this.physics.add.collider(this.enemy5, ground);
-        // this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
-        // this.physics.add.collider(this.enemy6, ground);
+        this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy5, ground);
+        this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy6, ground);
 
         // Keep this below all enemy creation
         this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
@@ -183,7 +183,14 @@ export class RyanLevel extends Phaser.Scene {
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
 
-
+        // create arrow colliders now player is made
+        this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
+        this.archers.forEach(archer => {
+            this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
+                archer.arrowHit(arrow, player)
+              })
+        })
+        this.graphics = this.add.graphics();
     }
 
     update() {
@@ -196,10 +203,10 @@ export class RyanLevel extends Phaser.Scene {
         this.player.update();
         this.enemy.update(this.player, this.graphics, this.line);
         this.enemy2.update(this.player, this.graphics, this.line2);
-        // this.enemy3.update(this.player, this.graphics, this.line3)
-        // this.enemy4.update(this.player, this.graphics, this.line4)
-        // this.enemy5.update(this.player, this.graphics, this.line5)
-        // this.enemy6.update(this.player, this.graphics, this.line6)
+        this.enemy3.update(this.player, this.graphics, this.line3)
+        this.enemy4.update(this.player, this.graphics, this.line4)
+        this.enemy5.update(this.player, this.graphics, this.line5)
+        this.enemy6.update(this.player, this.graphics, this.line6)
     }
 
 }
