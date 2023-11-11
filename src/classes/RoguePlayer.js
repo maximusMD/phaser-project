@@ -7,9 +7,15 @@ export class RoguePlayer extends Actor {
     // TODOs: add dash distance fall off and timeout
 
     #dashCooldown = false;
-    #dashCooldownSpeed = 1;
+    #dashCooldownSpeed = 200;
+    #isDashing = false;
+    #airDashCount = 0;
+    #airDashLimit = 2;
+    #dashDistanceMultiplier = 1.5;
+    #landed = false;
     #meleeCooldown = false;
     #maxAmmo = 15;
+    #runSpeed = 110;
     #meleeDmg = 10;
     #shootDmg = 20;
     #shootingSpeed = 0.8;
@@ -32,6 +38,24 @@ export class RoguePlayer extends Actor {
         scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
             this.handleMelee(_, enemy)
         })
+    }
+    getDashDistanceMultiplier() {
+        return this.#dashDistanceMultiplier;
+    }
+    getAirDashLimit() {
+        return this.#airDashLimit;
+    }
+    getAirDashCount() {
+        return this.#airDashCount;
+    }
+    getLanded() {
+        return this.#landed
+    }
+    getIsDashing() {
+        return this.#isDashing;
+    }
+    getRunSpeed() {
+        return this.#runSpeed;
     }
     getMeleeCooldown() {
         return this.#meleeCooldown;
@@ -87,6 +111,27 @@ export class RoguePlayer extends Actor {
     setMeleeCooldown(bool) {
         this.#meleeCooldown = bool;
     }
+    setRunSpeed(speed) {
+        this.#runSpeed = speed;
+    }
+    setIsDashing(bool) {
+        this.#isDashing = bool;
+    }
+    setLanded(bool) {
+        this.#landed = bool;
+    }
+    resetAirDashCount() {
+        this.#airDashCount = 0;
+    }
+    addAirDashCount() {
+        this.#airDashCount++;
+    }
+    setAirDashLimit(limit) {
+        this.#airDashLimit = limit;
+    }
+    setDashDistanceMultiplier(multiplier) {
+        this.#dashDistanceMultiplier = multiplier;
+    }
 
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
@@ -112,22 +157,59 @@ export class RoguePlayer extends Actor {
         enemy.updateHP(damage)
     }
 
+    dash() {
+        if (!this.getBody().onFloor()) {
+            if (this.getAirDashCount() < this.getAirDashLimit()) {
+                this.addAirDashCount();
+                this.setVelocityY(0);
+                this.getBody().setAllowGravity(false);
+            } else {
+                return;
+            }
+        }
+        const dashMultiplier = 200 + this.getDashDistanceMultiplier();
+        this.anims.play("rogue_dash", true);
+        this.setVelocityX(500 * this.scaleX);
+        this.setDashCooldown(true);
+        this.setIsDashing(true);
+        this.scene.time.delayedCall(dashMultiplier, () => {
+            this.setVelocityX(0)
+            this.anims?.stop('rogue_dash');
+            this.setIsDashing(false);
+        })
+        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) } );
+    }
+
     // Put any actions need for a complete anims in here
     handleCompleteAnims(e) {
         if (e.key === "rogue_melee") {
             this.setMeleeCooldown(false);
+        }
+        if (e.key === "rogue_dash") {
+            this.getBody().setAllowGravity(true);
+            if (!this.getBody().onFloor()) {
+                this.anims.play('rogue_midair', true);
+            }
         }
     }
     handleStoppedAnims(e) {
         if (e.key === "rogue_melee") {
             this.setMeleeCooldown(false);
         }
+        if (e.key === "rogue_dash") {
+            this.getBody().setAllowGravity(true);
+            if (!this.getBody().onFloor()) {
+                this.anims.play('rogue_midair', true);
+            }
+        }
     }
-
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
-        
+        if (this.getBody().onFloor() && !this.getLanded()) {
+            this.getLanded(true);
+            this.resetAirDashCount();
+        }
         if (this.anims?.currentAnim?.key === "rogue_shoot") {
             if (this.anims.currentFrame.index === 6) {
                 if (!this.getShootCoolDown()) {
@@ -137,17 +219,13 @@ export class RoguePlayer extends Actor {
                 this.scene.time.delayedCall(100 * this.getShootingSpeed(), () => { this.setShootCoolDown(false) })
             }
         }
-        
+
         if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
             this.setVelocityX(0);
         }
-        if (this.cursors.dash.isDown && this.body.onFloor()) {
-            if (this.scaleX === -1) {
-                this.setVelocityX(-500)
-                this.anims.play("rogue_dash", true)
-            } else {
-                this.setVelocityX(500)
-                this.anims.play("rogue_dash", true)
+        if (this.cursors.dash.isDown) {
+            if (!this.getIsDashing() && !this.getDashCooldown()) {
+                this.dash();
             }
         }
 
@@ -160,25 +238,32 @@ export class RoguePlayer extends Actor {
         }
 
         if (this.cursors.left.isDown) {
-            this.setVelocityX(-110);
-            this.checkFlip();
-            this.getBody().setOffset(25, 7);
-            if (this.body.onFloor()) {
-                this.anims.play('rogue_run', true);
+            if (!this.getIsDashing()) {
+                this.setVelocityX(-(this.getRunSpeed()));
+                this.checkFlip();
+                this.getBody().setOffset(25, 7);
+                if (this.body.onFloor()) {
+                    this.anims.play('rogue_run', true);
+                }
             }
         }
         else if (this.cursors.right.isDown) {
-            this.setVelocityX(110);
-            this.checkFlip();
-            this.getBody().setOffset(5, 7);
-            if (this.body.onFloor()) {
-                this.anims.play('rogue_run', true);
+            if (!this.getIsDashing()) {
+                this.setVelocityX(this.getRunSpeed());
+                this.checkFlip();
+                this.getBody().setOffset(5, 7);
+                if (this.body.onFloor()) {
+                    this.anims.play('rogue_run', true);
+                }
             }
         }
 
         if ((this.cursors.jump.isDown || this.cursors.up.isDown) && this.body.onFloor()) {
-            this.setVelocityY(-200);
-            this.anims.play('rogue_jump', true)
+            if (!this.getIsDashing()) {
+                this.setLanded(false);
+                this.setVelocityY(-200);
+                this.anims.play('rogue_jump', true)
+            }
         }
 
         if (!this.body.onFloor()) {
