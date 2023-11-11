@@ -1,0 +1,1574 @@
+{
+	"textures": [
+		{
+			"image": "armored_golem_atlas.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 395,
+				"h": 128
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "Golem_Armor_AttackA_FX-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 21,
+						"w": 39,
+						"h": 28
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 39,
+						"h": 28
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 16,
+						"w": 32,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 31,
+						"w": 32,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 15,
+						"w": 31,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 60,
+						"w": 31,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 15,
+						"w": 30,
+						"h": 27
+					},
+					"frame": {
+						"x": 1,
+						"y": 89,
+						"w": 30,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB_FX-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 6,
+						"w": 42,
+						"h": 9
+					},
+					"frame": {
+						"x": 1,
+						"y": 118,
+						"w": 42,
+						"h": 9
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 15,
+						"w": 30,
+						"h": 27
+					},
+					"frame": {
+						"x": 33,
+						"y": 89,
+						"w": 30,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 40,
+						"w": 34,
+						"h": 9
+					},
+					"frame": {
+						"x": 45,
+						"y": 118,
+						"w": 34,
+						"h": 9
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 17,
+						"w": 27,
+						"h": 27
+					},
+					"frame": {
+						"x": 34,
+						"y": 60,
+						"w": 27,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 20,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 35,
+						"y": 31,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Idle-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 20,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 35,
+						"y": 31,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 19,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 42,
+						"y": 1,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 16,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 63,
+						"y": 30,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 20,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 70,
+						"y": 1,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-10.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 28,
+						"y": 22,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 63,
+						"y": 59,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 21,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 65,
+						"y": 88,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB_FX-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 5,
+						"w": 50,
+						"h": 10
+					},
+					"frame": {
+						"x": 81,
+						"y": 117,
+						"w": 50,
+						"h": 10
+					}
+				},
+				{
+					"filename": "Golem_Armor_Idle-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 21,
+						"w": 26,
+						"h": 27
+					},
+					"frame": {
+						"x": 91,
+						"y": 30,
+						"w": 26,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 20,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 98,
+						"y": 1,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_ArmorBreak-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 20,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 91,
+						"y": 59,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Hit-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 20,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 91,
+						"y": 59,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 17,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 93,
+						"y": 88,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 18,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 93,
+						"y": 88,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 20,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 118,
+						"y": 59,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 29,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 120,
+						"y": 88,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB_FX-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 5,
+						"w": 47,
+						"h": 10
+					},
+					"frame": {
+						"x": 133,
+						"y": 117,
+						"w": 47,
+						"h": 10
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 24,
+						"y": 29,
+						"w": 25,
+						"h": 27
+					},
+					"frame": {
+						"x": 119,
+						"y": 30,
+						"w": 25,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 20,
+						"w": 24,
+						"h": 27
+					},
+					"frame": {
+						"x": 145,
+						"y": 59,
+						"w": 24,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Idle-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 20,
+						"w": 24,
+						"h": 27
+					},
+					"frame": {
+						"x": 147,
+						"y": 88,
+						"w": 24,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Idle-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 60,
+						"h": 48
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 21,
+						"w": 24,
+						"h": 27
+					},
+					"frame": {
+						"x": 125,
+						"y": 1,
+						"w": 24,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 20,
+						"w": 23,
+						"h": 27
+					},
+					"frame": {
+						"x": 146,
+						"y": 30,
+						"w": 23,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 21,
+						"w": 22,
+						"h": 27
+					},
+					"frame": {
+						"x": 151,
+						"y": 1,
+						"w": 22,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 21,
+						"w": 21,
+						"h": 27
+					},
+					"frame": {
+						"x": 171,
+						"y": 30,
+						"w": 21,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 175,
+						"y": 1,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 171,
+						"y": 59,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 173,
+						"y": 88,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 32,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 193,
+						"y": 59,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 194,
+						"y": 30,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_Ability-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 22,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 197,
+						"y": 1,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 40,
+						"w": 32,
+						"h": 9
+					},
+					"frame": {
+						"x": 182,
+						"y": 117,
+						"w": 32,
+						"h": 9
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 37,
+						"y": 21,
+						"w": 20,
+						"h": 27
+					},
+					"frame": {
+						"x": 195,
+						"y": 88,
+						"w": 20,
+						"h": 27
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 23,
+						"w": 44,
+						"h": 26
+					},
+					"frame": {
+						"x": 215,
+						"y": 59,
+						"w": 44,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 21,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 216,
+						"y": 30,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 21,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 219,
+						"y": 1,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 22,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 243,
+						"y": 29,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_Hit-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 22,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 243,
+						"y": 29,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-9.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 22,
+						"y": 21,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 246,
+						"y": 1,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC_FX-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 43,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 10,
+						"w": 22,
+						"h": 7
+					},
+					"frame": {
+						"x": 216,
+						"y": 117,
+						"w": 22,
+						"h": 7
+					}
+				},
+				{
+					"filename": "Golem_Armor_Hit-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 29,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 217,
+						"y": 87,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB_FX-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 0,
+						"w": 49,
+						"h": 11
+					},
+					"frame": {
+						"x": 240,
+						"y": 115,
+						"w": 49,
+						"h": 11
+					}
+				},
+				{
+					"filename": "Golem_Armor_Run-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 20,
+						"w": 25,
+						"h": 26
+					},
+					"frame": {
+						"x": 244,
+						"y": 87,
+						"w": 25,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_ArmorBreak-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 22,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 261,
+						"y": 57,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 22,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 270,
+						"y": 29,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_Hit-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 25,
+						"y": 22,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 270,
+						"y": 29,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 22,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 273,
+						"y": 1,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_Hit-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 20,
+						"y": 22,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 271,
+						"y": 85,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_Run-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 30,
+						"y": 21,
+						"w": 24,
+						"h": 26
+					},
+					"frame": {
+						"x": 287,
+						"y": 57,
+						"w": 24,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 30,
+						"w": 23,
+						"h": 26
+					},
+					"frame": {
+						"x": 296,
+						"y": 29,
+						"w": 23,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_Run-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 20,
+						"w": 23,
+						"h": 26
+					},
+					"frame": {
+						"x": 299,
+						"y": 1,
+						"w": 23,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-6.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 36,
+						"w": 32,
+						"h": 13
+					},
+					"frame": {
+						"x": 291,
+						"y": 113,
+						"w": 32,
+						"h": 13
+					}
+				},
+				{
+					"filename": "Golem_Armor_Run-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 47
+					},
+					"spriteSourceSize": {
+						"x": 35,
+						"y": 21,
+						"w": 22,
+						"h": 26
+					},
+					"frame": {
+						"x": 297,
+						"y": 85,
+						"w": 22,
+						"h": 26
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 23,
+						"y": 23,
+						"w": 24,
+						"h": 25
+					},
+					"frame": {
+						"x": 313,
+						"y": 57,
+						"w": 24,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 26,
+						"y": 23,
+						"w": 24,
+						"h": 25
+					},
+					"frame": {
+						"x": 321,
+						"y": 29,
+						"w": 24,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 32,
+						"w": 47,
+						"h": 17
+					},
+					"frame": {
+						"x": 347,
+						"y": 1,
+						"w": 47,
+						"h": 17
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 23,
+						"w": 21,
+						"h": 25
+					},
+					"frame": {
+						"x": 324,
+						"y": 1,
+						"w": 21,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB-7.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 57
+					},
+					"spriteSourceSize": {
+						"x": 36,
+						"y": 29,
+						"w": 23,
+						"h": 25
+					},
+					"frame": {
+						"x": 321,
+						"y": 84,
+						"w": 23,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 59,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 31,
+						"y": 22,
+						"w": 23,
+						"h": 25
+					},
+					"frame": {
+						"x": 339,
+						"y": 56,
+						"w": 23,
+						"h": 25
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-0.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 45,
+						"w": 29,
+						"h": 4
+					},
+					"frame": {
+						"x": 364,
+						"y": 20,
+						"w": 29,
+						"h": 4
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackB_FX-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 12,
+						"y": 0,
+						"w": 45,
+						"h": 11
+					},
+					"frame": {
+						"x": 347,
+						"y": 26,
+						"w": 45,
+						"h": 11
+					}
+				},
+				{
+					"filename": "Golem_Armor_ArmorBreak-2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 25,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 364,
+						"y": 39,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "Golem_Armor_ArmorBreak-3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 34,
+						"y": 24,
+						"w": 24,
+						"h": 24
+					},
+					"frame": {
+						"x": 364,
+						"y": 65,
+						"w": 24,
+						"h": 24
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackC_FX-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 43,
+						"h": 17
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 6,
+						"w": 22,
+						"h": 7
+					},
+					"frame": {
+						"x": 325,
+						"y": 111,
+						"w": 22,
+						"h": 7
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 43,
+						"w": 34,
+						"h": 6
+					},
+					"frame": {
+						"x": 325,
+						"y": 120,
+						"w": 34,
+						"h": 6
+					}
+				},
+				{
+					"filename": "Golem_Armor_AttackA_FX-8.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 64
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 43,
+						"w": 31,
+						"h": 6
+					},
+					"frame": {
+						"x": 361,
+						"y": 91,
+						"w": 31,
+						"h": 6
+					}
+				},
+				{
+					"filename": "Golem_Armor_ArmorBreak-4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 58,
+						"h": 56
+					},
+					"spriteSourceSize": {
+						"x": 19,
+						"y": 31,
+						"w": 23,
+						"h": 24
+					},
+					"frame": {
+						"x": 361,
+						"y": 99,
+						"w": 23,
+						"h": 24
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:7175a9b4a21b2cb88f69d314b7f9ad2b:40f19ff8cb9bff0aa5b9b9677a82e1df:1b5f19efa38fc1991726883ff7fdd755$"
+	}
+}

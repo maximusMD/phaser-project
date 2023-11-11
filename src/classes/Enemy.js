@@ -2,9 +2,12 @@ import { Actor } from "./Actor";
 
 export class Enemy extends Actor {
 
-  #walkSpeed = 10
+  #walkSpeed = 15;
   #isDead = false;
   #vision = 100;
+  #meleeDamage = 10;
+  #rangeDamage = 20;
+  #isWandering = true;
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
@@ -24,10 +27,22 @@ export class Enemy extends Actor {
     return this.#vision;
   }
 
+  getMeleeDamage() {
+    return this.#meleeDamage;
+  }
+
+  getRangeDamage() {
+    return this.#rangeDamage;
+  }
+
+  getIsWandering() {
+    return this.#isWandering;
+  }
+
   // setters
   updateHP(damage) {
     this.setHP(damage);
-    if(this.getHP() <= 0) {
+    if (this.getHP() <= 0) {
       this.setIsDead();
     }
   }
@@ -37,15 +52,27 @@ export class Enemy extends Actor {
 
   setIsDead() {
     this.#isDead = !this.#isDead;
+    // update playerscore upon death
   }
 
   setVision(visionRange) {
     this.#vision = visionRange;
   }
-  
+
+  setMeleeDamage(melee) {
+    this.#meleeDamage = melee;
+  }
+
+  setRangeDamage(range) {
+    this.#meleeDamage = range;
+  }
+
+  setIsWandering(bool) {
+    this.#isWandering = bool;
+  }
+
   // functions
   facePlayer(player, enemy) {
-    // console.log(player)
     if (player.getBody().x < enemy.x) {
       enemy.setFlipX(true);
     } else {
@@ -53,22 +80,76 @@ export class Enemy extends Actor {
     }
   }
 
-  checkDistance(player, graphics, line) {
-    graphics.clear();
+  wander(numTiles, walkKey, idleKey) {
+    const distance = 16 * numTiles;
 
-    graphics.lineStyle(2, 0xff0000);
-    graphics.strokeLineShape(line);
+    
+    if(!this.startPos) {
+      this.startPos = this.getBody().x;
+
+      this.anims.play(walkKey, true)
+      this.setVelocityX(this.getWalkSpeed());
+
+      if (this.getBody().velocity.x < 0) {
+        this.setFlipX(true);
+      } else if (this.getBody().velocity.x > 0) {
+        this.setFlipX(false)
+      }
+
+      this.setIsWandering(false);  
+    }
+
+    const distanceTravelled = Math.abs(this.getBody().x - this.startPos);
+
+    if (distanceTravelled >= distance) {
+      this.setVelocityX(0);
+      this.setIsWandering(false);
+    }
+
+    this.startPos = undefined;
+  }
+
+  stopWandering() {
+    this.setIsWandering(false);
+    this.setVelocityX(0);
+  }
+
+  checkDistance(player, graphics, line) {
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 
   damageToPlayer(player, damage, chance = 0) {
-    const chanceToHit = Math.random();
-    if (chanceToHit < chance/100) {
+    const chanceToHit = Math.random(0, 1);
+    if (chanceToHit < chance / 100) {
       player.setHP(0)
-      console.log("not taken damage: ", player.getHP())
+      console.log("no damage taken: ", player.getHP())
     } else {
       player.setHP(damage);
       console.log("taken damage: ", player.getHP())
     }
+  }
+
+  // takes in the animation
+  // takes in percantage chance for attack to land
+  handleMelee(attack, chance) {
+    this.anims.play(attack, true)
+    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      this.damageToPlayer(this.scene.player, this.getMeleeDamage(), chance);
+      this.anims.chain('skeleton_archer_idle')
+      this.anims.stop()
+    }
+  }
+
+  handleRanged(attack, chance) {
+    this.anims.play(attack, true)
+
+    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      this.damageToPlayer(this.scene.player, this.getRangeDamage(), chance);
+      this.anims.stop();
+    }
+  }
+
+  checkOverlap(player) {
+    return Phaser.Geom.Intersects.RectangleToRectangle(player.getBounds(), this.getBounds());
   }
 }

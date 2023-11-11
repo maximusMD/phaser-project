@@ -51,24 +51,34 @@ export class MenuScene extends Phaser.Scene {
         });
 
         const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
-            console.log('Leaderboard');
+            this.stopMenuMusicAndStartScene('LeaderboardScene');
         });
+        const lbScaleFactor = gameWidth / lb.width; 
+        lb.setScale(lbScaleFactor * 0.229)
 
         const about = this.addButton(gameWidth * 0.1, gameHeight * 0.1, 'about', () => {
             this.stopMenuMusicAndStartScene('AboutScene');
         });
+        const aboutScaleFactor = gameWidth / about.width; 
+        about.setScale(aboutScaleFactor * 0.16)
 
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
             this.stopMenuMusicAndStartScene('CreditsScene');
         });
+        const creditsScaleFactor = gameWidth / credits.width; 
+        credits.setScale(creditsScaleFactor * 0.1835)
 
         const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
             console.log('Share');
         });
+        const shareScaleFactor = gameWidth / share.width; 
+        share.setScale(shareScaleFactor * 0.16)
 
         const options = this.addButton(gameWidth * 0.9, gameHeight * 0.1, 'options', () => {
             this.stopMenuMusicAndStartScene('OptionsScene');
         });
+        const optionsScaleFactor = gameWidth / options.width; 
+        options.setScale(optionsScaleFactor * 0.1835)
 
         const menuMusic = this.sound.add('menuMusic');
         if (!menuMusic.isPlaying) {
