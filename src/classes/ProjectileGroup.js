@@ -4,7 +4,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
     constructor(scene) {
         super(scene.physics.world, scene);
         this.scene = scene;
-        
+
         // ---- 
         // Maybe change this to ammo size of player instance
         // or deal with ammo and reload seperate. TBD
@@ -17,7 +17,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
             visible: false,
             key: "laser",
         })
-    
+
     }
 
     fireLaser(x, y, direction, laserDamage) {
@@ -26,8 +26,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
         if (laser) {
             laser.fire(x, y, direction, laserDamage);
         }
-    }   
-
+    }
 }
 
 export class Laser extends Phaser.Physics.Arcade.Sprite {
@@ -68,7 +67,73 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
     }
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
-        if (!this.scene.cameras.main.worldView.contains(this.body.x,this.body.y)) {
+        if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
+            this.setActive(false);
+            this.setVisible(false);
+            this.setHasHit(false);
+        }
+    }
+}
+
+export class ArrowGroup extends Phaser.Physics.Arcade.Group {
+    constructor(scene) {
+        super(scene.physics.world, scene);
+        this.scene = scene;
+
+        this.createMultiple({
+            classType: Arrow,
+            frameQuantity: 3,
+            active: false,
+            visible: false,
+            key: "arrow",
+        })
+
+    }
+    fireArrow(x, y, direction, arrowDamage) {
+        const arrow = this.getFirstDead(false);
+        if (arrow) {
+            arrow.fire(x, y, direction, arrowDamage);
+        }
+    }
+}
+
+
+export class Arrow extends Phaser.Physics.Arcade.Sprite {
+    #arrowDamage = 10;
+    #hasHit = true;
+
+    constructor(scene, x, y) {
+        super(scene, x, y, 'arrow');
+    }
+    getHasHit() {
+        return this.#hasHit;
+    }
+    setHasHit(bool) {
+        this.#hasHit = bool;
+    }
+    getArrowDamage() {
+        return this.#arrowDamage;
+    }
+    setArrowDamage(damage) {
+        this.#arrowDamage = damage;
+    }
+
+    fire(x, y, direction, arrowDamage) {
+        if (arrowDamage) this.setArrowDamage(arrowDamage);
+        this.body.reset(x, y);
+
+        this.setScale(0.5);
+        this.body.setSize(this.width - 15, 5)
+        this.body.setAllowGravity(false);
+        this.angle = 180
+
+        this.setActive(true);
+        this.setVisible(true);
+        this.setVelocityX(180 * direction);
+    }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
             this.setActive(false);
             this.setVisible(false);
             this.setHasHit(false);
