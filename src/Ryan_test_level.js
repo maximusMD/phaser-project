@@ -109,55 +109,8 @@ export class RyanLevel extends Phaser.Scene {
 
     }
 
-    // LASER HANDLER ON SPRITES
-    emitLaserHit(sprite) {
-        this.laser_hit_emitter.setPosition(sprite.getBody().x + (sprite.getBody().width / 2), sprite.getBody().y + (sprite.getBody().height / 2))
-        this.laser_hit_emitter.explode(10)
-    }
-    emitGroundHit(ground) {
-        // pixelX, pixelY
-        this.ground_hit_emitter.setPosition(ground.pixelX, this.player.getBody().y + ((this.player.getBody().height / 2) - 10))
-        this.ground_hit_emitter.explode(10)
-    }
-
-    handleOverlap(scene, sprite, overlapSprite) {
-        if (!overlapSprite.getHasHit()) {
-            sprite.setHP(overlapSprite.getLaserDamage());
-            scene.emitLaserHit(sprite);
-            
-        }
-        overlapSprite.setHasHit(true);
-        overlapSprite.setVisible(false);
-
-        // Reset needs a better more perm solution later
-        overlapSprite.body.reset(-400, -400);
-
-    }
-
-    handleGroundHit(scene, projectile, ground) {
-        projectile.setVisible(false);
-        projectile.body.reset(-400, -400);
-        scene.emitGroundHit(ground);
-    }
-
     create() {
-        this.laser_hit_emitter = this.add.particles(400, 250, 'flare', {
-            lifespan: 200,
-            speed: { min: 150, max: 250 },
-            scale: { start: 0.05, end: 0 },
-            blendMode: 'LUMINOSITY',
-            tint: 0xbabaf8,
-            emitting: false
-        });
-        this.laser_hit_emitter.setDepth(1);
-        this.ground_hit_emitter = this.add.particles(400, 250, 'dust', {
-            lifespan: 200,
-            speed: { min: 10, max: 20 },
-            scale: { start: 0.02, end: 0 },
-            blendMode: 'DARKEN',
-            emitting: false
-        });
-        this.ground_hit_emitter.setDepth(1);
+
 
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
@@ -204,14 +157,9 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, this.ground);
 
-        // Keep this below all enemy creation
-        this.allEnemies = this.children.list.filter(x => x instanceof Enemy);
-        // Player needs to come after enemies as needs list of sprites currently for lasers
+    
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
-        this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
-
-        this.physics.add.overlap(this.player.laserGroup, this.allEnemies, (...args) => { this.handleOverlap(this, ...args) })
         
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
@@ -233,6 +181,8 @@ export class RyanLevel extends Phaser.Scene {
         this.graphics = this.add.graphics();
       
       const hudScene = new HUDScene();
+
+      this.player.init(this.ground);
       this.scene.run('HUDScene')    
     }
 
