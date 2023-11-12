@@ -169,11 +169,13 @@ export class Weather {
 
     pause() {
         this.scene.rain_foreground?.pause()
+        this.scene.rain_background?.pause()
         this.scene.fog_background?.pause()
         this.scene.fog_foreground?.pause()
     }
 
     resume() {
+        this.scene.rain_background?.resume()
         this.scene.rain_foreground?.resume()
         this.scene.fog_background?.resume()
         this.scene.fog_foreground?.resume()

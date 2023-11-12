@@ -88,6 +88,7 @@ export class RyanLevel extends Phaser.Scene {
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
+        this.load.image('arrow', arrow_img)
 
         this.backgrounds = new ParaBackgrounds(this,[
             {key: 'dungeon_middle', image: dungeon_middle},
@@ -131,9 +132,6 @@ export class RyanLevel extends Phaser.Scene {
                 .setScale(1)
                 .setDepth(-1)
         });
-
-        this.scene.run('HUDScene')
-
 
         createAnimations(this);
 
@@ -183,7 +181,9 @@ export class RyanLevel extends Phaser.Scene {
         this.graphics = this.add.graphics();
       
       const hudScene = new HUDScene();
+
       this.player.init(this.ground);
+      this.scene.run('HUDScene')    
     }
 
     update() {
