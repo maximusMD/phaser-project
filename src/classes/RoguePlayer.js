@@ -35,9 +35,116 @@ export class RoguePlayer extends Actor {
         this.getBody().setSize(20, 27)
         this.getBody().setOffset(5, 7);
         this.laserGroup = new LaserGroup(scene, this.getShootDmg());
-        scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
-            this.handleMelee(_, enemy)
+    }
+
+    init(player_collider) {
+        this.scene.physics.add.collider(this, player_collider);
+        this.createAnims();
+
+        this.laser_hit_emitter = this.scene.add.particles(400, 250, 'flare', {
+            lifespan: 200,
+            speed: { min: 150, max: 250 },
+            scale: { start: 0.05, end: 0 },
+            blendMode: 'LUMINOSITY',
+            tint: 0xbabaf8,
+            emitting: false
+        });
+        this.laser_hit_emitter.setDepth(1);
+        this.ground_hit_emitter = this.scene.add.particles(400, 250, 'dust', {
+            lifespan: 200,
+            speed: { min: 10, max: 20 },
+            scale: { start: 0.02, end: 0 },
+            blendMode: 'DARKEN',
+            emitting: false
+        });
+        this.ground_hit_emitter.setDepth(1);
+        this.allEnemies = this.scene.children.list.filter(x => x instanceof Enemy);
+        this.scene.physics.add.overlap(this.laserGroup, this.allEnemies, (...args) => {
+            this.handleOverlap(...args) })
+        this.scene.physics.add.overlap(this, this.allEnemies, (...args) => {
+            this.handleMelee(...args)
         })
+    }
+
+    createAnims() {
+        this.scene.anims.create({
+            key: 'rogue_run',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_run-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 10,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_idle',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_idle-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 10,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_jump',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_jump-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 10,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_midair',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_jump_midair-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 10,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_shoot',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_shoot-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 15,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_melee',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_melee-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 15,
+            repeat: 0,
+        });
+        this.scene.anims.create({
+            key: 'rogue_dash',
+            frames: this.scene.anims.generateFrameNames('rogue_player', {
+                prefix: 'rogue_player_dash-',
+                suffix: '.png',
+                start: 0,
+                end: 7,
+            }),
+            frameRate: 15,
+            repeat: 0,
+        });
+
     }
     getDashDistanceMultiplier() {
         return this.#dashDistanceMultiplier;
@@ -132,6 +239,36 @@ export class RoguePlayer extends Actor {
     setDashDistanceMultiplier(multiplier) {
         this.#dashDistanceMultiplier = multiplier;
     }
+    // LASER HANDLER ON SPRITES
+    emitLaserHit(sprite) {
+        this.laser_hit_emitter.setPosition(sprite.getBody().x + (sprite.getBody().width / 2), sprite.getBody().y + (sprite.getBody().height / 2))
+        this.laser_hit_emitter.explode(10)
+    }
+    emitGroundHit(ground) {
+        this.ground_hit_emitter.setPosition(ground.pixelX, this.getBody().y + ((this.getBody().height / 2) - 10))
+        this.ground_hit_emitter.explode(10)
+    }
+
+    handleOverlap(sprite, overlapSprite) {
+        console.log(this)
+        if (!overlapSprite.getHasHit()) {
+            sprite.setHP(overlapSprite.getLaserDamage());
+            this.emitLaserHit(sprite);
+
+        }
+        overlapSprite.setHasHit(true);
+        overlapSprite.setVisible(false);
+
+        // Reset needs a better more perm solution later
+        overlapSprite.body.reset(-400, -400);
+
+    }
+
+    handleGroundHit(projectile, ground) {
+        projectile.setVisible(false);
+        projectile.body.reset(-400, -400);
+        this.emitGroundHit(ground);
+    }
 
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
@@ -177,7 +314,7 @@ export class RoguePlayer extends Actor {
             this.anims?.stop('rogue_dash');
             this.setIsDashing(false);
         })
-        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) } );
+        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) });
     }
 
     // Put any actions need for a complete anims in here
