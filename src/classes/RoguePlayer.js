@@ -23,6 +23,9 @@ export class RoguePlayer extends Actor {
     #shootCooldown = false;
     #isInvul = false;
     #godMode = false;
+    #jumpCount = 0;
+    #maxJumps = 2;
+    #isJumping = true;
 
 
     constructor(scene, x, y, playerModel) {
@@ -41,6 +44,7 @@ export class RoguePlayer extends Actor {
             this.handleMelee(_, enemy)
         })
     }
+  
     getGodMode() {
         return this.#godMode;
     }
@@ -52,6 +56,18 @@ export class RoguePlayer extends Actor {
     }
     setIsInvul(bool) {
         return this.#isInvul = bool;
+    }
+    getIsJumping() {
+        return this.#isJumping;
+    }
+    setIsJumping(bool) {
+        this.#isJumping = bool;
+    }
+    getJumpCount() {
+        return this.#jumpCount;
+    }
+    getMaxJumps() {
+        return this.#maxJumps;
     }
     getDashDistanceMultiplier() {
         return this.#dashDistanceMultiplier;
@@ -137,8 +153,14 @@ export class RoguePlayer extends Actor {
     resetAirDashCount() {
         this.#airDashCount = 0;
     }
+    resetJumpCount() {
+        this.#jumpCount = 0;
+    }
     addAirDashCount() {
         this.#airDashCount++;
+    }
+    addJumpCount() {
+        this.#jumpCount++;
     }
     setAirDashLimit(limit) {
         this.#airDashLimit = limit;
@@ -146,6 +168,7 @@ export class RoguePlayer extends Actor {
     setDashDistanceMultiplier(multiplier) {
         this.#dashDistanceMultiplier = multiplier;
     }
+
 
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
@@ -193,7 +216,7 @@ export class RoguePlayer extends Actor {
             this.setIsDashing(false);
             !this.getGodMode() && this.setIsInvul(false);
         })
-        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) } );
+        this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) });
     }
 
     // Put any actions need for a complete anims in here
@@ -207,6 +230,9 @@ export class RoguePlayer extends Actor {
                 this.anims.play('rogue_midair', true);
             }
         }
+        if (e.key === "rogue_jump") {
+            this.setIsJumping(false);
+        }
     }
     handleStoppedAnims(e) {
         if (e.key === "rogue_melee") {
@@ -218,12 +244,17 @@ export class RoguePlayer extends Actor {
                 this.anims.play('rogue_midair', true);
             }
         }
+        if (e.key === "rogue_jump") {
+            this.setIsJumping(false);
+        }
     }
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
         if (this.getBody().onFloor() && !this.getLanded()) {
             this.getLanded(true);
+            this.setIsJumping(false);
+            this.resetJumpCount();
             this.resetAirDashCount();
         }
         if (this.anims?.currentAnim?.key === "rogue_shoot") {
@@ -274,17 +305,18 @@ export class RoguePlayer extends Actor {
             }
         }
 
-        if ((this.cursors.jump.isDown || this.cursors.up.isDown) && this.body.onFloor()) {
-            if (!this.getIsDashing()) {
-                this.setLanded(false);
+        if ((this.cursors.jump.isDown || this.cursors.up.isDown)) {
+            if (this.getJumpCount() < this.getMaxJumps() && !this.getIsJumping()) {
                 this.setVelocityY(-200);
-                this.anims.play('rogue_jump', true)
+                this.setIsJumping(true);
+                this.addJumpCount();
+                this.anims.play("rogue_jump", true)
             }
         }
 
         if (!this.body.onFloor()) {
             if (this.body.velocity.y > 0) {
-                if (this.anims.isPlaying && this.anims.currentAnim.key !== 'rogue_dash') {
+                if (this.anims?.currentAnim?.key !== 'rogue_dash' || this.anims?.currentAnim?.key !== 'rogue_shoot') {
                     this.anims.play('rogue_midair', true)
                 }
             }
