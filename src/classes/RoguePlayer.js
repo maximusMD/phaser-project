@@ -34,7 +34,7 @@ export class RoguePlayer extends Actor {
             'melee': Phaser.Input.Keyboard.KeyCodes.M, 'shoot': Phaser.Input.Keyboard.KeyCodes.K, 'dash': Phaser.Input.Keyboard.KeyCodes.SHIFT
         });
         this.scene = scene;
-        this.setScale(1.2)
+        this.setScale(1.1)
         this.getBody().setSize(20, 27)
         this.getBody().setOffset(5, 7);
         this.laserGroup = new LaserGroup(scene, this.getShootDmg());

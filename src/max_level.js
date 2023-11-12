@@ -60,7 +60,7 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
-        this.load.image('standard_tiles', tileset_img);
+        this.load.image('metroid hc', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
@@ -68,11 +68,18 @@ export class MaxLevel extends Phaser.Scene {
     create() {
         createAnimations(this);
         const map = this.make.tilemap({ key: 'tilemap' })
-        const tileset = map.addTilesetImage('boss_tiles', 'standard_tiles')
+        const tileset = map.addTilesetImage('metroid hc')
 
         this.background_tiles = map.createLayer('background_colour', tileset)
 
-        this.ground = map.createLayer('ground', tileset)
+        this.ground = map.createLayer('Collision', tileset)
+
+        this.bg2 = map.createLayer('bg2', tileset);
+        this.bg3 = map.createLayer('bg3', tileset);
+        this.background = map.createLayer('Background', tileset);
+        this.bg4 = map.createLayer('b4', tileset);
+
+        
         this.ground.setCollisionByExclusion(-1, true)
 
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
