@@ -147,7 +147,8 @@ export class RoguePlayer extends Actor {
             frameRate: 15,
             repeat: 0,
         });
-  
+    }
+    
     getGodMode() {
         return this.#godMode;
     }
