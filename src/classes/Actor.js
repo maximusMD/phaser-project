@@ -24,8 +24,14 @@ export class Actor extends Physics.Arcade.Sprite {
     getBody() {
         return this.body;
     }
-    setHP(damage) {
-        this.#hp -= damage;
+    setHP(damage, ignoreInvul = false) {
+        if (this.getGodMode?.()) return;
+
+        if (!this.getIsInvul?.() || ignoreInvul) {
+            this.#hp -= damage;
+        } else {
+            console.log("invul to dmg")
+        }
     }
 
 }       

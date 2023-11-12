@@ -21,6 +21,8 @@ export class RoguePlayer extends Actor {
     #shootingSpeed = 0.8;
     #reloadTime = 1.5;
     #shootCooldown = false;
+    #isInvul = false;
+    #godMode = false;
     #jumpCount = 0;
     #maxJumps = 2;
     #isJumping = true;
@@ -41,6 +43,19 @@ export class RoguePlayer extends Actor {
         scene.physics.add.overlap(this, scene.allEnemies, (_, enemy) => {
             this.handleMelee(_, enemy)
         })
+    }
+  
+    getGodMode() {
+        return this.#godMode;
+    }
+    setGodMode(bool){
+        this.#godMode = bool;
+    }
+    getIsInvul() {
+        return this.#isInvul;
+    }
+    setIsInvul(bool) {
+        return this.#isInvul = bool;
     }
     getIsJumping() {
         return this.#isJumping;
@@ -192,12 +207,14 @@ export class RoguePlayer extends Actor {
         const dashMultiplier = 200 + this.getDashDistanceMultiplier();
         this.anims.play("rogue_dash", true);
         this.setVelocityX(500 * this.scaleX);
+        !this.getGodMode() && this.setIsInvul(true);
         this.setDashCooldown(true);
         this.setIsDashing(true);
         this.scene.time.delayedCall(dashMultiplier, () => {
             this.setVelocityX(0)
             this.anims?.stop('rogue_dash');
             this.setIsDashing(false);
+            !this.getGodMode() && this.setIsInvul(false);
         })
         this.scene.time.delayedCall(dashMultiplier + this.getDashCooldownSpeed(), () => { this.setDashCooldown(false) });
     }
