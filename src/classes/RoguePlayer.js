@@ -4,8 +4,6 @@ import { LaserGroup } from './ProjectileGroup.js';
 
 export class RoguePlayer extends Actor {
 
-    // TODOs: add dash distance fall off and timeout
-
     #dashCooldown = false;
     #dashCooldownSpeed = 200;
     #isDashing = false;
