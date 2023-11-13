@@ -164,9 +164,7 @@ export class MaxLevel extends Phaser.Scene {
         arrow_shoot_sfx.setVolume(1.0)
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
-
-
-
+        this.scene.manager.bringToTop('PauseMenuScene');
     }
     update() {
         this.player.update();

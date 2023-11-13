@@ -38,11 +38,10 @@ export class PauseMenuScene extends Phaser.Scene {
 		const centerX = this.cameras.main.width / 2;
 		const centerY = this.cameras.main.height / 2;
 
-		// pause menu bg
-		const pauseMenuBg = this.add.image(centerX, centerY + 0, 'pauseMenuBg');
-		pauseMenuBg.setOrigin(0.5, 0.5);
-		pauseMenuBg.setAlpha(0.7);
-		pauseMenuBg.setScale(0.6);
+		//bg gradient
+		const gradientBackground = this.add.graphics();
+        gradientBackground.fillStyle(0x000000, 0.7);
+        gradientBackground.fillRect(0, 0, this.cameras.main.width, this.cameras.main.height);
 
 		// pause menu img
 		const pauseMenuImg = this.add.image(centerX, centerY - 200, 'pauseMenuImg');
