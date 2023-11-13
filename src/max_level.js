@@ -14,6 +14,7 @@ import laser_img from "./assets/particles/laser_2.png";
 
 import flare from "./assets/particles/flare_1.png"
 import dust from "./assets/particles/dust.png"
+import { WinnerScene } from './winner.js';
 
 import sceneMusic from './assets/levelMusic.wav';
 import arrow_shoot_sfx from './assets/shooting_arrow.wav';
@@ -89,20 +90,20 @@ export class MaxLevel extends Phaser.Scene {
 
         // map.createFromObjects('PITS')
 
-        map.createFromObjects('PITS', {
-            gid: tileset.firstgid, 
-            key: 'metroid hc',
-        });
+//         map.createFromObjects('PITS', {
+//             gid: tileset.firstgid, 
+//             key: 'metroid hc',
+//         });
 
-        const objectLayer = map.getObjectLayer('PITS');
-objectLayer.objects.forEach((object) => {
-    console.log('Object GID:', object.gid);
-    const tileIndex = object.gid
-    console.log('Tile Index:', tileIndex);
+//         const objectLayer = map.getObjectLayer('PITS');
+// objectLayer.objects.forEach((object) => {
+//     console.log('Object GID:', object.gid);
+//     const tileIndex = object.gid
+//     console.log('Tile Index:', tileIndex);
 
-    const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileIndex);
-    sprite.setOrigin(0, 1); // Adjust the origin as needed
-});
+//     const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileIndex);
+//     sprite.setOrigin(0, 1); // Adjust the origin as needed
+// });
 
         // console.log(map.tilesets);
 
@@ -164,8 +165,18 @@ objectLayer.objects.forEach((object) => {
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
 
+
+
     }
     update() {
         this.player.update();
+        // console.log('Player Coordinates:', this.player.x, this.player.y);
+
+        const targetX = 88;
+        const targetY = 755
+
+        if (this.player.x <= targetX && this.player.y >= targetY) {
+            this.scene.start('WinnerScene');
+        }
     }
 }
