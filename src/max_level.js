@@ -141,77 +141,20 @@ export class MaxLevel extends Phaser.Scene {
         this.bg4 = map.createLayer('b4', tileset);
         
         this.ground.setCollisionByExclusion(-1, true)
-
-        // this.weather.setWindSpeed(-100);
-        // this.weather.addRain();
-        // this.weather.addFog()
-
-        // map.createFromObjects('PITS')
-
-//         map.createFromObjects('PITS', {
-//             gid: tileset.firstgid, 
-//             key: 'metroid hc',
-//         });
-
-//         const objectLayer = map.getObjectLayer('PITS');
-// objectLayer.objects.forEach((object) => {
-//     console.log('Object GID:', object.gid);
-//     const tileIndex = object.gid
-//     console.log('Tile Index:', tileIndex);
-
-//     const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileIndex);
-//     sprite.setOrigin(0, 1); // Adjust the origin as needed
-// });
-
-        // console.log(map.tilesets);
-
-        // const objectLayer = map.getObjectLayer('PITS', tileset);
-
-        // objectLayer.objects.forEach((object) => {
-        //     const gid = object.gid;
-        
-        //     // Check if the gid corresponds to the correct tileset
-        //     if (gid >= tileset.firstgid && gid < tileset.firstgid + tileset.total) {
-        //         const tileId = gid - tileset.firstgid;
-        //         const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileId);
-        //         sprite.setOrigin(0, 1); // Adjust the origin as needed
-        //         console.log(gid);
-        //         console.log(tileset.firstgid);
-        //         console.log(tileId);
-        //     } else {
-        //         console.warn('Object has an invalid gid:', object);
-        //     }
-        // });
-
-        // objectLayer.objects.forEach((object) => {
-        // const gid = object.gid;
-
-        // const imageKey = map.tilesets[0].getTileProperties(gid);
-
-        // const sprite = this.add.sprite(object.x, object.y, imageKey);
-        // sprite.setOrigin(0, 1);
-        // });
-
-//         const objectLayer = map.getObjectLayer('PITS')
-// // Iterate through the objects in the object layer
-// objectLayer.objects.forEach((object) => {
-//    const tileId = object.gid & 0x1FFFFFFF;
-
-//    const tileProperties = map.tilesets[3].getTileProperties(tileId);
-
-//    if (tileProperties) {
-//        const sprite = this.add.sprite(object.x, object.y, tileset.image, tileId);
-//        sprite.setOrigin(0, 1); // Adjust the origin as needed
-//    } else {
-//        console.warn('Object is missing tile properties:', object);
-//    }
-// });
-
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
 
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
+        this.weather.addFog()
+
+
         this.player.init(this.ground)
+
+        this.hudScene = new HUDScene();
+        this.scene.bringToTop('HUDScene')
+        this.scene.run('HUDScene')
 
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
@@ -223,9 +166,6 @@ export class MaxLevel extends Phaser.Scene {
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
-
-        this.hudScene = new HUDScene();
-        this.scene.run('HUDScene')
     }
     update() {
         this.weather.update();
