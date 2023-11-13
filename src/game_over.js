@@ -5,7 +5,7 @@ import controlsImg from './assets/menu_buttons/controls.png'
 
 export class GameOverScene extends Phaser.Scene {
     constructor() {
-        super('AboutScene')
+        super('GameOverScene')
     }
 
     preload() {

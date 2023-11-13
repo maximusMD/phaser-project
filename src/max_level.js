@@ -168,10 +168,36 @@ export class MaxLevel extends Phaser.Scene {
     }
     update() {
         this.player.update();
-        // console.log('Player Coordinates:', this.player.x, this.player.y);
+        console.log('Player Coordinates:', this.player.x, this.player.y);
 
         const targetX = 88;
         const targetY = 755
+
+        const deathX = 766
+        const deathY = 716
+
+        const tolerance = 5; // Adjust this value based on your needs
+
+        // if (
+        //     this.player.x >= deathX - tolerance &&
+        //     this.player.x <= deathX + tolerance &&
+        //     this.player.y >= deathY - tolerance &&
+        //     this.player.y <= deathY + tolerance
+        // ) {
+        //     console.log(this.player.getHP())
+        //     this.player.setHP(0);
+        // }
+
+        if (this.player.x <= deathX && this.player.y >= deathY) {
+            console.log('death');
+            this.player.setHP(100)
+        }
+
+
+        if (this.player.getHP() === 0) {
+            console.log(this.player.getHP())
+            this.scene.start('GameOverScene')
+        }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
             this.scene.start('WinnerScene');

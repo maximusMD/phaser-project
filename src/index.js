@@ -12,6 +12,7 @@ import { ControlsScene } from './controls';
 import { LeaderboardScene } from './leaderboard';
 import { MaxLevel } from './max_level';
 import { WinnerScene } from './winner';
+import { GameOverScene } from './game_over';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {
@@ -31,7 +32,7 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene],
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene],
     render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
