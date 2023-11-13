@@ -23,7 +23,7 @@ export function createAnimations(scene) {
       showBeforeDelay: true
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -35,7 +35,7 @@ export function createAnimations(scene) {
       end: 14
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -68,10 +68,12 @@ export function createAnimations(scene) {
       prefix: 'skeleton_archer_melee1-',
       suffix: '.png',
       start: 0,
-      end: 4
+      end: 4,
+      delay: 1800,
+      showBeforeDelay: true
     }),
     frameRate: 6,
-    repeat: -1
+    repeat: 0
   })
 
   scene.anims.create({
@@ -80,10 +82,12 @@ export function createAnimations(scene) {
       prefix: 'skeleton_archer_melee2-',
       suffix: '.png',
       start: 0,
-      end: 3
+      end: 3,
+      delay: 1800,
+      showBeforeDelay: true
     }),
     frameRate: 6,
-    repeat: -1,
+    repeat: 0,
     delay: 500,
     repeatDelay: 2000
   })
@@ -109,10 +113,20 @@ export function createAnimations(scene) {
       end: 8
     }),
     frameRate: 10,
-    repeat: 0
+    repeat: 1
   })
 
-
+  scene.anims.create({
+    key: 'skeleton_archer_die',
+    frames: scene.anims.generateFrameNames('skeleton_archer', {
+      prefix: 'skeleton_archer_dead-',
+      suffix: '.png',
+      start: 0,
+      end: 4
+    }),
+    frameRate: 10,
+    repeat: 0
+  })
 
 
   scene.anims.create({
@@ -124,7 +138,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -147,8 +161,10 @@ export function createAnimations(scene) {
       start: 0,
       end: 15
     }),
-    frameRate: 6,
-    repeat: -1
+    frameRate: 10,
+    repeat: 1,
+    delay: 500,
+    repeatDelay: 500
   })
 
   scene.anims.create({
@@ -184,7 +200,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 6,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({

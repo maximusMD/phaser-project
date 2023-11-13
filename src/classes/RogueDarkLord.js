@@ -4,30 +4,77 @@ import { Enemy } from "./Enemy";
 export class RogueDarkLord extends Enemy {
     constructor(scene, x, y, enemyModel) {
         super(scene, x, y, enemyModel)
-        // this.shoot = false;
         this.setScale(0.9)
-        this.getBody().setSize(45, 55);
-        this.getBody().setOffset(10, 10)
-        this.setVision(100)
+        this.getBody().setSize(30, 45);
+        this.getBody().setOffset(15, 20)
+        this.setVision(50)
+        this.setMeleeDamage(5);
+        this.setWalkSpeed(10)
+        this.setRangeDamage(0);
+        this.setScore(20);
+
+        this.on('animationcomplete', this.handleCompleteAnims);
+        this.on('animationstop', this.handleStoppedAnims);
     }
 
-    checkDistance(player, graphics, line) {
-        graphics.clear();
-        return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
-    }
-
-    update(player, graphics, line) {
-        const distance = this.checkDistance(player, graphics, line)
-
-            if (distance < 50) {
-                this.facePlayer(player, this)
-                this.anims.play('darklord_attack', true)
-                if (this.anims.currentFrame.index === 4) {
-                this.damageToPlayer(player, 1, 20);
-                }
-            } 
-        else {
+    handleCompleteAnims(e) {
+        if (e.key === 'darklord_walk' && this.getIsWandering() === false) {
             this.anims.play('darklord_idle', true);
+            this.setFlipX(!this.flipX)
+            this.setWalkSpeed(-1 * this.getWalkSpeed());
+
+            this.scene.time.delayedCall(2000, () => {
+                this.startPos = undefined;
+                this.setIsWandering(true);
+                this.setAggro(false);
+            });
+        }
+
+        if (e.key === 'darklord_attack') {
+            this.anims.stop()
+        }
+
+        if (e.key === 'darklord_die') {
+            this.destroy();
+        }
+    }
+
+    handleStoppedAnims(e) {
+
+        if (e.key === 'darklord_attack') {
+            this.setFinishAttack(true);
+          }
+
+    }
+
+    update(player) {
+
+        if (this.getIsDead()) {
+            return;
+        }
+
+        const distance = this.checkDistance(player)
+
+        if (distance <= this.getVision()) {
+            this.setAggro(true);
+            this.stopWandering();
+        } else {
+            this.setAggro(false);
+            this.setIsWandering(true);
+        }
+
+        if (this.getAggro() || this.getFinishAttack()) {
+            this.facePlayer(player, this)
+            if (this.checkOverlap(player)) {
+                this.handleMelee('darklord_attack')
+            } else {
+                this.stopWandering();
+                // this.huntPlayer(player)
+                this.handleMelee('darklord_attack')
+            }} else {
+            if (this.getIsWandering()) {
+                this.wander(1, 'darklord_walk', 'darklord_idle');
+            }
         }
     }
 }

@@ -8,7 +8,6 @@ export class SkeletonArcher extends Enemy {
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
     this.scene = scene;
-    this.shoot = false;
     this.setScale(0.5)
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
@@ -16,11 +15,14 @@ export class SkeletonArcher extends Enemy {
     this.setMeleeDamage(1);
     this.setRangeDamage(5);
     this.#arrows = new ArrowGroup(this.scene);
+    this.setScore(20);
+
+    this.on('animationcomplete', this.handleCompleteAnims);
+    this.on('animationstop', this.handleStoppedAnims);
   }
   arrowHit(player, arrow) {
     if (!arrow.getHasHit()) {
       player.setHP(arrow.getArrowDamage());
-      console.log(player.getHP());
     }
     arrow.setHasHit(true);
     arrow.setVisible(false);
@@ -36,45 +38,70 @@ export class SkeletonArcher extends Enemy {
     const direction = this.flipX ? -1 : 1;
     this.getArrows().fireArrow(this.getBody().x, this.getBody().y, direction, this.getRangeDamage())
   }
-
+  
   handleCompleteAnims(e) {
     if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false) {
       this.anims.play('skeleton_archer_idle', true);
       this.setFlipX(!this.flipX)
       this.setWalkSpeed(-1 * this.getWalkSpeed());
-
+      
       this.scene.time.delayedCall(2000, () => {
         this.startPos = undefined;
         this.setIsWandering(true);
-        this.shoot = false;
+        this.setAggro(false);
       });
+    }
+
+    if (e.key === 'skeleton_archer_melee_2') {
+      this.anims.stop()
+      this.anims.play('skeleton_archer_idle', true);
+
+      this.scene.time.delayedCall(2000, () => {
+        this.setAggro(false);
+      })
+      
+    }
+    
+    if (e.key === 'skeleton_archer_die') {
+      this.destroy();
     }
   }
 
   handleStoppedAnims(e) {
-    // console.log(e.key)
+    if (e.key === 'skeleton_archer_attack_1') {
+      this.setFinishAttack(true);
+    }
+
+    if (e.key === 'skeleton_archer_melee_2') {
+      this.setFinishAttack(true);
+    }
   }
 
-  update(player, graphics, line) {
-    this.on('animationcomplete', this.handleCompleteAnims);
-    this.on('animationstop', this.handleStoppedAnims);
+  update(player) {
 
-    const distance = this.checkDistance(player, graphics, line)
+
+
+    if(this.getIsDead()) {
+      return;
+    }
+
+    const distance = this.checkDistance(player)
 
     if (distance <= this.getVision()) {
-      this.shoot = true;
+      this.setAggro(true);
       this.stopWandering();
     } else {
-      this.shoot = false;
+      this.setAggro(false);
       this.setIsWandering(true);
     }
 
-    if (this.shoot) {
+    if (this.getAggro() || this.getFinishAttack()) {
       this.facePlayer(player, this)
       if (this.checkOverlap(player)) {
-        this.handleMelee('skeleton_archer_melee_2', 20);
+        this.handleMelee('skeleton_archer_melee_2');
       } else {
-        this.handleRanged('skeleton_archer_attack_1', 15)
+        this.stopWandering()
+        this.handleRanged('skeleton_archer_attack_1')
       }
     } else {
       if (this.getIsWandering()) {
