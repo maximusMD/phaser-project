@@ -17,11 +17,11 @@ export class PauseMenuScene extends Phaser.Scene {
 
 	init(data) {
 		this.music = data.music;
-		this.isMusicPlaying = data.isMusicPlaying;
+		this.weather = data.weather;
+		this.sfx = data.sfx;
 	}
 
 	preload() {
-		this.load.image('pauseMenuBg', 'assets/bg.png');
 		this.load.image('pauseMenuImg', pauseMenuImg);
 		this.load.image('musicImg', musicImg);
 		this.load.image('sfxImg', sfxImg);
@@ -37,11 +37,10 @@ export class PauseMenuScene extends Phaser.Scene {
 		const centerX = this.cameras.main.width / 2;
 		const centerY = this.cameras.main.height / 2;
 
-		// pause menu bg
-		const pauseMenuBg = this.add.image(centerX, centerY + 0, 'pauseMenuBg');
-		pauseMenuBg.setOrigin(0.5, 0.5);
-		pauseMenuBg.setAlpha(0.7);
-		pauseMenuBg.setScale(0.6);
+		//bg gradient
+		const gradientBackground = this.add.graphics();
+        gradientBackground.fillStyle(0x000000, 0.7);
+        gradientBackground.fillRect(0, 0, this.cameras.main.width, this.cameras.main.height);
 
 		// pause menu img
 		const pauseMenuImg = this.add.image(centerX, centerY - 200, 'pauseMenuImg');
@@ -82,6 +81,14 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
+		onImgSfx.on('pointerdown', () => {
+			this.toggleSFX(false);
+		});
+
+		offImgSfx.on('pointerdown', () => {
+			this.toggleSFX(true);
+		});
+
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
 		weatherImg1.setOrigin(0.5, 0.5);
@@ -98,11 +105,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setScale(1.5);
 
 		onWeatherImg.on('pointerdown', () => {
-			this.toggleMusic(false);
+			this.toggleWeather(true);
 		});
 
 		offWeatherImg.on('pointerdown', () => {
-			this.toggleMusic(true);
+			this.toggleWeather(false);
 		});
 
 		// resume image
@@ -122,20 +129,49 @@ export class PauseMenuScene extends Phaser.Scene {
 		mainMenuImg1.setScale(1.5);
 
 		mainMenuImg1.on('pointerdown', () => {
-			console.log(this.scene);
 			this.handleMainMenu();
 		});
 	}
 
+	toggleWeather(weather) {
+		if (weather) {
+			this.weather.enable();
+		} else {
+			this.weather.disable();
+		}
+	}
+
 	toggleMusic(mute) {
-		this.music.setMute(mute);
-		this.isMusicPlaying = !mute;
+		if (mute) {
+			this.music.stop();
+		} else {
+			this.music.play();
+		}
+	}
+
+	toggleSFX(mute) {
+		this.sfx.setMute(mute);
 	}
 
 	handleMainMenu() {
 		this.music.stop();
-		this.scene.stop('RyanLevel');
-		this.scene.stop('PauseMenuScene');
+		const scenesToStop = [
+			'Preloader',
+			'MenuScene',
+			'OptionsScene',
+			'ControlsScene',
+			'UserForm',
+			'RyanLevel',
+			'CreditsScene',
+			'AboutScene',
+			'HUDScene',
+			'PauseMenuScene',
+			'LeaderboardScene',
+			'MaxLevel',
+		];
+		scenesToStop.forEach((sceneKey) => {
+			this.scene.stop(sceneKey);
+		});
 		this.scene.start('MenuScene');
 	}
 }
