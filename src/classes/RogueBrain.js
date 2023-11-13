@@ -11,13 +11,8 @@ export class RogueBrain extends Enemy {
         this.setVision(100)
     }
 
-    checkDistance(player, graphics, line) {
-        graphics.clear();
-        return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
-    }
-
-    update(player, graphics, line) {
-        const distance = this.checkDistance(player, graphics, line)
+    update(player) {
+        const distance = this.checkDistance(player)
 
             if (distance < 75) {
                 this.facePlayer(player, this)

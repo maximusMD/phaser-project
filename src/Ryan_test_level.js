@@ -180,7 +180,7 @@ export class RyanLevel extends Phaser.Scene {
         })
         this.graphics = this.add.graphics();
       
-      const hudScene = new HUDScene();
+      this.hudScene = new HUDScene();
 
       this.player.init(this.ground);
       this.scene.run('HUDScene')    
@@ -190,13 +190,14 @@ export class RyanLevel extends Phaser.Scene {
         this.weather.update();
         this.backgrounds.update();
 
-        this.player.update();
-        this.enemy.update(this.player, this.graphics, this.line);
-        this.enemy2.update(this.player, this.graphics, this.line2);
-        this.enemy3.update(this.player, this.graphics, this.line3)
-        this.enemy4.update(this.player, this.graphics, this.line4)
-        this.enemy5.update(this.player, this.graphics, this.line5)
-        this.enemy6.update(this.player, this.graphics, this.line6)
+        this.player.update(this.hudScene);
+        this.enemy.update(this.player);
+        this.enemy2.update(this.player);
+        this.enemy3.update(this.player)
+        this.enemy4.update(this.player)
+        this.enemy5.update(this.player)
+        this.enemy6.update(this.player)
+        this.hudScene.update();
     }
 
 }

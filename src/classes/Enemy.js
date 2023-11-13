@@ -9,13 +9,22 @@ export class Enemy extends Actor {
   #rangeDamage = 20;
   #isWandering = true;
   #shootCoolDown = false;
+  #scoreWorth = 10;
+  #finishAttack = false;
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
-    this.setIsDead(false);
   }
 
   // getters
+  getScore() {
+    return this.#scoreWorth;
+  }
+
+  getFinishAttack() {
+    return this.#finishAttack;
+  }
+
   getShootCoolDown() {
     return this.#shootCoolDown;
   }
@@ -45,14 +54,23 @@ export class Enemy extends Actor {
   }
 
   // setters
+  setScore(newScoreWorth) {
+    this.#scoreWorth = newScoreWorth;
+  }
+
+  setFinishAttack(bool) {
+    this.#finishAttack = bool;
+  }
+
   setShootCoolDown() {
     this.#shootCoolDown = !this.getShootCoolDown();
   }
 
   updateHP(damage) {
-    this.setHP(damage);
     if (this.getHP() <= 0) {
       this.setIsDead();
+    } else {
+      this.setHP(damage);
     }
   }
   setWalkSpeed(speed) {
@@ -60,7 +78,9 @@ export class Enemy extends Actor {
   }
 
   setIsDead() {
-    this.#isDead = !this.#isDead;
+    this.#isDead = true;
+
+    this.playDeathAnimAndDestroy()
     // update playerscore upon death
   }
 
@@ -119,46 +139,42 @@ export class Enemy extends Actor {
   }
 
   stopWandering() {
-    this.setIsWandering(false);
     this.setVelocityX(0);
+    this.setIsWandering(false);
   }
 
   checkDistance(player, graphics, line) {
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 
-  damageToPlayer(player, damage, chance = 0) {
-    const chanceToHit = Math.random(0, 1);
-    if (chanceToHit < chance / 100) {
-      player.setHP(0)
-      console.log("no damage taken: ", player.getHP())
-    } else {
-      player.setHP(damage);
-      console.log("taken damage: ", player.getHP())
+  handleMelee(attack) {
+    this.anims.play(attack, true)
+    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      if(this.checkOverlap(this.scene.player)) {
+        this.scene.player.setHP(this.getMeleeDamage())
+        this.setFinishAttack(false)
+        this.anims.stop()
+      }
     }
   }
 
-  // takes in the animation
-  // takes in percantage chance for attack to land
-  handleMelee(attack, chance) {
-    this.anims.play(attack, true)
-    if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-      this.damageToPlayer(this.scene.player, this.getMeleeDamage(), chance);
-      this.anims.chain('skeleton_archer_idle')
-      this.anims.stop()
-    }
-  }
-
-  handleRanged(attack, chance) {
+  handleRanged(attack) {
     this.anims.play(attack, true)
 
     if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
+      this.setVelocity(0);
       this.shootArrow();
       this.anims.stop();
+      this.setFinishAttack(false);
+
     }
   }
 
   checkOverlap(player) {
     return Phaser.Geom.Intersects.RectangleToRectangle(player.getBounds(), this.getBounds());
+  }
+
+  playDeathAnimAndDestroy() {
+    this.anims.play(`${this.texture.key}_die`, true);
   }
 }

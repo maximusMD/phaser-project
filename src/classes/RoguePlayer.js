@@ -285,7 +285,7 @@ export class RoguePlayer extends Actor {
     handleOverlap(sprite, overlapSprite) {
         console.log(this)
         if (!overlapSprite.getHasHit()) {
-            sprite.setHP(overlapSprite.getLaserDamage());
+            sprite.updateHP(overlapSprite.getLaserDamage());
             this.emitLaserHit(sprite);
 
         }
@@ -308,7 +308,7 @@ export class RoguePlayer extends Actor {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
             if (this?.anims?.currentFrame.index === 5) {
                 if (!this.getMeleeCooldown()) {
-                    enemy.setHP(this.getMeleeDmg())
+                    enemy.updateHP(this.getMeleeDmg())
                     console.log(enemy.getHP())
                     this.setMeleeCooldown(true);
                 }
