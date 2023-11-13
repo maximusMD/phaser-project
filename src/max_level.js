@@ -15,6 +15,9 @@ import laser_img from "./assets/particles/laser_2.png";
 import flare from "./assets/particles/flare_1.png"
 import dust from "./assets/particles/dust.png"
 
+import sceneMusic from './assets/levelMusic.wav';
+import arrow_shoot_sfx from './assets/shooting_arrow.wav';
+
 export class MaxLevel extends Phaser.Scene {
     constructor() {
         super({
@@ -64,6 +67,9 @@ export class MaxLevel extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
+
+        this.load.audio('sceneMusic', sceneMusic);
+        this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
     }
     create() {
         createAnimations(this);
@@ -147,6 +153,16 @@ objectLayer.objects.forEach((object) => {
         this.cameras.main.startFollow(this.player);
 
         this.player.init(this.ground)
+
+        const sceneMusic = this.sound.add('sceneMusic');
+        if (!sceneMusic.isPlaying) {
+            sceneMusic.play();
+            sceneMusic.loop = true;
+        }
+        const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
+        arrow_shoot_sfx.setVolume(1.0)
+        this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
+        this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
 
     }
     update() {
