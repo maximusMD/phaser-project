@@ -4,6 +4,8 @@ import Phaser from "phaser";
 
 export class Weather {
     #enabled = true;
+    #rainEnabled = false;
+    #fogEnabled = false;
     #rainSpeed;
     // high number = stronger wind
     #windSpeed;
@@ -26,7 +28,18 @@ export class Weather {
         }
     }
     // Pause test
-
+    getFogEnabled() {
+        return this.#fogEnabled;
+    }
+    getRainEnabled() {
+        return this.#rainEnabled;
+    }
+    setFogEnabled(bool) {
+        this.#fogEnabled = bool;
+    }
+    setRainEnabled(bool) {
+        this.#rainEnabled = bool;
+    }
     getRainSpeed() {
         return this.#rainSpeed;
     }
@@ -37,11 +50,14 @@ export class Weather {
 
     disable() {
         this.removeRain();
+        this.removeFog();
         this.#enabled = false;
     }
 
     enable() {
         this.#enabled = true;
+        if (this.getFogEnabled()) this.addFog();
+        if (this.getRainEnabled()) this.addRain();
     }
 
     setWindSpeed(speed) {
@@ -73,6 +89,7 @@ export class Weather {
     }
 
     addFog() {
+        this.setFogEnabled(true);
         if (this.#enabled) {
             this.scene.fog_foreground = this.scene.add.particles(-10, 150, 'fog', {
                 scale: { min: 0.5, max: 1. },
@@ -124,11 +141,13 @@ export class Weather {
     }
 
     removeFog() {
+        this.setFogEnabled(false);
         this.scene.fog_foreground?.destroy()
         this.scene.fog_background?.destroy()
     }
 
     addRain() {
+        this.setRainEnabled(true);
         if (this.#enabled) {
             this.scene.rain_foreground = this.scene.add.particles(-10, -150, 'rain', {
                 scale: 0.1,
@@ -157,14 +176,15 @@ export class Weather {
             }
 
             this.scene.rain_foreground?.addEmitZone({ type: 'random', source: this.scene.rain_zone })
-            this.scene.rain_background?.addEmitZone({ type: 'random', source: this.scene.rain_zone, seamless: true})
+            this.scene.rain_background?.addEmitZone({ type: 'random', source: this.scene.rain_zone, seamless: true })
 
         }
     }
 
     removeRain() {
-            this.scene.rain_foreground?.destroy();
-            this.scene.rain_background?.destroy();
+        this.setRainEnabled(false);
+        this.scene.rain_foreground?.destroy();
+        this.scene.rain_background?.destroy();
     }
 
     pause() {
