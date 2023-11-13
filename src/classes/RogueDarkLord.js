@@ -41,10 +41,13 @@ export class RogueDarkLord extends Enemy {
 
     handleStoppedAnims(e) {
 
+        if (e.key === 'darklord_attack') {
+            this.setFinishAttack(true);
+          }
+
     }
 
     update(player) {
-
 
         if (this.getIsDead()) {
             return;
@@ -63,6 +66,10 @@ export class RogueDarkLord extends Enemy {
         if (this.getAggro() || this.getFinishAttack()) {
             this.facePlayer(player, this)
             if (this.checkOverlap(player)) {
+                this.handleMelee('darklord_attack')
+            } else {
+                this.stopWandering();
+                // this.huntPlayer(player)
                 this.handleMelee('darklord_attack')
             }} else {
             if (this.getIsWandering()) {

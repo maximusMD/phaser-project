@@ -23,7 +23,7 @@ export function createAnimations(scene) {
       showBeforeDelay: true
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -35,7 +35,7 @@ export function createAnimations(scene) {
       end: 14
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -200,7 +200,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 6,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({

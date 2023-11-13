@@ -100,6 +100,7 @@ export class SkeletonArcher extends Enemy {
       if (this.checkOverlap(player)) {
         this.handleMelee('skeleton_archer_melee_2');
       } else {
+        this.stopWandering()
         this.handleRanged('skeleton_archer_attack_1')
       }
     } else {

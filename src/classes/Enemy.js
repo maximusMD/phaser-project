@@ -12,7 +12,7 @@ export class Enemy extends Actor {
   #scoreWorth = 10;
   #finishAttack = false;
   #aggro = false;
-
+  
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
   }
@@ -110,18 +110,18 @@ export class Enemy extends Actor {
 
   // functions
   facePlayer(player, enemy) {
-    if (player.getBody().x < enemy.x) {
-      enemy.setFlipX(true);
-    } else {
-      enemy.setFlipX(false);
-    }
+
+    const shouldFlipX = player.getBody().x > enemy.x;
+    const flipDirection = enemy.texture.key === 'brain' ? shouldFlipX : !shouldFlipX;
+
+    enemy.setFlipX(flipDirection);
   }
 
   wander(numTiles, walkKey, idleKey) {
     const distance = 16 * numTiles;
 
-    
-    if(!this.startPos) {
+
+    if (!this.startPos) {
       this.startPos = this.getBody().x;
 
       this.anims.play(walkKey, true)
@@ -133,7 +133,7 @@ export class Enemy extends Actor {
         this.setFlipX(false)
       }
 
-      this.setIsWandering(false);  
+      this.setIsWandering(false);
     }
 
     const distanceTravelled = Math.abs(this.getBody().x - this.startPos);
@@ -158,10 +158,12 @@ export class Enemy extends Actor {
   handleMelee(attack) {
     this.anims.play(attack, true)
     if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
-      if(this.checkOverlap(this.scene.player)) {
+      if (this.checkOverlap(this.scene.player)) {
         this.scene.player.setHP(this.getMeleeDamage())
         this.setFinishAttack(false)
-        this.anims.stop()
+      } else {
+        console.log('missed attack');
+        this.scene.player.setHP(0);
       }
     }
   }
@@ -185,4 +187,17 @@ export class Enemy extends Actor {
   playDeathAnimAndDestroy() {
     this.anims.play(`${this.texture.key}_die`, true);
   }
+
+  // huntPlayer(player) {
+
+  //   if (player.getBody().x < this.getBody().x && !this.checkOverlap(player)) {
+  //     this.setVelocityX(-this.getWalkSpeed());
+  //     this.anims.play(`${this.texture.key}_walk`, true);
+
+  //   } else {
+  //     this.setVelocityX(this.getWalkSpeed);
+  //     this.anims.play(`${this.texture.key}_walk`, true);
+  //   }
+  //   console.log('hunting player')
+  // }
 }
