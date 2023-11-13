@@ -11,12 +11,17 @@ export class Enemy extends Actor {
   #shootCoolDown = false;
   #scoreWorth = 10;
   #finishAttack = false;
+  #aggro = false;
 
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
   }
 
   // getters
+  getAggro() {
+    return this.#aggro;
+  }
+
   getScore() {
     return this.#scoreWorth;
   }
@@ -54,6 +59,9 @@ export class Enemy extends Actor {
   }
 
   // setters
+  setAggro(bool) {
+    this.#aggro = bool;
+  }
   setScore(newScoreWorth) {
     this.#scoreWorth = newScoreWorth;
   }
@@ -143,7 +151,7 @@ export class Enemy extends Actor {
     this.setIsWandering(false);
   }
 
-  checkDistance(player, graphics, line) {
+  checkDistance(player) {
     return Phaser.Math.Distance.Between(this.getBody().x, this.getBody().y, player.getBody().x, player.getBody().y);
   }
 

@@ -15,7 +15,7 @@ export class Preloader extends Phaser.Scene {
 
   create() {
     // call the first scene
-    this.scene.start('MenuScene');
+    this.scene.start('RyanLevel');
   }
 
   updateProgress(percentage) {

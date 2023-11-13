@@ -8,7 +8,6 @@ export class SkeletonArcher extends Enemy {
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
     this.scene = scene;
-    this.shoot = false;
     this.setScale(0.5)
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
@@ -17,6 +16,9 @@ export class SkeletonArcher extends Enemy {
     this.setRangeDamage(5);
     this.#arrows = new ArrowGroup(this.scene);
     this.setScore(20);
+
+    this.on('animationcomplete', this.handleCompleteAnims);
+    this.on('animationstop', this.handleStoppedAnims);
   }
   arrowHit(player, arrow) {
     if (!arrow.getHasHit()) {
@@ -46,7 +48,7 @@ export class SkeletonArcher extends Enemy {
       this.scene.time.delayedCall(2000, () => {
         this.startPos = undefined;
         this.setIsWandering(true);
-        this.shoot = false;
+        this.setAggro(false);
       });
     }
 
@@ -55,7 +57,7 @@ export class SkeletonArcher extends Enemy {
       this.anims.play('skeleton_archer_idle', true);
 
       this.scene.time.delayedCall(2000, () => {
-        this.shoot = false;
+        this.setAggro(false);
       })
       
     }
@@ -77,8 +79,7 @@ export class SkeletonArcher extends Enemy {
 
   update(player) {
 
-    this.on('animationcomplete', this.handleCompleteAnims);
-    this.on('animationstop', this.handleStoppedAnims);
+
 
     if(this.getIsDead()) {
       return;
@@ -87,19 +88,19 @@ export class SkeletonArcher extends Enemy {
     const distance = this.checkDistance(player)
 
     if (distance <= this.getVision()) {
-      this.shoot = true;
+      this.setAggro(true);
       this.stopWandering();
     } else {
-      this.shoot = false;
+      this.setAggro(false);
       this.setIsWandering(true);
     }
 
-    if (this.shoot || this.getFinishAttack()) {
+    if (this.getAggro() || this.getFinishAttack()) {
       this.facePlayer(player, this)
       if (this.checkOverlap(player)) {
-        this.handleMelee('skeleton_archer_melee_2', 20);
+        this.handleMelee('skeleton_archer_melee_2');
       } else {
-        this.handleRanged('skeleton_archer_attack_1', 15)
+        this.handleRanged('skeleton_archer_attack_1')
       }
     } else {
       if (this.getIsWandering()) {
