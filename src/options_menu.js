@@ -9,6 +9,8 @@ import controlsImg from './assets/menu_buttons/controls.png'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import shareImg from './assets/menu_buttons/share.png'
 import credImg from './assets/menu_buttons/credits.png'
+import onImg from './assets/menu_buttons/on.png';
+import offImg from './assets/menu_buttons/off.png';
 
 export class OptionsScene extends Phaser.Scene {
     constructor () {
@@ -27,6 +29,8 @@ export class OptionsScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('share', shareImg)
         this.load.image('main-menu', mainMenuImg)
+        this.load.image('onImg', onImg);
+		this.load.image('offImg', offImg);
     }
 
     create() {
@@ -46,13 +50,61 @@ export class OptionsScene extends Phaser.Scene {
         const weatherScaleFactor = gameWidth / weather.width; 
         weather.setScale(weatherScaleFactor * 0.1635)
 
+        const onWeatherImg = this.add.image(gameWidth * 0.50, gameHeight * 0.4, 'onImg').setInteractive();
+		onWeatherImg.setScale(weatherScaleFactor * 0.1635);
+
+		const offWeatherImg = this.add
+			.image(gameWidth * 0.58, gameHeight * 0.4, 'offImg')
+			.setInteractive();
+		offWeatherImg.setScale(weatherScaleFactor * 0.1635);
+
+		onWeatherImg.on('pointerdown', () => {
+			console.log("weather on");
+		});
+
+		offWeatherImg.on('pointerdown', () => {
+			console.log("weather off");
+		});
+
         const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music')
         const musicScaleFactor = gameWidth / music.width; 
         music.setScale(musicScaleFactor * 0.12)
 
+        const onMusicImg = this.add.image(gameWidth * 0.50, gameHeight * 0.48, 'onImg').setInteractive();
+		onMusicImg.setScale(musicScaleFactor * 0.12);
+
+		const offMusicImg = this.add
+			.image(gameWidth * 0.58, gameHeight * 0.48, 'offImg')
+			.setInteractive();
+            offMusicImg.setScale(musicScaleFactor * 0.12);
+
+            onMusicImg.on('pointerdown', () => {
+			console.log("music on");
+		});
+
+		offMusicImg.on('pointerdown', () => {
+			console.log("music off");
+		});
+
         const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx')
         const sfxScaleFactor = gameWidth / sfx.width; 
         sfx.setScale(sfxScaleFactor * 0.08)
+
+        const onSfxImg = this.add.image(gameWidth * 0.50, gameHeight * 0.57, 'onImg').setInteractive();
+		onSfxImg.setScale(sfxScaleFactor * 0.08);
+
+		const offSfxImg = this.add
+			.image(gameWidth * 0.58, gameHeight * 0.57, 'offImg')
+			.setInteractive();
+            offSfxImg.setScale(sfxScaleFactor * 0.08);
+
+            onSfxImg.on('pointerdown', () => {
+			console.log("sfx on");
+		});
+
+		offSfxImg.on('pointerdown', () => {
+			console.log("sfx off");
+		});
 
         const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom')
         const zoomScaleFactor = gameWidth / zoom.width; 
