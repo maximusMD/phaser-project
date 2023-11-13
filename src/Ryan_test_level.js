@@ -174,6 +174,7 @@ export class RyanLevel extends Phaser.Scene {
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
+        this.scene.manager.bringToTop('PauseMenuScene');
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
         this.weather.addFog()
