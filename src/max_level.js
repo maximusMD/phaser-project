@@ -152,7 +152,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.player.init(this.ground)
 
-        this.hudScene = new HUDScene();
+        this.hudScene = new HUDScene({ player: this.player });
         this.scene.bringToTop('HUDScene')
         this.scene.run('HUDScene')
 

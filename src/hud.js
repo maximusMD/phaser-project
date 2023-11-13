@@ -7,8 +7,8 @@ import { Actor } from './classes/Actor'
 export class HUDScene extends Phaser.Scene {
 
     constructor () {
-        super({ key: 'HUDScene'})
-        this.score = 0
+        super({ key: 'HUDScene'});
+        this.score = 0;
     }
 
     preload () {
@@ -61,8 +61,9 @@ export class HUDScene extends Phaser.Scene {
     
         healthBar.play('healthAnimation');
 
-        // const player = new Actor(this, x, y, texture, frame);
-        // player.setHealthBar(healthBar);
+        if (this.player) {
+            this.player.setHealthBar(healthBar);
+        }
     }
 
     // updateHealthBar() {
