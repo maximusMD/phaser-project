@@ -60,7 +60,7 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
-        this.load.image('metroid hc', tileset_img, { frameWidth: 16, frameHeight: 16 });
+        this.load.image('metroid hc', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
@@ -70,7 +70,7 @@ export class MaxLevel extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
 
-        this.background_tiles = map.createLayer('background_colour', tileset)
+        // this.background_tiles = map.createLayer('background_colour', tileset)
 
         this.ground = map.createLayer('Collision', tileset)
 
@@ -81,7 +81,42 @@ export class MaxLevel extends Phaser.Scene {
         
         this.ground.setCollisionByExclusion(-1, true)
 
-        map.createFromObjects('PITS')
+        // map.createFromObjects('PITS')
+
+        map.createFromObjects('PITS', {
+            gid: tileset.firstgid, 
+            key: 'metroid hc',
+        });
+
+        const objectLayer = map.getObjectLayer('PITS');
+objectLayer.objects.forEach((object) => {
+    console.log('Object GID:', object.gid);
+    const tileIndex = object.gid
+    console.log('Tile Index:', tileIndex);
+
+    const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileIndex);
+    sprite.setOrigin(0, 1); // Adjust the origin as needed
+});
+
+        // console.log(map.tilesets);
+
+        // const objectLayer = map.getObjectLayer('PITS', tileset);
+
+        // objectLayer.objects.forEach((object) => {
+        //     const gid = object.gid;
+        
+        //     // Check if the gid corresponds to the correct tileset
+        //     if (gid >= tileset.firstgid && gid < tileset.firstgid + tileset.total) {
+        //         const tileId = gid - tileset.firstgid;
+        //         const sprite = this.add.sprite(object.x, object.y, 'metroid hc', tileId);
+        //         sprite.setOrigin(0, 1); // Adjust the origin as needed
+        //         console.log(gid);
+        //         console.log(tileset.firstgid);
+        //         console.log(tileId);
+        //     } else {
+        //         console.warn('Object has an invalid gid:', object);
+        //     }
+        // });
 
         // objectLayer.objects.forEach((object) => {
         // const gid = object.gid;
