@@ -1,8 +1,15 @@
 import Phaser from 'phaser';
-import { Enemy } from './classes/Enemy.js';
 import { createAnimations } from './CreateAnimations.js';
 import { handlePause } from './pauseHandler.js';
+import { HUDScene } from './hud.js';
+
+import { Actor } from './classes/Actor.js';
+import { Enemy } from './classes/Enemy.js';
 import { RoguePlayer } from './classes/RoguePlayer.js';
+import { SkeletonArcher } from './classes/SkeletonArcher.js';
+import { RogueDarkLord } from './classes/RogueDarkLord.js';
+import { RogueBrain } from './classes/RogueBrain.js';
+
 import { Weather } from './classes/Weather.js';
 
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3-high-contrast.png';
@@ -10,7 +17,27 @@ import tilemap from './assets/tilemaps/maxlevel.json';
 
 import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
 import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
+
+import skeleton_archer_image from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.png';
+import skeleton_archer_atlas from './assets/animations/sprites/enemies/Skeleton_Archer/skeleton_archer_atlas.json';
+
+
+import sneaker_atlas from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.json"
+import sneaker_image from "./assets/animations/sprites/enemies/Rogue_Sneaker/sneaker_atlas.png"
+
+import darklord_atlas from './assets/animations/sprites/enemies/Rogue_Darklord/darklord_atlas.json'
+import darklord_image from './assets/animations/sprites/enemies/Rogue_Darklord/darklord_atlas.png'
+
+import brain_atlas from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.json'
+import brain_image from './assets/animations/sprites/enemies/Rogue_Brain/brain_atlas.png'
+
 import laser_img from "./assets/particles/laser_2.png";
+import arrow_img from "./assets/animations/objects/arrow.png"
+
+//backgrounds
+import dungeon_middle from "./assets/backgrounds/middle_layer.png"
+import dungeon_back from "./assets/backgrounds/back_layer.png"
+import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import flare from "./assets/particles/flare_1.png"
 import dust from "./assets/particles/dust.png"
@@ -64,6 +91,11 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
+        this.backgrounds = new ParaBackgrounds(this,[
+            {key: 'dungeon_middle', image: dungeon_middle},
+            {key: 'dungeon_back', image: dungeon_back},
+        ])
+
         this.load.image('metroid hc', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
@@ -73,11 +105,33 @@ export class MaxLevel extends Phaser.Scene {
         this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
     }
     create() {
+
+        const { width, height } = this.scale;
+        this.backgrounds.addBackground({
+            ratioX: 0.1,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x001a33, 0x000d1a, 0x001a33)
+                .setScale(1)
+                .setDepth(-3)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.4,
+            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
         createAnimations(this);
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
 
-        // this.background_tiles = map.createLayer('background_colour', tileset)
+        this.background_tiles = map.createLayer('background_colour', tileset)
 
         this.ground = map.createLayer('Collision', tileset)
 
@@ -87,6 +141,10 @@ export class MaxLevel extends Phaser.Scene {
         this.bg4 = map.createLayer('b4', tileset);
         
         this.ground.setCollisionByExclusion(-1, true)
+
+        // this.weather.setWindSpeed(-100);
+        // this.weather.addRain();
+        // this.weather.addFog()
 
         // map.createFromObjects('PITS')
 
@@ -165,10 +223,16 @@ export class MaxLevel extends Phaser.Scene {
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
+
+        this.hudScene = new HUDScene();
+        this.scene.run('HUDScene')
     }
     update() {
-        this.player.update();
-        console.log('Player Coordinates:', this.player.x, this.player.y);
+        this.weather.update();
+        this.backgrounds.update();
+        this.player.update(this.hudScene);
+        this.hudScene.update();
+        // console.log('Player Coordinates:', this.player.x, this.player.y);
 
         const targetX = 88;
         const targetY = 755
@@ -188,10 +252,10 @@ export class MaxLevel extends Phaser.Scene {
         //     this.player.setHP(0);
         // }
 
-        if (this.player.x <= deathX && this.player.y >= deathY) {
-            console.log('death');
-            this.player.setHP(100)
-        }
+        // if (this.player.x <= deathX && this.player.y >= deathY) {
+        //     console.log('death');
+        //     this.player.setHP(100)
+        // }
 
 
         if (this.player.getHP() === 0) {
