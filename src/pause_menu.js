@@ -17,7 +17,7 @@ export class PauseMenuScene extends Phaser.Scene {
 
 	init(data) {
 		this.music = data.music;
-		this.isMusicPlaying = data.isMusicPlaying;
+		this.weather = data.weather;
 	}
 
 	preload() {
@@ -98,11 +98,11 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setScale(1.5);
 
 		onWeatherImg.on('pointerdown', () => {
-			this.toggleMusic(false);
+			this.toggleWeather(true);
 		});
 
 		offWeatherImg.on('pointerdown', () => {
-			this.toggleMusic(true);
+			this.toggleWeather(false);
 		});
 
 		// resume image
@@ -122,20 +122,38 @@ export class PauseMenuScene extends Phaser.Scene {
 		mainMenuImg1.setScale(1.5);
 
 		mainMenuImg1.on('pointerdown', () => {
-			console.log(this.scene);
 			this.handleMainMenu();
 		});
 	}
 
+	toggleWeather(weather) {
+		if (weather) {
+			this.weather.enable();
+		} else {
+			this.weather.disable();
+		}
+	}
+
 	toggleMusic(mute) {
-		this.music.setMute(mute);
-		this.isMusicPlaying = !mute;
+		if (mute) {
+			this.music.stop();
+		} else {
+			this.music.play();
+		}
 	}
 
 	handleMainMenu() {
 		this.music.stop();
-		this.scene.stop('RyanLevel');
-		this.scene.stop('PauseMenuScene');
+		const scenesToStop = [
+			'RyanLevel',
+			'HUDScene',
+			'PauseMenuScene',
+			'LeaderboardScene',
+			'MaxLevel',
+		];
+		scenesToStop.forEach((sceneKey) => {
+			this.scene.stop(sceneKey);
+		});
 		this.scene.start('MenuScene');
 	}
 }

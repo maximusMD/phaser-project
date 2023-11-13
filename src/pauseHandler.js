@@ -1,4 +1,4 @@
-export function handlePause(scene, music, hud) {
+export function handlePause(scene, music) {
 	let isPaused = false;
 	const characters = scene.allSprites;
 	const weather = scene.weather;
@@ -29,7 +29,10 @@ export function handlePause(scene, music, hud) {
 
 	function showPauseMenu() {
 		if (!scene.scene.isActive('PauseMenuScene')) {
-			scene.scene.launch('PauseMenuScene', { music, isMusicPlaying: !music.isPaused });
+			scene.scene.launch('PauseMenuScene', {
+				music,
+				weather,
+			});
 		}
 	}
 

@@ -38,7 +38,7 @@ import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
-import sceneMusic from './assets/menuMusic.wav';
+import sceneMusic from './assets/levelMusic.wav';
 
 // potential particle effects
 import flare from "./assets/particles/flare_1.png"
@@ -167,7 +167,7 @@ export class RyanLevel extends Phaser.Scene {
         }
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
-        this.pauseHandler = handlePause(this, this.allSprites, sceneMusic);
+        this.pauseHandler = handlePause(this, sceneMusic);
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
 
