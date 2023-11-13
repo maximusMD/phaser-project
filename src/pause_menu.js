@@ -22,7 +22,6 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	preload() {
-		this.load.image('pauseMenuBg', 'assets/bg.png');
 		this.load.image('pauseMenuImg', pauseMenuImg);
 		this.load.image('musicImg', musicImg);
 		this.load.image('sfxImg', sfxImg);
