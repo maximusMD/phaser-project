@@ -5,7 +5,6 @@ export function handlePause(scene, music, sfx) {
 
 	function pause() {
 		if (!isPaused) {
-			console.log(scene);
 			scene.physics.pause();
 			characters.forEach((character) => {
 				character.setActive(false);

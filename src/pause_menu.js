@@ -158,7 +158,14 @@ export class PauseMenuScene extends Phaser.Scene {
 	handleMainMenu() {
 		this.music.stop();
 		const scenesToStop = [
+			'Preloader',
+			'MenuScene',
+			'OptionsScene',
+			'ControlsScene',
+			'UserForm',
 			'RyanLevel',
+			'CreditsScene',
+			'AboutScene',
 			'HUDScene',
 			'PauseMenuScene',
 			'LeaderboardScene',
