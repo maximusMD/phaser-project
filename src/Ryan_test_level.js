@@ -176,6 +176,7 @@ export class RyanLevel extends Phaser.Scene {
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
+        this.weather.addFog()
 
         // create arrow colliders now player is made
         this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
