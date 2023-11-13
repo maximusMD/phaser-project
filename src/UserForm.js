@@ -1,30 +1,34 @@
 import Phaser from "phaser";
 import backToMain from '../src/assets/menu_buttons/main-menu.png';
 import containerImg from '../src/assets/userform/box.png';
-import inputImg from '../src/assets/userform/input.png';
 import formTitleImg from '../src/assets/userform/sign-in-up.png'
 import signinImg from '../src/assets/userform/sign-in.png';
 import signupImg from '../src/assets/userform/sign-up.png';
 import userImg from '../src/assets/userform/user.png';
 import passImg from '../src/assets/userform/pass.png';
+import logoutImg from '../src/assets/menu_buttons/logout.png';
 
 export class UserForm extends Phaser.Scene {
   constructor() {
-    super({key: 'UserForm'});
+    super({ key: 'UserForm' });
   }
 
   preload() {
     this.load.image('backToMain', backToMain);
     this.load.image('container', containerImg);
-    this.load.image('input', inputImg);
-    this.load.image('formTitle', formTitleImg)
+    this.load.image('formTitle', formTitleImg);
     this.load.image('signin', signinImg);
     this.load.image('signup', signupImg);
     this.load.image('user', userImg);
     this.load.image('pass', passImg);
+    this.load.image('logout', logoutImg);
+    this.load.script(
+      "webfont",
+      "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
+    );
   }
-  create() {
 
+  create() {
     const gameWidth = this.cameras.main.width;
     const gameHeight = this.cameras.main.height;
 
@@ -32,59 +36,100 @@ export class UserForm extends Phaser.Scene {
     background.displayWidth = gameWidth;
     background.displayHeight = gameHeight;
     background.setPosition(gameWidth / 2, gameHeight / 2);
-    
+
     const backToMainButton = this.add.image(gameWidth * 0.1, gameHeight * 0.1, 'backToMain');
     backToMainButton.setInteractive();
 
-    const inputForm = this.add.dom(gameWidth/2, gameHeight/2).createFromCache('userform');
+    const isLoggedIn = localStorage.getItem('loggedIn')
+    const user = JSON.parse(localStorage.getItem('playerData'));
+    
 
-    const formTitle = inputForm.getChildByID('form-title');
-    formTitle.innerHTML = `<img src=${formTitleImg}>`
+    let textGroup = this.add.group()
+    let textData = ''
+    if (isLoggedIn == 'true') {
+      WebFont.load({
+        google: {
+          families: ['Pixelify Sans'],
+        },
+        active: () => {
+          textData = this.add.text(
+            gameWidth / 2,
+            gameHeight / 2,
+            `WELCOME, ${user.username}!`,
+            {
+              fontFamily: "Pixelify Sans",
+              fontSize: "50px",
+              fill: "#ffffff",
+            }
+          );
+          textGroup.add(textData);
+          textGroup.setOrigin(0.5);
+        }
+        
+    })
+    
+      const logoutBtn = this.add.image(gameWidth / 2, gameHeight / 1.5, 'logout');
+      logoutBtn.setInteractive();
 
-    const userLabel = inputForm.getChildByID('user-label');
-    userLabel.innerHTML = `<img src=${userImg}>`;
+      logoutBtn.on('pointerdown', () => {
+        localStorage.removeItem('loggedIn');
+        localStorage.removeItem('playerData')
+        this.scene.restart(); 
+      });
+    } else {
+      const inputForm = this.add.dom(gameWidth / 2, gameHeight / 2).createFromCache('userform');
 
-    const passLabel = inputForm.getChildByID('pass-label');
-    passLabel.innerHTML = `<img src=${passImg}>`
+      const formTitle = inputForm.getChildByID('form-title');
+      formTitle.innerHTML = `<img src=${formTitleImg}>`;
 
-    const signUpBtn = inputForm.getChildByID('signup-button');
-    signUpBtn.innerHTML = `<img src=${signupImg}>`
+      const userLabel = inputForm.getChildByID('user-label');
+      userLabel.innerHTML = `<img src=${userImg}>`;
 
-    const signInBtn = inputForm.getChildByID('signin-button');
-    signInBtn.innerHTML = `<img src=${signinImg}>`
+      const passLabel = inputForm.getChildByID('pass-label');
+      passLabel.innerHTML = `<img src=${passImg}>`;
+
+      const signUpBtn = inputForm.getChildByID('signup-button');
+      signUpBtn.innerHTML = `<img src=${signupImg}>`;
+
+      const signInBtn = inputForm.getChildByID('signin-button');
+      signInBtn.innerHTML = `<img src=${signinImg}>`;
+
+      inputForm.addListener("submit");
+
+      inputForm.on('submit', (e) => {
+        e.preventDefault();
+        const loadingText = this.add.text(gameWidth / 2, gameHeight / 1.5, 'Loading...', {
+          fontFamily: 'Pixelify Sans',
+          fontSize: '30px',
+          fill: '#ffffff',
+        });
+        loadingText.setOrigin(0.5);
+        inputForm.setVisible(false);
+        const username = inputForm.getChildByName('username');
+        const password = inputForm.getChildByName('password');
+        const action = e.submitter;
+        const userValue = username.value;
+        const passValue = password.value;
+        const actionValue = action.value;
+
+        if (actionValue === 'Sign Up') {
+          this.handleSignUp(userValue, passValue);
+        } else if (actionValue === 'Sign In') {
+          this.handleSignIn(userValue, passValue);
+        }
+      });
+    }
 
     backToMainButton.on('pointerdown', () => {
-      this.scene.switch('MenuScene')
-    })
-
-
-    inputForm.addListener("submit")
-
-    inputForm.on('submit', (e) => {
-      e.preventDefault();
-      const username = inputForm.getChildByName('username');
-      const password = inputForm.getChildByName('password');
-      const action = e.submitter;
-      const userValue = username.value;
-      const passValue = password.value;
-      const actionValue = action.value;
-
-      if (actionValue === 'Sign Up') {
-        this.handleSignUp(userValue, passValue)
-      } else if (actionValue === 'Sign In') {
-        console.log(userValue)
-        this.handleSignIn(userValue, passValue)
-      }
-
-    })
-
+      this.scene.switch('MenuScene');
+    });
   }
 
   handleSignUp(username, password) {
     // will replace with real db
-    fetch('http://localhost:3000/signup', {
+    fetch('https://wavy-project-gang-api.onrender.com/api/users', {
       method: 'POST',
-      body: JSON.stringify({username, pw: password}),
+      body: JSON.stringify({username, password: password}),
       headers: {
         'Content-Type': 'application/json',
       },
@@ -93,7 +138,13 @@ export class UserForm extends Phaser.Scene {
       return res.json()
     })
     .then((data) => {
-      console.log(data.message);
+      if(data.status === 400){
+        alert('user alredy exists')
+        this.scene.restart();
+      }else{
+      localStorage.setItem('playerData', JSON.stringify(data.user));
+      localStorage.setItem('loggedIn', 'true');
+      this.scene.restart()}
     })
     .catch((err) => {
       console.log(err);
@@ -101,9 +152,9 @@ export class UserForm extends Phaser.Scene {
   }
 
   handleSignIn(username, password) {
-    fetch('http://localhost:3000/signin', {
+    fetch('https://wavy-project-gang-api.onrender.com/api/users/login', {
       method: 'POST',
-      body: JSON.stringify({username, pw: password}),
+      body: JSON.stringify({username, password: password}),
       headers: { 'Content-Type' : 'application/json'}
     })
     .then((res) => {
@@ -111,14 +162,23 @@ export class UserForm extends Phaser.Scene {
     })
     .then((data) => {
       console.log(data);
-      if (data.message === 'Logged in') {
-        console.log('User exists in the database');
-      } else {
+      if (data.code === 404) {
+        alert('wrong username or password')
         console.log('User does not exist in the database')
+        this.scene.restart();
+      } else {
+        localStorage.setItem('playerData', JSON.stringify(data.user[0].user))
+        localStorage.setItem('loggedIn', 'true');
+        this.scene.restart(); 
       }
     })
     .catch((err) => {
       console.log(err);
     })
+    const user = localStorage.getItem('playerData');
+    if (user) {
+      console.log(user);
+      this.scene.restart();
+    }
   }
 }

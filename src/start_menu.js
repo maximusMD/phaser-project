@@ -7,6 +7,8 @@ import credImg from './assets/menu_buttons/credits.png';
 import optImg from './assets/menu_buttons/options.png';
 import aboutImg from './assets/menu_buttons/about.png';
 import menuMusic from './assets/menuMusic.wav';
+import logoutImg from '../src/assets/menu_buttons/logout.png';
+
 
 export class MenuScene extends Phaser.Scene {
     constructor() {
@@ -25,8 +27,12 @@ export class MenuScene extends Phaser.Scene {
         this.load.image('share', shareImg);
         this.load.image('options', optImg);
         this.load.image('about', aboutImg);
-
+        this.load.image('logout', logoutImg);
         this.load.audio('menuMusic', menuMusic);
+        this.load.script(
+            "webfont",
+            "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
+          );
     }
 
     create() {
@@ -42,9 +48,47 @@ export class MenuScene extends Phaser.Scene {
         const titleScaleFactor = gameWidth / title.width;
         title.setScale(titleScaleFactor * 0.55);
 
-        const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
-            this.stopMenuMusicAndStartScene('UserForm');
-        });
+        const isLoggedIn = localStorage.getItem('loggedIn')
+        const user = JSON.parse(localStorage.getItem('playerData'))
+        let textGroup = this.add.group()
+        let textData = ''
+        if(isLoggedIn){
+            WebFont.load({
+                google: {
+                  families: ['Pixelify Sans'],
+                },
+                active: () => {
+                  textData = this.add.text(
+                    gameWidth / 2,
+                    gameHeight / 2,
+                    `WELCOME, ${user.username}!`,
+                    {
+                      fontFamily: "Pixelify Sans",
+                      fontSize: "50px",
+                      fill: "#ffffff",
+                    }
+                  );
+                  textGroup.add(textData);
+                  textGroup.setOrigin(0.5);
+                }
+                
+            })
+            //add play button here wheb rady
+            const play = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
+                this.stopMenuMusicAndStartScene('MaxLevel');
+            });
+
+            const logOut = this.addButton(gameWidth * 0.517, gameHeight * 0.74, 'logout', () => {
+                localStorage.clear()
+                this.scene.restart(); 
+            });
+        }else{
+            const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
+                this.stopMenuMusicAndStartScene('UserForm');
+            });
+        }
+
+        
 
         const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
             this.stopMenuMusicAndStartScene('MaxLevel');

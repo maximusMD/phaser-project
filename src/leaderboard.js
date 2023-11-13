@@ -39,6 +39,7 @@ export class LeaderboardScene extends Phaser.Scene {
 
     mainMenu.setScale(mainMenuScaleFactor * 0.1835);
 
+
     const credits = this.addButton(
       gameWidth * 0.1,
       gameHeight * 0.9,
@@ -82,7 +83,6 @@ export class LeaderboardScene extends Phaser.Scene {
             for (let i = 0; i < 4; i++) {
               const user = data[i];
               const textData = `<${user.username} - ${user.highScore}>\n`;
-
               const textObject = this.add.text(
                 gameWidth / 2,
                 400 + i * 50,
