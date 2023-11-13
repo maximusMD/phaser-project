@@ -1,10 +1,11 @@
-export function handlePause(scene, music) {
+export function handlePause(scene, music, sfx) {
 	let isPaused = false;
 	const characters = scene.allSprites;
 	const weather = scene.weather;
 
 	function pause() {
 		if (!isPaused) {
+			console.log(scene);
 			scene.physics.pause();
 			characters.forEach((character) => {
 				character.setActive(false);
@@ -32,6 +33,7 @@ export function handlePause(scene, music) {
 			scene.scene.launch('PauseMenuScene', {
 				music,
 				weather,
+				sfx,
 			});
 		}
 	}

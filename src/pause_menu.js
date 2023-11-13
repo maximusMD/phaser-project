@@ -18,6 +18,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	init(data) {
 		this.music = data.music;
 		this.weather = data.weather;
+		this.sfx = data.sfx;
 	}
 
 	preload() {
@@ -82,6 +83,14 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
+		onImgSfx.on('pointerdown', () => {
+			this.toggleSFX(false);
+		});
+
+		offImgSfx.on('pointerdown', () => {
+			this.toggleSFX(true);
+		});
+
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
 		weatherImg1.setOrigin(0.5, 0.5);
@@ -140,6 +149,10 @@ export class PauseMenuScene extends Phaser.Scene {
 		} else {
 			this.music.play();
 		}
+	}
+
+	toggleSFX(mute) {
+		this.sfx.setMute(mute);
 	}
 
 	handleMainMenu() {

@@ -39,6 +39,7 @@ import dungeon_back from "./assets/backgrounds/back_layer.png"
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import sceneMusic from './assets/levelMusic.wav';
+import arrow_shoot_sfx from './assets/shooting_arrow.wav';
 
 // potential particle effects
 import flare from "./assets/particles/flare_1.png"
@@ -106,6 +107,7 @@ export class RyanLevel extends Phaser.Scene {
         this.load.atlas('brain', brain_image, brain_atlas)
 
         this.load.audio('sceneMusic', sceneMusic);
+        this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
 
     }
 
@@ -164,10 +166,14 @@ export class RyanLevel extends Phaser.Scene {
         const sceneMusic = this.sound.add('sceneMusic');
         if (!sceneMusic.isPlaying) {
             sceneMusic.play();
+            sceneMusic.loop = true;
         }
+        const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
+        arrow_shoot_sfx.setVolume(1.0)
+        
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
-        this.pauseHandler = handlePause(this, sceneMusic);
+        this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
 
@@ -176,6 +182,7 @@ export class RyanLevel extends Phaser.Scene {
         this.archers.forEach(archer => {
             this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
                 archer.arrowHit(arrow, player)
+                arrow_shoot_sfx.play()
               })
         })
         this.graphics = this.add.graphics();
