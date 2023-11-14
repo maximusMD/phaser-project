@@ -13,7 +13,7 @@ import { RogueBrain } from './classes/RogueBrain.js';
 import { Weather } from './classes/Weather.js';
 
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3-high-contrast.png';
-import tilemap from './assets/tilemaps/maxlevel.json';
+import tilemap from './assets/tilemaps/maxlevelvisualtrap.json';
 
 import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
 import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
@@ -103,12 +103,6 @@ export class MaxLevel extends Phaser.Scene {
             {key: 'stars-big', image: big_stars},
             {key: 'nebula', image: nebula},
             {key: 'nebula2', image: nebula2},
-
-            {key: 'nc1', image: nc1},
-            {key: 'nc2', image: nc2},
-            {key: 'nc3', image: nc3},
-            {key: 'nc4', image: nc4},
-            {key: 'nc5', image: nc5},
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -125,41 +119,10 @@ export class MaxLevel extends Phaser.Scene {
 		const sfxEnabled = localStorage.getItem('sfxEnabled');
 		const weatherEnabled = localStorage.getItem('weatherEnabled');
 
-        // const { width, height } = this.scale;
-        // this.backgrounds.addBackground({
-        //     ratioX: 0.1,
-        //     sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
-        //         .setOrigin(0, 0)
-        //         .setScrollFactor(0, 0)
-        //         // .setTint(0x001a33, 0x000d1a, 0x001a33)
-        //         .setScale(1)
-        //         .setDepth(-3)
-        // });
-
-        // this.backgrounds.addBackground({
-        //     ratioX: 0.4,
-        //     sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
-        //         .setOrigin(0, 0)
-        //         .setScrollFactor(0, 0)
-        //         .setTint(0x003366, 0x004080)
-        //         .setScale(1)
-        //         .setDepth(-1)
-        // });
-
-        // this.backgrounds.addBackground({
-        //     ratioX: 0.7,
-        //     sprite: this.add.tileSprite(0, 0, width, height, 'stars-big')
-        //         .setOrigin(0, 0)
-        //         .setScrollFactor(0, 0)
-        //         .setTint(0x003366, 0x004080)
-        //         .setScale(1)
-        //         .setDepth(-1)
-        // });
-
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nc1')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 // .setTint(0x001a33, 0x000d1a, 0x001a33)
@@ -169,27 +132,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.backgrounds.addBackground({
             ratioX: 0.4,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nc2')
-                .setOrigin(0, 0)
-                .setScrollFactor(0, 0)
-                .setTint(0x003366, 0x004080)
-                .setScale(1)
-                .setDepth(-1)
-        });
-
-        this.backgrounds.addBackground({
-            ratioX: 0.5,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nc3')
-                .setOrigin(0, 0)
-                .setScrollFactor(0, 0)
-                .setTint(0x003366, 0x004080)
-                .setScale(1)
-                .setDepth(-1)
-        });
-
-        this.backgrounds.addBackground({
-            ratioX: 0.6,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nc4')
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
@@ -199,7 +142,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.backgrounds.addBackground({
             ratioX: 0.7,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nc5')
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-big')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
@@ -211,12 +154,12 @@ export class MaxLevel extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
 
-        this.ground = map.createLayer('Collision', tileset)
+        this.ground = map.createLayer('Collision', tileset).setDepth(3)
 
-        this.bg2 = map.createLayer('bg2', tileset);
-        this.bg3 = map.createLayer('bg3', tileset);
-        this.background = map.createLayer('Background', tileset);
-        this.bg4 = map.createLayer('b4', tileset);
+        this.bg2 = map.createLayer('bg2', tileset).setDepth(2);
+        this.bg3 = map.createLayer('bg3', tileset).setDepth(1);
+        this.background = map.createLayer('Background', tileset).setDepth(0);
+        this.bg4 = map.createLayer('b4', tileset).setDepth(0);
         
         this.ground.setCollisionByExclusion(-1, true)
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
