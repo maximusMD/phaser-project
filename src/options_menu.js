@@ -40,6 +40,19 @@ export class OptionsScene extends Phaser.Scene {
 		const gameWidth = this.cameras.main.width;
 		const gameHeight = this.cameras.main.height;
 
+		// Set default values only if they are not present in localStorage
+		if (localStorage.getItem('weatherEnabled') === null) {
+			localStorage.setItem('weatherEnabled', 'true');
+		}
+
+		if (localStorage.getItem('musicEnabled') === null) {
+			localStorage.setItem('musicEnabled', 'true');
+		}
+
+		if (localStorage.getItem('sfxEnabled') === null) {
+			localStorage.setItem('sfxEnabled', 'true');
+		}
+
 		const background = this.add.image(0, 0, 'background');
 		background.displayWidth = gameWidth;
 		background.displayHeight = gameHeight;
@@ -75,7 +88,7 @@ export class OptionsScene extends Phaser.Scene {
 			localStorage.setItem('weatherEnabled', 'false');
 		});
 
-		const weatherEnabled = localStorage.getItem('weatherEnabled');
+		const weatherEnabled = localStorage.getItem('weatherEnabled') || 'true';
 		onWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
 		offWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
 
@@ -124,19 +137,19 @@ export class OptionsScene extends Phaser.Scene {
 		offSfxImg.setScale(sfxScaleFactor * 0.08);
 
 		onSfxImg.on('pointerdown', () => {
-            onSfxImg.setTint(0x808080);
+			onSfxImg.setTint(0x808080);
 			offSfxImg.setTint(0xffffff);
 			localStorage.setItem('sfxEnabled', 'true');
 		});
 
 		offSfxImg.on('pointerdown', () => {
-            onSfxImg.setTint(0xffffff);
+			onSfxImg.setTint(0xffffff);
 			offSfxImg.setTint(0x808080);
 			localStorage.setItem('sfxEnabled', 'false');
 		});
 
 		const sfxEnabled = localStorage.getItem('sfxEnabled');
-        onSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
+		onSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
 		offSfxImg.setTint(sfxEnabled === 'true' ? 0xffffff : 0x808080);
 
 		const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom');
