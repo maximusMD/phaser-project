@@ -96,6 +96,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
+        this.load.image('arrow', arrow_img)
         this.load.image('dust', dust)
 
         this.backgrounds = new ParaBackgrounds(this,[
