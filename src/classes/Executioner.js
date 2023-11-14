@@ -5,7 +5,7 @@ export class Executioner extends Enemy {
     #poisonEnabled = false;
     #poisonCooldown = false;
     #floatToggle = true;
-    #isFloating = true;
+    #isFloating = false;
     #dashing = false;
     #meleeHit = false;
 
@@ -59,6 +59,7 @@ export class Executioner extends Enemy {
         this.#poisonEnabled = bool;
     }
     createAnims() {
+        console.log("in anims")
         this.anims.create({
             key: 'executioner_idle2',
             frames: this.scene.anims.generateFrameNames('executioner', {
@@ -99,7 +100,8 @@ export class Executioner extends Enemy {
                 suffix: '.png',
                 start: 0,
                 frameRate: 20,
-                end: 12
+                end: 12,
+                repeat: -1
             }),
             frameRate: 5,
             repeat: -1
@@ -137,6 +139,7 @@ export class Executioner extends Enemy {
             frameRate: 10,
             repeat: -1
         })
+        console.log(this.anims)
     }
     floating() {
         this.startY = this.startY ?? this.getBody().y;
@@ -201,7 +204,7 @@ export class Executioner extends Enemy {
     }
     handleCompleteAnims(e) {
         if (e.key === "executioner_frenzy") {
-
+            console.log("execution frennzy")
         }
     }
     handleStoppedAnims(e) {
@@ -236,7 +239,7 @@ export class Executioner extends Enemy {
         }
 
 
-        // this.frenzyAttack();
+        this.frenzyAttack();
 
     }
 }

@@ -21,8 +21,6 @@ import { Executioner } from './classes/Executioner.js';
 import { ExecutionerSummon } from './classes/Executioner.js';
 
 import poison_1 from "./assets/particles/poison1.png"
-import poison_2 from "./assets/particles/poison2.png"
-import poison_3 from "./assets/particles/poison3.png"
 
 export class BossTest extends Phaser.Scene {
     constructor() {
@@ -69,8 +67,6 @@ export class BossTest extends Phaser.Scene {
         this.load.image('dust', dust)
 
         this.load.image('poison_1', poison_1)
-        this.load.image('poison_2', poison_2)
-        this.load.image('poison_3', poison_3)
 
         this.load.image('standard_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
@@ -97,7 +93,7 @@ export class BossTest extends Phaser.Scene {
         this.pauseHandler = handlePause(this, this.allSprites);
 
         this.player.init(this.ground)
-        this.executioner.createPoison();
+        // this.executioner.createPoison();
     }
     update() {
         this.player.update();
