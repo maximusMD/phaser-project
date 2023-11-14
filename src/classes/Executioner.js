@@ -11,6 +11,7 @@ export class Executioner extends Enemy {
     #shadowPlayer = true;
     #inAction = false;
     #idling = false;
+    #summonAlive = false;
 
     constructor(scene, x, y, atlas) {
         super(scene, x, y, atlas)
@@ -24,6 +25,20 @@ export class Executioner extends Enemy {
         this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground.width, this.getBody().height / 2)
         this.createAnims()
         this.summons = new SummonGroup(scene, this)
+        this.scene.sprite_hit_emitter = this.scene.add.particles(400, 250, 'sprite_explode', {
+            lifespan: 200,
+            speed: { min: 30, max: 50 },
+            scale: { start: 0.05, end: 0 },
+            blendMode: 'LUMINOSITY',
+            tint: 0xbabaf8,
+            emitting: false
+        });
+    }
+    setSummonAlive(bool) {
+        this.#summonAlive = bool;
+    }
+    getSummonAlive() {
+        return this.#summonAlive;
     }
     getIdling() {
         return this.#idling;
@@ -165,10 +180,11 @@ export class Executioner extends Enemy {
                 prefix: 'summon-',
                 suffix: '.png',
                 attack: 0,
-                end: 4
+                end: 4,
+                hold: 1000
             }),
             frameRate: 10,
-            repeat: -1
+            repeat: 0
         })
     }
     floating() {
@@ -219,9 +235,16 @@ export class Executioner extends Enemy {
             this.scene.time.delayedCall(1000, () => { this.setPoisonCooldown(false) });
         }
     }
-    summonPoison() {
-
+    summon() {
+        if (!this.getSummonAlive()) {
+            this.summons.showSummon(this.getCenter().x, this.getCenter().y - 100);
+            this.setSummonAlive(true);
+            this.anims.play("executioner_summon", true);
+        } else {
+            this.anims.play('executioner_idle', true)
+        }
     }
+
     offScreenDash() {
         if (!this.getInAction()) {
             this.toggleInAction();
@@ -231,12 +254,12 @@ export class Executioner extends Enemy {
             this.setX(500)
 
             if (!this.getShadowPlayer()) this.toggleShadowPlayer();
-            this.scene.time.delayedCall(3000, () => { 
+            this.scene.time.delayedCall(3000, () => {
                 this.toggleShadowPlayer()
                 this.toggleDashing()
-             });
+            });
         }
-        
+
         if (this.getInAction()) {
             if (this.getShadowPlayer()) {
                 this.setY(
@@ -262,8 +285,8 @@ export class Executioner extends Enemy {
     }
 
     idling() {
-            const { angleDeg } = getAngle(this.scene.player, this);
-            this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
+        const { angleDeg } = getAngle(this.scene.player, this);
+        this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
     }
 
     frenzyAttack() {
@@ -273,6 +296,8 @@ export class Executioner extends Enemy {
         }
         this.anims.play("executioner_frenzy", true);
     }
+
+
     checkPlayerOverlap() {
         return Phaser.Geom.Intersects.RectangleToRectangle(this.getBounds(), this.scene.player.getBounds())
     }
@@ -285,6 +310,9 @@ export class Executioner extends Enemy {
         // e.key
     }
     update() {
+        this.on('animationcomplete', this.handleCompleteAnims);
+        this.on('animationstop', this.handleStoppedAnims);
+
         if (!this.checkPlayerOverlap()) {
             if (this.getBody().x > this.scene.player.getBody().x) {
                 this.setFlipX(true);
@@ -304,7 +332,7 @@ export class Executioner extends Enemy {
             if (this.getDashing()) {
                 if (this.checkPlayerOverlap()) {
                     this.anims.playReverse("executioner_dash_attack", true);
-                    if(this.anims.currentFrame.frame.name === "attacking-2.png") {
+                    if (this.anims.currentFrame.frame.name === "attacking-2.png") {
                         if (!this.getMeleeHit()) {
                             this.scene.player.setHP(10);
                             console.log("Dash hit")
@@ -327,7 +355,7 @@ export class Executioner extends Enemy {
             }
         }
         if (!this.getIdling()) {
-            this.offScreenDash();
+            this.summon();
         } else {
             this.idling();
         }
@@ -345,7 +373,7 @@ export class SummonGroup extends Phaser.Physics.Arcade.Group {
             this.#summoner.getCenter().y
             , 20);
 
-        this.scene.summon_things = this.createMultiple({
+        this.scene.summon_sprites = this.createMultiple({
             classType: ExecutionerSummon,
             quantity: 10,
             active: false,
@@ -353,32 +381,73 @@ export class SummonGroup extends Phaser.Physics.Arcade.Group {
             key: "executioner",
         })
     }
+
+    showSummon(x, y) {
+        const summon = this.getFirstAlive(true);
+        summon.show(x, y);
+
+    }
 }
 
 export class ExecutionerSummon extends Enemy {
     #travelling = false;
+    #isAlive = false;
+    #hasHit = false;
+    #shownDead = false;
+
     constructor(scene, x, y, atlas) {
         super(scene, x, y, atlas)
         this.scene = scene;
         this.createAnims();
+        this.setHP(90);
         this.getBody().setSize(20, 20)
         this.getBody().setOffset(15, 18)
         this.getBody().setAllowGravity(false);
         this.setCollideWorldBounds(false);
-        this.scene.physics.add.collider(this, this.scene.player,
+        this.scene.physics.add.overlap(this, this.scene.player,
             (...args) => { this.handleHit(...args) })
     }
 
+    show(x, y) {
+        this.body.reset(x, y);
+        this.setHP(0, false, 10);
+        this.getBody().setAllowGravity(false);
+        this.setActive(true);
+        this.setVisible(true);
+        this.setIsAlive(true);
+        this.anims.play("summon_appear")
+        this.scene.time.delayedCall(1000, () => { this.attack() });
+    }
+    getShownDead() {
+        return this.#shownDead
+    }
+    setShownDead(bool) {
+        this.#shownDead = bool;
+    }
+    getHasHit() {
+        return this.#hasHit;
+    }
+    setHasHit(bool) {
+        this.#hasHit = bool;
+    }
     toggleTravelling() {
         this.#travelling = !this.#travelling;
     }
-
+    setIsAlive(bool) {
+        this.#isAlive = bool;
+    }
+    getIsAlive() {
+        return this.#isAlive;
+    }
     getTravelling() {
         return this.#travelling;
     }
 
-    handleHit() {
-        console.log("hit!")
+    handleHit(sprite, player) {
+        if (!this.getHasHit()) {
+            this.setHP(10);
+            this.setHasHit(true);
+        }
     }
 
     facePlayer() {
@@ -429,8 +498,41 @@ export class ExecutionerSummon extends Enemy {
             repeat: -1
         })
     }
+    preUpdate(time, delta) {
+        super.preUpdate(time, delta);
+        if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
+            this.setActive(false);
+            this.setVisible(false);
+        }
+    }
+
+    handleDeath() {
+        if(!this.getShownDead()) {
+            this.setActive(false);
+            this.setVisible(false);
+            this.scene.sprite_hit_emitter.setPosition(
+                this.scene.player.getCenter().x,
+                 this.scene.player.getCenter().y
+                 )
+            this.scene.sprite_hit_emitter.explode(20)
+            this.setShownDead(true);
+        }
+    }
+    handleCompleteAnims(e) {
+
+        console.log(e);
+    }
+    handleStoppedAnims(e) {
+
+    }
 
     update() {
+        this.on('animationcomplete', this.handleCompleteAnims);
+        this.on('animationstop', this.handleStoppedAnims);
+
+        if (this.getHP() <= 0) {
+            this.handleDeath();
+        }
         if (!this.#travelling) {
             this.facePlayer()
         }

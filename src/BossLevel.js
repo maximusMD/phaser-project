@@ -21,6 +21,7 @@ import { Executioner } from './classes/Executioner.js';
 import { ExecutionerSummon } from './classes/Executioner.js';
 
 import poison_1 from "./assets/particles/poison1.png"
+import sprite_explode from "./assets/particles/sprite_emitter.png"
 
 export class BossTest extends Phaser.Scene {
     constructor() {
@@ -67,6 +68,7 @@ export class BossTest extends Phaser.Scene {
         this.load.image('dust', dust)
 
         this.load.image('poison_1', poison_1)
+        this.load.image('sprite_explode', sprite_explode)
 
         this.load.image('standard_tiles', tileset_img);
         this.load.tilemapTiledJSON('tilemap', tilemap);
@@ -98,7 +100,7 @@ export class BossTest extends Phaser.Scene {
 
         this.dash_overlay = this.add.image(this.ground.getCenter().x, 420, 'laser').setDepth(3)
         this.dash_overlay.angle = 90;
-        this.dash_overlay.alpha = 0.8;
+        this.dash_overlay.alpha = 0;
         this.dash_overlay.scaleY = 1.5;
         this.dash_overlay.scaleX = 1.5;
         this.dash_overlay.setTint(0x0B0B0B)
@@ -107,5 +109,9 @@ export class BossTest extends Phaser.Scene {
         this.player.update();
         this.executioner.update()
         // this.time.delayedCall(3000, () => { this.executioner.summonPoison() })
+
+        this.executioner.summons.getChildren().forEach(x => {
+            if (x.getIsAlive()) x.update();
+        })
     }
 }
