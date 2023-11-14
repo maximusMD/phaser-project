@@ -35,11 +35,15 @@ import laser_img from "./assets/particles/laser_2.png";
 import arrow_img from "./assets/animations/objects/arrow.png"
 
 //backgrounds
-import dungeon_middle from "./assets/backgrounds/middle_layer.png"
-import dungeon_back from "./assets/backgrounds/back_layer.png"
 import nebula from './assets/backgrounds/Nebula Blue.png'
 import nebula2 from './assets/backgrounds/Nebula Red.png'
-import small_stars from './assets/backgrounds/Stars Small_1.png'
+import small_stars from './assets/backgrounds/smallstars.png'
+import big_stars from './assets/backgrounds/bigstars.png'
+import nc1 from './assets/backgrounds/Layer1.png'
+import nc2 from './assets/backgrounds/Layer2.png'
+import nc3 from './assets/backgrounds/Layer3.png'
+import nc4 from './assets/backgrounds/Layer4.png'
+import nc5 from './assets/backgrounds/Layer5.png'
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import flare from "./assets/particles/flare_1.png"
@@ -94,14 +98,17 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
-        // this.backgrounds = new ParaBackgrounds(this,[
-        //     {key: 'dungeon_middle', image: dungeon_middle},
-        //     {key: 'dungeon_back', image: dungeon_back},
-        // ])
-
         this.backgrounds = new ParaBackgrounds(this,[
             {key: 'stars-small', image: small_stars},
-            {key: 'nebula', image: nebula2},
+            {key: 'stars-big', image: big_stars},
+            {key: 'nebula', image: nebula},
+            {key: 'nebula2', image: nebula2},
+
+            {key: 'nc1', image: nc1},
+            {key: 'nc2', image: nc2},
+            {key: 'nc3', image: nc3},
+            {key: 'nc4', image: nc4},
+            {key: 'nc5', image: nc5},
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -118,20 +125,81 @@ export class MaxLevel extends Phaser.Scene {
 		const sfxEnabled = localStorage.getItem('sfxEnabled');
 		const weatherEnabled = localStorage.getItem('weatherEnabled');
 
+        // const { width, height } = this.scale;
+        // this.backgrounds.addBackground({
+        //     ratioX: 0.1,
+        //     sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
+        //         .setOrigin(0, 0)
+        //         .setScrollFactor(0, 0)
+        //         // .setTint(0x001a33, 0x000d1a, 0x001a33)
+        //         .setScale(1)
+        //         .setDepth(-3)
+        // });
+
+        // this.backgrounds.addBackground({
+        //     ratioX: 0.4,
+        //     sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
+        //         .setOrigin(0, 0)
+        //         .setScrollFactor(0, 0)
+        //         .setTint(0x003366, 0x004080)
+        //         .setScale(1)
+        //         .setDepth(-1)
+        // });
+
+        // this.backgrounds.addBackground({
+        //     ratioX: 0.7,
+        //     sprite: this.add.tileSprite(0, 0, width, height, 'stars-big')
+        //         .setOrigin(0, 0)
+        //         .setScrollFactor(0, 0)
+        //         .setTint(0x003366, 0x004080)
+        //         .setScale(1)
+        //         .setDepth(-1)
+        // });
+
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nebula')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nc1')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
-                .setTint(0x001a33, 0x000d1a, 0x001a33)
+                // .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
                 .setDepth(-3)
         });
 
         this.backgrounds.addBackground({
             ratioX: 0.4,
-            sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nc2')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.5,
+            sprite: this.add.tileSprite(0, 0, width, height, 'nc3')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.6,
+            sprite: this.add.tileSprite(0, 0, width, height, 'nc4')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.7,
+            sprite: this.add.tileSprite(0, 0, width, height, 'nc5')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
@@ -142,8 +210,6 @@ export class MaxLevel extends Phaser.Scene {
         createAnimations(this);
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
-
-        // this.background_tiles = map.createLayer('background_colour', tileset)
 
         this.ground = map.createLayer('Collision', tileset)
 
@@ -163,9 +229,9 @@ export class MaxLevel extends Phaser.Scene {
 		// 	this.weather.addFog();
 		// }
 
-        // this.weather.setWindSpeed(-100);
-        // this.weather.addRain();
-        // this.weather.addFog();
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
+        this.weather.addFog();
 
         this.player.init(this.ground)
 
@@ -230,6 +296,7 @@ export class MaxLevel extends Phaser.Scene {
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
+            this.scene.stop('HUDScene')
             this.scene.start('WinnerScene');
         }
     }
