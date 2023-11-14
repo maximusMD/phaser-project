@@ -2,8 +2,8 @@ import Phaser from "phaser";
 import mainMenuImg from "./assets/menu_buttons/main-menu.png";
 import lbImg from "./assets/menu_buttons/leaderboard.png";
 import credImg from "./assets/menu_buttons/credits.png";
-import loading_img from './assets/animations/sprites/Loading assets/loadingSpriteSheer.png'
-import loading_atlas from './assets/animations/sprites/Loading assets/loadingSpriteSheer.json'
+import loadingImg from "./assets/animations/sprites/Loading assets/loadingImg.png"
+import loadingAtlas from './assets/animations/sprites/Loading assets/loadingSpriteSheer.json'
 
 export class LeaderboardScene extends Phaser.Scene {
   constructor() {
@@ -20,7 +20,7 @@ export class LeaderboardScene extends Phaser.Scene {
     this.load.image("main-menu", mainMenuImg);
     this.load.image("leaderboard", lbImg);
     this.load.image("credits", credImg);
-    this.load.atlas('loading-bar',loading_img ,loading_atlas)
+    this.load.atlas('loadingBar', loadingImg, loadingAtlas)
   }
   create() {
     const gameWidth = this.cameras.main.width;
@@ -39,10 +39,9 @@ export class LeaderboardScene extends Phaser.Scene {
       }
     );
     const mainMenuScaleFactor = gameWidth / mainMenu.width;
-
     mainMenu.setScale(mainMenuScaleFactor * 0.1835);
 
-    
+
 
     const credits = this.addButton(
       gameWidth * 0.1,
@@ -67,29 +66,31 @@ export class LeaderboardScene extends Phaser.Scene {
         families: ["Pixelify Sans"],
       },
       active: () => {
-        const loadhBar = this.add.sprite(gameWidth / 2, gameHeight / 2, 'loading-bar', 'Heart-0.png');
-    const loadBarScaleFactor = gameWidth / loadhBar.width
-    loadhBar.setScale(loadBarScaleFactor * 0.135)
-    this.anims.create({
-      key: 'loadinghAnimation',
-      frames: this.anims.generateFrameNames('loading-bar', {
-          prefix: 'Loading-',
-          start: 0,
-          end: 42,
-          zeroPad: 1,
-          suffix: '.png',
-      }),
-      repeat: -1,
-      frameRate: 18
-  });
-
-  loadhBar.play('loadinghAnimation')
+        
+        const loadingBar = this.add.sprite(gameWidth/2, gameHeight /2, 'loadingBar', 'loading0.png');
+        const loadingBarScaleFactor = gameWidth / loadingBar.width
+        loadingBar.setScale(loadingBarScaleFactor * 0.135)
+    
+        this.anims.create({
+            key: 'loadingAnimation',
+            frames: this.anims.generateFrameNames('loadingBar', {
+                prefix: 'Loading-',
+                start: 0,
+                end: 42,
+                zeroPad: 1,
+                suffix: '.png',
+            }),
+            repeat: -1,
+            frameRate: 3
+        });
+    
+        loadingBar.play('loadingAnimation');
 
         fetch("https://wavy-project-gang-api.onrender.com/api/leaderboard")
           .then((response) => response.json())
           .then((data) => {
             const textGroup = this.add.group();
-            loadhBar.destroy();
+            loadingBar.destroy();
             for (let i = 0; i < 4; i++) {
               const user = data[i];
               const textData = `<${user.username} - ${user.highScore}>\n`;
