@@ -123,9 +123,9 @@ export class MaxLevel extends Phaser.Scene {
     }
     create() {
 
-        const musicEnabled = localStorage.getItem('musicEnabled')|| 'true';
-        const sfxEnabled = localStorage.getItem('sfxEnabled')|| 'true';
-        const weatherEnabled = localStorage.getItem('weatherEnabled')|| 'true';
+        const musicEnabled = localStorage.getItem('musicEnabled') || 'true';
+        const sfxEnabled = localStorage.getItem('sfxEnabled') || 'true';
+        const weatherEnabled = localStorage.getItem('weatherEnabled') || 'true';
 
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
