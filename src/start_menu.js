@@ -88,15 +88,12 @@ export class MenuScene extends Phaser.Scene {
             });
         }else{
             const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
-                this.stopMenuMusicAndStartScene('UserForm');
+                this.stopMenuMusicAndStartScene('UserForm');           
+            });
+            const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
+                this.stopMenuMusicAndStartScene('MaxLevel');
             });
         }
-
-        
-
-        const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
-            this.stopMenuMusicAndStartScene('MaxLevel');
-        });
 
         const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
             this.stopMenuMusicAndStartScene('LeaderboardScene');
