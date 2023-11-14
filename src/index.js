@@ -13,6 +13,7 @@ import { LeaderboardScene } from './leaderboard';
 import { MaxLevel } from './max_level';
 import { WinnerScene } from './winner';
 import { GameOverScene } from './game_over';
+import { BossTest } from './BossLevel';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {
@@ -27,13 +28,15 @@ window.sizeChanged = () => {
 };
 window.onresize = () => window.sizeChanged();
 
+localStorage.clear();
+
 const config = {
     type: Phaser.AUTO,
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene],
-    render: { pixelArt: true},
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest],
+	render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
 

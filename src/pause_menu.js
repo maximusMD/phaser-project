@@ -39,8 +39,8 @@ export class PauseMenuScene extends Phaser.Scene {
 
 		//bg gradient
 		const gradientBackground = this.add.graphics();
-        gradientBackground.fillStyle(0x000000, 0.7);
-        gradientBackground.fillRect(0, 0, this.cameras.main.width, this.cameras.main.height);
+		gradientBackground.fillStyle(0x000000, 0.7);
+		gradientBackground.fillRect(0, 0, this.cameras.main.width, this.cameras.main.height);
 
 		// pause menu img
 		const pauseMenuImg = this.add.image(centerX, centerY - 200, 'pauseMenuImg');
@@ -134,6 +134,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleWeather(weather) {
+		localStorage.removeItem('weatherEnabled');
 		if (weather) {
 			this.weather.enable();
 		} else {
@@ -150,6 +151,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleSFX(mute) {
+		localStorage.removeItem('sfxEnabled');
 		this.sfx.setMute(mute);
 	}
 

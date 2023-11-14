@@ -10,7 +10,7 @@
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "skill1/skill1-7.png",
+					"filename": "skill1-7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -31,7 +31,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-6.png",
+					"filename": "attacking-6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -52,7 +52,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-9.png",
+					"filename": "attacking-9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-5.png",
+					"filename": "skill1-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-9.png",
+					"filename": "skill1-9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-2.png",
+					"filename": "attacking-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -136,7 +136,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-6.png",
+					"filename": "skill1-6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -157,7 +157,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-8.png",
+					"filename": "skill1-8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -178,7 +178,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-0.png",
+					"filename": "summonAppear-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -199,7 +199,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-10.png",
+					"filename": "attacking-10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -220,7 +220,7 @@
 					}
 				},
 				{
-					"filename": "summon/summon-3.png",
+					"filename": "summon-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -241,7 +241,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-11.png",
+					"filename": "attacking-11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -262,7 +262,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-3.png",
+					"filename": "attacking-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -283,7 +283,7 @@
 					}
 				},
 				{
-					"filename": "summon/summon-2.png",
+					"filename": "summon-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -304,7 +304,7 @@
 					}
 				},
 				{
-					"filename": "death/death-0.png",
+					"filename": "death-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -325,7 +325,7 @@
 					}
 				},
 				{
-					"filename": "death/death-1.png",
+					"filename": "death-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -346,7 +346,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonDeath/summonDeath-1.png",
+					"filename": "summonDeath-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -367,7 +367,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonDeath/summonDeath-2.png",
+					"filename": "summonDeath-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -388,7 +388,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-1.png",
+					"filename": "summonAppear-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -409,7 +409,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-2.png",
+					"filename": "summonAppear-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -430,7 +430,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonDeath/summonDeath-3.png",
+					"filename": "summonDeath-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -451,7 +451,7 @@
 					}
 				},
 				{
-					"filename": "death/death-2.png",
+					"filename": "death-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -472,7 +472,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-4.png",
+					"filename": "attacking-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -493,7 +493,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonDeath/summonDeath-4.png",
+					"filename": "summonDeath-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -514,7 +514,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-5.png",
+					"filename": "attacking-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -535,7 +535,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-12.png",
+					"filename": "attacking-12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -556,7 +556,7 @@
 					}
 				},
 				{
-					"filename": "death/death-17.png",
+					"filename": "death-17.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -577,7 +577,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonDeath/summonDeath-0.png",
+					"filename": "summonDeath-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -598,7 +598,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonIdle/summonIdle-0.png",
+					"filename": "summonIdle-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -619,7 +619,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-5.png",
+					"filename": "summonAppear-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -640,7 +640,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonIdle/summonIdle-1.png",
+					"filename": "summonIdle-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -661,7 +661,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonIdle/summonIdle-2.png",
+					"filename": "summonIdle-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -682,7 +682,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-1.png",
+					"filename": "skill1-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -703,7 +703,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-11.png",
+					"filename": "skill1-11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -724,7 +724,7 @@
 					}
 				},
 				{
-					"filename": "summon/summon-1.png",
+					"filename": "summon-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -745,7 +745,7 @@
 					}
 				},
 				{
-					"filename": "summon/summon-4.png",
+					"filename": "summon-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -766,7 +766,7 @@
 					}
 				},
 				{
-					"filename": "death/death-11.png",
+					"filename": "death-11.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -787,7 +787,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-6.png",
+					"filename": "idle2-6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -808,7 +808,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-7.png",
+					"filename": "idle2-7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -829,7 +829,7 @@
 					}
 				},
 				{
-					"filename": "death/death-12.png",
+					"filename": "death-12.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -850,7 +850,7 @@
 					}
 				},
 				{
-					"filename": "death/death-13.png",
+					"filename": "death-13.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -871,7 +871,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-0.png",
+					"filename": "attacking-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -892,7 +892,7 @@
 					}
 				},
 				{
-					"filename": "idle/idle-0.png",
+					"filename": "idle-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -913,7 +913,7 @@
 					}
 				},
 				{
-					"filename": "death/death-7.png",
+					"filename": "death-7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -934,7 +934,7 @@
 					}
 				},
 				{
-					"filename": "death/death-5.png",
+					"filename": "death-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -955,7 +955,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-0.png",
+					"filename": "idle2-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -976,7 +976,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-1.png",
+					"filename": "idle2-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -997,7 +997,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-0.png",
+					"filename": "skill1-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1018,7 +1018,7 @@
 					}
 				},
 				{
-					"filename": "death/death-6.png",
+					"filename": "death-6.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1039,7 +1039,7 @@
 					}
 				},
 				{
-					"filename": "summon/summon-0.png",
+					"filename": "summon-0.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1060,7 +1060,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-2.png",
+					"filename": "idle2-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1081,7 +1081,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-3.png",
+					"filename": "idle2-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1102,7 +1102,7 @@
 					}
 				},
 				{
-					"filename": "death/death-10.png",
+					"filename": "death-10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1123,7 +1123,7 @@
 					}
 				},
 				{
-					"filename": "death/death-14.png",
+					"filename": "death-14.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1144,7 +1144,7 @@
 					}
 				},
 				{
-					"filename": "death/death-15.png",
+					"filename": "death-15.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1165,7 +1165,7 @@
 					}
 				},
 				{
-					"filename": "idle/idle-1.png",
+					"filename": "idle-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1186,7 +1186,7 @@
 					}
 				},
 				{
-					"filename": "idle/idle-2.png",
+					"filename": "idle-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1207,7 +1207,7 @@
 					}
 				},
 				{
-					"filename": "death/death-16.png",
+					"filename": "death-16.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1228,7 +1228,7 @@
 					}
 				},
 				{
-					"filename": "executioner_summonIdle/summonIdle-3.png",
+					"filename": "summonIdle-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1249,7 +1249,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-3.png",
+					"filename": "summonAppear-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1270,7 +1270,7 @@
 					}
 				},
 				{
-					"filename": "summonAppear/summonAppear-4.png",
+					"filename": "summonAppear-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1291,7 +1291,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-4.png",
+					"filename": "idle2-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1312,7 +1312,7 @@
 					}
 				},
 				{
-					"filename": "idle2/idle2-5.png",
+					"filename": "idle2-5.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1333,7 +1333,7 @@
 					}
 				},
 				{
-					"filename": "idle/idle-3.png",
+					"filename": "idle-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1354,7 +1354,7 @@
 					}
 				},
 				{
-					"filename": "death/death-3.png",
+					"filename": "death-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1375,7 +1375,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-1.png",
+					"filename": "attacking-1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1396,7 +1396,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-8.png",
+					"filename": "attacking-8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1417,7 +1417,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-4.png",
+					"filename": "skill1-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1438,7 +1438,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-10.png",
+					"filename": "skill1-10.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1459,7 +1459,7 @@
 					}
 				},
 				{
-					"filename": "death/death-4.png",
+					"filename": "death-4.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1480,7 +1480,7 @@
 					}
 				},
 				{
-					"filename": "death/death-8.png",
+					"filename": "death-8.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1501,7 +1501,7 @@
 					}
 				},
 				{
-					"filename": "attacking/attacking-7.png",
+					"filename": "attacking-7.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1522,7 +1522,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-2.png",
+					"filename": "skill1-2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1543,7 +1543,7 @@
 					}
 				},
 				{
-					"filename": "death/death-9.png",
+					"filename": "death-9.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -1564,7 +1564,7 @@
 					}
 				},
 				{
-					"filename": "skill1/skill1-3.png",
+					"filename": "skill1-3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {

@@ -2,16 +2,17 @@ import Phaser from 'phaser'
 
 import heart_image from './assets/animations/sprites/Heart GUI/heart_atlas.png'
 import heart_atlas from './assets/animations/sprites/Heart GUI/heart_atlas.json'
+import { Actor } from './classes/Actor'
 
 export class HUDScene extends Phaser.Scene {
 
     constructor () {
-        super({ key: 'HUDScene'})
-        this.score = 0
+        super({ key: 'HUDScene'});
+        this.score = 0;
         this.info;
     }
 
-    preload () {
+    preload() {
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -45,7 +46,7 @@ export class HUDScene extends Phaser.Scene {
         const healthBar = this.add.sprite(gameWidth * 0.1123, gameHeight * 0.15, 'health', 'Heart-0.png');
         const healthBarScaleFactor = gameWidth / healthBar.width
         healthBar.setScale(healthBarScaleFactor * 0.135)
-    
+
         this.anims.create({
             key: 'healthAnimation',
             frames: this.anims.generateFrameNames('health', {
@@ -58,8 +59,12 @@ export class HUDScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 3
         });
-    
+
         healthBar.play('healthAnimation');
+
+        if (this.player) {
+            this.player.setHealthBar(healthBar);
+        }
     }
 
     addScore(score) {
