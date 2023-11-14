@@ -14,10 +14,10 @@ export class Actor extends Physics.Arcade.Sprite {
     getHP() {
         return this.#hp;
     }
-    updateHealthBar(healthBar) {
-        const frameIndex = Math.floor((4 * (100 - this.#hp)) / 100); // Calculate frame index based on health
-        healthBar.setFrame(`Heart-${frameIndex}.png`);
-    }
+    // updateHealthBar(healthBar) {
+    //     const frameIndex = Math.floor((4 * (100 - this.#hp)) / 100); // Calculate frame index based on health
+    //     healthBar.setFrame(`Heart-${frameIndex}.png`);
+    // }
     checkFlip() {
         if (this.body.velocity.x < 0) {
             this.scaleX = -1;
@@ -29,6 +29,9 @@ export class Actor extends Physics.Arcade.Sprite {
         return this.body;
     }
     setHP(damage, ignoreInvul = false) {
+        if(this.scene.hudScene) {
+            this.scene.hudScene.updateHealthBar(this.scene.player)
+        }
         if (this.getGodMode?.()) return;
 
         if (!this.getIsInvul?.() || ignoreInvul) {

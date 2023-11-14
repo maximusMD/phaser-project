@@ -28,6 +28,7 @@ export class RoguePlayer extends Actor {
 
     constructor(scene, x, y, playerModel) {
         super(scene, x, y, playerModel);
+        this.startingHP = this.getHP();
         this.cursors = scene.input.keyboard.addKeys({
             'up': Phaser.Input.Keyboard.KeyCodes.W, 'down': Phaser.Input.Keyboard.KeyCodes.S,
             'left': Phaser.Input.Keyboard.KeyCodes.A, 'right': Phaser.Input.Keyboard.KeyCodes.D, 'jump': Phaser.Input.Keyboard.KeyCodes.SPACE,
