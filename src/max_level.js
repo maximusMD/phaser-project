@@ -149,9 +149,11 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
 
-        this.weather.setWindSpeed(-100);
-        this.weather.addRain();
-        this.weather.addFog()
+        if (weatherEnabled === 'true') {
+			this.weather.setWindSpeed(-100);
+			this.weather.addRain();
+			this.weather.addFog();
+		}
 
 
         this.player.init(this.ground)
@@ -179,13 +181,6 @@ export class MaxLevel extends Phaser.Scene {
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
 
-        if (weatherEnabled === 'true') {
-            // the code below works added to test weather on and off 
-
-			// this.weather.setWindSpeed(-100);
-			// this.weather.addRain();
-			// this.weather.addFog();
-		}
     }
     update() {
         this.weather.update();
