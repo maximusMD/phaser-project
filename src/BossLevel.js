@@ -18,7 +18,6 @@ import flare from "./assets/particles/flare_1.png"
 import dust from "./assets/particles/dust.png"
 
 import { Executioner } from './classes/Executioner.js';
-import { ExecutionerSummon } from './classes/Executioner.js';
 
 import poison_1 from "./assets/particles/poison1.png"
 import sprite_explode from "./assets/particles/sprite_emitter.png"
@@ -86,7 +85,7 @@ export class BossTest extends Phaser.Scene {
         this.ground = map.createLayer('ground', tileset, 0, 0)
         this.ground.setCollisionByExclusion(-1, true)
 
-        this.player = new RoguePlayer(this, 250 , 420, "rogue_player");
+        this.player = new RoguePlayer(this, 250, 420, "rogue_player");
         this.cameras.main.startFollow(this.player);
 
         this.executioner = new Executioner(this, 360, 425, "executioner")
@@ -96,7 +95,6 @@ export class BossTest extends Phaser.Scene {
         this.pauseHandler = handlePause(this, this.allSprites);
 
         this.player.init(this.ground)
-        // this.executioner.createPoison();
 
         this.dash_overlay = this.add.image(this.ground.getCenter().x, 420, 'laser').setDepth(3)
         this.dash_overlay.angle = 90;
@@ -104,14 +102,16 @@ export class BossTest extends Phaser.Scene {
         this.dash_overlay.scaleY = 1.5;
         this.dash_overlay.scaleX = 1.5;
         this.dash_overlay.setTint(0x0B0B0B)
+
     }
     update() {
         this.player.update();
-        this.executioner.update()
-        // this.time.delayedCall(3000, () => { this.executioner.summonPoison() })
 
-        this.executioner.summons.getChildren().forEach(x => {
-            if (x.getIsAlive()) x.update();
-        })
+        if (!this.executioner.getIsDead()) {
+            this.executioner.update()
+            this.executioner.summons.getChildren().forEach(x => {
+                if (x.getIsAlive()) x.update();
+            })
+        }
     }
 }
