@@ -13,7 +13,7 @@ import { RogueBrain } from './classes/RogueBrain.js';
 import { Weather } from './classes/Weather.js';
 
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3-high-contrast.png';
-import tilemap from './assets/tilemaps/maxlevel.json';
+import tilemap from './assets/tilemaps/maxlevelvisualtrap.json';
 
 import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
 import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
@@ -35,8 +35,15 @@ import laser_img from "./assets/particles/laser_2.png";
 import arrow_img from "./assets/animations/objects/arrow.png"
 
 //backgrounds
-import dungeon_middle from "./assets/backgrounds/middle_layer.png"
-import dungeon_back from "./assets/backgrounds/back_layer.png"
+import nebula from './assets/backgrounds/Nebula Blue.png'
+import nebula2 from './assets/backgrounds/Nebula Red.png'
+import small_stars from './assets/backgrounds/smallstars.png'
+import big_stars from './assets/backgrounds/bigstars.png'
+import nc1 from './assets/backgrounds/Layer1.png'
+import nc2 from './assets/backgrounds/Layer2.png'
+import nc3 from './assets/backgrounds/Layer3.png'
+import nc4 from './assets/backgrounds/Layer4.png'
+import nc5 from './assets/backgrounds/Layer5.png'
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import flare from "./assets/particles/flare_1.png"
@@ -91,9 +98,11 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
-        this.backgrounds = new ParaBackgrounds(this, [
-            { key: 'dungeon_middle', image: dungeon_middle },
-            { key: 'dungeon_back', image: dungeon_back },
+        this.backgrounds = new ParaBackgrounds(this,[
+            {key: 'stars-small', image: small_stars},
+            {key: 'stars-big', image: big_stars},
+            {key: 'nebula', image: nebula},
+            {key: 'nebula2', image: nebula2},
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -113,17 +122,27 @@ export class MaxLevel extends Phaser.Scene {
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
-                .setTint(0x001a33, 0x000d1a, 0x001a33)
+                // .setTint(0x001a33, 0x000d1a, 0x001a33)
                 .setScale(1)
                 .setDepth(-3)
         });
 
         this.backgrounds.addBackground({
             ratioX: 0.4,
-            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.7,
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-big')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
@@ -135,24 +154,27 @@ export class MaxLevel extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
 
-        this.background_tiles = map.createLayer('background_colour', tileset)
+        this.ground = map.createLayer('Collision', tileset).setDepth(3)
 
-        this.ground = map.createLayer('Collision', tileset)
-
-        this.bg2 = map.createLayer('bg2', tileset);
-        this.bg3 = map.createLayer('bg3', tileset);
-        this.background = map.createLayer('Background', tileset);
-        this.bg4 = map.createLayer('b4', tileset);
-
+        this.bg2 = map.createLayer('bg2', tileset).setDepth(2);
+        this.bg3 = map.createLayer('bg3', tileset).setDepth(1);
+        this.background = map.createLayer('Background', tileset).setDepth(0);
+        this.bg4 = map.createLayer('b4', tileset).setDepth(0);
+        
         this.ground.setCollisionByExclusion(-1, true)
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
 
+        // if (weatherEnabled === 'true') {
+		// 	this.weather.setWindSpeed(-100);
+		// 	this.weather.addRain();
+		// 	this.weather.addFog();
+		// }
+
         this.weather.setWindSpeed(-100);
         this.weather.addRain();
-        this.weather.addFog()
-
+        this.weather.addFog();
 
         this.player.init(this.ground)
 
@@ -184,13 +206,6 @@ export class MaxLevel extends Phaser.Scene {
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
 
-        if (weatherEnabled === 'true') {
-            // the code below works added to test weather on and off 
-
-            // this.weather.setWindSpeed(-100);
-            // this.weather.addRain();
-            // this.weather.addFog();
-        }
     }
     update() {
         this.weather.update();
@@ -229,6 +244,7 @@ export class MaxLevel extends Phaser.Scene {
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
+            this.scene.stop('HUDScene')
             this.scene.start('WinnerScene');
         }
     }
