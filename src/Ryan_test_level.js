@@ -201,11 +201,13 @@ export class RyanLevel extends Phaser.Scene {
               })
         })
         this.graphics = this.add.graphics();
-      
-      this.hudScene = new HUDScene();
 
       this.player.init(this.ground);
-      this.scene.run('HUDScene')    
+
+      // run scene
+      const hudScenePlugin = this.scene.run('HUDScene');
+      // access scene
+      this.hudScene = hudScenePlugin.get('HUDScene');
     }
 
     update() {
@@ -219,6 +221,7 @@ export class RyanLevel extends Phaser.Scene {
         this.enemy4.update(this.player)
         this.enemy5.update(this.player)
         this.enemy6.update(this.player)
+        // update scene
         this.hudScene.update();
     }
 
