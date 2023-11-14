@@ -15,10 +15,13 @@ export class RogueDarkLord extends Enemy {
 
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
+
+
+
     }
 
     handleCompleteAnims(e) {
-        if (e.key === 'darklord_walk' && this.getIsWandering() === false) {
+        if (e.key === 'darklord_walk' && this.getIsWandering() === false || this.isNearEdge()) {
             this.anims.play('darklord_idle', true);
             this.setFlipX(!this.flipX)
             this.setWalkSpeed(-1 * this.getWalkSpeed());
@@ -32,18 +35,25 @@ export class RogueDarkLord extends Enemy {
 
         if (e.key === 'darklord_attack') {
             this.anims.stop()
+            this.anims.play('darklord_idle', true);
+
+            this.scene.time.delayedCall(2000, () => {
+                this.setAggro(false);
+                this.setFinishAttack(false);
+            })
         }
 
         if (e.key === 'darklord_die') {
             this.destroy();
         }
+
     }
 
     handleStoppedAnims(e) {
 
         if (e.key === 'darklord_attack') {
             this.setFinishAttack(true);
-          }
+        }
 
     }
 
@@ -68,10 +78,9 @@ export class RogueDarkLord extends Enemy {
             if (this.checkOverlap(player)) {
                 this.handleMelee('darklord_attack')
             } else {
-                this.stopWandering();
-                // this.huntPlayer(player)
-                this.handleMelee('darklord_attack')
-            }} else {
+                this.setIsWandering(true);
+            }
+        } else {
             if (this.getIsWandering()) {
                 this.wander(1, 'darklord_walk', 'darklord_idle');
             }

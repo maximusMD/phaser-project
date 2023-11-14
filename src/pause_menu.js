@@ -61,12 +61,18 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgMusic.setScale(1.5);
 
 		onImgMusic.on('pointerdown', () => {
+			onImgMusic.setTint(0x808080);
+			offImgMusic.setTint(0xffffff);
 			this.toggleMusic(false);
 		});
+		onImgMusic.setTint(this.music.isPlaying ? 0x808080 : 0xffffff);
 
 		offImgMusic.on('pointerdown', () => {
+			offImgMusic.setTint(0x808080);
+			onImgMusic.setTint(0xffffff);
 			this.toggleMusic(true);
 		});
+		offImgMusic.setTint(this.music.isPlaying ? 0xffffff : 0x808080);
 
 		// sfx music
 		const sfxImg = this.add.image(centerX - 280, centerY - 30, 'sfxImg');
@@ -82,12 +88,18 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setScale(1.5);
 
 		onImgSfx.on('pointerdown', () => {
+			onImgSfx.setTint(0x808080);
+			offImgSfx.setTint(0xffffff);
 			this.toggleSFX(false);
 		});
+		onImgSfx.setTint(this.sfx.mute ? 0xffffff : 0x808080);
 
 		offImgSfx.on('pointerdown', () => {
+			offImgSfx.setTint(0x808080);
+			onImgSfx.setTint(0xffffff);
 			this.toggleSFX(true);
 		});
+		offImgSfx.setTint(this.sfx.mute ? 0x808080 : 0xffffff);
 
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
@@ -105,12 +117,18 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setScale(1.5);
 
 		onWeatherImg.on('pointerdown', () => {
+			onWeatherImg.setTint(0x808080);
+			offWeatherImg.setTint(0xffffff);
 			this.toggleWeather(true);
 		});
+		onWeatherImg.setTint(this.weather.getEnabled() ? 0x808080 : 0xffffff);
 
 		offWeatherImg.on('pointerdown', () => {
+			offWeatherImg.setTint(0x808080);
+			onWeatherImg.setTint(0xffffff);
 			this.toggleWeather(false);
 		});
+		offWeatherImg.setTint(this.weather.getEnabled() ? 0xffffff : 0x808080);
 
 		// resume image
 		const resumeMenuImg = this.add.image(centerX, centerY + 150, 'resumeMenuImg');

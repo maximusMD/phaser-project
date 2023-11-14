@@ -6,12 +6,13 @@ import { Actor } from './classes/Actor'
 
 export class HUDScene extends Phaser.Scene {
 
-    constructor () {
-        super({ key: 'HUDScene'});
+    constructor() {
+        super({ key: 'HUDScene' });
         this.score = 0;
+        this.info;
     }
 
-    preload () {
+    preload() {
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -29,7 +30,7 @@ export class HUDScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                let info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, 'Score: 0', {
+                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, `Score: ${this.score}`, {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
@@ -42,10 +43,16 @@ export class HUDScene extends Phaser.Scene {
             }
         })
 
-        const healthBar = this.add.sprite(gameWidth * 0.1123, gameHeight * 0.15, 'health', 'Heart-0.png');
-        const healthBarScaleFactor = gameWidth / healthBar.width
-        healthBar.setScale(healthBarScaleFactor * 0.135)
-    
+        this.healthBar = this.add.sprite(gameWidth * 0.1123, gameHeight * 0.15, 'health', 'Heart-0.png');
+        const healthBarScaleFactor = gameWidth / this.healthBar.width
+        this.healthBar.setScale(healthBarScaleFactor * 0.135)
+
+        this.healthPercentageText = this.add.text(gameWidth *0.19, gameHeight * 0.14, '100%', {
+            fontFamily: 'Pixelify Sans',
+            fontSize: '18px',
+            fill: '#FFFFFF'
+        });
+
         this.anims.create({
             key: 'healthAnimation',
             frames: this.anims.generateFrameNames('health', {
@@ -58,19 +65,43 @@ export class HUDScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 3
         });
-    
-        healthBar.play('healthAnimation');
+    }
 
-        if (this.player) {
-            this.player.setHealthBar(healthBar);
+    addScore(score) {
+        this.score += score;
+        if (this.info) {
+            this.info.setText('Score: ' + this.score)
         }
     }
 
-    // updateHealthBar() {
-    //     const healthPercentage = // Calculate health percentage;
-    //     const frameIndex = Math.floor(healthPercentage * 4);
+    updateHealthBar(player) {
+        let frameIndex = 0;
+        const healthPercentage = player.getHP() / player.startingHP;
 
-    //     Set the frame based on the health percentage
-    //     healthBar.setFrame(`Heart-${frameIndex}.png`);
-    // }
+        if(healthPercentage === 1) {
+            frameIndex = 0;
+        } else if (healthPercentage <= 0 ) {
+            frameIndex = 4
+        } else if (healthPercentage <= 0.25) {
+            frameIndex = 3;
+        } else if (healthPercentage <= 0.5) {
+            frameIndex = 2;
+        } else if (healthPercentage <= 0.75) {
+            frameIndex = 1;
+        }
+        // const frameIndex = Math.floor(healthPercentage * 4);
+
+        // const frameIndex = Math.floor((4 * (100 - this.#hp)) / 100); // Calculate frame index based on health
+
+        // Set the frame based on the health percentage
+        if (this.healthBar) {
+            this.healthBar.setFrame(`Heart-${frameIndex}.png`);
+        }
+
+        this.healthPercentageText.setText(`${Math.round(healthPercentage * 100)}%`)
+    }
+
+    update() {
+
+    }
 }
