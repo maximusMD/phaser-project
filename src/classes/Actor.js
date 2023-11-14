@@ -2,6 +2,7 @@ import { Physics } from 'phaser';
 
 export class Actor extends Physics.Arcade.Sprite {
     #hp = 100;
+
     constructor(scene, x, y, texture, frame) {
         super(scene, x, y,);
         this.setTexture(texture);
@@ -28,17 +29,20 @@ export class Actor extends Physics.Arcade.Sprite {
     getBody() {
         return this.body;
     }
-    setHP(damage, ignoreInvul = false) {
-        if(this.scene.hudScene) {
-            this.scene.hudScene.updateHealthBar(this.scene.player)
-        }
-        if (this.getGodMode?.()) return;
-
-        if (!this.getIsInvul?.() || ignoreInvul) {
-            this.#hp -= damage;
-        } else {
-            console.log("invul to dmg")
-        }
+    setHP(damage, ignoreInvul = false, newHP) {
+    if (newHP) {
+      this.#hp = newHP;
     }
 
+    if (this.getGodMode?.()) return;
+
+    if (!this.getIsInvul?.() || ignoreInvul) {
+      this.#hp -= damage;
+      if (this.scene.hudScene) {
+        this.scene.hudScene.updateHealthBar(this.scene.player)
+      }
+    } else {
+      console.log("invul to dmg")
+    }
+}
 }       
