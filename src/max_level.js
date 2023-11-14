@@ -106,6 +106,10 @@ export class MaxLevel extends Phaser.Scene {
     }
     create() {
 
+        const musicEnabled = localStorage.getItem('musicEnabled');
+		const sfxEnabled = localStorage.getItem('sfxEnabled');
+		const weatherEnabled = localStorage.getItem('weatherEnabled');
+
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
@@ -156,16 +160,32 @@ export class MaxLevel extends Phaser.Scene {
         this.scene.bringToTop('HUDScene')
         this.scene.run('HUDScene')
 
-        const sceneMusic = this.sound.add('sceneMusic');
-        if (!sceneMusic.isPlaying) {
-            sceneMusic.play();
-            sceneMusic.loop = true;
-        }
-        const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
-        arrow_shoot_sfx.setVolume(1.0)
+		const sceneMusic = this.sound.add('sceneMusic');
+		sceneMusic.loop = true;
+
+		if (musicEnabled === 'true') {
+			sceneMusic.play();
+		}
+
+		const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
+		if (sfxEnabled === 'true') {
+			arrow_shoot_sfx.setVolume(1.0);
+		} else {
+			arrow_shoot_sfx.setMute(true);
+		}
+
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
+
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
+
+        if (weatherEnabled === 'true') {
+            // the code below works added to test weather on and off 
+
+			// this.weather.setWindSpeed(-100);
+			// this.weather.addRain();
+			// this.weather.addFog();
+		}
     }
     update() {
         this.weather.update();

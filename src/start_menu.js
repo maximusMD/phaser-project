@@ -36,6 +36,8 @@ export class MenuScene extends Phaser.Scene {
     }
 
     create() {
+        const musicEnabled = localStorage.getItem('musicEnabled');
+
         const gameWidth = this.cameras.main.width;
         const gameHeight = this.cameras.main.height;
 
@@ -124,8 +126,8 @@ export class MenuScene extends Phaser.Scene {
         const optionsScaleFactor = gameWidth / options.width; 
         options.setScale(optionsScaleFactor * 0.1835)
 
-        const menuMusic = this.sound.add('menuMusic');
-        if (!menuMusic.isPlaying) {
+        const menuMusic = this.sound.add('menuMusic')
+        if (musicEnabled === 'true') {
             menuMusic.play();
         }
     }

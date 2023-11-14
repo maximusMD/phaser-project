@@ -113,6 +113,9 @@ export class RyanLevel extends Phaser.Scene {
 
     create() {
 
+        const musicEnabled = localStorage.getItem('musicEnabled');
+		const sfxEnabled = localStorage.getItem('sfxEnabled');
+		const weatherEnabled = localStorage.getItem('weatherEnabled');
 
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
@@ -163,21 +166,31 @@ export class RyanLevel extends Phaser.Scene {
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.cameras.main.startFollow(this.player);
         
-        const sceneMusic = this.sound.add('sceneMusic');
-        if (!sceneMusic.isPlaying) {
-            sceneMusic.play();
-            sceneMusic.loop = true;
-        }
-        const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
-        arrow_shoot_sfx.setVolume(1.0)
+		const sceneMusic = this.sound.add('sceneMusic');
+		sceneMusic.loop = true;
+
+		if (musicEnabled === 'true') {
+			sceneMusic.play();
+		}
+
+		const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
+		if (sfxEnabled === 'true') {
+			arrow_shoot_sfx.setVolume(1.0);
+		} else {
+			arrow_shoot_sfx.setMute(true);
+		}
         
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
+
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
-        this.weather.setWindSpeed(-100);
-        this.weather.addRain();
-        this.weather.addFog()
+
+		if (weatherEnabled === 'true') {
+			this.weather.setWindSpeed(-100);
+			this.weather.addRain();
+			this.weather.addFog();
+		}
 
         // create arrow colliders now player is made
         this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
