@@ -1,59 +1,61 @@
-import Phaser from 'phaser'
-import optImg from './assets/menu_buttons/options.png'
-import logoutImg from './assets/menu_buttons/logout.png'
-import sfxImg from './assets/menu_buttons/sfx.png'
-import musicImg from './assets/menu_buttons/music.png'
-import weatherImg from './assets/menu_buttons/weather.png'
-import zoomImg from './assets/menu_buttons/zoom.png'
-import controlsImg from './assets/menu_buttons/controls.png'
-import mainMenuImg from './assets/menu_buttons/main-menu.png'
-import shareImg from './assets/menu_buttons/share.png'
-import credImg from './assets/menu_buttons/credits.png'
+import Phaser from 'phaser';
+import optImg from './assets/menu_buttons/options.png';
+import logoutImg from './assets/menu_buttons/logout.png';
+import sfxImg from './assets/menu_buttons/sfx.png';
+import musicImg from './assets/menu_buttons/music.png';
+import weatherImg from './assets/menu_buttons/weather.png';
+import zoomImg from './assets/menu_buttons/zoom.png';
+import controlsImg from './assets/menu_buttons/controls.png';
+import mainMenuImg from './assets/menu_buttons/main-menu.png';
+import shareImg from './assets/menu_buttons/share.png';
+import credImg from './assets/menu_buttons/credits.png';
 import onImg from './assets/menu_buttons/on.png';
 import offImg from './assets/menu_buttons/off.png';
 
 import sceneMusic from './assets/levelMusic.wav';
 
 export class OptionsScene extends Phaser.Scene {
-    constructor () {
-        super({ key: 'OptionsScene' })
-    }
+	constructor() {
+		super({ key: 'OptionsScene' });
+	}
 
-    preload() {
-        this.load.image('background', 'assets/bg.png')
-        this.load.image('header', optImg)
-        this.load.image('weather', weatherImg)
-        this.load.image('music', musicImg)
-        this.load.image('sfx', sfxImg)
-        this.load.image('zoom', zoomImg)
-        this.load.image('controls', controlsImg)
-        this.load.image('logout', logoutImg)
-        this.load.image('credits', credImg)
-        this.load.image('share', shareImg)
-        this.load.image('main-menu', mainMenuImg)
-        this.load.image('onImg', onImg);
+	preload() {
+		this.load.image('background', 'assets/bg.png');
+		this.load.image('header', optImg);
+		this.load.image('weather', weatherImg);
+		this.load.image('music', musicImg);
+		this.load.image('sfx', sfxImg);
+		this.load.image('zoom', zoomImg);
+		this.load.image('controls', controlsImg);
+		this.load.image('logout', logoutImg);
+		this.load.image('credits', credImg);
+		this.load.image('share', shareImg);
+		this.load.image('main-menu', mainMenuImg);
+		this.load.image('onImg', onImg);
 		this.load.image('offImg', offImg);
-        this.load.audio('sceneMusic', sceneMusic);
-    }
+		this.load.audio('sceneMusic', sceneMusic);
+	}
 
-    create() {
-        const gameWidth = this.cameras.main.width;
-        const gameHeight = this.cameras.main.height;
+	create() {
+		const gameWidth = this.cameras.main.width;
+		const gameHeight = this.cameras.main.height;
 
-        const background = this.add.image(0, 0, 'background');
-        background.displayWidth = gameWidth;
-        background.displayHeight = gameHeight;
-        background.setPosition(gameWidth / 2, gameHeight / 2);
+		const background = this.add.image(0, 0, 'background');
+		background.displayWidth = gameWidth;
+		background.displayHeight = gameHeight;
+		background.setPosition(gameWidth / 2, gameHeight / 2);
 
-        const header = this.add.image(gameWidth * 0.52, gameHeight * 0.25, 'header');
-        const headerScaleFactor = gameWidth / header.width
-        header.setScale(headerScaleFactor * 0.55);
+		const header = this.add.image(gameWidth * 0.52, gameHeight * 0.25, 'header');
+		const headerScaleFactor = gameWidth / header.width;
+		header.setScale(headerScaleFactor * 0.55);
 
-        const weather = this.add.image(gameWidth * 0.325, gameHeight * 0.4, 'weather')
-        const weatherScaleFactor = gameWidth / weather.width; 
-        weather.setScale(weatherScaleFactor * 0.1635)
+		const weather = this.add.image(gameWidth * 0.325, gameHeight * 0.4, 'weather');
+		const weatherScaleFactor = gameWidth / weather.width;
+		weather.setScale(weatherScaleFactor * 0.1635);
 
-        const onWeatherImg = this.add.image(gameWidth * 0.50, gameHeight * 0.4, 'onImg').setInteractive();
+		const onWeatherImg = this.add
+			.image(gameWidth * 0.5, gameHeight * 0.4, 'onImg')
+			.setInteractive();
 		onWeatherImg.setScale(weatherScaleFactor * 0.1635);
 
 		const offWeatherImg = this.add
@@ -62,113 +64,141 @@ export class OptionsScene extends Phaser.Scene {
 		offWeatherImg.setScale(weatherScaleFactor * 0.1635);
 
 		onWeatherImg.on('pointerdown', () => {
+			onWeatherImg.setTint(0x808080);
+			offWeatherImg.setTint(0xffffff);
 			localStorage.setItem('weatherEnabled', 'true');
 		});
 
 		offWeatherImg.on('pointerdown', () => {
+			onWeatherImg.setTint(0xffffff);
+			offWeatherImg.setTint(0x808080);
 			localStorage.setItem('weatherEnabled', 'false');
 		});
 
-        const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music')
-        const musicScaleFactor = gameWidth / music.width; 
-        music.setScale(musicScaleFactor * 0.12)
+		const weatherEnabled = localStorage.getItem('weatherEnabled');
+		onWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
+		offWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
 
-        const onMusicImg = this.add.image(gameWidth * 0.50, gameHeight * 0.48, 'onImg').setInteractive();
+		const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music');
+		const musicScaleFactor = gameWidth / music.width;
+		music.setScale(musicScaleFactor * 0.12);
+
+		const onMusicImg = this.add
+			.image(gameWidth * 0.5, gameHeight * 0.48, 'onImg')
+			.setInteractive();
 		onMusicImg.setScale(musicScaleFactor * 0.12);
 
 		const offMusicImg = this.add
 			.image(gameWidth * 0.58, gameHeight * 0.48, 'offImg')
 			.setInteractive();
-            offMusicImg.setScale(musicScaleFactor * 0.12);
+		offMusicImg.setScale(musicScaleFactor * 0.12);
 
-        onMusicImg.on('pointerdown', () => {
-            localStorage.setItem('musicEnabled', 'true');
+		onMusicImg.on('pointerdown', () => {
+			onMusicImg.setTint(0x808080);
+			offMusicImg.setTint(0xffffff);
+			localStorage.setItem('musicEnabled', 'true');
 		});
 
-        offMusicImg.on('pointerdown', () => {
-            localStorage.setItem('musicEnabled', 'false');
-        });
+		offMusicImg.on('pointerdown', () => {
+			onMusicImg.setTint(0xffffff);
+			offMusicImg.setTint(0x808080);
+			localStorage.setItem('musicEnabled', 'false');
+		});
 
-        const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx')
-        const sfxScaleFactor = gameWidth / sfx.width; 
-        sfx.setScale(sfxScaleFactor * 0.08)
+		const musicEnabled = localStorage.getItem('musicEnabled');
+		onMusicImg.setTint(musicEnabled === 'true' ? 0x808080 : 0xffffff);
+		offMusicImg.setTint(musicEnabled === 'true' ? 0xffffff : 0x808080);
 
-        const onSfxImg = this.add.image(gameWidth * 0.50, gameHeight * 0.57, 'onImg').setInteractive();
+		const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx');
+		const sfxScaleFactor = gameWidth / sfx.width;
+		sfx.setScale(sfxScaleFactor * 0.08);
+
+		const onSfxImg = this.add
+			.image(gameWidth * 0.5, gameHeight * 0.57, 'onImg')
+			.setInteractive();
 		onSfxImg.setScale(sfxScaleFactor * 0.08);
 
 		const offSfxImg = this.add
 			.image(gameWidth * 0.58, gameHeight * 0.57, 'offImg')
 			.setInteractive();
-            offSfxImg.setScale(sfxScaleFactor * 0.08);
+		offSfxImg.setScale(sfxScaleFactor * 0.08);
 
-        onSfxImg.on('pointerdown', () => {
-            localStorage.setItem('sfxEnabled', 'true');
+		onSfxImg.on('pointerdown', () => {
+            onSfxImg.setTint(0x808080);
+			offSfxImg.setTint(0xffffff);
+			localStorage.setItem('sfxEnabled', 'true');
 		});
 
 		offSfxImg.on('pointerdown', () => {
+            onSfxImg.setTint(0xffffff);
+			offSfxImg.setTint(0x808080);
 			localStorage.setItem('sfxEnabled', 'false');
 		});
 
-        const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom')
-        const zoomScaleFactor = gameWidth / zoom.width; 
-        zoom.setScale(zoomScaleFactor * 0.11)
+		const sfxEnabled = localStorage.getItem('sfxEnabled');
+        onSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
+		offSfxImg.setTint(sfxEnabled === 'true' ? 0xffffff : 0x808080);
 
-        const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
-            this.handleControls()
-        })
-        const controlsScaleFactor = gameWidth / controls.width; 
-        controls.setScale(controlsScaleFactor * 0.21)
+		const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom');
+		const zoomScaleFactor = gameWidth / zoom.width;
+		zoom.setScale(zoomScaleFactor * 0.11);
 
-        const logout = this.addButton(gameWidth * 0.517, gameHeight * 0.865, 'logout', () => {
-            console.log('Logout')
-        })
-        const logoutScaleFactor = gameWidth / logout.width; 
-        logout.setScale(logoutScaleFactor * 0.19)
+		const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
+			this.handleControls();
+		});
+		const controlsScaleFactor = gameWidth / controls.width;
+		controls.setScale(controlsScaleFactor * 0.21);
 
-        const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
-            this.handleCredits()
-        });
-        const creditsScaleFactor = gameWidth / credits.width; 
-        credits.setScale(creditsScaleFactor * 0.1835)
-    
-        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
-            console.log('Share');
-        });
-        const shareScaleFactor = gameWidth / share.width; 
-        share.setScale(shareScaleFactor * 0.16)
-    
-        const mainMenu = this.addButton(gameWidth * 0.9, gameHeight * 0.1, 'main-menu', () => {
-            this.handleMain()
-        });
-        const mainMenuScaleFactor = gameWidth / mainMenu.width; 
-        mainMenu.setScale(mainMenuScaleFactor * 0.1835)
-    }
+		const logout = this.addButton(gameWidth * 0.517, gameHeight * 0.865, 'logout', () => {
+			console.log('Logout');
+		});
+		const logoutScaleFactor = gameWidth / logout.width;
+		logout.setScale(logoutScaleFactor * 0.19);
 
-    addButton(x, y, key, onClick) {
-        const button = this.add.image(x, y, key);
-        button.setInteractive();
-        button.on('pointerdown', onClick);
-        return button;
-    }
+		const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
+			this.handleCredits();
+		});
+		const creditsScaleFactor = gameWidth / credits.width;
+		credits.setScale(creditsScaleFactor * 0.1835);
 
-    openCred() {
-        const credLink = 'https://www.youtube.com/watch?v=YXIHXQjbtl8'
-        window.open(credLink, '_blank')
-    }
+		const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+			console.log('Share');
+		});
+		const shareScaleFactor = gameWidth / share.width;
+		share.setScale(shareScaleFactor * 0.16);
 
-    handleControls() {
-        this.scene.start('ControlsScene')
-    }
+		const mainMenu = this.addButton(gameWidth * 0.9, gameHeight * 0.1, 'main-menu', () => {
+			this.handleMain();
+		});
+		const mainMenuScaleFactor = gameWidth / mainMenu.width;
+		mainMenu.setScale(mainMenuScaleFactor * 0.1835);
+	}
 
-    handleCredits() {
-        this.scene.start('CreditsScene')
-    }
+	addButton(x, y, key, onClick) {
+		const button = this.add.image(x, y, key);
+		button.setInteractive();
+		button.on('pointerdown', onClick);
+		return button;
+	}
 
-    handleMain() {
-        this.scene.start('MenuScene')
-    }
+	openCred() {
+		const credLink = 'https://www.youtube.com/watch?v=YXIHXQjbtl8';
+		window.open(credLink, '_blank');
+	}
 
-    // handleControls() {
-    //     this.scene.start('ControlsScene')
-    // }
+	handleControls() {
+		this.scene.start('ControlsScene');
+	}
+
+	handleCredits() {
+		this.scene.start('CreditsScene');
+	}
+
+	handleMain() {
+		this.scene.start('MenuScene');
+	}
+
+	// handleControls() {
+	//     this.scene.start('ControlsScene')
+	// }
 }
