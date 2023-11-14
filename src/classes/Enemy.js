@@ -118,7 +118,9 @@ export class Enemy extends Actor {
   }
 
   wander(numTiles, walkKey, idleKey) {
+
     const distance = 16 * numTiles;
+
 
 
     if (!this.startPos) {
@@ -144,6 +146,12 @@ export class Enemy extends Actor {
     }
 
     this.startPos = undefined;
+
+    if (this.isNearEdge()) {
+      this.stopWandering()
+      this.anims.play(idleKey, true)
+      return;
+    }
   }
 
   stopWandering() {
@@ -162,7 +170,6 @@ export class Enemy extends Actor {
         this.scene.player.setHP(this.getMeleeDamage())
         this.setFinishAttack(false)
       } else {
-        console.log('missed attack');
         this.scene.player.setHP(0);
       }
     }
@@ -186,18 +193,24 @@ export class Enemy extends Actor {
 
   playDeathAnimAndDestroy() {
     this.anims.play(`${this.texture.key}_die`, true);
+    this.scene.hudScene.addScore(this.getScore())
   }
 
-  // huntPlayer(player) {
+  isNearEdge() {
+    const floor = this.scene.ground.tilemap;
+    const tileSize = 16;
+    const tolerance = 1;
 
-  //   if (player.getBody().x < this.getBody().x && !this.checkOverlap(player)) {
-  //     this.setVelocityX(-this.getWalkSpeed());
-  //     this.anims.play(`${this.texture.key}_walk`, true);
+    const feetX = this.x;
+    const feetY = this.y + this.height /2;
 
-  //   } else {
-  //     this.setVelocityX(this.getWalkSpeed);
-  //     this.anims.play(`${this.texture.key}_walk`, true);
-  //   }
-  //   console.log('hunting player')
-  // }
+    const tileCoordinates = floor.worldToTileXY(feetX, feetY);
+
+    const tileAtFeet = floor.getTileAt(tileCoordinates.x, tileCoordinates.y);
+
+    const nextTileCoordinates = floor.worldToTileXY(feetX + tolerance, feetY);
+    const tileAtNextFeet = floor.getTileAt(nextTileCoordinates.x, nextTileCoordinates.y);
+
+    return !tileAtFeet || !tileAtNextFeet;
+  }
 }

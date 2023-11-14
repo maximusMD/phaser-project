@@ -8,6 +8,7 @@ export class HUDScene extends Phaser.Scene {
     constructor () {
         super({ key: 'HUDScene'})
         this.score = 0
+        this.info;
     }
 
     preload () {
@@ -28,7 +29,7 @@ export class HUDScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                let info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, 'Score: 0', {
+                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, `Score: ${this.score}`, {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
@@ -61,6 +62,13 @@ export class HUDScene extends Phaser.Scene {
         healthBar.play('healthAnimation');
     }
 
+    addScore(score) {
+        this.score += score;
+        if(this.info) {
+            this.info.setText('Score: ' + this.score)
+        }
+    }
+
     // updateHealthBar() {
     //     const healthPercentage = // Calculate health percentage;
     //     const frameIndex = Math.floor(healthPercentage * 4);
@@ -68,4 +76,8 @@ export class HUDScene extends Phaser.Scene {
     //     Set the frame based on the health percentage
     //     healthBar.setFrame(`Heart-${frameIndex}.png`);
     // }
+
+    update() {
+        
+    }
 }

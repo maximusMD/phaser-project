@@ -150,7 +150,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
@@ -162,7 +162,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 10,
-    repeat: 1,
+    repeat: 0,
     delay: 500,
     repeatDelay: 500
   })
@@ -175,7 +175,7 @@ export function createAnimations(scene) {
       start: 0,
       end: 15
     }),
-    frameRate: 6,
+    frameRate: 10,
     repeat: 0
   })
 
@@ -188,7 +188,7 @@ export function createAnimations(scene) {
       end: 15
     }),
     frameRate: 10,
-    repeat: -1
+    repeat: 1
   })
 
   scene.anims.create({
