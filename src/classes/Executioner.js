@@ -225,15 +225,20 @@ export class Executioner extends Enemy {
     offScreenDash() {
         if (!this.getInAction()) {
             this.toggleInAction();
-            if (!this.toggleShadowPlayer) this.toggleShadowPlayer();
-            this.scene.time.delayedCall(2000, () => { this.toggleShadowPlayer() });
+            this.scene.dash_overlay.setAlpha(0.8);
+            this.setAlpha(0);
+            this.setVelocityX(0);
+            this.setX(500)
+
+            if (!this.getShadowPlayer()) this.toggleShadowPlayer();
+            this.scene.time.delayedCall(3000, () => { 
+                this.toggleShadowPlayer()
+                this.toggleDashing()
+             });
         }
         
         if (this.getInAction()) {
             if (this.getShadowPlayer()) {
-                this.scene.dash_overlay.setAlpha(0.8);
-                this.setAlpha(0);
-                this.setX(500)
                 this.setY(
                     this.scene.player.getCenter().y + this.scene.player.getBody().height / 2
                 )
@@ -241,26 +246,26 @@ export class Executioner extends Enemy {
                     this.scene.player.getCenter().y + this.scene.player.getBody().height / 2
                 )
             } else {
-                if (!this.getDashing() && this.getBody().x > 0) {
+                if (this.getDashing()) {
                     this.setAlpha(1)
-                    this.toggleDashing();
                     this.setVelocityX(-500)
                 }
                 if (this.getBody().x < -20) {
-                    this.scene.dash_overlay.setAlpha(0);
                     if (this.getDashing()) this.toggleDashing();
-                    this.idling();
+                    this.scene.dash_overlay.setAlpha(0);
+                    this.setIdling(true);
+                    if (this.getInAction()) this.toggleInAction();
+                    this.scene.time.delayedCall(3000, () => { this.setIdling(false) });
                 }
             }
         }
     }
+
     idling() {
-        this.setIdling(true);
-        if (this.getInAction) this.toggleInAction();
-        const { angleDeg } = getAngle(this.scene.player, this);
-        this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
-        this.scene.time.delayedCall(3000, () => { this.setIdling(false) });
+            const { angleDeg } = getAngle(this.scene.player, this);
+            this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
     }
+
     frenzyAttack() {
         if (!this.checkPlayerOverlap()) {
             const { angleDeg } = getAngle(this.scene.player, this);
@@ -323,6 +328,8 @@ export class Executioner extends Enemy {
         }
         if (!this.getIdling()) {
             this.offScreenDash();
+        } else {
+            this.idling();
         }
 
     }
