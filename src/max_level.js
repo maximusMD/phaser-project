@@ -37,6 +37,9 @@ import arrow_img from "./assets/animations/objects/arrow.png"
 //backgrounds
 import dungeon_middle from "./assets/backgrounds/middle_layer.png"
 import dungeon_back from "./assets/backgrounds/back_layer.png"
+import nebula from './assets/backgrounds/Nebula Blue.png'
+import nebula2 from './assets/backgrounds/Nebula Red.png'
+import small_stars from './assets/backgrounds/Stars Small_1.png'
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import flare from "./assets/particles/flare_1.png"
@@ -91,9 +94,14 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
+        // this.backgrounds = new ParaBackgrounds(this,[
+        //     {key: 'dungeon_middle', image: dungeon_middle},
+        //     {key: 'dungeon_back', image: dungeon_back},
+        // ])
+
         this.backgrounds = new ParaBackgrounds(this,[
-            {key: 'dungeon_middle', image: dungeon_middle},
-            {key: 'dungeon_back', image: dungeon_back},
+            {key: 'stars-small', image: small_stars},
+            {key: 'nebula', image: nebula2},
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -113,7 +121,7 @@ export class MaxLevel extends Phaser.Scene {
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_back')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x001a33, 0x000d1a, 0x001a33)
@@ -123,7 +131,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.backgrounds.addBackground({
             ratioX: 0.4,
-            sprite: this.add.tileSprite(0, 0, width, height, 'dungeon_middle')
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 .setTint(0x003366, 0x004080)
@@ -135,7 +143,7 @@ export class MaxLevel extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('metroid hc')
 
-        this.background_tiles = map.createLayer('background_colour', tileset)
+        // this.background_tiles = map.createLayer('background_colour', tileset)
 
         this.ground = map.createLayer('Collision', tileset)
 
@@ -149,12 +157,15 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
 
-        if (weatherEnabled === 'true') {
-			this.weather.setWindSpeed(-100);
-			this.weather.addRain();
-			this.weather.addFog();
-		}
+        // if (weatherEnabled === 'true') {
+		// 	this.weather.setWindSpeed(-100);
+		// 	this.weather.addRain();
+		// 	this.weather.addFog();
+		// }
 
+        // this.weather.setWindSpeed(-100);
+        // this.weather.addRain();
+        // this.weather.addFog();
 
         this.player.init(this.ground)
 
