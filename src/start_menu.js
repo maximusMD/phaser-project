@@ -8,6 +8,7 @@ import optImg from './assets/menu_buttons/options.png';
 import aboutImg from './assets/menu_buttons/about.png';
 import menuMusic from './assets/menuMusic.wav';
 import logoutImg from '../src/assets/menu_buttons/logout.png';
+import playImg from './assets/menu_buttons/play.png';
 
 
 export class MenuScene extends Phaser.Scene {
@@ -28,6 +29,7 @@ export class MenuScene extends Phaser.Scene {
         this.load.image('options', optImg);
         this.load.image('about', aboutImg);
         this.load.image('logout', logoutImg);
+        this.load.image('play', playImg);
         this.load.audio('menuMusic', menuMusic);
         this.load.script(
             "webfont",
@@ -76,7 +78,7 @@ export class MenuScene extends Phaser.Scene {
                 
             })
             //add play button here wheb rady
-            const play = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
+            const play = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'play', () => {
                 this.stopMenuMusicAndStartScene('MaxLevel');
             });
 
@@ -86,15 +88,12 @@ export class MenuScene extends Phaser.Scene {
             });
         }else{
             const signIn = this.addButton(gameWidth * 0.517, gameHeight * 0.48, 'sign-in', () => {
-                this.stopMenuMusicAndStartScene('UserForm');
+                this.stopMenuMusicAndStartScene('UserForm');           
+            });
+            const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
+                this.stopMenuMusicAndStartScene('MaxLevel');
             });
         }
-
-        
-
-        const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
-            this.stopMenuMusicAndStartScene('MaxLevel');
-        });
 
         const lb = this.addButton(gameWidth * 0.517, gameHeight * 0.855, 'leaderboard', () => {
             this.stopMenuMusicAndStartScene('LeaderboardScene');

@@ -9,9 +9,10 @@ export class HUDScene extends Phaser.Scene {
     constructor () {
         super({ key: 'HUDScene'});
         this.score = 0;
+        this.info;
     }
 
-    preload () {
+    preload() {
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -29,7 +30,7 @@ export class HUDScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                let info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, 'Score: 0', {
+                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, `Score: ${this.score}`, {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
@@ -45,7 +46,7 @@ export class HUDScene extends Phaser.Scene {
         const healthBar = this.add.sprite(gameWidth * 0.1123, gameHeight * 0.15, 'health', 'Heart-0.png');
         const healthBarScaleFactor = gameWidth / healthBar.width
         healthBar.setScale(healthBarScaleFactor * 0.135)
-    
+
         this.anims.create({
             key: 'healthAnimation',
             frames: this.anims.generateFrameNames('health', {
@@ -58,11 +59,18 @@ export class HUDScene extends Phaser.Scene {
             repeat: -1,
             frameRate: 3
         });
-    
+
         healthBar.play('healthAnimation');
 
         if (this.player) {
             this.player.setHealthBar(healthBar);
+        }
+    }
+
+    addScore(score) {
+        this.score += score;
+        if(this.info) {
+            this.info.setText('Score: ' + this.score)
         }
     }
 
@@ -73,4 +81,8 @@ export class HUDScene extends Phaser.Scene {
     //     Set the frame based on the health percentage
     //     healthBar.setFrame(`Heart-${frameIndex}.png`);
     // }
+
+    update() {
+        
+    }
 }
