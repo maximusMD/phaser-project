@@ -91,9 +91,9 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
 
-        this.backgrounds = new ParaBackgrounds(this,[
-            {key: 'dungeon_middle', image: dungeon_middle},
-            {key: 'dungeon_back', image: dungeon_back},
+        this.backgrounds = new ParaBackgrounds(this, [
+            { key: 'dungeon_middle', image: dungeon_middle },
+            { key: 'dungeon_back', image: dungeon_back },
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -107,8 +107,8 @@ export class MaxLevel extends Phaser.Scene {
     create() {
 
         const musicEnabled = localStorage.getItem('musicEnabled');
-		const sfxEnabled = localStorage.getItem('sfxEnabled');
-		const weatherEnabled = localStorage.getItem('weatherEnabled');
+        const sfxEnabled = localStorage.getItem('sfxEnabled');
+        const weatherEnabled = localStorage.getItem('weatherEnabled');
 
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
@@ -143,7 +143,7 @@ export class MaxLevel extends Phaser.Scene {
         this.bg3 = map.createLayer('bg3', tileset);
         this.background = map.createLayer('Background', tileset);
         this.bg4 = map.createLayer('b4', tileset);
-        
+
         this.ground.setCollisionByExclusion(-1, true)
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
@@ -160,19 +160,24 @@ export class MaxLevel extends Phaser.Scene {
         this.scene.bringToTop('HUDScene')
         this.scene.run('HUDScene')
 
-		const sceneMusic = this.sound.add('sceneMusic');
-		sceneMusic.loop = true;
+        // // run scene
+        // const hudScenePlugin = this.scene.run('HUDScene');
+        // // access scene
+        // this.hudScene = hudScenePlugin.get('HUDScene');
 
-		if (musicEnabled === 'true') {
-			sceneMusic.play();
-		}
+        const sceneMusic = this.sound.add('sceneMusic');
+        sceneMusic.loop = true;
 
-		const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
-		if (sfxEnabled === 'true') {
-			arrow_shoot_sfx.setVolume(1.0);
-		} else {
-			arrow_shoot_sfx.setMute(true);
-		}
+        if (musicEnabled === 'true') {
+            sceneMusic.play();
+        }
+
+        const arrow_shoot_sfx = this.sound.add('arrow_shoot_sfx');
+        if (sfxEnabled === 'true') {
+            arrow_shoot_sfx.setVolume(1.0);
+        } else {
+            arrow_shoot_sfx.setMute(true);
+        }
 
         this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
 
@@ -182,10 +187,10 @@ export class MaxLevel extends Phaser.Scene {
         if (weatherEnabled === 'true') {
             // the code below works added to test weather on and off 
 
-			// this.weather.setWindSpeed(-100);
-			// this.weather.addRain();
-			// this.weather.addFog();
-		}
+            // this.weather.setWindSpeed(-100);
+            // this.weather.addRain();
+            // this.weather.addFog();
+        }
     }
     update() {
         this.weather.update();
