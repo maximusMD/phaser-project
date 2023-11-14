@@ -146,12 +146,6 @@ export class Enemy extends Actor {
     }
 
     this.startPos = undefined;
-
-    if (this.isNearEdge()) {
-      this.stopWandering()
-      this.anims.play(idleKey, true)
-      return;
-    }
   }
 
   stopWandering() {

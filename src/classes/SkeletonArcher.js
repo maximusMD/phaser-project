@@ -40,7 +40,7 @@ export class SkeletonArcher extends Enemy {
   }
   
   handleCompleteAnims(e) {
-    if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false) {
+    if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false || this.isNearEdge()) {
       this.anims.play('skeleton_archer_idle', true);
       this.setFlipX(!this.flipX)
       this.setWalkSpeed(-1 * this.getWalkSpeed());
