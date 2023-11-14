@@ -7,6 +7,12 @@ import { handlePause } from './pauseHandler.js';
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3.png';
 import tilemap from './assets/tilemaps/boss_testing.json';
 
+import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
+import nebula from './assets/backgrounds/Nebula Blue.png'
+import nebula2 from './assets/backgrounds/Nebula Red.png'
+import small_stars from './assets/backgrounds/smallstars.png'
+import big_stars from './assets/backgrounds/bigstars.png'
+
 import executioner_img from './assets/animations/sprites/enemies/Executioner/executioner_atlas.png'
 import executioner_atlas from './assets/animations/sprites/enemies/Executioner/executioner_atlas.json'
 
@@ -62,6 +68,13 @@ export class BossTest extends Phaser.Scene {
     preload() {
         this.canvas = this.sys.game.canvas;
         this.weather = new Weather(this);
+        this.backgrounds = new ParaBackgrounds(this, [
+            { key: 'stars-small', image: small_stars },
+            { key: 'stars-big', image: big_stars },
+            { key: 'nebula', image: nebula },
+            { key: 'nebula2', image: nebula2 },
+        ])
+
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
@@ -76,11 +89,41 @@ export class BossTest extends Phaser.Scene {
         this.load.atlas("executioner", executioner_img, executioner_atlas)
     }
     create() {
+        const { width, height } = this.scale;
+        this.backgrounds.addBackground({
+            ratioX: 0.1,
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                // .setTint(0x001a33, 0x000d1a, 0x001a33)
+                .setScale(1)
+                .setDepth(-3)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.4,
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-small')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
+
+        this.backgrounds.addBackground({
+            ratioX: 0.7,
+            sprite: this.add.tileSprite(0, 0, width, height, 'stars-big')
+                .setOrigin(0, 0)
+                .setScrollFactor(0, 0)
+                .setTint(0x003366, 0x004080)
+                .setScale(1)
+                .setDepth(-1)
+        });
 
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('boss_tiles', 'standard_tiles')
 
-        this.background_tiles = map.createLayer('background_colour', tileset)
+        this.background_tiles = map.createLayer('background_platforms', tileset)
 
         this.ground = map.createLayer('ground', tileset, 0, 0)
         this.ground.setCollisionByExclusion(-1, true)
@@ -106,6 +149,7 @@ export class BossTest extends Phaser.Scene {
     }
     update() {
         this.player.update();
+        this.backgrounds.update();
 
         if (!this.executioner.getIsDead()) {
             this.executioner.update()

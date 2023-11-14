@@ -35,7 +35,8 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest],
+    // scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest],
+	scene: BossTest,
 	render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
