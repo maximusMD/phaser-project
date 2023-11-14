@@ -8,6 +8,9 @@ export class Executioner extends Enemy {
     #isFloating = false;
     #dashing = false;
     #meleeHit = false;
+    #shadowPlayer = true;
+    #inAction = false;
+    #idling = false;
 
     constructor(scene, x, y, atlas) {
         super(scene, x, y, atlas)
@@ -21,6 +24,24 @@ export class Executioner extends Enemy {
         this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground.width, this.getBody().height / 2)
         this.createAnims()
         this.summons = new SummonGroup(scene, this)
+    }
+    getIdling() {
+        return this.#idling;
+    }
+    setIdling(bool) {
+        this.#idling = bool;
+    }
+    getInAction() {
+        return this.#inAction;
+    }
+    toggleInAction() {
+        this.#inAction = !this.#inAction;
+    }
+    getShadowPlayer() {
+        return this.#shadowPlayer;
+    }
+    toggleShadowPlayer() {
+        this.#shadowPlayer = !this.#shadowPlayer;
     }
     getMeleeHit() {
         return this.#meleeHit;
@@ -59,13 +80,23 @@ export class Executioner extends Enemy {
         this.#poisonEnabled = bool;
     }
     createAnims() {
-        console.log("in anims")
+        this.anims.create({
+            key: 'executioner_dash_attack',
+            frames: this.scene.anims.generateFrameNames('executioner', {
+                prefix: 'attacking-',
+                suffix: '.png',
+                attack: 0,
+                end: 2
+            }),
+            frameRate: 2,
+            repeat: 0,
+        })
         this.anims.create({
             key: 'executioner_idle2',
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle2-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 7
             }),
             frameRate: 10,
@@ -76,7 +107,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -87,7 +118,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 12
             }),
             frameRate: 10,
@@ -98,12 +129,12 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 frameRate: 20,
                 end: 12,
                 repeat: -1
             }),
-            frameRate: 5,
+            frameRate: 2,
             repeat: -1
         })
         this.anims.create({
@@ -111,7 +142,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'death-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 17
             }),
             frameRate: 10,
@@ -122,7 +153,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'skill1-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 11
             }),
             frameRate: 10,
@@ -133,26 +164,25 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summon-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 4
             }),
             frameRate: 10,
             repeat: -1
         })
-        console.log(this.anims)
     }
     floating() {
-        this.startY = this.startY ?? this.getBody().y;
+        this.attackY = this.attackY ?? this.getBody().y;
         if (this.getFloatToggle()) {
             this.getBody().setVelocityY(-5);
-            if (this.getBody().y <= this.startY - 5) {
-                this.startY = undefined;
+            if (this.getBody().y <= this.attackY - 5) {
+                this.attackY = undefined;
                 this.setFloatToggle();
             }
         } else {
             this.getBody().setVelocityY(5);
-            if (this.getBody().y >= this.startY + 5) {
-                this.startY = undefined;
+            if (this.getBody().y >= this.attackY + 5) {
+                this.attackY = undefined;
                 this.setFloatToggle();
             }
         }
@@ -164,7 +194,7 @@ export class Executioner extends Enemy {
             angle: { min: 0, max: 360, random: true },
             gravityY: 5,
             alpha: {
-                start: 0,
+                attack: 0,
                 end: 0.3,
                 ease: (t) => 0.5 * Phaser.Math.Easing.Cubic.InOut(t > 0.5 ? 2 - 2 * t : 2 * t)
             },
@@ -174,7 +204,7 @@ export class Executioner extends Enemy {
             bounce: 0.4,
             bounds: this.scene.poison_zone,
             speedY: { min: -20, max: 30 },
-            speedX: { min: -10, max: 15},
+            speedX: { min: -10, max: 15 },
             blendMode: 'LIGHTEN',
         })
         this.scene.poison.addEmitZone({ type: 'random', source: this.scene.poison_zone, seamless: true })
@@ -191,6 +221,45 @@ export class Executioner extends Enemy {
     }
     summonPoison() {
 
+    }
+    offScreenDash() {
+        if (!this.getInAction()) {
+            this.toggleInAction();
+            if (!this.toggleShadowPlayer) this.toggleShadowPlayer();
+            this.scene.time.delayedCall(2000, () => { this.toggleShadowPlayer() });
+        }
+        
+        if (this.getInAction()) {
+            if (this.getShadowPlayer()) {
+                this.scene.dash_overlay.setAlpha(0.8);
+                this.setAlpha(0);
+                this.setX(500)
+                this.setY(
+                    this.scene.player.getCenter().y + this.scene.player.getBody().height / 2
+                )
+                this.scene.dash_overlay.setY(
+                    this.scene.player.getCenter().y + this.scene.player.getBody().height / 2
+                )
+            } else {
+                if (!this.getDashing() && this.getBody().x > 0) {
+                    this.setAlpha(1)
+                    this.toggleDashing();
+                    this.setVelocityX(-500)
+                }
+                if (this.getBody().x < -20) {
+                    this.scene.dash_overlay.setAlpha(0);
+                    if (this.getDashing()) this.toggleDashing();
+                    this.idling();
+                }
+            }
+        }
+    }
+    idling() {
+        this.setIdling(true);
+        if (this.getInAction) this.toggleInAction();
+        const { angleDeg } = getAngle(this.scene.player, this);
+        this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
+        this.scene.time.delayedCall(3000, () => { this.setIdling(false) });
     }
     frenzyAttack() {
         if (!this.checkPlayerOverlap()) {
@@ -221,25 +290,40 @@ export class Executioner extends Enemy {
         if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
             this.poisonPlayer();
         }
-        if (this.getIsFloating()) {
-            this.anims.play("executioner_idle2", true)
-            this.floating();
-        }
-        // handle frenzy melee
-        if (this.anims.isPlaying && this.anims.currentAnim.key === "executioner_frenzy") {
-            if (this.anims.currentFrame.frame.name === "attacking-9.png" || this.anims.currentFrame.frame.name === "attacking-2.png") {
+        // if (this.getIsFloating()) {
+        //     this.anims.play("executioner_idle2", true)
+        //     this.floating();
+        // }
+        if (this.getInAction()) {
+            // handle frenzy melee
+            if (this.getDashing()) {
                 if (this.checkPlayerOverlap()) {
-                    if (!this.getMeleeHit()) {
-                        this.scene.player.setHP(10)
-                        this.toggleMeleeHit ();
-                        this.scene.time.delayedCall(250, () => { this.toggleMeleeHit() });
+                    this.anims.playReverse("executioner_dash_attack", true);
+                    if(this.anims.currentFrame.frame.name === "attacking-2.png") {
+                        if (!this.getMeleeHit()) {
+                            this.scene.player.setHP(10);
+                            console.log("Dash hit")
+                            this.toggleMeleeHit();
+                            this.scene.time.delayedCall(1000, () => { this.toggleMeleeHit() });
+                        }
+                    }
+                }
+            }
+            if (this.anims.isPlaying && this.anims.currentAnim.key === "executioner_frenzy") {
+                if (this.anims.currentFrame.frame.name === "attacking-9.png" || this.anims.currentFrame.frame.name === "attacking-2.png") {
+                    if (this.checkPlayerOverlap()) {
+                        if (!this.getMeleeHit()) {
+                            this.scene.player.setHP(10)
+                            this.toggleMeleeHit();
+                            this.scene.time.delayedCall(250, () => { this.toggleMeleeHit() });
+                        }
                     }
                 }
             }
         }
-
-
-        this.frenzyAttack();
+        if (!this.getIdling()) {
+            this.offScreenDash();
+        }
 
     }
 }
@@ -262,24 +346,6 @@ export class SummonGroup extends Phaser.Physics.Arcade.Group {
             key: "executioner",
         })
     }
-    // shieldSummoner() {
-
-    //     const summons = this.getChildren();
-    //     const circle = this.shieldCircle;
-    //     const summoner = this.#summoner;
-
-    //     Phaser.Actions.PlaceOnCircle(summons, circle);
-    //     this.scene.summon_tween = this.scene.tweens.add({
-    //         targets: summons,
-    //         radius: 20,
-    //         repeat: -1,
-    //         onUpdate: function ()
-    //         {   
-    //             Phaser.Actions.RotateAroundDistance(summons, { x: summoner.getCenter().x, y: summoner.getCenter().y }, 0.02, 50);
-    //         }
-    //         }
-    //     );
-    // }
 }
 
 export class ExecutionerSummon extends Enemy {
@@ -327,7 +393,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonDeath-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 4
             }),
             frameRate: 10,
@@ -338,7 +404,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonIdle-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -349,7 +415,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonAppear-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 5
             }),
             frameRate: 10,

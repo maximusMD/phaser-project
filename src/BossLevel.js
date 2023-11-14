@@ -75,6 +75,7 @@ export class BossTest extends Phaser.Scene {
         this.load.atlas("executioner", executioner_img, executioner_atlas)
     }
     create() {
+
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('boss_tiles', 'standard_tiles')
 
@@ -94,6 +95,13 @@ export class BossTest extends Phaser.Scene {
 
         this.player.init(this.ground)
         // this.executioner.createPoison();
+
+        this.dash_overlay = this.add.image(this.ground.getCenter().x, 420, 'laser').setDepth(3)
+        this.dash_overlay.angle = 90;
+        this.dash_overlay.alpha = 0.8;
+        this.dash_overlay.scaleY = 1.5;
+        this.dash_overlay.scaleX = 1.5;
+        this.dash_overlay.setTint(0x0B0B0B)
     }
     update() {
         this.player.update();
