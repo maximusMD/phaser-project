@@ -110,6 +110,14 @@ export class MaxLevel extends Phaser.Scene {
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
 
+        this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
+
+        this.load.atlas('darklord', darklord_image, darklord_atlas)
+        this.load.atlas('brain', brain_image, brain_atlas)
+
+        this.load.audio('sceneMusic', sceneMusic);
+        this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
+
         this.load.audio('sceneMusic', sceneMusic);
         this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
     }
@@ -155,33 +163,33 @@ export class MaxLevel extends Phaser.Scene {
         const tileset = map.addTilesetImage('metroid hc')
 
         this.ground = map.createLayer('Collision', tileset).setDepth(3)
+        this.ground.setCollisionByExclusion(-1, true)
+        this.weather = new Weather(this);
 
         this.bg2 = map.createLayer('bg2', tileset).setDepth(2);
         this.bg3 = map.createLayer('bg3', tileset).setDepth(1);
         this.background = map.createLayer('Background', tileset).setDepth(0);
         this.bg4 = map.createLayer('b4', tileset).setDepth(0);
+
+        this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
+        this.physics.add.collider(this.enemy, this.ground);
+        this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
+        this.physics.add.collider(this.enemy2, this.ground);
+
+        this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
+        this.physics.add.collider(this.enemy3, this.ground);
+        this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
+        this.physics.add.collider(this.enemy4, this.ground);
+
+        this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy5, this.ground);
+        this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy6, this.ground);
         
-        this.ground.setCollisionByExclusion(-1, true)
+
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
-
-        if (weatherEnabled === 'true') {
-			this.weather.setWindSpeed(-100);
-			this.weather.addRain();
-			this.weather.addFog();
-		}
-
-        this.player.init(this.ground)
-
-        this.hudScene = new HUDScene({ player: this.player });
-        this.scene.bringToTop('HUDScene')
-        this.scene.run('HUDScene')
-
-        // // run scene
-        // const hudScenePlugin = this.scene.run('HUDScene');
-        // // access scene
-        // this.hudScene = hudScenePlugin.get('HUDScene');
 
         const sceneMusic = this.sound.add('sceneMusic');
         sceneMusic.loop = true;
@@ -197,16 +205,57 @@ export class MaxLevel extends Phaser.Scene {
             arrow_shoot_sfx.setMute(true);
         }
 
-        this.allSprites = this.children.list.filter(x => x instanceof RoguePlayer)
+        this.allSprites = this.children.list.filter(x => x instanceof Actor)
 
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
+
+        if (weatherEnabled === 'true') {
+			this.weather.setWindSpeed(-100);
+			this.weather.addRain();
+			this.weather.addFog();
+		}
+
+        // create arrow colliders now player is made
+        this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
+        this.archers.forEach(archer => {
+            this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
+                archer.arrowHit(arrow, player)
+                arrow_shoot_sfx.play()
+                })
+        })
+        this.graphics = this.add.graphics();
+
+
+        this.player.init(this.ground)
+
+        // this.hudScene = new HUDScene({ player: this.player });
+        // this.scene.bringToTop('HUDScene')
+        // this.scene.run('HUDScene')
+
+        // run scene
+        const hudScenePlugin = this.scene.run('HUDScene')
+        this.scene.bringToTop('HUDScene')
+        // access scene
+        this.hudScene = hudScenePlugin.get('HUDScene');
+
+
+
+
 
     }
     update() {
         this.weather.update();
         this.backgrounds.update();
+
         this.player.update(this.hudScene);
+        this.enemy.update(this.player);
+        this.enemy2.update(this.player);
+        this.enemy3.update(this.player)
+        this.enemy4.update(this.player)
+        this.enemy5.update(this.player)
+        this.enemy6.update(this.player)
+
         this.hudScene.update();
         // console.log('Player Coordinates:', this.player.x, this.player.y);
 
@@ -216,17 +265,6 @@ export class MaxLevel extends Phaser.Scene {
         const deathX = 766
         const deathY = 716
 
-        const tolerance = 5; // Adjust this value based on your needs
-
-        // if (
-        //     this.player.x >= deathX - tolerance &&
-        //     this.player.x <= deathX + tolerance &&
-        //     this.player.y >= deathY - tolerance &&
-        //     this.player.y <= deathY + tolerance
-        // ) {
-        //     console.log(this.player.getHP())
-        //     this.player.setHP(0);
-        // }
 
         // if (this.player.x <= deathX && this.player.y >= deathY) {
         //     console.log('death');
@@ -236,6 +274,7 @@ export class MaxLevel extends Phaser.Scene {
 
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
+            this.scene.stop('HUDScene')
             this.scene.start('GameOverScene')
         }
 
