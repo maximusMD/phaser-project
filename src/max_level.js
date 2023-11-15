@@ -53,6 +53,11 @@ import { WinnerScene } from './winner.js';
 import sceneMusic from './assets/levelMusic.wav';
 import arrow_shoot_sfx from './assets/shooting_arrow.wav';
 
+import { LoadingBar } from './LoadingBar.js';
+import loading_sprite from './assets/animations/sprites/enemies/Waifu/waifu_atlas.png'
+import loading_atlas from './assets/animations/sprites/enemies/Waifu/waifu_atlas.json'
+
+
 export class MaxLevel extends Phaser.Scene {
     constructor() {
         super({
@@ -86,6 +91,12 @@ export class MaxLevel extends Phaser.Scene {
                     gravity: { y: 500 },
                     debug: true,
                 }
+            },
+            pack: {
+                files: [
+                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas},
+                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas}
+                ]
             }
         });
     }
@@ -121,6 +132,8 @@ export class MaxLevel extends Phaser.Scene {
 
         this.load.audio('sceneMusic', sceneMusic);
         this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
+
+        LoadingBar(this);
     }
     create() {
 

@@ -18,6 +18,10 @@ import executioner_atlas from './assets/animations/sprites/enemies/Executioner/e
 
 import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
 import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
+
+import loading_sprite from './assets/animations/sprites/enemies/Waifu/waifu_atlas.png'
+import loading_atlas from './assets/animations/sprites/enemies/Waifu/waifu_atlas.json'
+
 import laser_img from "./assets/particles/laser_2.png";
 
 import flare from "./assets/particles/flare_1.png"
@@ -28,7 +32,7 @@ import { Executioner } from './classes/Executioner.js';
 import poison_1 from "./assets/particles/poison1.png"
 import sprite_explode from "./assets/particles/sprite_emitter.png"
 
-import loading from "./assets/animations/loading_walk.gif"
+import { LoadingBar } from './LoadingBar.js';
 
 export class BossTest extends Phaser.Scene {
     constructor() {
@@ -63,6 +67,12 @@ export class BossTest extends Phaser.Scene {
                     gravity: { y: 500 },
                     debug: true,
                 }
+            },
+            pack: {
+                files: [
+                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas},
+                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas}
+                ]
             }
         });
     }
@@ -80,7 +90,7 @@ export class BossTest extends Phaser.Scene {
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
-
+    
         this.load.image('poison_1', poison_1)
         this.load.image('sprite_explode', sprite_explode)
 
@@ -91,28 +101,8 @@ export class BossTest extends Phaser.Scene {
         this.load.atlas("executioner", executioner_img, executioner_atlas)
 
         // Load bar
-        console.log(this.cameras.main.displayHeight)
-        var progressBar = this.add.graphics();
-        var progressBox = this.add.graphics();
-        progressBox.fillStyle(0x222222, 0.8);
-        var barHeight = this.cameras.main.displayHeight / 2
-        var barWidth = this.cameras.main.displayWidth / 2
-        progressBox.fillRect(this.cameras.main.width / 2, this.cameras.main.height / 2, 320, 50);
-        progressBox.setOrigin(0.5, 0.5)
-        progressBar.set
-        this.load.on('progress', function (value) {
-            progressBar.clear();
-            progressBar.fillStyle(0xffffff, 1);
-            progressBar.fillRect(barWidth, barHeight, 300 * value, 30);
-            progressBar.setOrigin(0.5,0.5)
-        });
-
-        this.load.on('fileprogress', function (file) {
-            // console.log(file.src);
-        });
-        this.load.on('complete', function () {
-            // console.log('complete');
-        });
+        LoadingBar(this, true);
+        
     }
     create() {
         const { width, height } = this.scale;
