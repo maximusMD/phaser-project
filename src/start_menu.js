@@ -13,6 +13,7 @@ import playImg from './assets/menu_buttons/play.png';
 
 
 export class MenuScene extends Phaser.Scene {
+    static menuMusic;
     constructor() {
         super({ 
             key: 'MenuScene'
@@ -127,9 +128,14 @@ export class MenuScene extends Phaser.Scene {
         const optionsScaleFactor = gameWidth / options.width; 
         options.setScale(optionsScaleFactor * 0.1835)
 
-        const menuMusic = this.sound.add('menuMusic')
+        if (!MenuScene.menuMusic) {
+            MenuScene.menuMusic = this.sound.add('menuMusic');
+        }
+
         if (musicEnabled === 'true') {
-            menuMusic.play();
+            if (!MenuScene.menuMusic.isPlaying) {
+                MenuScene.menuMusic.play();
+            }
         }
     }
 
