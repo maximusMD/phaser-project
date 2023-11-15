@@ -28,6 +28,8 @@ import { Executioner } from './classes/Executioner.js';
 import poison_1 from "./assets/particles/poison1.png"
 import sprite_explode from "./assets/particles/sprite_emitter.png"
 
+import loading from "./assets/animations/loading_walk.gif"
+
 export class BossTest extends Phaser.Scene {
     constructor() {
         super({
@@ -87,6 +89,30 @@ export class BossTest extends Phaser.Scene {
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
         this.load.atlas("executioner", executioner_img, executioner_atlas)
+
+        // Load bar
+        console.log(this.cameras.main.displayHeight)
+        var progressBar = this.add.graphics();
+        var progressBox = this.add.graphics();
+        progressBox.fillStyle(0x222222, 0.8);
+        var barHeight = this.cameras.main.displayHeight / 2
+        var barWidth = this.cameras.main.displayWidth / 2
+        progressBox.fillRect(this.cameras.main.width / 2, this.cameras.main.height / 2, 320, 50);
+        progressBox.setOrigin(0.5, 0.5)
+        progressBar.set
+        this.load.on('progress', function (value) {
+            progressBar.clear();
+            progressBar.fillStyle(0xffffff, 1);
+            progressBar.fillRect(barWidth, barHeight, 300 * value, 30);
+            progressBar.setOrigin(0.5,0.5)
+        });
+
+        this.load.on('fileprogress', function (file) {
+            // console.log(file.src);
+        });
+        this.load.on('complete', function () {
+            // console.log('complete');
+        });
     }
     create() {
         const { width, height } = this.scale;
