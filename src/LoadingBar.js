@@ -8,19 +8,19 @@ export function LoadingBar(scene, alt = false) {
             start: 0,
             end: 7,
         }),
-        frameRate: 10,
-        repeat: 0,
+        frameRate: 14,
+        repeat: -1,
     });
     scene.anims.create({
         key: 'alt_loading',
         frames: scene.anims.generateFrameNames('alt_load', {
-            prefix: 'waifu_idle-',
+            prefix: 'waifu_running-',
             suffix: '.png',
             start: 0,
-            end: 7,
+            end: 31,
         }),
-        frameRate: 10,
-        repeat: 0,
+        frameRate: 62,
+        repeat: -1,
     });
 
     var screen_width = scene.scale.width
