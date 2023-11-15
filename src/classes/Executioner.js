@@ -26,6 +26,7 @@ export class Executioner extends Enemy {
         super(scene, x, y, atlas)
         this.atlas = atlas;
         this.scene = scene;
+        // this.setScore(200)
         this.setHP(0, false, 270)
         this.setScale(1.5)
         this.getBody().setAllowGravity(false);
@@ -45,6 +46,7 @@ export class Executioner extends Enemy {
         this.scene.physics.add.overlap(this.getBody(), this.scene.player.getBody(), (...args) => {
             this.handleMelee(...args)
         })
+        this.maxHealth = this.getHP();
     }
     setSummonCount(num) {
         this.#summonCount = num;
@@ -135,7 +137,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle2-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 7
             }),
             frameRate: 10,
@@ -146,7 +148,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -157,7 +159,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 12
             }),
             frameRate: 10,
@@ -180,7 +182,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'death-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 17
             }),
             frameRate: 10,
@@ -191,7 +193,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'skill1-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 11
             }),
             frameRate: 10,
@@ -235,7 +237,7 @@ export class Executioner extends Enemy {
             angle: { min: 0, max: 360, random: true },
             gravityY: 5,
             alpha: {
-                start: 0,
+                attack: 0,
                 end: 0.3,
                 ease: (t) => 0.5 * Phaser.Math.Easing.Cubic.InOut(t > 0.5 ? 2 - 2 * t : 2 * t)
             },
@@ -397,10 +399,19 @@ export class Executioner extends Enemy {
 
     handleCompleteAnims(e) {
         //e.key
+        if(e.key === 'executioner_death') {
+            this.destroy();
+        }
     }
     handleStoppedAnims(e) {
         // e.key
     }
+
+    // playDeathAnimAndDestroy() {
+    //     this.anims.play(`${this.texture.key}_death`, true);
+    //     this.scene.hudScene.addScore(this.getScore())
+    // }
+
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
@@ -536,7 +547,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonDeath-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 4
             }),
             frameRate: 10,
@@ -547,7 +558,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonIdle-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -558,7 +569,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonAppear-',
                 suffix: '.png',
-                start: 0,
+                attack: 0,
                 end: 5
             }),
             frameRate: 10,

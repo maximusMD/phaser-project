@@ -190,8 +190,8 @@ export class MaxLevel extends Phaser.Scene {
         const objects = objectLayer.objects;
 
         objects.forEach((object) => {
-            const bonusSprite = this.add.sprite(object.x + 9, object.y - 7, 'yellow-diamond')
-            bonusSprite.setScale(1.6)
+            this.bonusSprite = this.add.sprite(object.x + 9, object.y - 7, 'yellow-diamond')
+            this.bonusSprite.setScale(1.6)
         });
 
 
@@ -286,8 +286,8 @@ export class MaxLevel extends Phaser.Scene {
         const range = 10
         const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, bonusX, bonusY)
         if (distance <= range) {
-            // console.log('Player is near the bonus:', this.player.x, this.player.y);
-            // @rak add however much to score
+            this.bonusSprite.destroy();
+            this.hudScene.addScore(5);
         }
 
 
@@ -295,6 +295,7 @@ export class MaxLevel extends Phaser.Scene {
             console.log(this.player.getHP())
             console.log(this.hudScene.score);
             localStorage.setItem('score' ,this.hudScene.score)
+            this.hudScene.score = 0;
             this.scene.stop('HUDScene')
             this.scene.start('GameOverScene')
         }
