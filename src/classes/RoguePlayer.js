@@ -54,7 +54,7 @@ export class RoguePlayer extends Actor {
             tint: 0xbabaf8,
             emitting: false
         });
-        this.laser_hit_emitter.setDepth(1);
+        this.laser_hit_emitter.setDepth(3);
         this.ground_hit_emitter = this.scene.add.particles(400, 250, 'dust', {
             lifespan: 200,
             speed: { min: 10, max: 20 },
@@ -62,7 +62,7 @@ export class RoguePlayer extends Actor {
             blendMode: 'DARKEN',
             emitting: false
         });
-        this.ground_hit_emitter.setDepth(1);
+        this.ground_hit_emitter.setDepth(5);
         this.allEnemies = this.scene.children.list.filter(x => x instanceof Enemy);
         this.scene.physics.add.overlap(this.laserGroup, this.allEnemies, (...args) => {
             this.handleOverlap(...args) })
@@ -297,13 +297,6 @@ export class RoguePlayer extends Actor {
         overlapSprite.body.reset(-400, -400);
 
     }
-
-    handleGroundHit(projectile, ground) {
-        projectile.setVisible(false);
-        projectile.body.reset(-400, -400);
-        this.emitGroundHit(ground);
-    }
-
 
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
