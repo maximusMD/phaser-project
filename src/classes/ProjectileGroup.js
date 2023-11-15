@@ -21,7 +21,6 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
     }
 
     fireLaser(x, y, direction, laserDamage) {
-        console.log(laserDamage)
         const laser = this.getFirstDead(false);
         if (laser) {
             laser.fire(x, y, direction, laserDamage);
