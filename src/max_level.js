@@ -124,9 +124,9 @@ export class MaxLevel extends Phaser.Scene {
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
 
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
-
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
+        // this.load.atlas('sneaker', sneaker_image, sneaker_atlas)
 
         this.load.audio('sceneMusic', sceneMusic);
         this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
@@ -199,16 +199,37 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy, this.ground);
         this.enemy2 = new SkeletonArcher(this, 275, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy2, this.ground);
+        this.enemy7 = new SkeletonArcher(this, 85, 200, "skeleton_archer");
+        this.physics.add.collider(this.enemy7, this.ground);
+        this.enemy8 = new SkeletonArcher(this, 275, 200, "skeleton_archer");
+        this.physics.add.collider(this.enemy8, this.ground);
 
         this.enemy3 = new RogueDarkLord(this, 215, 10, 'darklord')
         this.physics.add.collider(this.enemy3, this.ground);
         this.enemy4 = new RogueDarkLord(this, 400, 10, 'darklord')
         this.physics.add.collider(this.enemy4, this.ground);
+        this.enemy9 = new RogueDarkLord(this, 215, 200, 'darklord')
+        this.physics.add.collider(this.enemy9, this.ground);
+        this.enemy10 = new RogueDarkLord(this, 400, 200, 'darklord')
+        this.physics.add.collider(this.enemy10, this.ground);
 
         this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
         this.physics.add.collider(this.enemy5, this.ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, this.ground);
+        this.enemy11 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy11, this.ground);
+        this.enemy12 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy12, this.ground);
+
+        this.enemy5 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy5, this.ground);
+        this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy6, this.ground);
+        this.enemy11 = new RogueBrain(this, 100, 200, 'brain')
+        this.physics.add.collider(this.enemy11, this.ground);
+        this.enemy12 = new RogueBrain(this, 300, 200, 'brain')
+        this.physics.add.collider(this.enemy12, this.ground);
         
 
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
@@ -274,6 +295,12 @@ export class MaxLevel extends Phaser.Scene {
         this.enemy4.update(this.player)
         this.enemy5.update(this.player)
         this.enemy6.update(this.player)
+        this.enemy7.update(this.player);
+        this.enemy8.update(this.player);
+        this.enemy9.update(this.player)
+        this.enemy10.update(this.player)
+        this.enemy11.update(this.player)
+        this.enemy12.update(this.player)
 
         this.hudScene.update();
         // console.log('Player Coordinates:', this.player.x, this.player.y);
