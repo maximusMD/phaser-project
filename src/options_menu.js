@@ -88,7 +88,7 @@ export class OptionsScene extends Phaser.Scene {
 			localStorage.setItem('weatherEnabled', 'false');
 		});
 
-		const weatherEnabled = localStorage.getItem('weatherEnabled') || 'true';
+		const weatherEnabled = localStorage.getItem('weatherEnabled');
 		onWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
 		offWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
 
@@ -152,9 +152,9 @@ export class OptionsScene extends Phaser.Scene {
 		onSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
 		offSfxImg.setTint(sfxEnabled === 'true' ? 0xffffff : 0x808080);
 
-		const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom');
-		const zoomScaleFactor = gameWidth / zoom.width;
-		zoom.setScale(zoomScaleFactor * 0.11);
+		// const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom');
+		// const zoomScaleFactor = gameWidth / zoom.width;
+		// zoom.setScale(zoomScaleFactor * 0.11);
 
 		const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
 			this.handleControls();

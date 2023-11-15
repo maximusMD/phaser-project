@@ -80,7 +80,6 @@ export class PauseMenuScene extends Phaser.Scene {
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
 
-		// RYAN CHANGES ----------------------
 		const sfx = localStorage.getItem('sfxEnabled');
 
 		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg').setInteractive();
@@ -106,18 +105,16 @@ export class PauseMenuScene extends Phaser.Scene {
 			offImgSfx.setTint(0xffffff);
 		});
 
-		/// CHANGED ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
 		weatherImg1.setOrigin(0.5, 0.5);
 		weatherImg1.setScale(1.5);
 
+		const weather = localStorage.getItem('weatherEnabled');
+
 		const onWeatherImg = this.add.image(centerX + 150, centerY + 60, 'onImg').setInteractive();
 		onWeatherImg.setOrigin(0.5, 0.5);
 		onWeatherImg.setScale(1.5);
-
-		const weather = localStorage.getItem('weatherEnabled');
 
 		const offWeatherImg = this.add
 			.image(centerX + 300, centerY + 60, 'offImg')
@@ -125,19 +122,20 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setOrigin(0.5, 0.5);
 		offWeatherImg.setScale(1.5);
 
+		console.log(weather === 'true');
 		onWeatherImg.setTint(weather === 'true' ? 0x808080 : 0xffffff);
 		offWeatherImg.setTint(weather === 'true' ? 0xffffff : 0x808080);
 
 		onWeatherImg.on('pointerdown', () => {
 			onWeatherImg.setTint(0xffffff);
 			offWeatherImg.setTint(0x808080);
-			this.toggleWeather(true);
+			this.toggleWeather(false);
 		});
 
 		offWeatherImg.on('pointerdown', () => {
 			onWeatherImg.setTint(0x808080);
 			offWeatherImg.setTint(0xffffff);
-			this.toggleWeather(false);
+			this.toggleWeather(true);
 		});
 
 		// resume image
@@ -164,9 +162,9 @@ export class PauseMenuScene extends Phaser.Scene {
 	toggleWeather(weather) {
 		localStorage.setItem('weatherEnabled', weather.toString());
 		if (weather) {
-			this.weather.enable();
-		} else {
 			this.weather.disable();
+		} else {
+			this.weather.enable();
 		}
 	}
 
@@ -182,7 +180,6 @@ export class PauseMenuScene extends Phaser.Scene {
 		this.sfx.setMute(mute);
 		localStorage.setItem('sfxEnabled', mute.toString());
 	}
-
 
 	handleMainMenu() {
 		this.music.stop();
