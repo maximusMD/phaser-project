@@ -14,6 +14,7 @@ import { MaxLevel } from './max_level';
 import { WinnerScene } from './winner';
 import { GameOverScene } from './game_over';
 import { BossTest } from './BossLevel';
+import { LoadingScene } from './loading_screen';
 
 window.sizeChanged = () => {
 	if (game.isBooted) {
@@ -35,8 +36,8 @@ const config = {
     parent: 'phaser-example',
     width: window.innerWidth,
     height: window.innerHeight,
-    // scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest],
-	scene: BossTest,
+    scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest, LoadingScene],
+	// scene: BossTest,
 	render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
