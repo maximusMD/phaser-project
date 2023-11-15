@@ -63,7 +63,6 @@ export class BossTest extends Phaser.Scene {
                 }
             }
         });
-        this.bossHealthBar;
     }
 
     preload() {
@@ -152,19 +151,28 @@ export class BossTest extends Phaser.Scene {
         // access scene
         this.hudScene = hudScenePlugin.get('HUDScene');
 
-        this.graphics = this.add.graphics();
-        // this.graphics.setOrigin(0, 0)
-        this.graphics.lineStyle = (8, 0xff0000)
-        // this.graphics.strokeRect(1,1,)
+        const playerXInCamera = this.player.x
+        const playerYInCamera = this.player.y
 
-        this.graphics.strokeRect(innerWidth * 0.8, innerHeight * 0.7, innerWidth * 0.8, 30)
+        this.bossHealthBar = this.add.graphics()
+            .fillStyle(0xff0000)
+            .fillRect(playerXInCamera - 220, playerYInCamera + 200, 420, 20);
 
-    }
+            
+        }
+        
+        update() {
+            this.player.update()
+            this.backgrounds.update();
+            this.hudScene.update()
+            
+            this.bossHealthBar.clear()
+            const healthPercentage = this.executioner.getHP() / this.executioner.maxHealth;
+            const barWidth = 420 * healthPercentage;
 
-    update() {
-        this.player.update();
-        this.backgrounds.update();
-        this.hudScene.update()
+        this.bossHealthBar = this.add.graphics()
+        .fillStyle(0xff0000)
+        .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
 
         if (!this.executioner.getIsDead()) {
             this.executioner.update()

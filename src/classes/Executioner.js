@@ -403,6 +403,11 @@ export class Executioner extends Enemy {
         // e.key
     }
 
+    // playDeathAnimAndDestroy() {
+    //     this.anims.play(`${this.texture.key}_death`, true);
+    //     this.scene.hudScene.addScore(this.getScore())
+    // }
+
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
