@@ -123,7 +123,7 @@ export class BossTest extends Phaser.Scene {
         const map = this.make.tilemap({ key: 'tilemap' })
         const tileset = map.addTilesetImage('boss_tiles', 'standard_tiles')
 
-        this.background_tiles = map.createLayer('background_platforms', tileset)
+        this.background_tiles = map.createLayer('background platforms', tileset)
 
         this.ground2 = map.createLayer('ground2', tileset, 0, 0)
         this.ground2.setCollisionByExclusion(-1, true)
