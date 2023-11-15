@@ -44,6 +44,7 @@ export class RoguePlayer extends Actor {
     init(player_collider) {
         this.scene.physics.add.collider(this, player_collider);
         this.createAnims();
+        this.ground_collider = player_collider;
 
         this.laser_hit_emitter = this.scene.add.particles(400, 250, 'flare', {
             lifespan: 200,
@@ -284,7 +285,6 @@ export class RoguePlayer extends Actor {
     }
 
     handleOverlap(sprite, overlapSprite) {
-        console.log(this)
         if (!overlapSprite.getHasHit()) {
             sprite.updateHP(overlapSprite.getLaserDamage());
             this.emitLaserHit(sprite);
@@ -310,7 +310,7 @@ export class RoguePlayer extends Actor {
             if (this?.anims?.currentFrame.index === 5) {
                 if (!this.getMeleeCooldown()) {
                     enemy.updateHP(this.getMeleeDmg())
-                    console.log(enemy.getHP())
+                    console.log("Enemy hp: " + enemy.getHP())
                     this.setMeleeCooldown(true);
                 }
             }
