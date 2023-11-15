@@ -9,6 +9,9 @@ import weatherImg from './assets/menu_buttons/weather.png';
 import mainMenuImg from './assets/menu_buttons/main-menu.png';
 
 export class PauseMenuScene extends Phaser.Scene {
+	#weatherFlag;
+	#sfxFlag;
+	#musicFlag;
 	constructor() {
 		super({
 			key: 'PauseMenuScene',
@@ -60,28 +63,29 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgMusic.setOrigin(0.5, 0.5);
 		offImgMusic.setScale(1.5);
 
+		if (this.#musicFlag === null || this.#musicFlag === undefined) {
+			this.#musicFlag = localStorage.getItem('musicEnabled');
+		}
+		
+		onImgMusic.setTint(this.#musicFlag ? 0x808080 : 0xffffff);
+		offImgMusic.setTint(this.#musicFlag ? 0xffffff : 0x808080);
+
 		onImgMusic.on('pointerdown', () => {
-			onImgMusic.setTint(0x808080);
-			offImgMusic.setTint(0xffffff);
+			onImgMusic.setTint(0xffffff);
+			offImgMusic.setTint(0x808080);
 			this.toggleMusic(false);
 		});
-		onImgMusic.setTint(this.music.isPlaying ? 0x808080 : 0xffffff);
 
 		offImgMusic.on('pointerdown', () => {
-			offImgMusic.setTint(0x808080);
-			onImgMusic.setTint(0xffffff);
+			onImgMusic.setTint(0x808080);
+			offImgMusic.setTint(0xffffff);
 			this.toggleMusic(true);
 		});
-		offImgMusic.setTint(this.music.isPlaying ? 0xffffff : 0x808080);
 
 		// sfx music
 		const sfxImg = this.add.image(centerX - 280, centerY - 30, 'sfxImg');
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
-
-
-		// RYAN CHANGES ----------------------
-		const sfx = localStorage.getItem('sfxEnabled')
 
 		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg').setInteractive();
 		onImgSfx.setOrigin(0.5, 0.5);
@@ -91,21 +95,24 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
-		onImgSfx.setTint(sfx === 'true' ? 0x808080 : 0xffffff);
-		offImgSfx.setTint(sfx === 'true' ? 0xffffff : 0x808080);
+		if (this.#sfxFlag === null || this.#sfxFlag === undefined) {
+			this.#sfxFlag = localStorage.getItem('sfxEnabled');
+		}
+
+		onImgSfx.setTint(this.#sfxFlag ? 0x808080 : 0xffffff);
+		offImgSfx.setTint(this.#sfxFlag ? 0xffffff : 0x808080);
 
 		onImgSfx.on('pointerdown', () => {
-			this.toggleSFX(true);
-			onImgSfx.setTint(0x808080);
-			offImgSfx.setTint(0xffffff);
-		});
-		offImgSfx.on('pointerdown', () => {
-			this.toggleSFX(false)
+			this.toggleSFX(false);
 			onImgSfx.setTint(0xffffff);
 			offImgSfx.setTint(0x808080);
 		});
 
-		/// CHANGED ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		offImgSfx.on('pointerdown', () => {
+			this.toggleSFX(true);
+			onImgSfx.setTint(0x808080);
+			offImgSfx.setTint(0xffffff);
+		});
 
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
@@ -122,19 +129,25 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setOrigin(0.5, 0.5);
 		offWeatherImg.setScale(1.5);
 
+
+		if (this.#weatherFlag === null || this.#weatherFlag === undefined) {
+			this.#weatherFlag = localStorage.getItem('weatherEnabled');
+		}
+
+		onWeatherImg.setTint(this.#weatherFlag ? 0x808080 : 0xffffff);
+		offWeatherImg.setTint(this.#weatherFlag ? 0xffffff : 0x808080);
+
 		onWeatherImg.on('pointerdown', () => {
+			onWeatherImg.setTint(0xffffff);
+			offWeatherImg.setTint(0x808080);
+			this.toggleWeather(false);
+		});
+
+		offWeatherImg.on('pointerdown', () => {
 			onWeatherImg.setTint(0x808080);
 			offWeatherImg.setTint(0xffffff);
 			this.toggleWeather(true);
 		});
-		onWeatherImg.setTint(this.weather.getEnabled() ? 0x808080 : 0xffffff);
-
-		offWeatherImg.on('pointerdown', () => {
-			offWeatherImg.setTint(0x808080);
-			onWeatherImg.setTint(0xffffff);
-			this.toggleWeather(false);
-		});
-		offWeatherImg.setTint(this.weather.getEnabled() ? 0xffffff : 0x808080);
 
 		// resume image
 		const resumeMenuImg = this.add.image(centerX, centerY + 150, 'resumeMenuImg');
@@ -158,15 +171,16 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleWeather(weather) {
-		// localStorage.removeItem('weatherEnabled');
+		this.#weatherFlag = weather;
 		if (weather) {
-			this.weather.enable();
-		} else {
 			this.weather.disable();
+		} else {
+			this.weather.enable();
 		}
 	}
 
 	toggleMusic(mute) {
+		this.#musicFlag = mute;
 		if (mute) {
 			this.music.stop();
 		} else {
@@ -174,13 +188,14 @@ export class PauseMenuScene extends Phaser.Scene {
 		}
 	}
 
-
-	// RYAN CHANGES -------------------------
 	toggleSFX(mute) {
-		this.sfx.setMute(mute);
-		localStorage.setItem("sfxEnabled", mute.toString());
+		this.#sfxFlag = mute;
+		if (mute) {
+			this.sfx.setMute(mute);
+		} else {
+			this.sfx.setMute(mute);
+		}
 	}
-	// 
 
 	handleMainMenu() {
 		this.music.stop();
