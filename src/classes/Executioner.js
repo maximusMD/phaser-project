@@ -31,7 +31,7 @@ export class Executioner extends Enemy {
         this.getBody().setAllowGravity(false);
         this.setCollideWorldBounds(false);
         this.getBody().setSize(50, 45)
-        this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground.width, this.getBody().height / 2)
+        this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground2.width, this.getBody().height / 2)
         this.createAnims()
         this.summons = new SummonGroup(scene, this)
         this.scene.sprite_hit_emitter = this.scene.add.particles(400, 250, 'sprite_explode', {
