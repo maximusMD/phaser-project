@@ -206,13 +206,19 @@ export class BossTest extends Phaser.Scene {
                 if (x.getIsAlive()) x.update();
             })
         } else {
+
+            // BOSS DEATH 
+
+
             this.poison.stop();
             this.dash_overlay.destroy();
-            console.log(this.shownDeath)
             if (!this.shownDeath) {
                 this.boss_explode_emitter.setPosition(this.deathX, this.deathY)
                 this.boss_explode_emitter.explode(50);
                 this.shownDeath = true;
+                this.scene.time.delayedCall(3000, () => {
+                    // BOSS TRANSITION
+                });
             }
         }
     }

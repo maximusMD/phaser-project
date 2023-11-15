@@ -51,7 +51,7 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
 
     fire(x, y, direction, laserDamage) {
         this.setHasHit(false);
-        this.scene.physics.add.collider(this, this.scene.ground,
+        this.scene.physics.add.collider(this, this.scene.player.ground_collider,
             (...args) => { this.scene.player.handleGroundHit(...args) })
         if (laserDamage) this.setLaserDamage(laserDamage);
         this.body.reset(x, y);

@@ -298,7 +298,7 @@ export class Executioner extends Enemy {
             this.scene.dash_overlay.setAlpha(0.8);
             this.setAlpha(0);
             this.setVelocityX(0);
-            this.setX(500)
+            this.setX(550)
 
             if (!this.getShadowPlayer()) this.toggleShadowPlayer();
             this.scene.time.delayedCall(3000, () => {
@@ -414,7 +414,7 @@ export class Executioner extends Enemy {
     playDeathAnimAndDestroy() {
         if (!this.scene.deathX) this.scene.deathX = this.getCenter().x;
         if (!this.scene.deathY) this.scene.deathY = this.getCenter().y;
-        
+
         this.scene.bossHealthBar.destroy();
         this.scene.hudScene.addScore(this.getScore())
         this.setVisible(false);
