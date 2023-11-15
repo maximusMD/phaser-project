@@ -83,7 +83,7 @@ export class BossTest extends Phaser.Scene {
         this.load.image('sprite_explode', sprite_explode)
 
         this.load.image('standard_tiles', tileset_img);
-        this.load.tilemapTiledJSON('tilemap', tilemap);
+        this.load.tilemapTiledJSON('tilemap2', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
         this.load.atlas("executioner", executioner_img, executioner_atlas)
@@ -120,7 +120,7 @@ export class BossTest extends Phaser.Scene {
                 .setDepth(-1)
         });
 
-        const map = this.make.tilemap({ key: 'tilemap' })
+        const map = this.make.tilemap({ key: 'tilemap2' })
         const tileset = map.addTilesetImage('boss_tiles', 'standard_tiles')
 
         this.background_tiles = map.createLayer('background platforms', tileset)

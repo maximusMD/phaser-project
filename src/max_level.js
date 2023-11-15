@@ -131,7 +131,7 @@ export class MaxLevel extends Phaser.Scene {
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 // .setTint(0x001a33, 0x000d1a, 0x001a33)
@@ -282,7 +282,7 @@ export class MaxLevel extends Phaser.Scene {
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
             this.scene.stop('HUDScene')
-            this.scene.start('LoadingScene')
+            this.scene.start('BossLevel')
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
