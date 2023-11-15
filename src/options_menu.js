@@ -41,17 +41,17 @@ export class OptionsScene extends Phaser.Scene {
 		const gameHeight = this.cameras.main.height;
 
 		// Set default values only if they are not present in localStorage
-		if (localStorage.getItem('weatherEnabled') === null) {
-			localStorage.setItem('weatherEnabled', 'true');
-		}
+		// if (localStorage.getItem('weatherEnabled') === null) {
+		// 	localStorage.setItem('weatherEnabled', 'true');
+		// }
 
-		if (localStorage.getItem('musicEnabled') === null) {
-			localStorage.setItem('musicEnabled', 'true');
-		}
+		// if (localStorage.getItem('musicEnabled') === null) {
+		// 	localStorage.setItem('musicEnabled', 'true');
+		// }
 
-		if (localStorage.getItem('sfxEnabled') === null) {
-			localStorage.setItem('sfxEnabled', 'true');
-		}
+		// if (localStorage.getItem('sfxEnabled') === null) {
+		// 	localStorage.setItem('sfxEnabled', 'true');
+		// }
 
 		const background = this.add.image(0, 0, 'background');
 		background.displayWidth = gameWidth;
@@ -77,20 +77,20 @@ export class OptionsScene extends Phaser.Scene {
 		offWeatherImg.setScale(weatherScaleFactor * 0.1635);
 
 		onWeatherImg.on('pointerdown', () => {
-			onWeatherImg.setTint(0x808080);
-			offWeatherImg.setTint(0xffffff);
+			onWeatherImg.setTint(0xffffff);
+			offWeatherImg.setTint(0x808080);
 			localStorage.setItem('weatherEnabled', 'true');
 		});
 
 		offWeatherImg.on('pointerdown', () => {
-			onWeatherImg.setTint(0xffffff);
-			offWeatherImg.setTint(0x808080);
+			onWeatherImg.setTint(0x808080);
+			offWeatherImg.setTint(0xffffff);
 			localStorage.setItem('weatherEnabled', 'false');
 		});
 
-		const weatherEnabled = localStorage.getItem('weatherEnabled');
-		onWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
-		offWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
+		const weatherEnabled = localStorage.getItem('weatherEnabled') || 'true';
+		onWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
+		offWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
 
 		const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music');
 		const musicScaleFactor = gameWidth / music.width;
@@ -107,20 +107,20 @@ export class OptionsScene extends Phaser.Scene {
 		offMusicImg.setScale(musicScaleFactor * 0.12);
 
 		onMusicImg.on('pointerdown', () => {
-			onMusicImg.setTint(0x808080);
-			offMusicImg.setTint(0xffffff);
+			onMusicImg.setTint(0xffffff);
+			offMusicImg.setTint(0x808080);
 			localStorage.setItem('musicEnabled', 'true');
 		});
 
 		offMusicImg.on('pointerdown', () => {
-			onMusicImg.setTint(0xffffff);
-			offMusicImg.setTint(0x808080);
+			onMusicImg.setTint(0x808080);
+			offMusicImg.setTint(0xffffff);
 			localStorage.setItem('musicEnabled', 'false');
 		});
 
-		const musicEnabled = localStorage.getItem('musicEnabled');
-		onMusicImg.setTint(musicEnabled === 'true' ? 0x808080 : 0xffffff);
-		offMusicImg.setTint(musicEnabled === 'true' ? 0xffffff : 0x808080);
+		const musicEnabled = localStorage.getItem('musicEnabled') || 'true';
+		onMusicImg.setTint(musicEnabled === 'true' ? 0xffffff : 0x808080);
+		offMusicImg.setTint(musicEnabled === 'true' ? 0x808080 : 0xffffff);
 
 		const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx');
 		const sfxScaleFactor = gameWidth / sfx.width;
@@ -137,20 +137,20 @@ export class OptionsScene extends Phaser.Scene {
 		offSfxImg.setScale(sfxScaleFactor * 0.08);
 
 		onSfxImg.on('pointerdown', () => {
-			onSfxImg.setTint(0x808080);
-			offSfxImg.setTint(0xffffff);
+			onSfxImg.setTint(0xffffff);
+			offSfxImg.setTint(0x808080);
 			localStorage.setItem('sfxEnabled', 'true');
 		});
 
 		offSfxImg.on('pointerdown', () => {
-			onSfxImg.setTint(0xffffff);
-			offSfxImg.setTint(0x808080);
+			onSfxImg.setTint(0x808080);
+			offSfxImg.setTint(0xffffff);
 			localStorage.setItem('sfxEnabled', 'false');
 		});
 
-		const sfxEnabled = localStorage.getItem('sfxEnabled');
-		onSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
-		offSfxImg.setTint(sfxEnabled === 'true' ? 0xffffff : 0x808080);
+		const sfxEnabled = localStorage.getItem('sfxEnabled') || 'true';
+		onSfxImg.setTint(sfxEnabled === 'true' ? 0xffffff : 0x808080);
+		offSfxImg.setTint(sfxEnabled === 'true' ? 0x808080 : 0xffffff);
 
 		// const zoom = this.add.image(gameWidth * 0.325, gameHeight * 0.65, 'zoom');
 		// const zoomScaleFactor = gameWidth / zoom.width;

@@ -9,6 +9,8 @@ import weatherImg from './assets/menu_buttons/weather.png';
 import mainMenuImg from './assets/menu_buttons/main-menu.png';
 
 export class PauseMenuScene extends Phaser.Scene {
+	#weatherFlag;
+	#sfxFlag;
 	constructor() {
 		super({
 			key: 'PauseMenuScene',
@@ -80,8 +82,6 @@ export class PauseMenuScene extends Phaser.Scene {
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
 
-		const sfx = localStorage.getItem('sfxEnabled');
-
 		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg').setInteractive();
 		onImgSfx.setOrigin(0.5, 0.5);
 		onImgSfx.setScale(1.5);
@@ -90,8 +90,8 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
-		onImgSfx.setTint(sfx === 'true' ? 0x808080 : 0xffffff);
-		offImgSfx.setTint(sfx === 'true' ? 0xffffff : 0x808080);
+		onImgSfx.setTint(this.#sfxFlag ? 0x808080 : 0xffffff);
+		offImgSfx.setTint(this.#sfxFlag ? 0xffffff : 0x808080);
 
 		onImgSfx.on('pointerdown', () => {
 			this.toggleSFX(false);
@@ -110,8 +110,6 @@ export class PauseMenuScene extends Phaser.Scene {
 		weatherImg1.setOrigin(0.5, 0.5);
 		weatherImg1.setScale(1.5);
 
-		const weather = localStorage.getItem('weatherEnabled');
-
 		const onWeatherImg = this.add.image(centerX + 150, centerY + 60, 'onImg').setInteractive();
 		onWeatherImg.setOrigin(0.5, 0.5);
 		onWeatherImg.setScale(1.5);
@@ -122,9 +120,8 @@ export class PauseMenuScene extends Phaser.Scene {
 		offWeatherImg.setOrigin(0.5, 0.5);
 		offWeatherImg.setScale(1.5);
 
-		console.log(weather === 'true');
-		onWeatherImg.setTint(weather === 'true' ? 0x808080 : 0xffffff);
-		offWeatherImg.setTint(weather === 'true' ? 0xffffff : 0x808080);
+		onWeatherImg.setTint(this.#weatherFlag ? 0x808080 : 0xffffff);
+		offWeatherImg.setTint(this.#weatherFlag ? 0xffffff : 0x808080);
 
 		onWeatherImg.on('pointerdown', () => {
 			onWeatherImg.setTint(0xffffff);
@@ -160,7 +157,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleWeather(weather) {
-		localStorage.setItem('weatherEnabled', weather.toString());
+		this.#weatherFlag = weather;
 		if (weather) {
 			this.weather.disable();
 		} else {
@@ -169,6 +166,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleMusic(mute) {
+		this.#sfxFlag = mute;
 		if (mute) {
 			this.music.stop();
 		} else {
@@ -177,8 +175,11 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleSFX(mute) {
-		this.sfx.setMute(mute);
-		localStorage.setItem('sfxEnabled', mute.toString());
+		if (mute) {
+			this.sfx.setMute(mute);
+		} else {
+			this.sfx.setMute(mute);
+		}
 	}
 
 	handleMainMenu() {
