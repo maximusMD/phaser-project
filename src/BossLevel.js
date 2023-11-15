@@ -125,8 +125,8 @@ export class BossTest extends Phaser.Scene {
 
         this.background_tiles = map.createLayer('background_platforms', tileset)
 
-        this.ground = map.createLayer('ground', tileset, 0, 0)
-        this.ground.setCollisionByExclusion(-1, true)
+        this.ground2 = map.createLayer('ground2', tileset, 0, 0)
+        this.ground2.setCollisionByExclusion(-1, true)
 
         this.player = new RoguePlayer(this, 250, 420, "rogue_player");
         this.cameras.main.startFollow(this.player);
@@ -137,9 +137,9 @@ export class BossTest extends Phaser.Scene {
         this.allSprites = this.children.list.filter(x => x instanceof Enemy)
         this.pauseHandler = handlePause(this, this.allSprites);
 
-        this.player.init(this.ground)
+        this.player.init(this.ground2)
 
-        this.dash_overlay = this.add.image(this.ground.getCenter().x, 420, 'laser').setDepth(3)
+        this.dash_overlay = this.add.image(this.ground2.getCenter().x, 420, 'laser').setDepth(3)
         this.dash_overlay.angle = 90;
         this.dash_overlay.alpha = 0;
         this.dash_overlay.scaleY = 1.5;
