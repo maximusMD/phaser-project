@@ -96,6 +96,7 @@ export class MaxLevel extends Phaser.Scene {
 
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
+        this.load.image('arrow', arrow_img)
         this.load.image('dust', dust)
 
         this.backgrounds = new ParaBackgrounds(this,[
@@ -123,9 +124,9 @@ export class MaxLevel extends Phaser.Scene {
     }
     create() {
 
-        const musicEnabled = localStorage.getItem('musicEnabled');
-        const sfxEnabled = localStorage.getItem('sfxEnabled');
-        const weatherEnabled = localStorage.getItem('weatherEnabled');
+        const musicEnabled = localStorage.getItem('musicEnabled') || 'true';
+        const sfxEnabled = localStorage.getItem('sfxEnabled') || 'true';
+        const weatherEnabled = localStorage.getItem('weatherEnabled') || 'true';
 
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
@@ -210,11 +211,17 @@ export class MaxLevel extends Phaser.Scene {
         this.pauseHandler = handlePause(this, sceneMusic, arrow_shoot_sfx);
         this.scene.manager.bringToTop('PauseMenuScene');
 
-        if (weatherEnabled === 'true') {
-			this.weather.setWindSpeed(-100);
-			this.weather.addRain();
-			this.weather.addFog();
-		}
+        this.weather.init()
+        this.weather.setWindSpeed(-100);
+        this.weather.addRain();
+        this.weather.addFog();
+
+        if (weatherEnabled === null || weatherEnabled === "true") {
+            this.weather.enable();
+        } else {
+            this.weather.disable();
+        }
+
 
         // create arrow colliders now player is made
         this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
@@ -275,7 +282,7 @@ export class MaxLevel extends Phaser.Scene {
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
             this.scene.stop('HUDScene')
-            this.scene.start('GameOverScene')
+            this.scene.start('LoadingScene')
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {

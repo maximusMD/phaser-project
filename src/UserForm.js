@@ -7,6 +7,8 @@ import signupImg from '../src/assets/userform/sign-up.png';
 import userImg from '../src/assets/userform/user.png';
 import passImg from '../src/assets/userform/pass.png';
 import logoutImg from '../src/assets/menu_buttons/logout.png';
+import loadingImg from "./assets/animations/sprites/Loading assets/loadingImg.png"
+import loadingAtlas from './assets/animations/sprites/Loading assets/loadingSpriteSheer.json'
 
 export class UserForm extends Phaser.Scene {
   constructor() {
@@ -26,6 +28,7 @@ export class UserForm extends Phaser.Scene {
       "webfont",
       "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
     );
+    this.load.atlas('loadingBar', loadingImg, loadingAtlas);
   }
 
   create() {
@@ -98,12 +101,24 @@ export class UserForm extends Phaser.Scene {
 
       inputForm.on('submit', (e) => {
         e.preventDefault();
-        const loadingText = this.add.text(gameWidth / 2, gameHeight / 1.5, 'Loading...', {
-          fontFamily: 'Pixelify Sans',
-          fontSize: '30px',
-          fill: '#ffffff',
+        const loadingBar = this.add.sprite(gameWidth/2, gameHeight /2, 'loadingBar', 'loading0.png');
+        const loadingBarScaleFactor = gameWidth / loadingBar.width
+        loadingBar.setScale(loadingBarScaleFactor * 0.135)
+    
+        this.anims.create({
+            key: 'loadingAnimation',
+            frames: this.anims.generateFrameNames('loadingBar', {
+                prefix: 'Loading-',
+                start: 0,
+                end: 42,
+                zeroPad: 1,
+                suffix: '.png',
+            }),
+            repeat: -1,
+            frameRate: 3
         });
-        loadingText.setOrigin(0.5);
+    
+        loadingBar.play('loadingAnimation');
         inputForm.setVisible(false);
         const username = inputForm.getChildByName('username');
         const password = inputForm.getChildByName('password');
