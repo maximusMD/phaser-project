@@ -1,6 +1,12 @@
 import { Enemy } from "./Enemy";
 import { getAngle } from "../getAngle";
 
+function* poison_level(index) {
+    while (index < 5) {
+        yield index++;
+    }
+}
+
 export class Executioner extends Enemy {
     #poisonEnabled = false;
     #poisonCooldown = false;
@@ -12,17 +18,20 @@ export class Executioner extends Enemy {
     #inAction = false;
     #idling = false;
     #summonAlive = false;
+    #frenzyAttack = false;
+    #summonCount = 0;
+    #attacks = ["frenzyAttack", "offScreenDash", "summon"];
 
     constructor(scene, x, y, atlas) {
         super(scene, x, y, atlas)
         this.atlas = atlas;
         this.scene = scene;
-        this.setHP(-1000)
+        this.setHP(0, false, 270)
         this.setScale(1.5)
         this.getBody().setAllowGravity(false);
         this.setCollideWorldBounds(false);
-        this.getBody().setSize(30, 45)
-        this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground2.width, this.getBody().height / 2)
+        this.getBody().setSize(50, 45)
+        this.scene.poison_zone = new Phaser.Geom.Rectangle(0, this.getBody().y + this.getBody().height, this.scene.ground.width, this.getBody().height / 2)
         this.createAnims()
         this.summons = new SummonGroup(scene, this)
         this.scene.sprite_hit_emitter = this.scene.add.particles(400, 250, 'sprite_explode', {
@@ -33,6 +42,21 @@ export class Executioner extends Enemy {
             tint: 0xbabaf8,
             emitting: false
         });
+        this.scene.physics.add.overlap(this.getBody(), this.scene.player.getBody(), (...args) => {
+            this.handleMelee(...args)
+        })
+    }
+    setSummonCount(num) {
+        this.#summonCount = num;
+    }
+    getSummonCount() {
+        return this.#summonCount;
+    }
+    setFrenzyAttack(bool) {
+        this.#frenzyAttack = bool;
+    }
+    getFrenzyAttack() {
+        return this.#frenzyAttack;
     }
     setSummonAlive(bool) {
         this.#summonAlive = bool;
@@ -100,7 +124,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 2
             }),
             frameRate: 2,
@@ -111,7 +135,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle2-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 7
             }),
             frameRate: 10,
@@ -122,7 +146,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'idle-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -133,7 +157,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 12
             }),
             frameRate: 10,
@@ -144,12 +168,11 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'attacking-',
                 suffix: '.png',
-                attack: 0,
-                frameRate: 20,
+                start: 0,
                 end: 12,
                 repeat: -1
             }),
-            frameRate: 2,
+            frameRate: 15,
             repeat: -1
         })
         this.anims.create({
@@ -157,7 +180,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'death-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 17
             }),
             frameRate: 10,
@@ -168,7 +191,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'skill1-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 11
             }),
             frameRate: 10,
@@ -179,7 +202,7 @@ export class Executioner extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summon-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 4,
                 hold: 1000
             }),
@@ -187,6 +210,8 @@ export class Executioner extends Enemy {
             repeat: 0
         })
     }
+
+
     floating() {
         this.attackY = this.attackY ?? this.getBody().y;
         if (this.getFloatToggle()) {
@@ -210,7 +235,7 @@ export class Executioner extends Enemy {
             angle: { min: 0, max: 360, random: true },
             gravityY: 5,
             alpha: {
-                attack: 0,
+                start: 0,
                 end: 0.3,
                 ease: (t) => 0.5 * Phaser.Math.Easing.Cubic.InOut(t > 0.5 ? 2 - 2 * t : 2 * t)
             },
@@ -229,19 +254,36 @@ export class Executioner extends Enemy {
 
     poisonPlayer() {
         if (!this.getPoisonCooldown()) {
-            this.scene.player.setHP(5)
+            // this.scene.player.setHP(5)
             console.log("Poisoning: PlayerHP: " + this.scene.player.getHP())
             this.setPoisonCooldown(true);
             this.scene.time.delayedCall(1000, () => { this.setPoisonCooldown(false) });
         }
     }
     summon() {
-        if (!this.getSummonAlive()) {
-            this.summons.showSummon(this.getCenter().x, this.getCenter().y - 100);
-            this.setSummonAlive(true);
-            this.anims.play("executioner_summon", true);
+        if (this.getSummonCount() < 3) {
+            if (!this.getSummonAlive()) {
+                this.summons.showSummon(
+                    this.getCenter().x,
+                    this.getCenter().y - 50 * (this.getSummonCount() + 1),
+                    this.getSummonCount()
+                );
+                this.setSummonAlive(true);
+                this.setSummonCount(this.getSummonCount() + 1);
+                this.anims.play("executioner_summon", true);
+                this.scene.time.delayedCall(2000, () => {
+                    this.setSummonAlive(false);
+                    this.anims.play("executioner_idle2");
+                });
+            }
         } else {
-            this.anims.play('executioner_idle', true)
+            this.setIdling(true);
+            // if (this.getInAction()) this.toggleInAction();
+            this.scene.time.delayedCall(3000, () => {
+                this.setIdling(false)
+                this.setSummonCount(0);
+                this.randomAttack = undefined;
+            });
         }
     }
 
@@ -277,6 +319,7 @@ export class Executioner extends Enemy {
                     if (this.getDashing()) this.toggleDashing();
                     this.scene.dash_overlay.setAlpha(0);
                     this.setIdling(true);
+                    this.randomAttack = undefined;
                     if (this.getInAction()) this.toggleInAction();
                     this.scene.time.delayedCall(3000, () => { this.setIdling(false) });
                 }
@@ -285,26 +328,75 @@ export class Executioner extends Enemy {
     }
 
     idling() {
+        if (!this.anims.isPlaying) {
+            this.anims.play("executioner_idle2"), true;
+        }
         const { angleDeg } = getAngle(this.scene.player, this);
         this.scene.physics.velocityFromAngle(angleDeg, 20, this.getBody().velocity)
     }
 
     frenzyAttack() {
-        if (!this.checkPlayerOverlap()) {
-            const { angleDeg } = getAngle(this.scene.player, this);
-            this.scene.physics.velocityFromAngle(angleDeg, 150, this.getBody().velocity)
-        }
-        this.anims.play("executioner_frenzy", true);
-    }
+        if (!this.getInAction()) {
+            this.toggleInAction();
+            this.setFrenzyAttack(true);
+            this.scene.time.delayedCall(5000, () => {
+                this.setFrenzyAttack(false);
+            });
 
+        }
+        if (this.getFrenzyAttack()) {
+            this.anims.play("executioner_frenzy", true);
+            if (!this.checkPlayerOverlap()) {
+                const { angleDeg } = getAngle(this.scene.player, this);
+                this.scene.physics.velocityFromAngle(angleDeg, 120, this.getBody().velocity)
+            }
+        } else {
+            this.randomAttack = undefined;
+            this.anims.stop("executioner_frenzy", true)
+            this.setIdling(true);
+            if (this.getInAction()) this.toggleInAction();
+            this.scene.time.delayedCall(3000, () => { this.setIdling(false) });
+        }
+    }
 
     checkPlayerOverlap() {
         return Phaser.Geom.Intersects.RectangleToRectangle(this.getBounds(), this.scene.player.getBounds())
     }
-    handleCompleteAnims(e) {
-        if (e.key === "executioner_frenzy") {
-            console.log("execution frennzy")
+
+    handleMelee() {
+        if (this.getInAction()) {
+            // handle dash melee
+            if (this.getDashing()) {
+                this.anims.playReverse("executioner_dash_attack", true);
+                if (this.anims.currentFrame.frame.name === "attacking-2.png") {
+                    if (!this.getMeleeHit()) {
+                        // this.scene.player.setHP(25);
+                        console.log("Dash hit")
+                        this.toggleMeleeHit();
+                        this.scene.time.delayedCall(1000, () => { this.toggleMeleeHit() });
+                    }
+                }
+            }
+
+            // handle frenzy melee
+            if (this.anims.isPlaying && this.anims.currentAnim.key === "executioner_frenzy") {
+                if (this.anims.currentFrame.frame.name === "attacking-9.png" || this.anims.currentFrame.frame.name === "attacking-2.png") {
+
+                    if (!this.getMeleeHit()) {
+                        console.log("frenzy hit")
+                        // this.scene.player.setHP(5)
+                        this.toggleMeleeHit();
+                        this.scene.time.delayedCall(500, () => { this.toggleMeleeHit() });
+                    }
+                }
+            }
+        } else {
+            this.anims.play("executioner_attacking", true);
         }
+    }
+
+    handleCompleteAnims(e) {
+        //e.key
     }
     handleStoppedAnims(e) {
         // e.key
@@ -312,6 +404,9 @@ export class Executioner extends Enemy {
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
+        if (this.getHP() < 250 && !this.getPoisonEnabled()) {
+            this.createPoison();
+        }
 
         if (!this.checkPlayerOverlap()) {
             if (this.getBody().x > this.scene.player.getBody().x) {
@@ -323,39 +418,10 @@ export class Executioner extends Enemy {
         if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
             this.poisonPlayer();
         }
-        // if (this.getIsFloating()) {
-        //     this.anims.play("executioner_idle2", true)
-        //     this.floating();
-        // }
-        if (this.getInAction()) {
-            // handle frenzy melee
-            if (this.getDashing()) {
-                if (this.checkPlayerOverlap()) {
-                    this.anims.playReverse("executioner_dash_attack", true);
-                    if (this.anims.currentFrame.frame.name === "attacking-2.png") {
-                        if (!this.getMeleeHit()) {
-                            this.scene.player.setHP(10);
-                            console.log("Dash hit")
-                            this.toggleMeleeHit();
-                            this.scene.time.delayedCall(1000, () => { this.toggleMeleeHit() });
-                        }
-                    }
-                }
-            }
-            if (this.anims.isPlaying && this.anims.currentAnim.key === "executioner_frenzy") {
-                if (this.anims.currentFrame.frame.name === "attacking-9.png" || this.anims.currentFrame.frame.name === "attacking-2.png") {
-                    if (this.checkPlayerOverlap()) {
-                        if (!this.getMeleeHit()) {
-                            this.scene.player.setHP(10)
-                            this.toggleMeleeHit();
-                            this.scene.time.delayedCall(250, () => { this.toggleMeleeHit() });
-                        }
-                    }
-                }
-            }
-        }
+        // in action checks
         if (!this.getIdling()) {
-            this.summon();
+            this.randomAttack = this.randomAttack ?? this.#attacks[Math.floor(Math.random() * this.#attacks.length)];
+            this[this.randomAttack]();
         } else {
             this.idling();
         }
@@ -382,10 +448,9 @@ export class SummonGroup extends Phaser.Physics.Arcade.Group {
         })
     }
 
-    showSummon(x, y) {
-        const summon = this.getFirstAlive(true);
+    showSummon(x, y, index) {
+        const summon = this.getChildren().find((_, i) => i === index);
         summon.show(x, y);
-
     }
 }
 
@@ -399,7 +464,7 @@ export class ExecutionerSummon extends Enemy {
         super(scene, x, y, atlas)
         this.scene = scene;
         this.createAnims();
-        this.setHP(90);
+        this.setHP(0, false, 10);
         this.getBody().setSize(20, 20)
         this.getBody().setOffset(15, 18)
         this.getBody().setAllowGravity(false);
@@ -415,8 +480,9 @@ export class ExecutionerSummon extends Enemy {
         this.setActive(true);
         this.setVisible(true);
         this.setIsAlive(true);
+        this.setShownDead(false);
         this.anims.play("summon_appear")
-        this.scene.time.delayedCall(1000, () => { this.attack() });
+        this.scene.time.delayedCall(500, () => { this.attack() });
     }
     getShownDead() {
         return this.#shownDead
@@ -443,9 +509,10 @@ export class ExecutionerSummon extends Enemy {
         return this.#travelling;
     }
 
-    handleHit(sprite, player) {
+    handleHit(_, player) {
         if (!this.getHasHit()) {
-            this.setHP(10);
+            console.log(player)
+            // player.setHP(10);
             this.setHasHit(true);
         }
     }
@@ -469,7 +536,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonDeath-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 4
             }),
             frameRate: 10,
@@ -480,7 +547,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonIdle-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 3
             }),
             frameRate: 10,
@@ -491,7 +558,7 @@ export class ExecutionerSummon extends Enemy {
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'summonAppear-',
                 suffix: '.png',
-                attack: 0,
+                start: 0,
                 end: 5
             }),
             frameRate: 10,
@@ -503,24 +570,28 @@ export class ExecutionerSummon extends Enemy {
         if (!this.scene.cameras.main.worldView.contains(this.body.x, this.body.y)) {
             this.setActive(false);
             this.setVisible(false);
+            this.setIsAlive(false)
+            this.setShownDead(false);
+            if (this.getTravelling()) this.toggleTravelling();
         }
     }
 
     handleDeath() {
-        if(!this.getShownDead()) {
+        if (!this.getShownDead()) {
             this.setActive(false);
             this.setVisible(false);
+            this.setIsAlive(false);
             this.scene.sprite_hit_emitter.setPosition(
                 this.scene.player.getCenter().x,
-                 this.scene.player.getCenter().y
-                 )
+                this.scene.player.getCenter().y
+            )
             this.scene.sprite_hit_emitter.explode(20)
             this.setShownDead(true);
+            this.getBody().reset(-400, -400);
         }
     }
     handleCompleteAnims(e) {
 
-        console.log(e);
     }
     handleStoppedAnims(e) {
 
@@ -530,6 +601,8 @@ export class ExecutionerSummon extends Enemy {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
 
+        this.anims.play('summon_idle');
+
         if (this.getHP() <= 0) {
             this.handleDeath();
         }
@@ -537,8 +610,5 @@ export class ExecutionerSummon extends Enemy {
             this.facePlayer()
         }
 
-        if (!this.anims.isPlaying) {
-            this.anims.play('summon_idle');
-        }
     }
 }
