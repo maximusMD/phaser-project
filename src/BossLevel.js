@@ -63,6 +63,7 @@ export class BossTest extends Phaser.Scene {
                 }
             }
         });
+        this.bossHealthBar;
     }
 
     preload() {
@@ -146,10 +147,24 @@ export class BossTest extends Phaser.Scene {
         this.dash_overlay.scaleX = 1.5;
         this.dash_overlay.setTint(0x0B0B0B)
 
+        const hudScenePlugin = this.scene.run('HUDScene')
+        this.scene.bringToTop('HUDScene')
+        // access scene
+        this.hudScene = hudScenePlugin.get('HUDScene');
+
+        this.graphics = this.add.graphics();
+        // this.graphics.setOrigin(0, 0)
+        this.graphics.lineStyle = (8, 0xff0000)
+        // this.graphics.strokeRect(1,1,)
+
+        this.graphics.strokeRect(innerWidth * 0.8, innerHeight * 0.7, innerWidth * 0.8, 30)
+
     }
+
     update() {
         this.player.update();
         this.backgrounds.update();
+        this.hudScene.update()
 
         if (!this.executioner.getIsDead()) {
             this.executioner.update()

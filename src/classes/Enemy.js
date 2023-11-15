@@ -12,7 +12,7 @@ export class Enemy extends Actor {
   #scoreWorth = 10;
   #finishAttack = false;
   #aggro = false;
-  
+
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
   }
@@ -207,7 +207,7 @@ export class Enemy extends Actor {
     const tolerance = 1;
 
     const feetX = this.x;
-    const feetY = this.y + this.height /2;
+    const feetY = this.y + this.height / 2;
 
     const tileCoordinates = floor.worldToTileXY(feetX, feetY);
 

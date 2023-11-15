@@ -45,6 +45,7 @@ export class Executioner extends Enemy {
         this.scene.physics.add.overlap(this.getBody(), this.scene.player.getBody(), (...args) => {
             this.handleMelee(...args)
         })
+        this.maxHealth = this.getHP();
     }
     setSummonCount(num) {
         this.#summonCount = num;
@@ -401,6 +402,7 @@ export class Executioner extends Enemy {
     handleStoppedAnims(e) {
         // e.key
     }
+
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
