@@ -88,5 +88,6 @@ export function LoadingBar(scene, alt = false) {
         progressBarBorder.destroy();
         tipText.destroy();
         loadingText.destroy();
+        loadingSprite.destroy();
     });
 }
