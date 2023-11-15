@@ -126,7 +126,7 @@ export class MaxLevel extends Phaser.Scene {
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
 
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
-        this.load.atlas('Rogue_sneaker', sneaker_image, sneaker_atlas)
+        this.load.atlas('sneaker', sneaker_image, sneaker_atlas)
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
@@ -281,6 +281,7 @@ export class MaxLevel extends Phaser.Scene {
         this.enemy4.update(this.player)
         this.enemy5.update(this.player)
         this.enemy6.update(this.player)
+        this.enemy7.update(this.player)
 
         this.hudScene.update();
         // console.log('Player Coordinates:', this.player.x, this.player.y);
@@ -300,7 +301,7 @@ export class MaxLevel extends Phaser.Scene {
 
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
-            console.log(this.hudScene.score);
+            console.log('score',this.hudScene.score);
             localStorage.setItem('score' ,this.hudScene.score)
             this.hudScene.score = 0;
             this.scene.stop('HUDScene')

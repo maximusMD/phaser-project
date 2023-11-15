@@ -223,7 +223,7 @@ export function createAnimations(scene) {
       start: 0,
       end: 7
     }),
-    frameRate: 6,
+    frameRate: 4,
     repeat: 0
   })
 
@@ -233,10 +233,10 @@ export function createAnimations(scene) {
       prefix: 'sneaker_attack-',
       suffix: '.png',
       start: 0,
-      end: 6
+      end: 7
     }),
-    frameRate: 6,
-    repeat: 0
+    frameRate: 4,
+    repeat: 1
   })
 
   scene.anims.create({
@@ -247,8 +247,9 @@ export function createAnimations(scene) {
       start: 0,
       end: 7
     }),
-    frameRate: 6,
-    repeat: 0
+    frameRate: 4,
+    repeat: 0,
+    yoyo: true,
   })
 
 }
