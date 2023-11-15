@@ -11,6 +11,7 @@ import mainMenuImg from './assets/menu_buttons/main-menu.png';
 export class PauseMenuScene extends Phaser.Scene {
 	#weatherFlag;
 	#sfxFlag;
+	#musicFlag;
 	constructor() {
 		super({
 			key: 'PauseMenuScene',
@@ -62,8 +63,12 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgMusic.setOrigin(0.5, 0.5);
 		offImgMusic.setScale(1.5);
 
-		onImgMusic.setTint(this.music.isPlaying ? 0xffffff : 0x808080);
-		offImgMusic.setTint(this.music.isPlaying ? 0x808080 : 0xffffff);
+		if (this.#musicFlag === null || this.#musicFlag === undefined) {
+			this.#musicFlag = localStorage.getItem('musicEnabled');
+		}
+		
+		onImgMusic.setTint(this.#musicFlag ? 0x808080 : 0xffffff);
+		offImgMusic.setTint(this.#musicFlag ? 0xffffff : 0x808080);
 
 		onImgMusic.on('pointerdown', () => {
 			onImgMusic.setTint(0xffffff);
@@ -89,6 +94,10 @@ export class PauseMenuScene extends Phaser.Scene {
 		const offImgSfx = this.add.image(centerX + 300, centerY - 30, 'offImg').setInteractive();
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
+
+		if (this.#sfxFlag === null || this.#sfxFlag === undefined) {
+			this.#sfxFlag = localStorage.getItem('sfxEnabled');
+		}
 
 		onImgSfx.setTint(this.#sfxFlag ? 0x808080 : 0xffffff);
 		offImgSfx.setTint(this.#sfxFlag ? 0xffffff : 0x808080);
@@ -119,6 +128,11 @@ export class PauseMenuScene extends Phaser.Scene {
 			.setInteractive();
 		offWeatherImg.setOrigin(0.5, 0.5);
 		offWeatherImg.setScale(1.5);
+
+
+		if (this.#weatherFlag === null || this.#weatherFlag === undefined) {
+			this.#weatherFlag = localStorage.getItem('weatherEnabled');
+		}
 
 		onWeatherImg.setTint(this.#weatherFlag ? 0x808080 : 0xffffff);
 		offWeatherImg.setTint(this.#weatherFlag ? 0xffffff : 0x808080);
@@ -166,7 +180,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleMusic(mute) {
-		this.#sfxFlag = mute;
+		this.#musicFlag = mute;
 		if (mute) {
 			this.music.stop();
 		} else {
@@ -175,6 +189,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleSFX(mute) {
+		this.#sfxFlag = mute;
 		if (mute) {
 			this.sfx.setMute(mute);
 		} else {
