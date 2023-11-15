@@ -280,6 +280,8 @@ export class MaxLevel extends Phaser.Scene {
 
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
+            console.log(this.hudScene.score);
+            localStorage.setItem('score' ,this.hudScene.score)
             this.scene.stop('HUDScene')
             this.scene.start('GameOverScene')
         }

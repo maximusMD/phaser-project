@@ -13,6 +13,10 @@ export class WinnerScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('about', aboutImg)
         this.load.image('main-menu', mainMenuImg)
+        this.load.script(
+            'webfont',
+            'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
+        )
     }
 
     create() {
@@ -23,6 +27,34 @@ export class WinnerScene extends Phaser.Scene {
         background.displayWidth = gameWidth;
         background.displayHeight = gameHeight;
         background.setPosition(gameWidth / 2, gameHeight / 2);
+
+        const isLoggedIn = localStorage.getItem('loggedIn')
+        const user = JSON.parse(localStorage.getItem('playerData'));
+        const savedScore = JSON.parse(localStorage.getItem('score'))
+        let playerName = 'GUEST'
+        if (isLoggedIn == 'true') { 
+            this.handleScore(user, savedScore);
+            playerName = user.username.toUpperCase()
+        }
+
+        let textGroup = this.add.group()
+        let textData = ''
+
+        WebFont.load({
+            google: {
+                families: ['Pixelify Sans'],
+            },
+            active: () => {
+                textData = this.add.text(gameWidth/2, gameHeight/2, `CONGRATULATIONS ${playerName}!!!!! \n\n\nYOUR FINAL SCORE: ${savedScore}`, {
+                    fontFamily: 'Pixelify Sans',
+                    fontSize: '48px',
+                    fill: '#FFFFFF',
+                    align: 'center'
+                })
+                textGroup.add(textData);
+                textGroup.setOrigin(0.5);
+            }
+        })
 
         const about = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'about', () => {
             this.handleAbout()
@@ -60,5 +92,28 @@ export class WinnerScene extends Phaser.Scene {
 
     handleMain() {
         this.scene.start('MenuScene')
+    }
+    handleScore(user, savedScore){
+        const authToken = JSON.stringify({"user":user} )
+        fetch('https://wavy-project-gang-api.onrender.com/api/leaderboard', {
+                method: 'POST',
+                body: JSON.stringify({ highScore: savedScore }, {level:'Max_level'}),
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+        },
+        })
+        .then((res) => {
+        if (!res.ok) {
+        throw new Error(`error: ${res.status}`);
+        }
+        return res.json();
+        })
+        .then((data) => {
+        console.log(data);
+        })
+        .catch((err) => {
+        console.error('error:', err);
+        })
     }
 }
