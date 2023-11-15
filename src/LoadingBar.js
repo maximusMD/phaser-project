@@ -60,12 +60,13 @@ export function LoadingBar(scene, alt = false) {
     progressBox.fillStyle(0x222222, 0.8);
     progressBox.fillRect((screen_width / 2) - (320 / 2), screen_height / 2 - (50 / 2), 320, 25);
 
+    var loadingSprite;
     if (alt) {
-        const loadingSprite = scene.add.sprite(screen_width / 2, screen_height / 2 - 60, "alt_load")
+        loadingSprite = scene.add.sprite(screen_width / 2, screen_height / 2 - 60, "alt_load")
         loadingSprite.anims.play("alt_loading")
         loadingSprite.setScale(0.5);
     } else {
-        const loadingSprite = scene.add.sprite(screen_width / 2, screen_height / 2 - 50, "rogue_load")
+        loadingSprite = scene.add.sprite(screen_width / 2, screen_height / 2 - 50, "rogue_load")
         loadingSprite.anims.play("rogue_loading")
     }
 
