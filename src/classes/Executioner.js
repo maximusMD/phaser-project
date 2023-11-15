@@ -26,6 +26,7 @@ export class Executioner extends Enemy {
         super(scene, x, y, atlas)
         this.atlas = atlas;
         this.scene = scene;
+        // this.setScore(200)
         this.setHP(0, false, 270)
         this.setScale(1.5)
         this.getBody().setAllowGravity(false);
@@ -398,6 +399,9 @@ export class Executioner extends Enemy {
 
     handleCompleteAnims(e) {
         //e.key
+        if(e.key === 'executioner_death') {
+            this.destroy();
+        }
     }
     handleStoppedAnims(e) {
         // e.key
