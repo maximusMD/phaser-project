@@ -216,7 +216,7 @@ export class MaxLevel extends Phaser.Scene {
         this.weather.addRain();
         this.weather.addFog();
 
-        if (weatherEnabled === null || weatherEnabled === "true") {
+        if (weatherEnabled === "true") {
             this.weather.enable();
         } else {
             this.weather.disable();

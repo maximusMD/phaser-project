@@ -92,14 +92,17 @@ export class PauseMenuScene extends Phaser.Scene {
 			offImgSfx.setTint(0xffffff);
 			this.toggleSFX(false);
 		});
-		onImgSfx.setTint(this.sfx.mute ? 0xffffff : 0x808080);
+		const sfx = localStorage.getItem('sfxEnabled')
+		onImgSfx.setTint(sfx === 'true' ? 0x808080 : 0xffffff);
+		console.log(sfx === 'true', "on button");
 
 		offImgSfx.on('pointerdown', () => {
 			offImgSfx.setTint(0x808080);
 			onImgSfx.setTint(0xffffff);
 			this.toggleSFX(true);
 		});
-		offImgSfx.setTint(this.sfx.mute ? 0x808080 : 0xffffff);
+		offImgSfx.setTint(sfx !== 'true' ? 0x808080 : 0xffffff);
+		console.log(sfx !== 'true', "off button");
 
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
@@ -152,7 +155,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleWeather(weather) {
-		localStorage.removeItem('weatherEnabled');
+		// localStorage.removeItem('weatherEnabled');
 		if (weather) {
 			this.weather.enable();
 		} else {
@@ -169,7 +172,8 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleSFX(mute) {
-		localStorage.removeItem('sfxEnabled');
+		// localStorage.removeItem('sfxEnabled');
+		localStorage.setItem('sfxEnabled', mute.toString());
 		this.sfx.setMute(mute);
 	}
 
