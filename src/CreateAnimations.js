@@ -215,4 +215,40 @@ export function createAnimations(scene) {
     repeat: 0
   })
 
+  scene.anims.create({
+    key: 'sneaker_die',
+    frames: scene.anims.generateFrameNames('sneaker', {
+      prefix: 'sneaker_die-',
+      suffix: '.png',
+      start: 0,
+      end: 7
+    }),
+    frameRate: 6,
+    repeat: 0
+  })
+
+  scene.anims.create({
+    key: 'sneaker_attack',
+    frames: scene.anims.generateFrameNames('sneaker', {
+      prefix: 'sneaker_attack-',
+      suffix: '.png',
+      start: 0,
+      end: 6
+    }),
+    frameRate: 6,
+    repeat: 0
+  })
+
+  scene.anims.create({
+    key: 'sneaker_walk',
+    frames: scene.anims.generateFrameNames('sneaker', {
+      prefix: 'sneaker_walk-',
+      suffix: '.png',
+      start: 0,
+      end: 7
+    }),
+    frameRate: 6,
+    repeat: 0
+  })
+
 }

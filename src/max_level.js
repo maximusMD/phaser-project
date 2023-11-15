@@ -10,6 +10,8 @@ import { RoguePlayer } from './classes/RoguePlayer.js';
 import { SkeletonArcher } from './classes/SkeletonArcher.js';
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
+import { Sneaker } from './classes/Sneaker.js';
+
 
 import { Weather } from './classes/Weather.js';
 
@@ -124,6 +126,7 @@ export class MaxLevel extends Phaser.Scene {
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
 
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
+        this.load.atlas('Rogue_sneaker', sneaker_image, sneaker_atlas)
 
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
@@ -209,6 +212,10 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy5, this.ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, this.ground);
+
+        this.enemy7 = new Sneaker(this, 400, 300, 'sneaker')
+        this.physics.add.collider(this.enemy7, this.ground);
+
         
 
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
