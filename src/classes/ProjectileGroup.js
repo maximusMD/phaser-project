@@ -11,7 +11,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
 
         this.createMultiple({
             classType: Laser,
-            setScale: { x: 0.05, y: 0.05},
+            setScale: { x: 0.05, y: 0.05 },
             frameQuantity: 5,
             active: false,
             visible: false,
@@ -48,16 +48,24 @@ export class Laser extends Phaser.Physics.Arcade.Sprite {
     setLaserDamage(damage) {
         this.#laserDamage = damage;
     }
+    handleGroundHit(projectile, ground) {
+        console.log(ground)
+        // console.log("here")  
+        projectile.setActive(false);
+        projectile.setVisible(false);
+        projectile.body.reset(-400, -400);
+        this.scene.player.emitGroundHit(ground);
+    }
 
     fire(x, y, direction, laserDamage) {
         this.setHasHit(false);
         this.scene.physics.add.collider(this, this.scene.player.ground_collider,
-            (...args) => { this.scene.player.handleGroundHit(...args) })
+            (...args) => { this.handleGroundHit(...args) });
         if (laserDamage) this.setLaserDamage(laserDamage);
         this.body.reset(x, y);
         this.setScale(0.05);
         this.setTint(0xbabaf8);
-        this.body.setAllowGravity(false);   
+        this.body.setAllowGravity(false);
         this.angle = 90;
 
         this.setActive(true);
@@ -117,7 +125,15 @@ export class Arrow extends Phaser.Physics.Arcade.Sprite {
         this.#arrowDamage = damage;
     }
 
+    handleGroundHit(arrow) {
+        arrow.setActive(false)
+        arrow.setVisible(false)
+        arrow.body.reset(-400, -400)
+    }
+
     fire(x, y, direction, arrowDamage) {
+        this.scene.physics.add.collider(this, this.scene.player.ground_collider,
+            this.handleGroundHit)
         if (arrowDamage) this.setArrowDamage(arrowDamage);
         this.body.reset(x, y);
 
