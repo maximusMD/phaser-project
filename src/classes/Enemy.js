@@ -101,7 +101,7 @@ export class Enemy extends Actor {
   }
 
   setRangeDamage(range) {
-    this.#meleeDamage = range;
+    this.#rangeDamage = range;
   }
 
   setIsWandering(bool) {
@@ -145,6 +145,18 @@ export class Enemy extends Actor {
       this.setIsWandering(false);
     }
 
+    // if(this.isNearEdge()) {
+    //   this.setIsWandering(false);
+    //   this.setVelocityX(0);
+    //   // this.setWalkSpeed(-1 * this.getWalkSpeed());
+
+    //   this.scene.time.delayedCall(2000, () => {
+    //     this.setVelocityX(this.getWalkSpeed())
+    //   })
+
+    //   return;
+    // }
+
     this.startPos = undefined;
   }
 
@@ -161,10 +173,9 @@ export class Enemy extends Actor {
     this.anims.play(attack, true)
     if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
       if (this.checkOverlap(this.scene.player)) {
+        console.log(this.#finishAttack)
         this.scene.player.setHP(this.getMeleeDamage())
         this.setFinishAttack(false)
-      } else {
-        this.scene.player.setHP(0);
       }
     }
   }

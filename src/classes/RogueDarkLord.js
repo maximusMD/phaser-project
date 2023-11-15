@@ -8,7 +8,7 @@ export class RogueDarkLord extends Enemy {
         this.getBody().setSize(30, 45);
         this.getBody().setOffset(15, 20)
         this.setVision(50)
-        this.setMeleeDamage(5);
+        this.setMeleeDamage(1);
         this.setWalkSpeed(10)
         this.setRangeDamage(0);
         this.setScore(20);
@@ -21,7 +21,8 @@ export class RogueDarkLord extends Enemy {
     }
 
     handleCompleteAnims(e) {
-        if (e.key === 'darklord_walk' && this.getIsWandering() === false || this.isNearEdge()) {
+
+        if (e.key === 'darklord_walk' && this.getIsWandering() === false) {
             this.anims.play('darklord_idle', true);
             this.setFlipX(!this.flipX)
             this.setWalkSpeed(-1 * this.getWalkSpeed());
@@ -33,13 +34,28 @@ export class RogueDarkLord extends Enemy {
             });
         }
 
+        // fix this, kinda close i think
+        // when isNearEdge is invoked in wander function, the enemies stop but never retrurn to wandering
+        // if (e.key === 'darklord_idle') {
+        //     this.setFlipX(!this.flipX)
+            
+        //     this.setWalkSpeed(-1 * this.getWalkSpeed())
+        //     this.anims.play('darklord_walk', true)
+        //     this.setVelocityX(this.getWalkSpeed())
+
+        //     this.scene.time.delayedCall(2000, () => {
+        //         this.startPos = undefined;
+        //         this.setIsWandering(true);
+        //         this.setAggro(false)
+        //     })
+        // }
+
         if (e.key === 'darklord_attack') {
             this.anims.stop()
             this.anims.play('darklord_idle', true);
 
             this.scene.time.delayedCall(2000, () => {
                 this.setAggro(false);
-                this.setFinishAttack(false);
             })
         }
 

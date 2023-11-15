@@ -10,6 +10,7 @@ export class HUDScene extends Phaser.Scene {
         super({ key: 'HUDScene' });
         this.score = 0;
         this.info;
+        this.healthPercentageText;
     }
 
     preload() {
@@ -34,12 +35,18 @@ export class HUDScene extends Phaser.Scene {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
-                })
-                let ourGame = this.scene.get('RyanLevel')
-                ourGame.events.on('addScore', function () {
-                    this.score += 10;
-                    info.setText('Score: ' + this.score)
-                }, this)
+                }),
+                this.healthPercentageText = this.add.text(gameWidth *0.19, gameHeight * 0.14, '100%', {
+                    fontFamily: 'Pixelify Sans',
+                    fontSize: '18px',
+                    fill: '#FFFFFF'
+                });
+
+                // let ourGame = this.scene.get('RyanLevel')
+                // ourGame.events.on('addScore', function () {
+                //     this.score += 10;
+                //     info.setText('Score: ' + this.score)
+                // }, this)
             }
         })
 
@@ -47,11 +54,6 @@ export class HUDScene extends Phaser.Scene {
         const healthBarScaleFactor = gameWidth / this.healthBar.width
         this.healthBar.setScale(healthBarScaleFactor * 0.135)
 
-        this.healthPercentageText = this.add.text(gameWidth *0.19, gameHeight * 0.14, '100%', {
-            fontFamily: 'Pixelify Sans',
-            fontSize: '18px',
-            fill: '#FFFFFF'
-        });
 
         this.anims.create({
             key: 'healthAnimation',
@@ -98,7 +100,10 @@ export class HUDScene extends Phaser.Scene {
             this.healthBar.setFrame(`Heart-${frameIndex}.png`);
         }
 
-        this.healthPercentageText.setText(`${Math.round(healthPercentage * 100)}%`)
+        if (this.healthPercentageText) {
+            this.healthPercentageText.setText(`${Math.round(healthPercentage * 100)}%`)
+        }
+
     }
 
     update() {

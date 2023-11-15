@@ -12,8 +12,8 @@ export class SkeletonArcher extends Enemy {
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
     this.setVision(100);
-    this.setMeleeDamage(1);
-    this.setRangeDamage(5);
+    this.setMeleeDamage(0.05);
+    this.setRangeDamage(0.1);
     this.#arrows = new ArrowGroup(this.scene);
     this.setScore(20);
 
@@ -40,7 +40,7 @@ export class SkeletonArcher extends Enemy {
   }
   
   handleCompleteAnims(e) {
-    if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false || this.isNearEdge()) {
+    if (e.key === 'skeleton_archer_walk' && this.getIsWandering() === false) {
       this.anims.play('skeleton_archer_idle', true);
       this.setFlipX(!this.flipX)
       this.setWalkSpeed(-1 * this.getWalkSpeed());
