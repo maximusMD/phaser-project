@@ -79,6 +79,10 @@ export class PauseMenuScene extends Phaser.Scene {
 		sfxImg.setOrigin(0.5, 0.5);
 		sfxImg.setScale(1.5);
 
+
+		// RYAN CHANGES ----------------------
+		const sfx = localStorage.getItem('sfxEnabled')
+
 		const onImgSfx = this.add.image(centerX + 150, centerY - 30, 'onImg').setInteractive();
 		onImgSfx.setOrigin(0.5, 0.5);
 		onImgSfx.setScale(1.5);
@@ -87,19 +91,21 @@ export class PauseMenuScene extends Phaser.Scene {
 		offImgSfx.setOrigin(0.5, 0.5);
 		offImgSfx.setScale(1.5);
 
+		onImgSfx.setTint(sfx === 'true' ? 0x808080 : 0xffffff);
+		offImgSfx.setTint(sfx === 'true' ? 0xffffff : 0x808080);
+
 		onImgSfx.on('pointerdown', () => {
+			this.toggleSFX(true);
 			onImgSfx.setTint(0x808080);
 			offImgSfx.setTint(0xffffff);
-			this.toggleSFX(false);
 		});
-		onImgSfx.setTint(this.sfx.mute ? 0xffffff : 0x808080);
-
 		offImgSfx.on('pointerdown', () => {
-			offImgSfx.setTint(0x808080);
+			this.toggleSFX(false)
 			onImgSfx.setTint(0xffffff);
-			this.toggleSFX(true);
+			offImgSfx.setTint(0x808080);
 		});
-		offImgSfx.setTint(this.sfx.mute ? 0x808080 : 0xffffff);
+
+		/// CHANGED ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 		// weather img
 		const weatherImg1 = this.add.image(centerX - 200, centerY + 60, 'weatherImg');
@@ -152,7 +158,7 @@ export class PauseMenuScene extends Phaser.Scene {
 	}
 
 	toggleWeather(weather) {
-		localStorage.removeItem('weatherEnabled');
+		// localStorage.removeItem('weatherEnabled');
 		if (weather) {
 			this.weather.enable();
 		} else {
@@ -168,10 +174,13 @@ export class PauseMenuScene extends Phaser.Scene {
 		}
 	}
 
+
+	// RYAN CHANGES -------------------------
 	toggleSFX(mute) {
-		localStorage.removeItem('sfxEnabled');
 		this.sfx.setMute(mute);
+		localStorage.setItem("sfxEnabled", mute.toString());
 	}
+	// 
 
 	handleMainMenu() {
 		this.music.stop();

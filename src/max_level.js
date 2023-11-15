@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import { createAnimations } from './CreateAnimations.js';
 import { handlePause } from './pauseHandler.js';
 import { HUDScene } from './hud.js';
+import { WinnerScene } from './winner.js';
 
 import { Actor } from './classes/Actor.js';
 import { Enemy } from './classes/Enemy.js';
@@ -14,6 +15,9 @@ import { Weather } from './classes/Weather.js';
 
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3-high-contrast.png';
 import tilemap from './assets/tilemaps/maxlevelvisualtrap.json';
+
+import blue_diamond from './assets/objects/blue diamond.png'
+import yellow_diamond from './assets/objects/yellow diamond.png'
 
 import rogue_image from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.png';
 import rogue_atlas from './assets/animations/sprites/player/Rogue_Player/rogue_player_atlas.json';
@@ -39,16 +43,10 @@ import nebula from './assets/backgrounds/Nebula Blue.png'
 import nebula2 from './assets/backgrounds/Nebula Red.png'
 import small_stars from './assets/backgrounds/smallstars.png'
 import big_stars from './assets/backgrounds/bigstars.png'
-import nc1 from './assets/backgrounds/Layer1.png'
-import nc2 from './assets/backgrounds/Layer2.png'
-import nc3 from './assets/backgrounds/Layer3.png'
-import nc4 from './assets/backgrounds/Layer4.png'
-import nc5 from './assets/backgrounds/Layer5.png'
 import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import flare from "./assets/particles/flare_1.png"
 import dust from "./assets/particles/dust.png"
-import { WinnerScene } from './winner.js';
 
 import sceneMusic from './assets/levelMusic.wav';
 import arrow_shoot_sfx from './assets/shooting_arrow.wav';
@@ -99,6 +97,9 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('arrow', arrow_img)
         this.load.image('dust', dust)
 
+        this.load.image('blue-diamond', blue_diamond)
+        this.load.image('yellow-diamond', yellow_diamond)
+
         this.backgrounds = new ParaBackgrounds(this,[
             {key: 'stars-small', image: small_stars},
             {key: 'stars-big', image: big_stars},
@@ -131,7 +132,7 @@ export class MaxLevel extends Phaser.Scene {
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
-            sprite: this.add.tileSprite(0, 0, width, height, 'nebula2')
+            sprite: this.add.tileSprite(0, 0, width, height, 'nebula')
                 .setOrigin(0, 0)
                 .setScrollFactor(0, 0)
                 // .setTint(0x001a33, 0x000d1a, 0x001a33)
@@ -171,6 +172,15 @@ export class MaxLevel extends Phaser.Scene {
         this.bg3 = map.createLayer('bg3', tileset).setDepth(1);
         this.background = map.createLayer('Background', tileset).setDepth(0);
         this.bg4 = map.createLayer('b4', tileset).setDepth(0);
+
+        const objectLayer = map.getObjectLayer('BONUS');
+        const objects = objectLayer.objects;
+
+        objects.forEach((object) => {
+            const bonusSprite = this.add.sprite(object.x + 9, object.y - 7, 'yellow-diamond')
+            bonusSprite.setScale(1.6)
+        });
+
 
         this.enemy = new SkeletonArcher(this, 100, 10, "skeleton_archer");
         this.physics.add.collider(this.enemy, this.ground);
@@ -216,7 +226,7 @@ export class MaxLevel extends Phaser.Scene {
         this.weather.addRain();
         this.weather.addFog();
 
-        if (weatherEnabled === null || weatherEnabled === "true") {
+        if (weatherEnabled === "true") {
             this.weather.enable();
         } else {
             this.weather.disable();
@@ -236,20 +246,9 @@ export class MaxLevel extends Phaser.Scene {
 
         this.player.init(this.ground)
 
-        // this.hudScene = new HUDScene({ player: this.player });
-        // this.scene.bringToTop('HUDScene')
-        // this.scene.run('HUDScene')
-
-        // run scene
         const hudScenePlugin = this.scene.run('HUDScene')
         this.scene.bringToTop('HUDScene')
-        // access scene
         this.hudScene = hudScenePlugin.get('HUDScene');
-
-
-
-
-
     }
     update() {
         this.weather.update();
@@ -269,25 +268,25 @@ export class MaxLevel extends Phaser.Scene {
         const targetX = 88;
         const targetY = 755
 
-        const deathX = 766
-        const deathY = 716
-
-
-        // if (this.player.x <= deathX && this.player.y >= deathY) {
-        //     console.log('death');
-        //     this.player.setHP(100)
-        // }
+        const bonusX = 744
+        const bonusY = 191
+        const range = 10
+        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, bonusX, bonusY)
+        if (distance <= range) {
+            // console.log('Player is near the bonus:', this.player.x, this.player.y);
+            // @rak add however much to score
+        }
 
 
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
             this.scene.stop('HUDScene')
-            this.scene.start('LoadingScene')
+            this.scene.start('GameOverScene')
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
             this.scene.stop('HUDScene')
-            this.scene.start('WinnerScene');
+            this.scene.start('BossLevel');
         }
     }
 }
