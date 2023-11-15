@@ -162,11 +162,16 @@ export class OptionsScene extends Phaser.Scene {
 		const controlsScaleFactor = gameWidth / controls.width;
 		controls.setScale(controlsScaleFactor * 0.21);
 
-		const logout = this.addButton(gameWidth * 0.517, gameHeight * 0.865, 'logout', () => {
-			console.log('Logout');
-		});
-		const logoutScaleFactor = gameWidth / logout.width;
-		logout.setScale(logoutScaleFactor * 0.19);
+		const isLoggedIn = localStorage.getItem('loggedIn')
+
+		if(isLoggedIn){
+			const logout = this.addButton(gameWidth * 0.517, gameHeight * 0.865, 'logout', () => {
+				localStorage.clear();
+				this.scene.restart();
+			});
+			const logoutScaleFactor = gameWidth / logout.width;
+			logout.setScale(logoutScaleFactor * 0.19);
+		}
 
 		const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
 			this.handleCredits();
