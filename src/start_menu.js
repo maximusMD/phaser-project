@@ -11,6 +11,7 @@ import logoutImg from '../src/assets/menu_buttons/logout.png';
 import playImg from './assets/menu_buttons/play.png';
 
 
+
 export class MenuScene extends Phaser.Scene {
     constructor() {
         super({ 
@@ -31,6 +32,7 @@ export class MenuScene extends Phaser.Scene {
         this.load.image('logout', logoutImg);
         this.load.image('play', playImg);
         this.load.audio('menuMusic', menuMusic);
+        
         this.load.script(
             "webfont",
             "https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"
