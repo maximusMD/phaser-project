@@ -31,6 +31,7 @@ import { Executioner } from './classes/Executioner.js';
 
 import poison_1 from "./assets/particles/poison1.png"
 import sprite_explode from "./assets/particles/sprite_emitter.png"
+import boss_explode from "./assets/particles/boss_death.png"
 
 import { LoadingBar } from './LoadingBar.js';
 
@@ -70,8 +71,8 @@ export class BossTest extends Phaser.Scene {
             },
             pack: {
                 files: [
-                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas},
-                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas}
+                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas },
+                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas }
                 ]
             }
         });
@@ -90,8 +91,9 @@ export class BossTest extends Phaser.Scene {
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
         this.load.image('dust', dust)
-    
+
         this.load.image('poison_1', poison_1)
+        this.load.image('boss_explode', boss_explode)
         this.load.image('sprite_explode', sprite_explode)
 
         this.load.image('standard_tiles', tileset_img);
@@ -102,7 +104,7 @@ export class BossTest extends Phaser.Scene {
 
         // Load bar
         LoadingBar(this, true);
-        
+
     }
     create() {
         const { width, height } = this.scale;
@@ -134,6 +136,16 @@ export class BossTest extends Phaser.Scene {
                 .setTint(0x003366, 0x004080)
                 .setScale(1)
                 .setDepth(-1)
+        });
+
+        this.boss_explode_emitter = this.add.particles(400, 250, 'boss_explode', {
+            lifespan: 500,
+            speed: { min: 200, max: 600 },
+            scale: { start: 0.05, end: 0 },
+            gravityY: 0,
+            blendMode: 'LUMINOSITY',
+            tint: 0xbabaf8,
+            emitting: false
         });
 
         const map = this.make.tilemap({ key: 'tilemap2' })
@@ -174,27 +186,40 @@ export class BossTest extends Phaser.Scene {
             .fillStyle(0xff0000)
             .fillRect(playerXInCamera - 220, playerYInCamera + 200, 420, 20);
 
-            
-        }
-        
-        update() {
-            this.player.update()
-            this.backgrounds.update();
-            this.hudScene.update()
-            
+
+    }
+
+    update() {
+        this.player.update()
+        this.backgrounds.update();
+        this.hudScene.update()
+
+        if (!this.executioner.getIsDead()) {
             this.bossHealthBar.clear()
             const healthPercentage = this.executioner.getHP() / this.executioner.maxHealth;
             const barWidth = 420 * healthPercentage;
-
-        this.bossHealthBar = this.add.graphics()
-        .fillStyle(0xff0000)
-        .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
-
-        if (!this.executioner.getIsDead()) {
+            this.bossHealthBar = this.add.graphics()
+                .fillStyle(0xff0000)
+                .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
             this.executioner.update()
             this.executioner.summons.getChildren().forEach(x => {
                 if (x.getIsAlive()) x.update();
             })
+        } else {
+
+            // BOSS DEATH 
+
+
+            this.poison.stop();
+            this.dash_overlay.destroy();
+            if (!this.shownDeath) {
+                this.boss_explode_emitter.setPosition(this.deathX, this.deathY)
+                this.boss_explode_emitter.explode(50);
+                this.shownDeath = true;
+                this.scene.time.delayedCall(3000, () => {
+                    // BOSS TRANSITION
+                });
+            }
         }
     }
 }
