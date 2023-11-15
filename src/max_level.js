@@ -282,7 +282,7 @@ export class MaxLevel extends Phaser.Scene {
         if (this.player.getHP() === 0) {
             console.log(this.player.getHP())
             this.scene.stop('HUDScene')
-            this.scene.start('GameOverScene')
+            this.scene.start('LoadingScene')
         }
 
         if (this.player.x <= targetX && this.player.y >= targetY) {
