@@ -206,19 +206,20 @@ export class BossTest extends Phaser.Scene {
                 if (x.getIsAlive()) x.update();
             })
         } else {
-
             // BOSS DEATH 
-
-
             this.poison.stop();
             this.dash_overlay.destroy();
             if (!this.shownDeath) {
                 this.boss_explode_emitter.setPosition(this.deathX, this.deathY)
                 this.boss_explode_emitter.explode(50);
                 this.shownDeath = true;
-                this.scene.time.delayedCall(3000, () => {
+                this.time.delayedCall(3000, () => {
                     // BOSS TRANSITION
-                });
+                    localStorage.setItem('score', this.hudScene.score)
+                    this.hudScene.score = 0;
+                    this.scene.stop('HUDScene')
+                    this.scene.start('WinnerScene')
+                })
             }
         }
     }
