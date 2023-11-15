@@ -12,8 +12,8 @@ export class SkeletonArcher extends Enemy {
     this.getBody().setSize(45, 55);
     this.getBody().setOffset(36, (this.height / 2) + 10)
     this.setVision(100);
-    this.setMeleeDamage(1);
-    this.setRangeDamage(5);
+    this.setMeleeDamage(0.05);
+    this.setRangeDamage(0.1);
     this.#arrows = new ArrowGroup(this.scene);
     this.setScore(20);
 

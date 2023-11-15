@@ -12,7 +12,7 @@ export class Enemy extends Actor {
   #scoreWorth = 10;
   #finishAttack = false;
   #aggro = false;
-  
+
   constructor(scene, x, y, enemyModel) {
     super(scene, x, y, enemyModel);
   }
@@ -101,7 +101,7 @@ export class Enemy extends Actor {
   }
 
   setRangeDamage(range) {
-    this.#meleeDamage = range;
+    this.#rangeDamage = range;
   }
 
   setIsWandering(bool) {
@@ -145,13 +145,19 @@ export class Enemy extends Actor {
       this.setIsWandering(false);
     }
 
-    this.startPos = undefined;
+    // if(this.isNearEdge()) {
+    //   this.setIsWandering(false);
+    //   this.setVelocityX(0);
+    //   // this.setWalkSpeed(-1 * this.getWalkSpeed());
 
-    if (this.isNearEdge()) {
-      this.stopWandering()
-      this.anims.play(idleKey, true)
-      return;
-    }
+    //   this.scene.time.delayedCall(2000, () => {
+    //     this.setVelocityX(this.getWalkSpeed())
+    //   })
+
+    //   return;
+    // }
+
+    this.startPos = undefined;
   }
 
   stopWandering() {
@@ -167,10 +173,9 @@ export class Enemy extends Actor {
     this.anims.play(attack, true)
     if (this.anims.currentFrame.index === this.anims.currentAnim.frames.length) {
       if (this.checkOverlap(this.scene.player)) {
+        console.log(this.#finishAttack)
         this.scene.player.setHP(this.getMeleeDamage())
         this.setFinishAttack(false)
-      } else {
-        this.scene.player.setHP(0);
       }
     }
   }
@@ -202,7 +207,7 @@ export class Enemy extends Actor {
     const tolerance = 1;
 
     const feetX = this.x;
-    const feetY = this.y + this.height /2;
+    const feetY = this.y + this.height / 2;
 
     const tileCoordinates = floor.worldToTileXY(feetX, feetY);
 

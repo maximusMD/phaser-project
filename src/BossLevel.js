@@ -162,10 +162,33 @@ export class BossTest extends Phaser.Scene {
         this.dash_overlay.scaleX = 1.5;
         this.dash_overlay.setTint(0x0B0B0B)
 
-    }
-    update() {
-        this.player.update();
-        this.backgrounds.update();
+        const hudScenePlugin = this.scene.run('HUDScene')
+        this.scene.bringToTop('HUDScene')
+        // access scene
+        this.hudScene = hudScenePlugin.get('HUDScene');
+
+        const playerXInCamera = this.player.x
+        const playerYInCamera = this.player.y
+
+        this.bossHealthBar = this.add.graphics()
+            .fillStyle(0xff0000)
+            .fillRect(playerXInCamera - 220, playerYInCamera + 200, 420, 20);
+
+            
+        }
+        
+        update() {
+            this.player.update()
+            this.backgrounds.update();
+            this.hudScene.update()
+            
+            this.bossHealthBar.clear()
+            const healthPercentage = this.executioner.getHP() / this.executioner.maxHealth;
+            const barWidth = 420 * healthPercentage;
+
+        this.bossHealthBar = this.add.graphics()
+        .fillStyle(0xff0000)
+        .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
 
         if (!this.executioner.getIsDead()) {
             this.executioner.update()
