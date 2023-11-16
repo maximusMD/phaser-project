@@ -38,6 +38,7 @@ import exclaim2 from "./assets/particles/exclaim_2.png"
 import exclaim3 from "./assets/particles/exclaim_3.png"
 
 import { LoadingBar } from './LoadingBar.js';
+import laser_sfx from './assets/shooting_sfx.wav';
 
 export class BossTest extends Phaser.Scene {
     constructor() {
@@ -80,6 +81,7 @@ export class BossTest extends Phaser.Scene {
                 ]
             }
         });
+        this.sfxArray = [];
     }
 
     preload() {
@@ -112,8 +114,12 @@ export class BossTest extends Phaser.Scene {
         // Load bar
         LoadingBar(this, true);
 
+        this.load.audio('laser_sfx', laser_sfx);
+
     }
     create() {
+        const sfxEnabled = localStorage.getItem('sfxEnabled') || 'true';
+        
         const randomExclaim = Math.floor((Math.random() * 3));
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
@@ -170,8 +176,20 @@ export class BossTest extends Phaser.Scene {
         this.executioner = new Executioner(this, 360, 425, "executioner")
         // this.summon_test = new ExecutionerSummon(this, 150, 100, "executioner")
 
+        this.laser_sfx = this.sound.add('laser_sfx');
+        this.sfxArray.push(this.laser_sfx);
+
+        this.sfxArray.forEach(sound => {
+            if (sfxEnabled === 'true') {
+                sound.setVolume(1.0);
+            } else {
+                sound.setMute(true);
+            }
+
+        });
+
         this.allSprites = this.children.list.filter(x => x instanceof Enemy)
-        this.pauseHandler = handlePause(this, this.allSprites);
+        this.pauseHandler = handlePause(this, this.allSprites, this.sfxArray);
 
         this.player.init(this.ground2)
 
