@@ -62,17 +62,17 @@ export class OptionsScene extends Phaser.Scene {
 		const headerScaleFactor = gameWidth / header.width;
 		header.setScale(headerScaleFactor * 0.55);
 
-		const weather = this.add.image(gameWidth * 0.325, gameHeight * 0.4, 'weather');
+		const weather = this.add.image(gameWidth * 0.38, gameHeight * 0.42, 'weather');
 		const weatherScaleFactor = gameWidth / weather.width;
 		weather.setScale(weatherScaleFactor * 0.1635);
 
 		const onWeatherImg = this.add
-			.image(gameWidth * 0.5, gameHeight * 0.4, 'onImg')
+			.image(gameWidth * 0.63, gameHeight * 0.42, 'onImg')
 			.setInteractive();
 		onWeatherImg.setScale(weatherScaleFactor * 0.1635);
 
 		const offWeatherImg = this.add
-			.image(gameWidth * 0.58, gameHeight * 0.4, 'offImg')
+			.image(gameWidth * 0.71, gameHeight * 0.42, 'offImg')
 			.setInteractive();
 		offWeatherImg.setScale(weatherScaleFactor * 0.1635);
 
@@ -92,17 +92,17 @@ export class OptionsScene extends Phaser.Scene {
 		onWeatherImg.setTint(weatherEnabled === 'true' ? 0xffffff : 0x808080);
 		offWeatherImg.setTint(weatherEnabled === 'true' ? 0x808080 : 0xffffff);
 
-		const music = this.add.image(gameWidth * 0.325, gameHeight * 0.48, 'music');
+		const music = this.add.image(gameWidth * 0.38, gameHeight * 0.5, 'music');
 		const musicScaleFactor = gameWidth / music.width;
 		music.setScale(musicScaleFactor * 0.12);
 
 		const onMusicImg = this.add
-			.image(gameWidth * 0.5, gameHeight * 0.48, 'onImg')
+			.image(gameWidth * 0.63, gameHeight * 0.5, 'onImg')
 			.setInteractive();
 		onMusicImg.setScale(musicScaleFactor * 0.12);
 
 		const offMusicImg = this.add
-			.image(gameWidth * 0.58, gameHeight * 0.48, 'offImg')
+			.image(gameWidth * 0.71, gameHeight * 0.5, 'offImg')
 			.setInteractive();
 		offMusicImg.setScale(musicScaleFactor * 0.12);
 
@@ -122,17 +122,17 @@ export class OptionsScene extends Phaser.Scene {
 		onMusicImg.setTint(musicEnabled === 'true' ? 0xffffff : 0x808080);
 		offMusicImg.setTint(musicEnabled === 'true' ? 0x808080 : 0xffffff);
 
-		const sfx = this.add.image(gameWidth * 0.325, gameHeight * 0.57, 'sfx');
+		const sfx = this.add.image(gameWidth * 0.38, gameHeight * 0.59, 'sfx');
 		const sfxScaleFactor = gameWidth / sfx.width;
 		sfx.setScale(sfxScaleFactor * 0.08);
 
 		const onSfxImg = this.add
-			.image(gameWidth * 0.5, gameHeight * 0.57, 'onImg')
+			.image(gameWidth * 0.63, gameHeight * 0.59, 'onImg')
 			.setInteractive();
 		onSfxImg.setScale(sfxScaleFactor * 0.08);
 
 		const offSfxImg = this.add
-			.image(gameWidth * 0.58, gameHeight * 0.57, 'offImg')
+			.image(gameWidth * 0.71, gameHeight * 0.59, 'offImg')
 			.setInteractive();
 		offSfxImg.setScale(sfxScaleFactor * 0.08);
 
@@ -180,7 +180,9 @@ export class OptionsScene extends Phaser.Scene {
 		credits.setScale(creditsScaleFactor * 0.1835);
 
 		const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
-			console.log('Share');
+			const currentURL = window.location.href;
+			this.copyToClipboard(currentURL);
+			alert('URL copied to clipboard: ' + currentURL)
 		});
 		const shareScaleFactor = gameWidth / share.width;
 		share.setScale(shareScaleFactor * 0.16);
@@ -216,7 +218,15 @@ export class OptionsScene extends Phaser.Scene {
 		this.scene.start('MenuScene');
 	}
 
-	// handleControls() {
-	//     this.scene.start('ControlsScene')
-	// }
+	copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
 }

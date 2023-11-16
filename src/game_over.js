@@ -1,8 +1,8 @@
 import Phaser from 'phaser'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
-import controlsImg from './assets/menu_buttons/controls.png'
 import gameOverImg from './assets/menu_buttons/game-over.png';
+import shareImg from './assets/menu_buttons/share.png';
 
 
 export class GameOverScene extends Phaser.Scene {
@@ -13,9 +13,9 @@ export class GameOverScene extends Phaser.Scene {
     preload() {
         this.load.image('background', 'assets/bg.png')
         this.load.image('credits', credImg)
-        this.load.image('controls', controlsImg)
         this.load.image('main-menu', mainMenuImg)
         this.load.image('game-over', gameOverImg)
+        this.load.image('share', shareImg);
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -31,12 +31,6 @@ export class GameOverScene extends Phaser.Scene {
         background.displayHeight = gameHeight;
         background.setPosition(gameWidth / 2, gameHeight / 2);
 
-        const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
-            this.handleControls()
-        })
-        const controlsScaleFactor = gameWidth / controls.width; 
-        controls.setScale(controlsScaleFactor * 0.21)
-
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
             this.handleCredits()
         });
@@ -48,12 +42,20 @@ export class GameOverScene extends Phaser.Scene {
         });
         const mainMenuScaleFactor = gameWidth / mainMenu.width; 
         mainMenu.setScale(mainMenuScaleFactor * 0.1835)
+
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+			const currentURL = window.location.href;
+			this.copyToClipboard(currentURL);
+			alert('URL copied to clipboard: ' + currentURL)
+		});
+		const shareScaleFactor = gameWidth / share.width;
+		share.setScale(shareScaleFactor * 0.16);
         
         const isLoggedIn = localStorage.getItem('loggedIn')
         const user = JSON.parse(localStorage.getItem('playerData'));
         const savedScore = JSON.parse(localStorage.getItem('score'))
 
-        const gameOver = this.add.image(gameWidth * 0.52, gameHeight * 0.29, 'game-over');
+        const gameOver = this.add.image(gameWidth * 0.53, gameHeight * 0.29, 'game-over');
         const titleScaleFactor = gameWidth / gameOver.width;
         gameOver.setScale(titleScaleFactor * 0.55);
         let playerName = 'GUEST'
@@ -70,14 +72,14 @@ export class GameOverScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                textData = this.add.text(gameWidth/2, gameHeight/2, `${playerName}! \n\n\nYOUR FINAL SCORE: ${savedScore}`, {
+                textData = this.add.text(gameWidth/2, gameHeight/2, `${playerName}! \n\nYOUR FINAL SCORE: ${savedScore}`, {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
                     align: 'center'
                 })
                 textGroup.add(textData);
-                textGroup.setOrigin(0.5);
+                textGroup.setOrigin(0.43, 0.35);
             }
         })
        
@@ -92,10 +94,6 @@ export class GameOverScene extends Phaser.Scene {
 
     handleCredits() {
         this.scene.start('CreditsScene')
-    }
-
-    handleControls() {
-        this.scene.start('ControlsScene')
     }
 
     handleMain() {
@@ -123,5 +121,17 @@ export class GameOverScene extends Phaser.Scene {
         .catch((err) => {
         console.error('error:', err);
         })
+    }
+
+    copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
     }
 }

@@ -6,7 +6,6 @@ export class Preloader extends Phaser.Scene {
   }
 
   preload() {
-    // Load all assets needed for game in this preload
     this.load.html('userform', './assets/form.html')
 
     this.load.image('background', 'assets/bg.png')
@@ -14,11 +13,6 @@ export class Preloader extends Phaser.Scene {
   }
 
   create() {
-    // call the first scene
     this.scene.start('MenuScene');
-  }
-
-  updateProgress(percentage) {
-    // update width of loading bar based on percentage
   }
 }

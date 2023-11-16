@@ -10,6 +10,8 @@ import { RoguePlayer } from './classes/RoguePlayer.js';
 import { SkeletonArcher } from './classes/SkeletonArcher.js';
 import { RogueDarkLord } from './classes/RogueDarkLord.js';
 import { RogueBrain } from './classes/RogueBrain.js';
+import { Sneaker } from './classes/Sneaker.js';
+
 
 import { Weather } from './classes/Weather.js';
 
@@ -87,7 +89,7 @@ export class MaxLevel extends Phaser.Scene {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 500 },
-                    debug: true,
+                    debug: false,
                 }
             },
             pack: {
@@ -122,11 +124,12 @@ export class MaxLevel extends Phaser.Scene {
         this.load.tilemapTiledJSON('tilemap', tilemap);
         this.cameras.main.setZoom(2, 2);
         this.load.atlas("rogue_player", rogue_image, rogue_atlas)
-
         this.load.atlas("skeleton_archer", skeleton_archer_image, skeleton_archer_atlas)
+        this.load.atlas('sneaker', sneaker_image, sneaker_atlas)
+
+
         this.load.atlas('darklord', darklord_image, darklord_atlas)
         this.load.atlas('brain', brain_image, brain_atlas)
-        // this.load.atlas('sneaker', sneaker_image, sneaker_atlas)
 
         this.load.audio('sceneMusic', sceneMusic);
         this.load.audio('arrow_shoot_sfx', arrow_shoot_sfx);
@@ -233,6 +236,12 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy5, this.ground);
         this.enemy6 = new RogueBrain(this, 300, 200, 'brain')
         this.physics.add.collider(this.enemy6, this.ground);
+
+
+        this.enemy25 = new Sneaker(this, 400, 300, 'sneaker')
+        this.physics.add.collider(this.enemy25, this.ground);
+
+
         this.enemy11 = new RogueBrain(this, 100, 200, 'brain')
         this.physics.add.collider(this.enemy11, this.ground);
         this.enemy12 = new RogueBrain(this, 300, 200, 'brain')
@@ -245,8 +254,7 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy23, this.ground);
         this.enemy24 = new RogueBrain(this, 700, 700, 'brain')
         this.physics.add.collider(this.enemy24, this.ground);
-
-
+      
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
         this.cameras.main.startFollow(this.player);
