@@ -356,6 +356,7 @@ export class MaxLevel extends Phaser.Scene {
             this.enemy22.update(this.player)
             this.enemy23.update(this.player)
             this.enemy24.update(this.player)
+            this.enemy25.update(this.player)
 
             this.hudScene.update();
             // console.log('Player Coordinates:', this.player.x, this.player.y);
