@@ -190,11 +190,9 @@ export class PauseMenuScene extends Phaser.Scene {
 
 	toggleSFX(mute) {
 		this.#sfxFlag = mute;
-		if (mute) {
-			this.sfx.setMute(mute);
-		} else {
-			this.sfx.setMute(mute);
-		}
+		this.sfx.forEach(sound => {
+			sound.setMute(mute);
+		});
 	}
 
 	handleMainMenu() {
