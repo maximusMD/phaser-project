@@ -93,7 +93,7 @@ export class MenuScene extends Phaser.Scene {
 				this.stopMenuMusicAndStartScene('UserForm');
 			});
 			const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
-				this.stopMenuMusicAndStartScene('RyanLevel');
+				this.stopMenuMusicAndStartScene('MaxLevel');
 			});
 		}
 
