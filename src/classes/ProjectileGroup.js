@@ -24,6 +24,7 @@ export class LaserGroup extends Phaser.Physics.Arcade.Group {
         const laser = this.getFirstDead(false);
         if (laser) {
             laser.fire(x, y, direction, laserDamage);
+            this.scene.laser_sfx.play();
         }
     }
 }
@@ -100,6 +101,7 @@ export class ArrowGroup extends Phaser.Physics.Arcade.Group {
         const arrow = this.getFirstDead(false);
         if (arrow) {
             arrow.fire(x, y, direction, arrowDamage);
+            this.scene.arrow_sfx.play();
         }
     }
 }
