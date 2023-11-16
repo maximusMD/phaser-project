@@ -89,7 +89,7 @@ export class MaxLevel extends Phaser.Scene {
                 default: 'arcade',
                 arcade: {
                     gravity: { y: 500 },
-                    debug: true,
+                    debug: false,
                 }
             },
             pack: {

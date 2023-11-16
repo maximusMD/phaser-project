@@ -180,7 +180,9 @@ export class OptionsScene extends Phaser.Scene {
 		credits.setScale(creditsScaleFactor * 0.1835);
 
 		const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
-			console.log('Share');
+			const currentURL = window.location.href;
+			this.copyToClipboard(currentURL);
+			alert('URL copied to clipboard: ' + currentURL)
 		});
 		const shareScaleFactor = gameWidth / share.width;
 		share.setScale(shareScaleFactor * 0.16);
@@ -216,7 +218,15 @@ export class OptionsScene extends Phaser.Scene {
 		this.scene.start('MenuScene');
 	}
 
-	// handleControls() {
-	//     this.scene.start('ControlsScene')
-	// }
+	copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+    }
 }
