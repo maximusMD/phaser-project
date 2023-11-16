@@ -67,17 +67,17 @@ export class AboutScene extends Phaser.Scene {
 
                     - Options Functionality     - Pause Functionality
 
-                    This game has been built using Phaser v3.6, MongoDB, Bcrypt, and Node.JS; 
+                    This game has been built using Phaser v3.6, MongoDB, Bcrypt, Express and Node.JS; 
                     making use of assets created by Max and S4m-ur4i.
 
                     Thanks for playing! Check us out on Github and LinkedIn via the Credits page!`, 
                     {
                     fontFamily: 'Pixelify Sans',
-                    fontSize: '22px',
+                    fontSize: '21px',
                     fill: '#FFFFFF',
                     align: 'center',
                 })
-                this.info.setOrigin(-0.22, -0.35);
+                this.info.setOrigin(-0.2, -0.48);
             }
         })
     }
