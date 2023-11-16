@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
 import controlsImg from './assets/menu_buttons/controls.png'
+import shareImg from './assets/menu_buttons/share.png';
 
 export class AboutScene extends Phaser.Scene {
     constructor() {
@@ -13,6 +14,7 @@ export class AboutScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('controls', controlsImg)
         this.load.image('main-menu', mainMenuImg)
+        this.load.image('share', shareImg);
     }
 
     create() {
@@ -41,6 +43,14 @@ export class AboutScene extends Phaser.Scene {
         });
         const mainMenuScaleFactor = gameWidth / mainMenu.width; 
         mainMenu.setScale(mainMenuScaleFactor * 0.1835)
+
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+            const currentURL = window.location.href;
+            this.copyToClipboard(currentURL);
+            alert('URL copied to clipboard: ' + currentURL)
+        });
+        const shareScaleFactor = gameWidth / share.width;
+        share.setScale(shareScaleFactor * 0.16);
     }
 
     addButton(x, y, key, onClick) {
@@ -60,5 +70,17 @@ export class AboutScene extends Phaser.Scene {
 
     handleMain() {
         this.scene.start('MenuScene')
+    }
+
+    copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
     }
 }

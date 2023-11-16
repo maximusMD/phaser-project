@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
 import gameOverImg from './assets/menu_buttons/game-over.png';
+import shareImg from './assets/menu_buttons/share.png';
 
 
 export class GameOverScene extends Phaser.Scene {
@@ -14,6 +15,7 @@ export class GameOverScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('main-menu', mainMenuImg)
         this.load.image('game-over', gameOverImg)
+        this.load.image('share', shareImg);
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -40,6 +42,14 @@ export class GameOverScene extends Phaser.Scene {
         });
         const mainMenuScaleFactor = gameWidth / mainMenu.width; 
         mainMenu.setScale(mainMenuScaleFactor * 0.1835)
+
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+			const currentURL = window.location.href;
+			this.copyToClipboard(currentURL);
+			alert('URL copied to clipboard: ' + currentURL)
+		});
+		const shareScaleFactor = gameWidth / share.width;
+		share.setScale(shareScaleFactor * 0.16);
         
         const isLoggedIn = localStorage.getItem('loggedIn')
         const user = JSON.parse(localStorage.getItem('playerData'));
@@ -111,5 +121,17 @@ export class GameOverScene extends Phaser.Scene {
         .catch((err) => {
         console.error('error:', err);
         })
+    }
+
+    copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
     }
 }

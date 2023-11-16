@@ -3,6 +3,7 @@ import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
 import aboutImg from './assets/menu_buttons/about.png'
 import winner from './assets/menu_buttons/survived.png'
+import shareImg from './assets/menu_buttons/share.png';
 
 export class WinnerScene extends Phaser.Scene {
     constructor() {
@@ -15,6 +16,7 @@ export class WinnerScene extends Phaser.Scene {
         this.load.image('about', aboutImg)
         this.load.image('main-menu', mainMenuImg)
         this.load.image('winner', winner)
+        this.load.image('share', shareImg);
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -79,6 +81,14 @@ export class WinnerScene extends Phaser.Scene {
         });
         const mainMenuScaleFactor = gameWidth / mainMenu.width; 
         mainMenu.setScale(mainMenuScaleFactor * 0.1835)
+
+        const share = this.addButton(gameWidth * 0.915, gameHeight * 0.9, 'share', () => {
+			const currentURL = window.location.href;
+			this.copyToClipboard(currentURL);
+			alert('URL copied to clipboard: ' + currentURL)
+		});
+		const shareScaleFactor = gameWidth / share.width;
+		share.setScale(shareScaleFactor * 0.16);
     }
 
     addButton(x, y, key, onClick) {
@@ -121,5 +131,17 @@ export class WinnerScene extends Phaser.Scene {
         .catch((err) => {
         console.error('error:', err);
         })
+    }
+
+    copyToClipboard(text) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'absolute';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '0';
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
     }
 }
