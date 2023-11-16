@@ -118,6 +118,8 @@ export class BossTest extends Phaser.Scene {
 
     }
     create() {
+        const sfxEnabled = localStorage.getItem('sfxEnabled') || 'true';
+        
         const randomExclaim = Math.floor((Math.random() * 3));
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
