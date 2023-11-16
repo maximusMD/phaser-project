@@ -40,6 +40,7 @@ import { ParaBackgrounds } from './classes/ParaBackgrounds.js';
 
 import sceneMusic from './assets/levelMusic.wav';
 import arrow_sfx from './assets/shooting_arrow.wav';
+import laser_sfx from './assets/shooting_sfx.wav';
 
 // potential particle effects
 import flare from "./assets/particles/flare_1.png"
@@ -80,6 +81,8 @@ export class RyanLevel extends Phaser.Scene {
                 }
             }
         });
+
+        this.sfxArray = [];
     }
 
     preload() {
@@ -108,6 +111,7 @@ export class RyanLevel extends Phaser.Scene {
 
         this.load.audio('sceneMusic', sceneMusic);
         this.load.audio('arrow_sfx', arrow_sfx);
+        this.load.audio('laser_sfx', laser_sfx);
 
     }
 
@@ -174,16 +178,21 @@ export class RyanLevel extends Phaser.Scene {
 		}
 
         this.arrow_sfx = this.sound.add('arrow_sfx');
+        this.laser_sfx = this.sound.add('laser_sfx');
+        this.sfxArray.push(this.arrow_sfx, this.laser_sfx);
 
-		if (sfxEnabled === 'true') {
-			this.arrow_sfx.setVolume(1.0);
-		} else {
-			this.arrow_sfx.setMute(true);
-		}
+        this.sfxArray.forEach(sound => {
+            if (sfxEnabled === 'true') {
+                sound.setVolume(1.0);
+            } else {
+                sound.setMute(true);
+            }
+
+        });
         
 
         this.allSprites = this.children.list.filter(x => x instanceof Actor)
-        this.pauseHandler = handlePause(this, sceneMusic, this.arrow_sfx);
+        this.pauseHandler = handlePause(this, sceneMusic, this.sfxArray);
         this.scene.manager.bringToTop('PauseMenuScene');
 
         this.weather.init()
