@@ -2,6 +2,7 @@ import Phaser from 'phaser'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
 import aboutImg from './assets/menu_buttons/about.png'
+import winner from './assets/menu_buttons/survived.png'
 
 export class WinnerScene extends Phaser.Scene {
     constructor() {
@@ -13,6 +14,7 @@ export class WinnerScene extends Phaser.Scene {
         this.load.image('credits', credImg)
         this.load.image('about', aboutImg)
         this.load.image('main-menu', mainMenuImg)
+        this.load.image('winner', winner)
         this.load.script(
             'webfont',
             'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
@@ -45,16 +47,20 @@ export class WinnerScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                textData = this.add.text(gameWidth/2, gameHeight/2, `CONGRATULATIONS ${playerName}!!!!! \n\n\nYOUR FINAL SCORE: ${savedScore}`, {
+                textData = this.add.text(gameWidth/2, gameHeight/2, `${playerName}!!!!! \n\nYOUR FINAL SCORE: ${savedScore}`, {
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
                     align: 'center'
                 })
                 textGroup.add(textData);
-                textGroup.setOrigin(0.5);
+                textGroup.setOrigin(0.43, 0.45);
             }
         })
+
+        const winner = this.add.image(gameWidth * 0.47, gameHeight * 0.25, 'winner');
+		const winnerScaleFactor = gameWidth / winner.width;
+		winner.setScale(winnerScaleFactor * 0.65);
 
         const about = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'about', () => {
             this.handleAbout()

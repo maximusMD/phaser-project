@@ -37,6 +37,7 @@ const config = {
     width: window.innerWidth,
     height: window.innerHeight,
     scene: [Preloader, MenuScene, OptionsScene, ControlsScene, UserForm, RyanLevel, CreditsScene, AboutScene, HUDScene, PauseMenuScene, LeaderboardScene, MaxLevel, WinnerScene, GameOverScene, BossTest, LoadingScene],
+	// scene: GameOverScene,
 	render: { pixelArt: true},
     dom: { createContainer: true}, 
 }
