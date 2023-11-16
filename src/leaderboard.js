@@ -75,7 +75,7 @@ export class LeaderboardScene extends Phaser.Scene {
       },
       active: () => {
         
-        const loadingBar = this.add.sprite(gameWidth/2, gameHeight /2, 'loadingBar', 'loading0.png');
+        const loadingBar = this.add.sprite(gameWidth/1.93, gameHeight /1.75, 'loadingBar', 'loading0.png');
         const loadingBarScaleFactor = gameWidth / loadingBar.width
         loadingBar.setScale(loadingBarScaleFactor * 0.135)
     
@@ -101,18 +101,19 @@ export class LeaderboardScene extends Phaser.Scene {
             loadingBar.destroy();
             for (let i = 0; i < 4; i++) {
               const user = data[i];
-              const textData = `<${user.username} - ${user.highScore}>\n`;
+              const textData = `<${user.username.toUpperCase()} - ${user.highScore}>\n`;
               const textObject = this.add.text(
                 gameWidth / 2,
                 400 + i * 50,
                 textData,
                 {
                   fontFamily: "Pixelify Sans",
-                  fontSize: "30px",
+                  fontSize: "45px",
                   fill: "#ffffff",
                 }
               );
-              textObject.setOrigin(0.5);
+              textObject.setOrigin(0.42, 0.46);
+              textObject.setLineSpacing(15)
               textGroup.add(textObject);
             }
           })
