@@ -323,7 +323,7 @@ export class MaxLevel extends Phaser.Scene {
                     x.setActive(false);
                 }
             })
-            localStorage.setItem('score', this.hudScene.score)
+            //localStorage.setItem('score', this.hudScene.score)
             this.hudScene.score = 0;
             this.scene.stop('HUDScene')
             if (!this.fadeOut) {

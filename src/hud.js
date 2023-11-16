@@ -31,7 +31,8 @@ export class HUDScene extends Phaser.Scene {
                 families: ['Pixelify Sans'],
             },
             active: () => {
-                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, `Score: ${this.score}`, {
+                
+                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, `Score: ${this.score}`,{
                     fontFamily: 'Pixelify Sans',
                     fontSize: '48px',
                     fill: '#FFFFFF',
@@ -73,6 +74,9 @@ export class HUDScene extends Phaser.Scene {
         this.score += score;
         if (this.info) {
             this.info.setText('Score: ' + this.score)
+            //console.log(this.score,'<<<<');
+            localStorage.setItem('score', this.score)
+
         }
     }
 

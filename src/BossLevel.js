@@ -247,7 +247,8 @@ export class BossTest extends Phaser.Scene {
                         x.setActive(false);
                     }
                 })
-                localStorage.setItem('score', this.hudScene.score)
+                //localStorage.setItem('score', this.hudScene.score)
+                console.log(this.hudScene.score, 'boss');
                 this.hudScene.score = 0;
                 this.scene.stop('HUDScene')
                 if (!this.fadeOut) {

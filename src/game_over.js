@@ -54,6 +54,7 @@ export class GameOverScene extends Phaser.Scene {
         const isLoggedIn = localStorage.getItem('loggedIn')
         const user = JSON.parse(localStorage.getItem('playerData'));
         const savedScore = JSON.parse(localStorage.getItem('score'))
+        console.log(savedScore, 'from game over');
 
         const gameOver = this.add.image(gameWidth * 0.53, gameHeight * 0.29, 'game-over');
         const titleScaleFactor = gameWidth / gameOver.width;
