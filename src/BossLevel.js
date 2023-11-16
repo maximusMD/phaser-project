@@ -3,6 +3,7 @@ import { RoguePlayer } from './classes/RoguePlayer.js';
 import { Weather } from './classes/Weather.js';
 import { Enemy } from './classes/Enemy.js';
 import { handlePause } from './pauseHandler.js';
+import { Actor } from './classes/Actor.js';
 
 import tileset_img from './assets/tilesets/s4m_ur4i-metroidvania-1.3.png';
 import tilemap from './assets/tilemaps/boss_testing.json';
@@ -190,6 +191,26 @@ export class BossTest extends Phaser.Scene {
     }
 
     update() {
+        this.cameras.main.on('camerafadeoutcomplete', (e, e2) => {
+            this.scene.start('GameOverScene')
+        }, this.scene);
+
+        if (this.player.getHP() <= 0) {
+            this.physics.pause();
+            this.children.list.forEach(x => {
+                if (x instanceof Actor) {
+                    x.setActive(false);
+                }
+            })
+            localStorage.setItem('score' ,this.hudScene.score)
+            this.hudScene.score = 0;
+            this.scene.stop('HUDScene')
+            if (!this.fadeOut) {
+                this.cameras.main.fadeOut(3000)
+                this.fadeOut = true;
+            }
+        }
+
         this.player.update()
         this.backgrounds.update();
         this.hudScene.update()

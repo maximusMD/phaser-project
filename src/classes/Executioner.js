@@ -423,32 +423,36 @@ export class Executioner extends Enemy {
     }
 
     update() {
-        if (this.getHP() > 0) {
-            this.on('animationcomplete', this.handleCompleteAnims);
-            this.on('animationstop', this.handleStoppedAnims);
-            if (this.getHP() < 250 && !this.getPoisonEnabled()) {
-                this.createPoison();
-            }
-
-            if (!this.checkPlayerOverlap()) {
-                if (this.getBody().x > this.scene.player.getBody().x) {
-                    this.setFlipX(true);
-                } else {
-                    this.setFlipX(false);
+        if (this.scene.player.getHP() > 0) {
+            if (this.getHP() > 0) {
+                this.on('animationcomplete', this.handleCompleteAnims);
+                this.on('animationstop', this.handleStoppedAnims);
+                if (this.getHP() < 250 && !this.getPoisonEnabled()) {
+                    this.createPoison();
                 }
-            }
-            if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
-                this.poisonPlayer();
-            }
-            // in action checks
-            if (!this.getIdling()) {
-                this.randomAttack = this.randomAttack ?? this.#attacks[Math.floor(Math.random() * this.#attacks.length)];
-                this[this.randomAttack]();
+
+                if (!this.checkPlayerOverlap()) {
+                    if (this.getBody().x > this.scene.player.getBody().x) {
+                        this.setFlipX(true);
+                    } else {
+                        this.setFlipX(false);
+                    }
+                }
+                if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
+                    this.poisonPlayer();
+                }
+                // in action checks
+                if (!this.getIdling()) {
+                    this.randomAttack = this.randomAttack ?? this.#attacks[Math.floor(Math.random() * this.#attacks.length)];
+                    this[this.randomAttack]();
+                } else {
+                    this.idling();
+                }
             } else {
-                this.idling();
+                this.playDeathAnimAndDestroy();
             }
         } else {
-            this.playDeathAnimAndDestroy();
+            this.idling();
         }
     }
 }
