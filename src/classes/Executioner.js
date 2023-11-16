@@ -27,7 +27,7 @@ export class Executioner extends Enemy {
         this.atlas = atlas;
         this.scene = scene;
         // this.setScore(200)
-        this.setHP(0, false, 30)
+        this.setHP(0, false, 1000)
         this.setScale(1.5)
         this.getBody().setAllowGravity(false);
         this.setCollideWorldBounds(false);
@@ -386,7 +386,6 @@ export class Executioner extends Enemy {
             // handle frenzy melee
             if (this.anims.isPlaying && this.anims.currentAnim.key === "executioner_frenzy") {
                 if (this.anims.currentFrame.frame.name === "attacking-9.png" || this.anims.currentFrame.frame.name === "attacking-2.png") {
-
                     if (!this.getMeleeHit()) {
                         console.log("frenzy hit")
                         this.scene.player.setHP(5)
