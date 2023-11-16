@@ -50,6 +50,7 @@ export class UserForm extends Phaser.Scene {
     let textGroup = this.add.group()
     let textData = ''
     if (isLoggedIn == 'true') {
+      const playerName = user.username.toUpperCase()
       WebFont.load({
         google: {
           families: ['Pixelify Sans'],
@@ -58,7 +59,7 @@ export class UserForm extends Phaser.Scene {
           textData = this.add.text(
             gameWidth / 2,
             gameHeight / 2,
-            `WELCOME, ${user.username}!`,
+            `WELCOME, ${playerName}!`,
             {
               fontFamily: "Pixelify Sans",
               fontSize: "50px",
@@ -66,12 +67,12 @@ export class UserForm extends Phaser.Scene {
             }
           );
           textGroup.add(textData);
-          textGroup.setOrigin(0.5);
+          textGroup.setOrigin(0.42, 0.36);
         }
         
     })
     
-      const logoutBtn = this.add.image(gameWidth / 2, gameHeight / 1.5, 'logout');
+      const logoutBtn = this.add.image(gameWidth / 1.92, gameHeight / 1.295, 'logout');
       logoutBtn.setInteractive();
 
       logoutBtn.on('pointerdown', () => {
@@ -80,7 +81,7 @@ export class UserForm extends Phaser.Scene {
         this.scene.restart(); 
       });
     } else {
-      const inputForm = this.add.dom(gameWidth / 2, gameHeight / 2).createFromCache('userform');
+      const inputForm = this.add.dom(gameWidth / 1.9, gameHeight / 2.2).createFromCache('userform');
 
       const formTitle = inputForm.getChildByID('form-title');
       formTitle.innerHTML = `<img src=${formTitleImg}>`;
@@ -101,7 +102,7 @@ export class UserForm extends Phaser.Scene {
 
       inputForm.on('submit', (e) => {
         e.preventDefault();
-        const loadingBar = this.add.sprite(gameWidth/2, gameHeight /2, 'loadingBar', 'loading0.png');
+        const loadingBar = this.add.sprite(gameWidth/1.93, gameHeight /1.75, 'loadingBar', 'loading0.png');
         const loadingBarScaleFactor = gameWidth / loadingBar.width
         loadingBar.setScale(loadingBarScaleFactor * 0.135)
     

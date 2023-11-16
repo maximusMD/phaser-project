@@ -1,7 +1,6 @@
 import Phaser from 'phaser'
 import mainMenuImg from './assets/menu_buttons/main-menu.png'
 import credImg from './assets/menu_buttons/credits.png'
-import controlsImg from './assets/menu_buttons/controls.png'
 import shareImg from './assets/menu_buttons/share.png';
 
 export class AboutScene extends Phaser.Scene {
@@ -12,9 +11,12 @@ export class AboutScene extends Phaser.Scene {
     preload() {
         this.load.image('background', 'assets/bg.png')
         this.load.image('credits', credImg)
-        this.load.image('controls', controlsImg)
         this.load.image('main-menu', mainMenuImg)
         this.load.image('share', shareImg);
+        this.load.script(
+            'webfont',
+            'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js'
+        )
     }
 
     create() {
@@ -25,12 +27,6 @@ export class AboutScene extends Phaser.Scene {
         background.displayWidth = gameWidth;
         background.displayHeight = gameHeight;
         background.setPosition(gameWidth / 2, gameHeight / 2);
-
-        const controls = this.addButton(gameWidth * 0.517, gameHeight * 0.75, 'controls', () => {
-            this.handleControls()
-        })
-        const controlsScaleFactor = gameWidth / controls.width; 
-        controls.setScale(controlsScaleFactor * 0.21)
 
         const credits = this.addButton(gameWidth * 0.1, gameHeight * 0.9, 'credits', () => {
             this.handleCredits()
@@ -51,6 +47,39 @@ export class AboutScene extends Phaser.Scene {
         });
         const shareScaleFactor = gameWidth / share.width;
         share.setScale(shareScaleFactor * 0.16);
+
+        WebFont.load({
+            google: {
+                families: ['Pixelify Sans'],
+            },
+            active: () => {
+                this.info = this.add.text(gameWidth * 0.05, gameHeight * 0.05, 
+                    `       Dark Descent was built by Max, Rak, Ryan, Marius, and Yasar 
+                    as a final project for the Northcoders Software Engineering Bootcamp.
+
+                    Built in just 8 days, we managed to incorporate:
+
+                    - Fully self-designed level with 4 different enemy types
+                    
+                    - Boss level with unique movement patterns
+
+                    - Dynamic Leaderboard       - Sign-In Functionality
+
+                    - Options Functionality     - Pause Functionality
+
+                    This game has been built using Phaser v3.6, MongoDB, Bcrypt, and Node.JS; 
+                    making use of assets created by Max and S4m-ur4i.
+
+                    Thanks for playing! Check us out on Github and LinkedIn via the Credits page!`, 
+                    {
+                    fontFamily: 'Pixelify Sans',
+                    fontSize: '22px',
+                    fill: '#FFFFFF',
+                    align: 'center',
+                })
+                this.info.setOrigin(-0.22, -0.35);
+            }
+        })
     }
 
     addButton(x, y, key, onClick) {
@@ -62,10 +91,6 @@ export class AboutScene extends Phaser.Scene {
 
     handleCredits() {
         this.scene.start('CreditsScene')
-    }
-
-    handleControls() {
-        this.scene.start('ControlsScene')
     }
 
     handleMain() {

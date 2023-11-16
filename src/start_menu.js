@@ -9,6 +9,7 @@ import aboutImg from './assets/menu_buttons/about.png';
 import menuMusic from './assets/menuMusic.wav';
 import logoutImg from '../src/assets/menu_buttons/logout.png';
 import playImg from './assets/menu_buttons/play.png';
+import titleImg from './assets/menu_buttons/darkshad.png'
 
 export class MenuScene extends Phaser.Scene {
 	static menuMusic;
@@ -20,7 +21,7 @@ export class MenuScene extends Phaser.Scene {
 
 	preload() {
 		this.load.image('background', 'assets/bg.png');
-		this.load.image('title', 'assets/title.png');
+		this.load.image('title', titleImg);
 		this.load.image('sign-in', signInImg);
 		this.load.image('guest', guestImg);
 		this.load.image('leaderboard', lbImg);
@@ -49,7 +50,7 @@ export class MenuScene extends Phaser.Scene {
 		background.displayHeight = gameHeight;
 		background.setPosition(gameWidth / 2, gameHeight / 2);
 
-		const title = this.add.image(gameWidth * 0.52, gameHeight * 0.29, 'title');
+		const title = this.add.image(gameWidth * 0.535, gameHeight * 0.29, 'title');
 		const titleScaleFactor = gameWidth / title.width;
 		title.setScale(titleScaleFactor * 0.55);
 
@@ -58,6 +59,7 @@ export class MenuScene extends Phaser.Scene {
 		let textGroup = this.add.group();
 		let textData = '';
 		if (isLoggedIn) {
+			const playerName = user.username.toUpperCase()
 			WebFont.load({
 				google: {
 					families: ['Pixelify Sans'],
@@ -66,7 +68,7 @@ export class MenuScene extends Phaser.Scene {
 					textData = this.add.text(
 						gameWidth / 2,
 						gameHeight / 2,
-						`WELCOME, ${user.username}!`,
+						`WELCOME, ${playerName}!`,
 						{
 							fontFamily: 'Pixelify Sans',
 							fontSize: '50px',
@@ -74,7 +76,7 @@ export class MenuScene extends Phaser.Scene {
 						}
 					);
 					textGroup.add(textData);
-					textGroup.setOrigin(0.5);
+					textGroup.setOrigin(0.53);
 				},
 			});
 			//add play button here wheb rady
@@ -91,7 +93,7 @@ export class MenuScene extends Phaser.Scene {
 				this.stopMenuMusicAndStartScene('UserForm');
 			});
 			const guest = this.addButton(gameWidth * 0.517, gameHeight * 0.63, 'guest', () => {
-				this.stopMenuMusicAndStartScene('RyanLevel');
+				this.stopMenuMusicAndStartScene('MaxLevel');
 			});
 		}
 
