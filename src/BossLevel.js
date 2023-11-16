@@ -33,6 +33,9 @@ import { Executioner } from './classes/Executioner.js';
 import poison_1 from "./assets/particles/poison1.png"
 import sprite_explode from "./assets/particles/sprite_emitter.png"
 import boss_explode from "./assets/particles/boss_death.png"
+import exclaim1 from "./assets/particles/exclaim_1.png"
+import exclaim2 from "./assets/particles/exclaim_2.png"
+import exclaim3 from "./assets/particles/exclaim_3.png"
 
 import { LoadingBar } from './LoadingBar.js';
 
@@ -88,6 +91,9 @@ export class BossTest extends Phaser.Scene {
             { key: 'nebula', image: nebula },
             { key: 'nebula2', image: nebula2 },
         ])
+        this.load.image("exclaim_1", exclaim1)
+        this.load.image("exclaim_2", exclaim2)
+        this.load.image("exclaim_3", exclaim3)
 
         this.load.image('flare', flare)
         this.load.image('laser', laser_img)
@@ -108,6 +114,7 @@ export class BossTest extends Phaser.Scene {
 
     }
     create() {
+        const randomExclaim = Math.floor((Math.random() * 3));
         const { width, height } = this.scale;
         this.backgrounds.addBackground({
             ratioX: 0.1,
@@ -157,7 +164,7 @@ export class BossTest extends Phaser.Scene {
         this.ground2 = map.createLayer('ground2', tileset, 0, 0)
         this.ground2.setCollisionByExclusion(-1, true)
 
-        this.player = new RoguePlayer(this, 250, 420, "rogue_player");
+        this.player = new RoguePlayer(this, 123, 188, "rogue_player");
         this.cameras.main.startFollow(this.player);
 
         this.executioner = new Executioner(this, 360, 425, "executioner")
@@ -191,61 +198,82 @@ export class BossTest extends Phaser.Scene {
     }
 
     update() {
-        this.cameras.main.on('camerafadeoutcomplete', () => {
-            this.scene.start(this.sceneToTransit)
-        }, this.scene);
-
-        if (this.player.getHP() <= 0) {
-            this.physics.pause();
-            this.children.list.forEach(x => {
-                if (x instanceof Actor) {
-                    x.setActive(false);
-                }
-            })
-            localStorage.setItem('score' ,this.hudScene.score)
-            this.hudScene.score = 0;
-            this.scene.stop('HUDScene')
-            if (!this.fadeOut) {
-                this.cameras.main.fadeOut(3000)
-                this.fadeOut = true;
-                this.sceneToTransit = "GameOverScene"
+        if (!this.fightStart) {
+            if (!this.camereShakeStart) {
+                this.cameras.main.shake(1000, 0.005)
+                this.camereShakeStart = true;
             }
-        }
-
-        this.player.update()
-        this.backgrounds.update();
-        this.hudScene.update()
-
-        if (!this.executioner.getIsDead()) {
-            this.bossHealthBar.clear()
-            const healthPercentage = this.executioner.getHP() / this.executioner.maxHealth;
-            const barWidth = 420 * healthPercentage;
-            this.bossHealthBar = this.add.graphics()
-                .fillStyle(0xff0000)
-                .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
-            this.executioner.update()
-            this.executioner.summons.getChildren().forEach(x => {
-                if (x.getIsAlive()) x.update();
-            })
+            if (!this.shownExclaim) {
+                this.player.anims.play("rogue_idle")
+                const randomExclaim = Math.floor((Math.random() * 3)) + 1;
+                console.log(`exclaim_${randomExclaim}`)
+                this.exclaim = this.add.image(this.player.x - this.player.getBody().width,
+                    this.player.y - this.player.getBody().height,
+                    `exclaim_${randomExclaim}`)
+                this.exclaim.setScale(0.15)
+                this.shownExclaim = true;
+                this.time.delayedCall(2000, () => {
+                    this.fightStart = true;
+                    this.exclaim.destroy();
+                })
+            }
         } else {
-            // BOSS DEATH 
-            this.poison.stop();
-            this.dash_overlay.destroy();
-            if (!this.shownDeath) {
-                this.boss_explode_emitter.setPosition(this.deathX, this.deathY)
-                this.boss_explode_emitter.explode(50);
-                this.shownDeath = true;
-                this.time.delayedCall(3000, () => {
-                    // BOSS TRANSITION
-                    localStorage.setItem('score', this.hudScene.score)
-                    this.hudScene.score = 0;
-                    this.scene.stop('HUDScene')
-                    if (!this.fadeOut) {
-                        this.sceneToTransit = "WinnerScene"
-                        this.cameras.main.fadeOut(3000)
-                        this.fadeOut = true;
+            this.cameras.main.on('camerafadeoutcomplete', () => {
+                this.scene.start(this.sceneToTransit)
+            }, this.scene);
+
+            if (this.player.getHP() <= 0) {
+                this.physics.pause();
+                this.children.list.forEach(x => {
+                    if (x instanceof Actor) {
+                        x.setActive(false);
                     }
                 })
+                localStorage.setItem('score', this.hudScene.score)
+                this.hudScene.score = 0;
+                this.scene.stop('HUDScene')
+                if (!this.fadeOut) {
+                    this.cameras.main.fadeOut(3000)
+                    this.fadeOut = true;
+                    this.sceneToTransit = "GameOverScene"
+                }
+            }
+
+            this.player.update()
+            this.backgrounds.update();
+            this.hudScene.update()
+
+            if (!this.executioner.getIsDead()) {
+                this.bossHealthBar.clear()
+                const healthPercentage = this.executioner.getHP() / this.executioner.maxHealth;
+                const barWidth = 420 * healthPercentage;
+                this.bossHealthBar = this.add.graphics()
+                    .fillStyle(0xff0000)
+                    .fillRect(this.player.x - 220, this.player.y + 200, barWidth, 20);
+                this.executioner.update()
+                this.executioner.summons.getChildren().forEach(x => {
+                    if (x.getIsAlive()) x.update();
+                })
+            } else {
+                // BOSS DEATH 
+                this.poison.stop();
+                this.dash_overlay.destroy();
+                if (!this.shownDeath) {
+                    this.boss_explode_emitter.setPosition(this.deathX, this.deathY)
+                    this.boss_explode_emitter.explode(50);
+                    this.shownDeath = true;
+                    this.time.delayedCall(3000, () => {
+                        // BOSS TRANSITION
+                        localStorage.setItem('score', this.hudScene.score)
+                        this.hudScene.score = 0;
+                        this.scene.stop('HUDScene')
+                        if (!this.fadeOut) {
+                            this.sceneToTransit = "WinnerScene"
+                            this.cameras.main.fadeOut(3000)
+                            this.fadeOut = true;
+                        }
+                    })
+                }
             }
         }
     }
