@@ -13,7 +13,7 @@ node_modules/
 # Build
 dist/
 /npm-debug.log
-readme.md
+# readme.md
 
 
 random.js
