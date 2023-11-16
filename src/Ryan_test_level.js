@@ -206,13 +206,11 @@ export class RyanLevel extends Phaser.Scene {
             this.weather.disable();
         }
 
-
         // create arrow colliders now player is made
         this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
         this.archers.forEach(archer => {
             this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
                 archer.arrowHit(arrow, player)
-                // arrow_shoot_sfx.play()
               })
         })
         this.graphics = this.add.graphics();
