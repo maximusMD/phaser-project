@@ -191,8 +191,8 @@ export class BossTest extends Phaser.Scene {
     }
 
     update() {
-        this.cameras.main.on('camerafadeoutcomplete', (e, e2) => {
-            this.scene.start('GameOverScene')
+        this.cameras.main.on('camerafadeoutcomplete', () => {
+            this.scene.start(this.sceneToTransit)
         }, this.scene);
 
         if (this.player.getHP() <= 0) {
@@ -208,6 +208,7 @@ export class BossTest extends Phaser.Scene {
             if (!this.fadeOut) {
                 this.cameras.main.fadeOut(3000)
                 this.fadeOut = true;
+                this.sceneToTransit = "GameOverScene"
             }
         }
 
@@ -239,7 +240,11 @@ export class BossTest extends Phaser.Scene {
                     localStorage.setItem('score', this.hudScene.score)
                     this.hudScene.score = 0;
                     this.scene.stop('HUDScene')
-                    this.scene.start('WinnerScene')
+                    if (!this.fadeOut) {
+                        this.sceneToTransit = "WinnerScene"
+                        this.cameras.main.fadeOut(3000)
+                        this.fadeOut = true;
+                    }
                 })
             }
         }
