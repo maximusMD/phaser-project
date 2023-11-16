@@ -92,8 +92,8 @@ export class MaxLevel extends Phaser.Scene {
             },
             pack: {
                 files: [
-                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas},
-                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas}
+                    { type: 'atlas', key: 'rogue_load', textureURL: rogue_image, atlasURL: rogue_atlas },
+                    { type: 'atlas', key: 'alt_load', textureURL: loading_sprite, atlasURL: loading_atlas }
                 ]
             }
         });
@@ -111,11 +111,11 @@ export class MaxLevel extends Phaser.Scene {
         this.load.image('blue-diamond', blue_diamond)
         this.load.image('yellow-diamond', yellow_diamond)
 
-        this.backgrounds = new ParaBackgrounds(this,[
-            {key: 'stars-small', image: small_stars},
-            {key: 'stars-big', image: big_stars},
-            {key: 'nebula', image: nebula},
-            {key: 'nebula2', image: nebula2},
+        this.backgrounds = new ParaBackgrounds(this, [
+            { key: 'stars-small', image: small_stars },
+            { key: 'stars-big', image: big_stars },
+            { key: 'nebula', image: nebula },
+            { key: 'nebula2', image: nebula2 },
         ])
 
         this.load.image('metroid hc', tileset_img);
@@ -245,7 +245,7 @@ export class MaxLevel extends Phaser.Scene {
         this.physics.add.collider(this.enemy23, this.ground);
         this.enemy24 = new RogueBrain(this, 700, 700, 'brain')
         this.physics.add.collider(this.enemy24, this.ground);
-        
+
 
         this.player = new RoguePlayer(this, 10, 10, "rogue_player");
         this.physics.add.collider(this.player, this.ground);
@@ -283,12 +283,12 @@ export class MaxLevel extends Phaser.Scene {
 
 
         // create arrow colliders now player is made
-        this.archers = this.children.list.filter(x => x instanceof SkeletonArcher )
+        this.archers = this.children.list.filter(x => x instanceof SkeletonArcher)
         this.archers.forEach(archer => {
             this.physics.add.overlap(archer.getArrows(), this.player, (arrow, player) => {
                 archer.arrowHit(arrow, player)
                 arrow_shoot_sfx.play()
-                })
+            })
         })
         this.graphics = this.add.graphics();
 
@@ -300,64 +300,74 @@ export class MaxLevel extends Phaser.Scene {
         this.hudScene = hudScenePlugin.get('HUDScene');
     }
     update() {
-        this.weather.update();
-        this.backgrounds.update();
-
-        this.player.update(this.hudScene);
-
-        this.enemy.update(this.player);
-        this.enemy2.update(this.player);
-        this.enemy3.update(this.player)
-        this.enemy4.update(this.player)
-        this.enemy5.update(this.player)
-        this.enemy6.update(this.player)
-        this.enemy7.update(this.player);
-        this.enemy8.update(this.player);
-        this.enemy9.update(this.player)
-        this.enemy10.update(this.player)
-        this.enemy11.update(this.player)
-        this.enemy12.update(this.player)
-        this.enemy13.update(this.player);
-        this.enemy14.update(this.player);
-        this.enemy15.update(this.player)
-        this.enemy16.update(this.player)
-        this.enemy17.update(this.player)
-        this.enemy18.update(this.player)
-        this.enemy19.update(this.player);
-        this.enemy20.update(this.player);
-        this.enemy21.update(this.player)
-        this.enemy22.update(this.player)
-        this.enemy23.update(this.player)
-        this.enemy24.update(this.player)
-
-        this.hudScene.update();
-        // console.log('Player Coordinates:', this.player.x, this.player.y);
-
-        const targetX = 88;
-        const targetY = 755
-
-        const bonusX = 744
-        const bonusY = 191
-        const range = 10
-        const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, bonusX, bonusY)
-        if (distance <= range) {
-            this.bonusSprite.destroy();
-            this.hudScene.addScore(5);
-        }
-
-
+        this.cameras.main.on('camerafadeoutcomplete', (e, e2) => {
+            this.scene.start('GameOverScene')
+        }, this.scene);
+        
         if (this.player.getHP() <= 0) {
-            console.log(this.player.getHP())
-            console.log(this.hudScene.score);
-            localStorage.setItem('score' ,this.hudScene.score)
+            this.physics.pause();
+            this.children.list.forEach(x => {
+                if (x instanceof Actor) {
+                    x.setActive(false);
+                }
+            })
+            localStorage.setItem('score', this.hudScene.score)
             this.hudScene.score = 0;
             this.scene.stop('HUDScene')
-            this.scene.start('GameOverScene')
-        }
+            if (!this.fadeOut) {
+                this.cameras.main.fadeOut(3000)
+                this.fadeOut = true;
+            }
+        } else {
+            this.weather.update();
+            this.backgrounds.update();
 
-        if (this.player.x <= targetX && this.player.y >= targetY) {
-            this.scene.stop('HUDScene')
-            this.scene.start('BossLevel');
+            this.player.update(this.hudScene);
+
+            this.enemy.update(this.player);
+            this.enemy2.update(this.player);
+            this.enemy3.update(this.player)
+            this.enemy4.update(this.player)
+            this.enemy5.update(this.player)
+            this.enemy6.update(this.player)
+            this.enemy7.update(this.player);
+            this.enemy8.update(this.player);
+            this.enemy9.update(this.player)
+            this.enemy10.update(this.player)
+            this.enemy11.update(this.player)
+            this.enemy12.update(this.player)
+            this.enemy13.update(this.player);
+            this.enemy14.update(this.player);
+            this.enemy15.update(this.player)
+            this.enemy16.update(this.player)
+            this.enemy17.update(this.player)
+            this.enemy18.update(this.player)
+            this.enemy19.update(this.player);
+            this.enemy20.update(this.player);
+            this.enemy21.update(this.player)
+            this.enemy22.update(this.player)
+            this.enemy23.update(this.player)
+            this.enemy24.update(this.player)
+
+            this.hudScene.update();
+            // console.log('Player Coordinates:', this.player.x, this.player.y);
+
+            const targetX = 88;
+            const targetY = 755
+
+            const bonusX = 744
+            const bonusY = 191
+            const range = 10
+            const distance = Phaser.Math.Distance.Between(this.player.x, this.player.y, bonusX, bonusY)
+            if (distance <= range) {
+                this.bonusSprite.destroy();
+                this.hudScene.addScore(5);
+            }
+
+            if (this.player.x <= targetX && this.player.y >= targetY) {
+                this.scene.stop('HUDScene')
+                this.scene.start('BossLevel');
+            }
         }
     }
 }
