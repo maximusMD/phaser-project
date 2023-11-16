@@ -258,7 +258,7 @@ export class Executioner extends Enemy {
 
     poisonPlayer() {
         if (!this.getPoisonCooldown()) {
-            // this.scene.player.setHP(5)
+            this.scene.player.setHP(5)
             console.log("Poisoning: PlayerHP: " + this.scene.player.getHP())
             this.setPoisonCooldown(true);
             this.scene.time.delayedCall(1000, () => { this.setPoisonCooldown(false) });
@@ -271,7 +271,7 @@ export class Executioner extends Enemy {
                     this.summons.showSummon(
                         this.getCenter().x,
                         this.getCenter().y - 50 * (this.getSummonCount() + 1),
-                        this.getSummonCount()
+                        this.summons.getFirstDead(true)
                     );
                     this.setSummonAlive(true);
                     this.setSummonCount(this.getSummonCount() + 1);
@@ -375,7 +375,7 @@ export class Executioner extends Enemy {
                 this.anims.playReverse("executioner_dash_attack", true);
                 if (this.anims.currentFrame.frame.name === "attacking-2.png") {
                     if (!this.getMeleeHit()) {
-                        // this.scene.player.setHP(25);
+                        this.scene.player.setHP(25);
                         console.log("Dash hit")
                         this.toggleMeleeHit();
                         this.scene.time.delayedCall(1000, () => { this.toggleMeleeHit() });
@@ -389,7 +389,7 @@ export class Executioner extends Enemy {
 
                     if (!this.getMeleeHit()) {
                         console.log("frenzy hit")
-                        // this.scene.player.setHP(5)
+                        this.scene.player.setHP(5)
                         this.toggleMeleeHit();
                         this.scene.time.delayedCall(500, () => { this.toggleMeleeHit() });
                     }
@@ -418,8 +418,8 @@ export class Executioner extends Enemy {
         this.scene.bossHealthBar.destroy();
         this.scene.hudScene.addScore(this.getScore())
         this.setVisible(false);
-        this.setActive(false);  
-        this.getBody().reset(-400,-400)
+        this.setActive(false);
+        this.getBody().reset(-400, -400)
     }
 
     update() {
@@ -466,15 +466,14 @@ export class SummonGroup extends Phaser.Physics.Arcade.Group {
 
         this.scene.summon_sprites = this.createMultiple({
             classType: ExecutionerSummon,
-            quantity: 10,
+            quantity: 50,
             active: false,
             visible: false,
             key: "executioner",
         })
     }
 
-    showSummon(x, y, index) {
-        const summon = this.getChildren().find((_, i) => i === index);
+    showSummon(x, y, summon) {
         summon.show(x, y);
     }
 }
@@ -496,6 +495,7 @@ export class ExecutionerSummon extends Enemy {
         this.setCollideWorldBounds(false);
         this.scene.physics.add.overlap(this, this.scene.player,
             (...args) => { this.handleHit(...args) })
+        this.anims.play("summon_idle", true)
     }
 
     show(x, y) {
@@ -503,6 +503,8 @@ export class ExecutionerSummon extends Enemy {
         this.setHP(0, false, 10);
         this.getBody().setAllowGravity(false);
         this.setActive(true);
+        this.setHasHit(false);
+        this.#travelling = false;
         this.setVisible(true);
         this.setIsAlive(true);
         this.setShownDead(false);
@@ -536,9 +538,10 @@ export class ExecutionerSummon extends Enemy {
 
     handleHit(_, player) {
         if (!this.getHasHit()) {
-            console.log(player)
-            // player.setHP(10);
+            this.setVisible(false);
+            player.setHP(10);
             this.setHasHit(true);
+            this.handleDeath();
         }
     }
 
@@ -625,8 +628,7 @@ export class ExecutionerSummon extends Enemy {
     update() {
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
-
-        this.anims.play('summon_idle');
+        this.anims.play("summon_idle", true)
 
         if (this.getHP() <= 0) {
             this.handleDeath();
