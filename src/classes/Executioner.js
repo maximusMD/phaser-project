@@ -26,7 +26,8 @@ export class Executioner extends Enemy {
         super(scene, x, y, atlas)
         this.atlas = atlas;
         this.scene = scene;
-        this.setHP(0, false, 270)
+        // this.setScore(200)
+        this.setHP(0, false, 30)
         this.setScale(1.5)
         this.getBody().setAllowGravity(false);
         this.setCollideWorldBounds(false);
@@ -45,6 +46,7 @@ export class Executioner extends Enemy {
         this.scene.physics.add.overlap(this.getBody(), this.scene.player.getBody(), (...args) => {
             this.handleMelee(...args)
         })
+        this.maxHealth = this.getHP();
     }
     setSummonCount(num) {
         this.#summonCount = num;
@@ -176,7 +178,7 @@ export class Executioner extends Enemy {
             repeat: -1
         })
         this.anims.create({
-            key: 'executioner_death',
+            key: 'executioner_die',
             frames: this.scene.anims.generateFrameNames('executioner', {
                 prefix: 'death-',
                 suffix: '.png',
@@ -184,7 +186,7 @@ export class Executioner extends Enemy {
                 end: 17
             }),
             frameRate: 10,
-            repeat: -1
+            repeat: 0
         })
         this.anims.create({
             key: 'executioner_skill1',
@@ -213,18 +215,20 @@ export class Executioner extends Enemy {
 
 
     floating() {
-        this.attackY = this.attackY ?? this.getBody().y;
-        if (this.getFloatToggle()) {
-            this.getBody().setVelocityY(-5);
-            if (this.getBody().y <= this.attackY - 5) {
-                this.attackY = undefined;
-                this.setFloatToggle();
-            }
-        } else {
-            this.getBody().setVelocityY(5);
-            if (this.getBody().y >= this.attackY + 5) {
-                this.attackY = undefined;
-                this.setFloatToggle();
+        if (!this.getIsDead()) {
+            this.attackY = this.attackY ?? this.getBody().y;
+            if (this.getFloatToggle()) {
+                this.getBody().setVelocityY(-5);
+                if (this.getBody().y <= this.attackY - 5) {
+                    this.attackY = undefined;
+                    this.setFloatToggle();
+                }
+            } else {
+                this.getBody().setVelocityY(5);
+                if (this.getBody().y >= this.attackY + 5) {
+                    this.attackY = undefined;
+                    this.setFloatToggle();
+                }
             }
         }
     }
@@ -261,29 +265,30 @@ export class Executioner extends Enemy {
         }
     }
     summon() {
-        if (this.getSummonCount() < 3) {
-            if (!this.getSummonAlive()) {
-                this.summons.showSummon(
-                    this.getCenter().x,
-                    this.getCenter().y - 50 * (this.getSummonCount() + 1),
-                    this.getSummonCount()
-                );
-                this.setSummonAlive(true);
-                this.setSummonCount(this.getSummonCount() + 1);
-                this.anims.play("executioner_summon", true);
-                this.scene.time.delayedCall(2000, () => {
-                    this.setSummonAlive(false);
-                    this.anims.play("executioner_idle2");
+        if (!this.getIsDead()) {
+            if (this.getSummonCount() < 3) {
+                if (!this.getSummonAlive()) {
+                    this.summons.showSummon(
+                        this.getCenter().x,
+                        this.getCenter().y - 50 * (this.getSummonCount() + 1),
+                        this.getSummonCount()
+                    );
+                    this.setSummonAlive(true);
+                    this.setSummonCount(this.getSummonCount() + 1);
+                    this.anims.play("executioner_summon", true);
+                    this.scene.time.delayedCall(2000, () => {
+                        this.setSummonAlive(false);
+                        this.anims.play("executioner_idle2");
+                    });
+                }
+            } else {
+                this.setIdling(true);
+                this.scene.time.delayedCall(3000, () => {
+                    this.setIdling(false)
+                    this.setSummonCount(0);
+                    this.randomAttack = undefined;
                 });
             }
-        } else {
-            this.setIdling(true);
-            // if (this.getInAction()) this.toggleInAction();
-            this.scene.time.delayedCall(3000, () => {
-                this.setIdling(false)
-                this.setSummonCount(0);
-                this.randomAttack = undefined;
-            });
         }
     }
 
@@ -293,7 +298,7 @@ export class Executioner extends Enemy {
             this.scene.dash_overlay.setAlpha(0.8);
             this.setAlpha(0);
             this.setVelocityX(0);
-            this.setX(500)
+            this.setX(550)
 
             if (!this.getShadowPlayer()) this.toggleShadowPlayer();
             this.scene.time.delayedCall(3000, () => {
@@ -397,37 +402,57 @@ export class Executioner extends Enemy {
 
     handleCompleteAnims(e) {
         //e.key
+        if (e.key === 'executioner_die') {
+            this.setVisible(false);
+            this.destroy();
+        }
     }
     handleStoppedAnims(e) {
         // e.key
     }
+
+    playDeathAnimAndDestroy() {
+        if (!this.scene.deathX) this.scene.deathX = this.getCenter().x;
+        if (!this.scene.deathY) this.scene.deathY = this.getCenter().y;
+
+        this.scene.bossHealthBar.destroy();
+        this.scene.hudScene.addScore(this.getScore())
+        this.setVisible(false);
+        this.setActive(false);  
+        this.getBody().reset(-400,-400)
+    }
+
     update() {
-        this.on('animationcomplete', this.handleCompleteAnims);
-        this.on('animationstop', this.handleStoppedAnims);
-        if (this.getHP() < 250 && !this.getPoisonEnabled()) {
-            this.createPoison();
-        }
-
-        if (!this.checkPlayerOverlap()) {
-            if (this.getBody().x > this.scene.player.getBody().x) {
-                this.setFlipX(true);
-            } else {
-                this.setFlipX(false);
+        if (this.getHP() > 0) {
+            this.on('animationcomplete', this.handleCompleteAnims);
+            this.on('animationstop', this.handleStoppedAnims);
+            if (this.getHP() < 250 && !this.getPoisonEnabled()) {
+                this.createPoison();
             }
-        }
-        if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
-            this.poisonPlayer();
-        }
-        // in action checks
-        if (!this.getIdling()) {
-            this.randomAttack = this.randomAttack ?? this.#attacks[Math.floor(Math.random() * this.#attacks.length)];
-            this[this.randomAttack]();
-        } else {
-            this.idling();
-        }
 
+            if (!this.checkPlayerOverlap()) {
+                if (this.getBody().x > this.scene.player.getBody().x) {
+                    this.setFlipX(true);
+                } else {
+                    this.setFlipX(false);
+                }
+            }
+            if (this.getPoisonEnabled() && Phaser.Geom.Intersects.RectangleToRectangle(this.scene.player.getBounds(), this.scene.poison_zone)) {
+                this.poisonPlayer();
+            }
+            // in action checks
+            if (!this.getIdling()) {
+                this.randomAttack = this.randomAttack ?? this.#attacks[Math.floor(Math.random() * this.#attacks.length)];
+                this[this.randomAttack]();
+            } else {
+                this.idling();
+            }
+        } else {
+            this.playDeathAnimAndDestroy();
+        }
     }
 }
+
 export class SummonGroup extends Phaser.Physics.Arcade.Group {
     #summoner;
     constructor(scene, summoner) {

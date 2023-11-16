@@ -8,7 +8,7 @@ export class RogueBrain extends Enemy {
         this.getBody().setSize(15, 20);
         this.getBody().setOffset(10, 10)
         this.setVision(75)
-        this.setMeleeDamage(2);
+        this.setMeleeDamage(0.03);
         this.setRangeDamage(0);
         this.setScore(10);
         this.setHP(80);

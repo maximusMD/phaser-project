@@ -44,6 +44,7 @@ export class RoguePlayer extends Actor {
     init(player_collider) {
         this.scene.physics.add.collider(this, player_collider);
         this.createAnims();
+        this.ground_collider = player_collider;
 
         this.laser_hit_emitter = this.scene.add.particles(400, 250, 'flare', {
             lifespan: 200,
@@ -53,7 +54,7 @@ export class RoguePlayer extends Actor {
             tint: 0xbabaf8,
             emitting: false
         });
-        this.laser_hit_emitter.setDepth(1);
+        this.laser_hit_emitter.setDepth(3);
         this.ground_hit_emitter = this.scene.add.particles(400, 250, 'dust', {
             lifespan: 200,
             speed: { min: 10, max: 20 },
@@ -61,7 +62,7 @@ export class RoguePlayer extends Actor {
             blendMode: 'DARKEN',
             emitting: false
         });
-        this.ground_hit_emitter.setDepth(1);
+        this.ground_hit_emitter.setDepth(5);
         this.allEnemies = this.scene.children.list.filter(x => x instanceof Enemy);
         this.scene.physics.add.overlap(this.laserGroup, this.allEnemies, (...args) => {
             this.handleOverlap(...args) })
@@ -284,7 +285,6 @@ export class RoguePlayer extends Actor {
     }
 
     handleOverlap(sprite, overlapSprite) {
-        console.log(this)
         if (!overlapSprite.getHasHit()) {
             sprite.updateHP(overlapSprite.getLaserDamage());
             this.emitLaserHit(sprite);
@@ -298,19 +298,12 @@ export class RoguePlayer extends Actor {
 
     }
 
-    handleGroundHit(projectile, ground) {
-        projectile.setVisible(false);
-        projectile.body.reset(-400, -400);
-        this.emitGroundHit(ground);
-    }
-
-
     handleMelee(_, enemy) {
         if (this.anims.isPlaying && this.anims.currentAnim.key === "rogue_melee") {
             if (this?.anims?.currentFrame.index === 5) {
                 if (!this.getMeleeCooldown()) {
                     enemy.updateHP(this.getMeleeDmg())
-                    console.log(enemy.getHP())
+                    console.log("Enemy hp: " + enemy.getHP())
                     this.setMeleeCooldown(true);
                 }
             }
