@@ -248,7 +248,7 @@ export function createAnimations(scene) {
       end: 7
     }),
     frameRate: 4,
-    repeat: 0,
+    repeat: 1,
     yoyo: true,
   })
 

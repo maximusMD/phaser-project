@@ -110,9 +110,9 @@ export class Enemy extends Actor {
 
   // functions
   facePlayer(player, enemy) {
-
     const shouldFlipX = player.getBody().x > enemy.x;
-    const flipDirection = enemy.texture.key === 'brain' ? shouldFlipX : !shouldFlipX;
+    const flipDirection = ((enemy.texture.key === 'brain')||(enemy.texture.key === 'sneaker') )? shouldFlipX : !shouldFlipX;
+
 
     enemy.setFlipX(flipDirection);
   }

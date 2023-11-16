@@ -14,8 +14,6 @@ export class Sneaker extends Enemy {
         this.setWalkSpeed(10)
         this.setScore(15);
         this.setHP(80);
-        this.setFlipX(!this.flipX)
-
         this.on('animationcomplete', this.handleCompleteAnims);
         this.on('animationstop', this.handleStoppedAnims);
     }
@@ -64,8 +62,10 @@ export class Sneaker extends Enemy {
         
         if (distance <= this.getVision()) {
             this.setAggro(true);
+            this.stopWandering();
         } else {
             this.setAggro(false);
+            this.setIsWandering(true);
         }
 
         if (this.getAggro() || this.getFinishAttack()) {
@@ -84,16 +84,3 @@ export class Sneaker extends Enemy {
 
     
 }
-// createAnimations() {
-    //     this.scene.anims.create({
-    //         key: 'skeleton_archer_idle',
-    //         frames: this.scene.anims.generateFrameNames('skeleton_archer', {
-    //             prefix: 'skeleton_archer_idle-',
-    //             suffix: '.png',
-    //             start: 1,
-    //             end: 7
-    //         }),
-    //         frameRate: 10,
-    //         repeat: -1
-    //     })
-    // }
