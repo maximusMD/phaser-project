@@ -1,12 +1,8 @@
-# Phaser 3 Webpack Project Template
+# Dark Descent
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 5](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
+ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 5](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
 
 This has been updated for Phaser 3.60.0 version and above.
-
-Loading images via JavaScript module `import` is also supported, although not recommended.
-
-![Screenshot](example.png)
 
 ## Requirements
 
