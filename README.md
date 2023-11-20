@@ -68,3 +68,52 @@ If you want to customize your build, such as adding a new webpack loader or plug
 After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
 
 If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.
+
+is an exciting game where you navigate through challenges and waves to achieve the highest score possible. Compete with others on the leaderboard and prove your skills!
+
+## Table of Contents
+- [Dark Descent](#dark-descent)
+  - [Requirements](#requirements)
+  - [Available Commands](#available-commands)
+  - [Writing Code](#writing-code)
+  - [Handling Assets](#handling-assets)
+  - [Customizing the Template](#customizing-the-template)
+    - [Babel](#babel)
+    - [Webpack](#webpack)
+  - [Deploying Code](#deploying-code)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Gameplay](#gameplay)
+  - [Scenes](#scenes)
+  - [Features](#features)
+  - [Dependencies](#dependencies)
+  - [Contributing](#contributing)
+  - [License](#license)
+
+## Installation
+1. Clone the repository: `git clone https://github.com/your-username/wavy-project-gang.git`
+2. Install dependencies: `npm install`
+3. Run the game: `npm start`
+
+## Gameplay
+Navigate through challenges and waves, collect points, and try to survive as long as possible. The game provides an immersive experience with stunning visuals and engaging mechanics.
+
+## Scenes
+- **MenuScene**: The main menu of the game.
+- **GameScene**: The core gameplay scene where the player navigates challenges.
+- **WinnerScene**: Displayed when the player successfully completes the game.
+- **GameOverScene**: Displayed when the player fails to survive the challenges.
+
+## Features
+- Leaderboard: Compete with other players and see your rank on the leaderboard.
+- Stunning Visuals: Enjoy a visually appealing game environment.
+- Responsive Controls: Smooth and responsive controls for an immersive gaming experience.
+
+## Dependencies
+- [Phaser](https://phaser.io/): A fast, robust, and versatile game framework for JavaScript.
+
+## Contributing
+Contributions are welcome! If you find a bug or have an enhancement in mind, feel free to open an issue or submit a pull request. Please follow the [contributing guidelines](CONTRIBUTING.md).
+
+## License
+This project is licensed under the [MIT License](LICENSE).
